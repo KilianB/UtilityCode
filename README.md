@@ -1,4 +1,7 @@
 # UtilityCode
+
+[![Build Status](https://travis-ci.org/KilianB/UtilityCode.svg?branch=master)](https://travis-ci.org/KilianB/UtilityCode)
+
 Selection of java utility methods used in almost all projects.
 
 <table>
