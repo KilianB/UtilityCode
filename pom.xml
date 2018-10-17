@@ -8,7 +8,7 @@
 
 	<properties>
 		<bintrayRepository>maven</bintrayRepository>
-		<bintrayPackage>MultiTypeChart</bintrayPackage>
+		<bintrayPackage>UtilityCode</bintrayPackage>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
 
