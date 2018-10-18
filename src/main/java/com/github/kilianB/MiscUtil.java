@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Locale;
 
 /**
+ * Utility methods not belonging in any other specific category.
  * @author Kilian
  *
  */
@@ -42,10 +43,6 @@ public class MiscUtil {
 		}
 
 		public String toString() {
-			// Pretty print extensive info
-
-			// String osPretty = StringUtil.enumNameToLowerCamelCase(currentOS);
-			// Convert to upper case
 			String osPretty = currentOS.name().toLowerCase().replace("_", " ");
 			osPretty = osPretty.substring(0, 1).toUpperCase() + osPretty.substring(1);
 
@@ -53,7 +50,6 @@ public class MiscUtil {
 			while ((index = osPretty.indexOf(" ", index + 1)) != -1) {
 				osPretty = osPretty.substring(0, 1).toUpperCase() + osPretty.substring(1);
 			}
-
 			return osPretty + " " + System.getProperty("os.arch") + " " + System.getProperty("os.version");
 		}
 
@@ -71,7 +67,12 @@ public class MiscUtil {
 			return OTHER;
 		}
 
+		/**
+		 * 
+		 */
 		private static OS currentOS = null;
+		
+		
 		private String[] osIdentifier;
 
 		private OS(String... haystack) {
@@ -140,7 +141,7 @@ public class MiscUtil {
 			}
 		};
 
-		//Modifies heavily from here
+		//Modified heavily from here
 		
 		/*
 		 * We want all shutdown hooks to finish before re starting our application. Registering a normal shutdown hook 
