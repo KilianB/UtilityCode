@@ -1,8 +1,46 @@
 # UtilityCode
 
 [![Build Status](https://travis-ci.org/KilianB/UtilityCode.svg?branch=master)](https://travis-ci.org/KilianB/UtilityCode)
+[ ![Download](https://api.bintray.com/packages/kilianb/maven/UtilityCode/images/download.svg) ](https://bintray.com/kilianb/maven/UtilityCode/_latestVersion)
 
 Selection of java utility methods used in almost all projects.
+
+## Maven, Gradle, Ivy
+
+Distributed via Bintray 
+``` XML
+	<repositories>
+		<repository>
+			<id>jcenter</id>
+			<url>https://jcenter.bintray.com/</url>
+		</repository>
+	</repositories>
+	
+	<dependencies>
+		<dependency>
+			<groupId>com.github.kilianB</groupId>
+			<artifactId>UtilityCode</artifactId>
+			<version>1.0.0</version>
+		</dependency>
+	</dependencies>
+```
+
+<details>
+<summary>Gradle</summary>
+<code>compile 'com.github.kilianB:UtilityCode:1.0.0'</code>
+</details>
+
+<details>
+<summary>Ivy</summary>
+<code>
+<dependency org='com.github.kilianB' name='UtilityCode' rev='1.0.0'>
+  <artifact name='UtilityCode' ext='pom' ></artifact>
+</dependency>
+</code>
+</details>
+
+
+## Content
 
 <table>
 	<tr>
