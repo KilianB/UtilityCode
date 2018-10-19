@@ -1,6 +1,7 @@
 package com.github.kilianB;
 
 import java.util.Collection;
+import java.util.List;
 import java.util.Objects;
 
 /**
@@ -65,6 +66,26 @@ public class Require {
 		}
 		return value;
 	}
+	
+	/**
+	 * Checks if the supplied argument is lays within the given bounds throws a
+	 * IllegalArgumentException if it doesn't
+	 * 
+	 * @param value       to be checked
+	 * @param lowerBound  inclusively
+	 * @param higherBound inclusively
+	 * @param message     to be thrown in case of error
+	 * @param             <T> the type of the value
+	 * @return The supplied value
+	 * @since 1.1.0
+	 */
+	public static <T extends Number> Collection<T> inRange(Collection<T> value, T lowerBound, T higherBound, String message) {
+		for(T t : value) {
+			inRange(t,lowerBound,higherBound,message);
+		}
+		return value;
+	}
+	
 
 	/**
 	 * Checks if the supplied argument is lays within the given bounds throws a
@@ -220,4 +241,6 @@ public class Require {
 		nonNull(list.toArray(), message);
 		return list;
 	}
+
+	
 }
