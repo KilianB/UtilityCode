@@ -11,11 +11,19 @@ import org.junit.jupiter.api.Test;
  * @author Kilian
  *
  */
-class DaemonThreadFactoryTest {
+class NamedThreadFactoryTest {
 
 	@Test
+	void createsNonDaemonThread() {
+		NamedThreadFactory factory = new NamedThreadFactory();
+		Thread t = factory.newThread(() -> {
+		});
+		assertFalse(t.isDaemon());
+	}
+	
+	@Test
 	void createsDaemonThread() {
-		DaemonThreadFactory factory = new DaemonThreadFactory();
+		NamedThreadFactory factory = new NamedThreadFactory(true);
 		Thread t = factory.newThread(() -> {
 		});
 		assertTrue(t.isDaemon());
@@ -23,7 +31,7 @@ class DaemonThreadFactoryTest {
 
 	@Test
 	void defaultExceptionIsCaught() {
-		DaemonThreadFactory factory = new DaemonThreadFactory();
+		NamedThreadFactory factory = new NamedThreadFactory();
 		Thread t = factory.newThread(() -> {
 			throw new IllegalArgumentException();
 		});
@@ -35,7 +43,7 @@ class DaemonThreadFactoryTest {
 	void exceptionHandler() {
 		
 		CountDownLatch latch = new CountDownLatch(1);
-		DaemonThreadFactory factory = new DaemonThreadFactory((thread, throwable) -> {
+		NamedThreadFactory factory = new NamedThreadFactory((thread, throwable) -> {
 			latch.countDown();
 		});
 		
