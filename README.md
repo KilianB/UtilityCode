@@ -20,7 +20,7 @@ Distributed via Bintray
 		<dependency>
 			<groupId>com.github.kilianB</groupId>
 			<artifactId>UtilityCode</artifactId>
-			<version>1.0.0</version>
+			<version>1.1.0</version>
 		</dependency>
 	</dependencies>
 ```
@@ -88,3 +88,15 @@ Distributed via Bintray
 		<td>Non daemon thread factory, circular hashmap, rescaling images, ...</td>
 	</tr>
 </table>
+
+## Changelog
+
+````
+## v 1.1.0 - 19.10.2018
+### [added]:
+ - CountHashCollection + test A hash collection with O(1) specialized on keeping track how many times equal object were added and removed
+ - Circular Hashset
+ - Circular Queue
+ - Require.inRange for collections
+ ### [changed]:
+ - replace DaemonThreadFactory by NamedThreadFactory since no external repo is currently depending on this source only bump minor version
