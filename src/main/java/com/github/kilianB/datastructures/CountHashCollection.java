@@ -38,7 +38,7 @@ import java.util.Map.Entry;
  * Therefore the following scenario might happen:
  * 
  * <pre>
- * <code>
+ *  {@code
  * Object o;
  * Object o1;
  * 
@@ -69,7 +69,7 @@ import java.util.Map.Entry;
  * BUT!
  * o1 != o2
  * o1 != o3
- * </code>
+ * }
  * </pre>
  * 
  * @author Kilian
@@ -400,11 +400,11 @@ public class CountHashCollection<K> implements Collection<K> {
 			CountHashCollection.this.remove(((Entry<K, Integer>) entryArray[arrayPointer]).getKey());
 			this.mod = modCount;
 		}
-		
+
 		public void removeFully() {
 			checkModcount();
 			CountHashCollection.this.removeFully(((Entry<K, Integer>) entryArray[arrayPointer]).getKey());
-			//Ignore all future elements in the array
+			// Ignore all future elements in the array
 			elementsPresent = 0;
 			this.mod = modCount;
 		}

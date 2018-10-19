@@ -96,7 +96,6 @@ public class NamedThreadFactory implements ThreadFactory {
 	 *                   factory. Threads will be named namePrefix-thread#. If null
 	 *                   or empty a pattern of pool-pool#-thread# is applied.
 	 * @param handler    Exception handler attached to every created thread
-	 * @param daemon     weather or not the created threads are daemon threads.
 	 */
 	public NamedThreadFactory(String namePrefix, UncaughtExceptionHandler handler) {
 		this(namePrefix);
