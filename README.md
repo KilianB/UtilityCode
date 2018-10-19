@@ -30,16 +30,6 @@ Distributed via Bintray
 <code>compile 'com.github.kilianB:UtilityCode:1.0.0'</code>
 </details>
 
-<details>
-<summary>Ivy</summary>
-<code>
-<dependency org='com.github.kilianB' name='UtilityCode' rev='1.0.0'>
-  <artifact name='UtilityCode' ext='pom' ></artifact>
-</dependency>
-</code>
-</details>
-
-
 ## Content
 
 <table>
