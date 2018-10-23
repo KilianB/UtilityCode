@@ -20,7 +20,7 @@ Distributed via Bintray
 		<dependency>
 			<groupId>com.github.kilianB</groupId>
 			<artifactId>UtilityCode</artifactId>
-			<version>1.1.0</version>
+			<version>1.2.0</version>
 		</dependency>
 	</dependencies>
 ```
@@ -82,6 +82,17 @@ Distributed via Bintray
 ## Changelog
 
 ````
+## v 1.2.0 - 23.10.2018
+### [added]:
+
+ - fillArrayMulti in ArrayUtils allows multi dimensional arrays to be recursively filled with a value
+ - test for ArrayUtil
+
+ - Mutable wrappers now extend Number if applicable
+ - Mutable now implement increment, decrement setValue for primitive values. 
+ - test for mutable
+
+
 ## v 1.1.0 - 19.10.2018
 ### [added]:
  - CountHashCollection + test A hash collection with O(1) specialized on keeping track how many times equal object were added and removed

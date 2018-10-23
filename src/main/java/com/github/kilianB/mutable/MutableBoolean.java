@@ -40,9 +40,25 @@ public class MutableBoolean implements Mutable<Boolean>, Comparable<MutableBoole
 	public void setValue(Boolean newValue) {
 		this.field = newValue;
 	}
+	
+	/**
+	 * Set the internal field to the new value
+	 * @param newValue the new value
+	 * @since 1.2.0
+	 */
+	public void setValue(boolean newValue) {
+		this.field = newValue;
+	}
 
 	public boolean booleanValue() {
 		return field;
+	}
+	
+	/**
+	 * Invert the value of the internal field
+	 */
+	public void invertValue() {
+		field = !field;
 	}
 
 	@Override

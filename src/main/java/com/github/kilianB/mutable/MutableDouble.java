@@ -10,7 +10,7 @@ import java.io.Serializable;
  * @author Kilian
  * @since 1.0.0
  */
-public class MutableDouble implements Mutable<Double>, Comparable<MutableDouble>, Serializable{
+public class MutableDouble extends Number implements Mutable<Double>, Comparable<MutableDouble>, Serializable{
 
 	private static final long serialVersionUID = 6846548022746719522L;
 	
@@ -45,6 +45,15 @@ public class MutableDouble implements Mutable<Double>, Comparable<MutableDouble>
 	}
 	
 	/**
+	 * Set the internal field to the new value
+	 * @param newValue the new value
+	 * @since 1.2.0
+	 */
+	public void setValue(double newValue) {
+		field = newValue;
+	}
+	
+	/**
 	 * @return the current value as double primitive
 	 */
 	public double doubleValue() {
@@ -70,6 +79,21 @@ public class MutableDouble implements Mutable<Double>, Comparable<MutableDouble>
 		if (Double.doubleToLongBits(field) != Double.doubleToLongBits(other.field))
 			return false;
 		return true;
+	}
+
+	@Override
+	public int intValue() {
+		return (int) field;
+	}
+
+	@Override
+	public long longValue() {
+		return (long) field;
+	}
+
+	@Override
+	public float floatValue() {
+		return (float) field;
 	}
 
 }

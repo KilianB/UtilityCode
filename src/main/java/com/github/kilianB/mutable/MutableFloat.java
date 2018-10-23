@@ -10,7 +10,7 @@ import java.io.Serializable;
  * @author Kilian
  * @since 1.0.0
  */
-public class MutableFloat implements Mutable<Float>, Comparable<MutableFloat>, Serializable{
+public class MutableFloat extends Number implements Mutable<Float>, Comparable<MutableFloat>, Serializable{
 
 	private static final long serialVersionUID = 6846548022746719522L;
 	
@@ -45,6 +45,15 @@ public class MutableFloat implements Mutable<Float>, Comparable<MutableFloat>, S
 	}
 	
 	/**
+	 * Set the internal field to the new value
+	 * @param newValue the new value
+	 * @since 1.2.0
+	 */
+	public void setValue(float newValue) {
+		field = newValue;
+	}
+	
+	/**
 	 * @return the current value as float primitive
 	 */
 	public float floatValue() {
@@ -68,6 +77,21 @@ public class MutableFloat implements Mutable<Float>, Comparable<MutableFloat>, S
 		if (Float.floatToIntBits(field) != Float.floatToIntBits(other.field))
 			return false;
 		return true;
+	}
+
+	@Override
+	public int intValue() {
+		return (int) field;
+	}
+
+	@Override
+	public long longValue() {
+		return (long) field;
+	}
+
+	@Override
+	public double doubleValue() {
+		return field;
 	}
 
 }

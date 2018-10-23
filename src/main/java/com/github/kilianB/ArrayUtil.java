@@ -280,6 +280,32 @@ public class ArrayUtil {
 		}
 	}
 
+	/**
+	 * Fill a multi dimensional array with the value returned by the supplier
+	 * 
+	 * @param array The array to fill
+	 * @param s     The supplier
+	 * @param       <T> the type of the array
+	 * @return the supplied array. The return value is used to allow recursive
+	 *         behavior of the method and can safely be ignored by the user. The
+	 *         original supplied array is identical to the returned reference. If
+	 *         the supplied array is not an array null will be returned.
+	 * 
+	 * @since 1.2.0
+	 */
+	@SuppressWarnings("unchecked")
+	public static <T> T fillArrayMulti(T array, Supplier<T> s) {
+		if (array != null && array.getClass().isArray()) {
+			int length = Array.getLength(array);
+			for (int i = 0; i < length; i++) {
+				Array.set(array, i, fillArrayMulti((T) Array.get(array, i), s));
+			}
+		} else {
+			return s.get();
+		}
+		return array;
+	}
+
 	// primitive instances can't be auto unboxed
 
 	/**
@@ -307,7 +333,6 @@ public class ArrayUtil {
 			array[i] = s.get();
 		}
 	}
-
 
 	/**
 	 * Fill the entire array with the value returned by the supplier.
@@ -408,6 +433,9 @@ public class ArrayUtil {
 	 */
 	public static <T> int linearSearch(T[] array, T needle, int start, int stop) {
 		int maxIndex = Math.min(array.length, stop);
+		if(start < 0) {
+			start = 0;
+		}
 		for (int i = start; i < maxIndex; i++) {
 			if (array[i].equals(needle)) {
 				return i;
@@ -449,10 +477,11 @@ public class ArrayUtil {
 	 * 
 	 * @param array  the array to be searched
 	 * @param needle the value to search for
-	 * @param from  the index position to start searching from
-	 * @param to   the last index positin to stop search at
+	 * @param from   the index position to start searching from
+	 * @param to     the last index positin to stop search at
 	 * @param        <T> the type of the array
 	 * @return the index position of the value if found or -1 if not present
+	 * @throws ArrayIndexOutOfBoundsException if from or two are outside of the array
 	 * @since 1.0.0
 	 */
 	public static <T> int frontBackSearch(T[] array, T needle, int from, int to) {

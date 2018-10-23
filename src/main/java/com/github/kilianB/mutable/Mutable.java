@@ -15,6 +15,9 @@ public interface Mutable<T> {
 	 */
 	T getValue();
 	
-
+	/**
+	 * Set the internal field to the new value
+	 * @param newValue the new value
+	 */
 	void setValue(T newValue);
 }
