@@ -82,6 +82,16 @@ Distributed via Bintray
 ## Changelog
 
 ````
+
+## [unreleased]
+
+### [added]
+- FastPixel utility to read rgb/hue/luma data from an image
+- MathUtil.isNumeric() + tests
+
+### [fixed] 
+- added @Nested tag to isDoubleEquals class in MathUtil test
+
 ## v 1.2.0 - 23.10.2018
 ### [added]:
 
