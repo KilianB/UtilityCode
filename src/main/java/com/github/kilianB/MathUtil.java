@@ -96,4 +96,13 @@ public class MathUtil {
 		return gaussian * newStd + newMean;
 	}
 
+	/**
+	 * Check if the supplied variable represents a numeric value
+	 * @param var the variable to check
+	 * @return true if the variable is a number, false otherwise
+	 */
+	public static boolean isNumeric(Object var) {
+		return var instanceof Number;
+	}
+	
 }
