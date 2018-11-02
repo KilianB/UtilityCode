@@ -17,7 +17,7 @@ public class ColorUtil {
 	public static final double LUMA_GREEN = 0.587d;
 	public static final double LUMA_BLUE = 0.114d;
 
-	// BlueDif
+	// RedDif
 	public static final double CR_RED = 0.5d;
 	public static final double CR_GREEN = 0.418688d;
 	public static final double CR_BLUE = 0.081312d;
