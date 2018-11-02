@@ -20,7 +20,7 @@ Distributed via Bintray
 		<dependency>
 			<groupId>com.github.kilianB</groupId>
 			<artifactId>UtilityCode</artifactId>
-			<version>1.2.0</version>
+			<version>1.3.0</version>
 		</dependency>
 	</dependencies>
 ```
@@ -59,7 +59,7 @@ Distributed via Bintray
 	</tr>
 	<tr>
 		<td>Graphics</td>
-		<td>Color Utilities, Distance, Average Color, Palettes</td>
+		<td>Color Utilities, Distance, Average Color, Palettes, Efficient RGB HSC YCrCB (*10 faster than JDK)</td>
 	</tr>
 	<tr>
 		<td>ArrayUtil</td>
@@ -83,10 +83,10 @@ Distributed via Bintray
 
 ````
 
-## [unreleased]
+## v 1.2.0 - 2.11.2018
 
 ### [added]
-- FastPixel utility to read rgb/hue/luma data from an image
+- FastPixel utility to read rgb/hsv/YCrCb data from an image + tests
 - MathUtil.isNumeric() + tests
 
 ### [fixed] 
