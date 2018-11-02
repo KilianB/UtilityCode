@@ -327,18 +327,7 @@ public class ImageUtil {
 			return blue;
 		}
 
-		// Hue saturation brightness
-
 		// YCrCb
-
-		/**
-		 * 
-		 * The Y(Luma) component of the YCrCb color model
-		 * 
-		 * 0 - 255
-		 * 
-		 * @return the Y
-		 */
 		/**
 		 * Return the Y(Luma) component of the YCbCr color model for the specified
 		 * pixel.
@@ -356,6 +345,31 @@ public class ImageUtil {
 					+ (imageData[index++] & 0xFF) * ColorUtil.LUMA_GREEN
 					+ (imageData[index++] & 0xFF) * ColorUtil.LUMA_BLUE);
 			return luma > 255 ? 255 : luma;
+		}
+
+		/**
+		 * Return the Y(Luma) component of the YCbCr color model fof the entire image
+		 * mapped to a 2d array representing the x and y coordinates of the pixel.
+		 * 
+		 * @return the luma component in range [0-255]
+		 * @since 1.3.1
+		 */
+		public int[][] getLuma() {
+			int luma[][] = new int[width][height];
+			int x = 0;
+			int y = 0;
+			for (int i = 0 + alphaOffset; i < imageData.length; i += bytesPerColor) {
+				int lum = (int) Math.round((imageData[i] & 0xFF) * ColorUtil.LUMA_RED
+						+ (imageData[i+1] & 0xFF) * ColorUtil.LUMA_GREEN
+						+ (imageData[i+2] & 0xFF) * ColorUtil.LUMA_BLUE);
+				luma[x][y] = lum > 255 ? 255 : lum;
+				x++;
+				if (x >= width) {
+					x = 0;
+					y++;
+				}
+			}
+			return luma;
 		}
 
 		/**

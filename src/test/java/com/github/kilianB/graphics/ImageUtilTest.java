@@ -239,7 +239,19 @@ class ImageUtilTest {
 				}
 			}
 		}
-
+		
+		
+		@Test
+		void lumArray() {
+			ImageUtil.FastPixel fp = new ImageUtil.FastPixel(lena);
+			int[][] lumArr = fp.getLuma();
+			for (int x = 0; x < lena.getWidth(); x++) {
+				for (int y = 0; y < lena.getHeight(); y++) {
+					assertEquals(fp.getLuma(x,y),lumArr[x][y]);
+				}
+			}
+		}
+		
 		@Test
 		void lumInRange() {
 			ImageUtil.FastPixel fp = new ImageUtil.FastPixel(lena);

@@ -20,7 +20,7 @@ Distributed via Bintray
 		<dependency>
 			<groupId>com.github.kilianB</groupId>
 			<artifactId>UtilityCode</artifactId>
-			<version>1.3.0</version>
+			<version>1.3.1</version>
 		</dependency>
 	</dependencies>
 ```
@@ -83,7 +83,12 @@ Distributed via Bintray
 
 ````
 
-## v 1.2.0 - 2.11.2018
+## v 1.3.1 - 2.11.2018
+
+### [added]
+- getLuma() array method
+
+## v 1.3.0 - 2.11.2018
 
 ### [added]
 - FastPixel utility to read rgb/hsv/YCrCb data from an image + tests
