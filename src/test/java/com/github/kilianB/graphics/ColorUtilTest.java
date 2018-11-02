@@ -1,4 +1,4 @@
-package com.github.kilianB;
+package com.github.kilianB.graphics;
 
 import static org.junit.jupiter.api.Assertions.*;
 

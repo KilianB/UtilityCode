@@ -3,7 +3,6 @@ package com.github.kilianB;
 import java.lang.reflect.Array;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-import java.util.Objects;
 import java.util.function.Supplier;
 
 /**

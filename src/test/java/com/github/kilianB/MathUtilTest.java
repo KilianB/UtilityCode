@@ -150,6 +150,8 @@ class MathUtilTest {
 		}
 	}
 	
+	
+	@Nested
 	class DoubleEquals{
 		@Test
 		void isDoubleEqualsValid() {
@@ -185,5 +187,86 @@ class MathUtilTest {
 		void isDoubleEqualsInvalidEpsilon() {
 			assertFalse(MathUtil.isDoubleEquals(2.2d,2d,0.1d));
 		}
+	}
+	
+	@Nested
+	class IsNumeric{
+		
+		@Test
+		void intPrimitive() {
+			assertTrue(MathUtil.isNumeric(1));
+		}
+		
+		@Test
+		void bytePrimitive() {
+			assertTrue(MathUtil.isNumeric((byte)1));
+		}
+		
+		@Test
+		void booleanPrimitive() {
+			assertFalse(MathUtil.isNumeric(false));
+		}
+		
+		@Test
+		void longPrimitive() {
+			assertTrue(MathUtil.isNumeric(1l));
+		}
+		
+		@Test
+		void floatPrimitive() {
+			assertTrue(MathUtil.isNumeric(1f));
+		}
+		
+		@Test
+		void doublePrimitive() {
+			assertTrue(MathUtil.isNumeric(1d));
+		}
+		
+		@Test
+		void charPrimitive() {
+			assertFalse(MathUtil.isNumeric('c'));
+		}
+		
+		@Test
+		void string() {
+			assertFalse(MathUtil.isNumeric("HelloWorld"));
+		}
+		
+		@Test
+		void object() {
+			assertFalse(MathUtil.isNumeric(new Object()));
+		}
+		
+		//Numeric Objects
+		@Test
+		void Byte() {
+			assertTrue(MathUtil.isNumeric(Byte.valueOf((byte)1)));
+		}
+		
+		@Test
+		void Boolean() {
+			assertFalse(MathUtil.isNumeric(Boolean.TRUE));
+		}
+		
+		@Test
+		void Long() {
+			assertTrue(MathUtil.isNumeric(Long.valueOf(0)));
+		}
+		
+		@Test
+		void Float() {
+			assertTrue(MathUtil.isNumeric(Float.valueOf(0.2f)));
+		}
+		
+		@Test
+		void Double() {
+			assertTrue(MathUtil.isNumeric(Double.valueOf(0.1d)));
+		}
+		
+		@Test
+		void Character() {
+			assertFalse(MathUtil.isNumeric(Character.valueOf('c')));
+		}
+		
 	}
 }

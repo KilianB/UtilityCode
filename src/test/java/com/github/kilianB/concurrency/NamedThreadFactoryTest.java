@@ -16,16 +16,14 @@ class NamedThreadFactoryTest {
 	@Test
 	void createsNonDaemonThread() {
 		NamedThreadFactory factory = new NamedThreadFactory();
-		Thread t = factory.newThread(() -> {
-		});
+		Thread t = factory.newThread(() -> {});
 		assertFalse(t.isDaemon());
 	}
 	
 	@Test
 	void createsDaemonThread() {
 		NamedThreadFactory factory = new NamedThreadFactory(true);
-		Thread t = factory.newThread(() -> {
-		});
+		Thread t = factory.newThread(() -> {});
 		assertTrue(t.isDaemon());
 	}
 
@@ -53,7 +51,7 @@ class NamedThreadFactoryTest {
 		t.start();
 		
 		try {
-			assertTrue(latch.await(20, TimeUnit.MILLISECONDS));
+			assertTrue(latch.await(50, TimeUnit.MILLISECONDS));
 		}catch(InterruptedException e) {
 			fail("Interrupted");
 		}

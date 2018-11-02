@@ -10,6 +10,25 @@ import javafx.scene.paint.Color;
  */
 public class ColorUtil {
 
+	// YCrCb constants
+
+	// LUMA CONST
+	public static final double LUMA_RED = 0.299d;
+	public static final double LUMA_GREEN = 0.587d;
+	public static final double LUMA_BLUE = 0.114d;
+
+	// RedDif
+	public static final double CR_RED = 0.5d;
+	public static final double CR_GREEN = 0.418688d;
+	public static final double CR_BLUE = 0.081312d;
+
+	// BlueDif
+	public static final double CB_RED = 0.168736d;
+	public static final double CB_GREEN = 0.331264d;
+	public static final double CB_BLUE = 0.5d;
+
+	//
+
 	//@formatter:off
 	/**
 	 * Convert a JavaFX color to it's awt sibling
