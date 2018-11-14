@@ -410,7 +410,6 @@ public class ArrayUtil {
 			array[i] = s.get();
 		}
 	}
-
 	// Search
 
 	/**
@@ -432,7 +431,7 @@ public class ArrayUtil {
 	 */
 	public static <T> int linearSearch(T[] array, T needle, int start, int stop) {
 		int maxIndex = Math.min(array.length, stop);
-		if(start < 0) {
+		if (start < 0) {
 			start = 0;
 		}
 		for (int i = start; i < maxIndex; i++) {
@@ -480,7 +479,8 @@ public class ArrayUtil {
 	 * @param to     the last index positin to stop search at
 	 * @param        <T> the type of the array
 	 * @return the index position of the value if found or -1 if not present
-	 * @throws ArrayIndexOutOfBoundsException if from or two are outside of the array
+	 * @throws ArrayIndexOutOfBoundsException if from or two are outside of the
+	 *                                        array
 	 * @since 1.0.0
 	 */
 	public static <T> int frontBackSearch(T[] array, T needle, int from, int to) {
@@ -519,4 +519,971 @@ public class ArrayUtil {
 		return (frontBackSearch(array, needle, 0, array.length));
 	}
 
+	/**
+	 * Find the index of the minimum value of the array.
+	 * 
+	 * <p>
+	 * If the minimum value is present multiple times the first occurrence will be
+	 * returned.
+	 * 
+	 * @param array the array to check
+	 * @return the index of the minimum value of the array or -1 if the array is
+	 *         empty
+	 * @throws NullPointerException if the array is null
+	 * @since 1.4.0
+	 */
+	public static int minimumIndex(byte[] array) {
+
+		if (array.length == 0) {
+			return -1;
+		} else if (array.length == 1) {
+			return 0;
+		}
+
+		int minIndex = 0;
+		byte min = array[0];
+		for (int i = 1; i < array.length; i++) {
+			if (array[i] < min) {
+				min = array[i];
+				minIndex = i;
+			}
+		}
+		return minIndex;
+	}
+
+	/**
+	 * Find the index of the minimum value of the array.
+	 * 
+	 * <p>
+	 * If the minimum value is present multiple times the first occurrence will be
+	 * returned.
+	 * 
+	 * @param array the array to check
+	 * @return the index of the minimum value of the array or -1 if the array is
+	 *         empty
+	 * @throws NullPointerException if the array is null
+	 * @since 1.4.0
+	 */
+	public static int minimumIndex(char[] array) {
+
+		if (array.length == 0) {
+			return -1;
+		} else if (array.length == 1) {
+			return 0;
+		}
+
+		int minIndex = 0;
+		char min = array[0];
+		for (int i = 1; i < array.length; i++) {
+			if (array[i] < min) {
+				min = array[i];
+				minIndex = i;
+			}
+		}
+		return minIndex;
+	}
+
+	/**
+	 * Find the index of the minimum value of the array.
+	 * 
+	 * <p>
+	 * If the minimum value is present multiple times the first occurrence will be
+	 * returned.
+	 * 
+	 * @param array the array to check
+	 * @return the index of the minimum value of the array or -1 if the array is
+	 *         empty
+	 * @throws NullPointerException if the array is null
+	 * @since 1.4.0
+	 */
+	public static int minimumIndex(short[] array) {
+
+		if (array.length == 0) {
+			return -1;
+		} else if (array.length == 1) {
+			return 0;
+		}
+
+		int minIndex = 0;
+		short min = array[0];
+		for (int i = 1; i < array.length; i++) {
+			if (array[i] < min) {
+				min = array[i];
+				minIndex = i;
+			}
+		}
+		return minIndex;
+	}
+
+	/**
+	 * Find the index of the minimum value of the array.
+	 * 
+	 * <p>
+	 * If the minimum value is present multiple times the first occurrence will be
+	 * returned.
+	 * 
+	 * @param array the array to check
+	 * @return the index of the minimum value of the array or -1 if the array is
+	 *         empty
+	 * @throws NullPointerException if the array is null
+	 * @since 1.4.0
+	 */
+	public static int minimumIndex(int[] array) {
+
+		if (array.length == 0) {
+			return -1;
+		} else if (array.length == 1) {
+			return 0;
+		}
+
+		int minIndex = 0;
+		int min = array[0];
+		for (int i = 1; i < array.length; i++) {
+			if (array[i] < min) {
+				min = array[i];
+				minIndex = i;
+			}
+		}
+		return minIndex;
+	}
+
+	/**
+	 * Find the index of the minimum value of the array.
+	 * 
+	 * <p>
+	 * If the minimum value is present multiple times the first occurrence will be
+	 * returned.
+	 * 
+	 * @param array the array to check
+	 * @return the index of the minimum value of the array or -1 if the array is
+	 *         empty
+	 * @throws NullPointerException if the array is null
+	 * @since 1.4.0
+	 */
+	public static int minimumIndex(long[] array) {
+
+		if (array.length == 0) {
+			return -1;
+		} else if (array.length == 1) {
+			return 0;
+		}
+
+		int minIndex = 0;
+		long min = array[0];
+		for (int i = 1; i < array.length; i++) {
+			if (array[i] < min) {
+				min = array[i];
+				minIndex = i;
+			}
+		}
+		return minIndex;
+	}
+
+	/**
+	 * Find the index of the minimum value of the array.
+	 * 
+	 * <p>
+	 * If the minimum value is present multiple times the first occurrence will be
+	 * returned.
+	 * 
+	 * @param array the array to check
+	 * @return the index of the minimum value of the array or -1 if the array is
+	 *         empty
+	 * @throws NullPointerException if the array is null
+	 * @since 1.4.0
+	 */
+	public static int minimumIndex(float[] array) {
+
+		if (array.length == 0) {
+			return -1;
+		} else if (array.length == 1) {
+			return 0;
+		}
+
+		int minIndex = 0;
+		float min = array[0];
+		for (int i = 1; i < array.length; i++) {
+			if (array[i] < min) {
+				min = array[i];
+				minIndex = i;
+			}
+		}
+		return minIndex;
+	}
+
+	/**
+	 * Find the index of the minimum value of the array.
+	 * 
+	 * <p>
+	 * If the minimum value is present multiple times the first occurrence will be
+	 * returned.
+	 * 
+	 * @param array the array to check
+	 * @return the index of the minimum value of the array or -1 if the array is
+	 *         empty
+	 * @throws NullPointerException if the array is null
+	 * @since 1.4.0
+	 */
+	public static int minimumIndex(double[] array) {
+
+		if (array.length == 0) {
+			return -1;
+		} else if (array.length == 1) {
+			return 0;
+		}
+
+		int minIndex = 0;
+		double min = array[0];
+		for (int i = 1; i < array.length; i++) {
+			if (array[i] < min) {
+				min = array[i];
+				minIndex = i;
+			}
+		}
+		return minIndex;
+	}
+
+	/**
+	 * Find the minimum value of the array
+	 * 
+	 * @param array the array to check
+	 * @return the minimum value of the array
+	 * @throws ArrayOutOfBoundsException if the array is empty
+	 * @throws NullPointerException      if the array is null
+	 * @since 1.4.0
+	 */
+	public static byte minimum(byte[] array) {
+		return array[minimumIndex(array)];
+	}
+
+	/**
+	 * Find the minimum value of the array
+	 * 
+	 * @param array the array to check
+	 * @return the minimum value of the array
+	 * @throws ArrayOutOfBoundsException if the array is empty
+	 * @throws NullPointerException      if the array is null
+	 * @since 1.4.0
+	 */
+	public static char minimum(char[] array) {
+		return array[minimumIndex(array)];
+	}
+
+	/**
+	 * Find the minimum value of the array
+	 * 
+	 * @param array the array to check
+	 * @return the minimum value of the array
+	 * @throws ArrayOutOfBoundsException if the array is empty
+	 * @throws NullPointerException      if the array is null
+	 * @since 1.4.0
+	 */
+	public static short minimum(short[] array) {
+		return array[minimumIndex(array)];
+	}
+
+	/**
+	 * Find the minimum value of the array
+	 * 
+	 * @param array the array to check
+	 * @return the minimum value of the array
+	 * @throws ArrayOutOfBoundsException if the array is empty
+	 * @throws NullPointerException      if the array is null
+	 * @since 1.4.0
+	 */
+	public static int minimum(int[] array) {
+		return array[minimumIndex(array)];
+	}
+
+	/**
+	 * Find the minimum value of the array
+	 * 
+	 * @param array the array to check
+	 * @return the minimum value of the array
+	 * @throws ArrayOutOfBoundsException if the array is empty
+	 * @throws NullPointerException      if the array is null
+	 * @since 1.4.0
+	 */
+	public static long minimum(long[] array) {
+		return array[minimumIndex(array)];
+	}
+
+	/**
+	 * Find the minimum value of the array
+	 * 
+	 * @param array the array to check
+	 * @return the minimum value of the array
+	 * @throws ArrayOutOfBoundsException if the array is empty
+	 * @throws NullPointerException      if the array is null
+	 * @since 1.4.0
+	 */
+	public static float minimum(float[] array) {
+		return array[minimumIndex(array)];
+	}
+
+	/**
+	 * Find the minimum value of the array
+	 * 
+	 * @param array the array to check
+	 * @return the minimum value of the array
+	 * @throws ArrayOutOfBoundsException if the array is empty
+	 * @throws NullPointerException      if the array is null
+	 * @since 1.4.0
+	 */
+	public static double minimum(double[] array) {
+		return array[minimumIndex(array)];
+	}
+	
+	/**
+	 * Find the index of the maximum value of the array.
+	 * 
+	 * <p>
+	 * If the maximum value is present multiple times the first occurrence will be
+	 * returned.
+	 * 
+	 * @param array the array to check
+	 * @return the index of the maximum value of the array or -1 if the array is
+	 *         empty
+	 * @throws NullPointerException if the array is null
+	 * @since 1.4.0
+	 */
+	public static int maximumIndex(byte[] array) {
+
+		if (array.length == 0) {
+			return -1;
+		} else if (array.length == 1) {
+			return 0;
+		}
+
+		int maxIndex = 0;
+		byte max = array[0];
+		for (int i = 1; i < array.length; i++) {
+			if (array[i] > max) {
+				max = array[i];
+				maxIndex = i;
+			}
+		}
+		return maxIndex;
+	}
+
+	/**
+	 * Find the index of the maximum value of the array.
+	 * 
+	 * <p>
+	 * If the maximum value is present multiple times the first occurrence will be
+	 * returned.
+	 * 
+	 * @param array the array to check
+	 * @return the index of the maximum value of the array or -1 if the array is
+	 *         empty
+	 * @throws NullPointerException if the array is null
+	 * @since 1.4.0
+	 */
+	public static int maximumIndex(char[] array) {
+
+		if (array.length == 0) {
+			return -1;
+		} else if (array.length == 1) {
+			return 0;
+		}
+
+		int maxIndex = 0;
+		char max = array[0];
+		for (int i = 1; i < array.length; i++) {
+			if (array[i] > max) {
+				max = array[i];
+				maxIndex = i;
+			}
+		}
+		return maxIndex;
+	}
+	
+	/**
+	 * Find the index of the maximum value of the array.
+	 * 
+	 * <p>
+	 * If the maximum value is present multiple times the first occurrence will be
+	 * returned.
+	 * 
+	 * @param array the array to check
+	 * @return the index of the maximum value of the array or -1 if the array is
+	 *         empty
+	 * @throws NullPointerException if the array is null
+	 * @since 1.4.0
+	 */
+	public static int maximumIndex(short[] array) {
+
+		if (array.length == 0) {
+			return -1;
+		} else if (array.length == 1) {
+			return 0;
+		}
+
+		int maxIndex = 0;
+		short max = array[0];
+		for (int i = 1; i < array.length; i++) {
+			if (array[i] > max) {
+				max = array[i];
+				maxIndex = i;
+			}
+		}
+		return maxIndex;
+	}
+	
+	/**
+	 * Find the index of the maximum value of the array.
+	 * 
+	 * <p>
+	 * If the maximum value is present multiple times the first occurrence will be
+	 * returned.
+	 * 
+	 * @param array the array to check
+	 * @return the index of the maximum value of the array or -1 if the array is
+	 *         empty
+	 * @throws NullPointerException if the array is null
+	 * @since 1.4.0
+	 */
+	public static int maximumIndex(int[] array) {
+
+		if (array.length == 0) {
+			return -1;
+		} else if (array.length == 1) {
+			return 0;
+		}
+
+		int maxIndex = 0;
+		int max = array[0];
+		for (int i = 1; i < array.length; i++) {
+			if (array[i] > max) {
+				max = array[i];
+				maxIndex = i;
+			}
+		}
+		return maxIndex;
+	}
+	
+	/**
+	 * Find the index of the maximum value of the array.
+	 * 
+	 * <p>
+	 * If the maximum value is present multiple times the first occurrence will be
+	 * returned.
+	 * 
+	 * @param array the array to check
+	 * @return the index of the maximum value of the array or -1 if the array is
+	 *         empty
+	 * @throws NullPointerException if the array is null
+	 * @since 1.4.0
+	 */
+	public static int maximumIndex(long[] array) {
+
+		if (array.length == 0) {
+			return -1;
+		} else if (array.length == 1) {
+			return 0;
+		}
+
+		int maxIndex = 0;
+		long max = array[0];
+		for (int i = 1; i < array.length; i++) {
+			if (array[i] > max) {
+				max = array[i];
+				maxIndex = i;
+			}
+		}
+		return maxIndex;
+	}
+	
+	/**
+	 * Find the index of the maximum value of the array.
+	 * 
+	 * <p>
+	 * If the maximum value is present multiple times the first occurrence will be
+	 * returned.
+	 * 
+	 * @param array the array to check
+	 * @return the index of the maximum value of the array or -1 if the array is
+	 *         empty
+	 * @throws NullPointerException if the array is null
+	 * @since 1.4.0
+	 */
+	public static int maximumIndex(float[] array) {
+
+		if (array.length == 0) {
+			return -1;
+		} else if (array.length == 1) {
+			return 0;
+		}
+
+		int maxIndex = 0;
+		float max = array[0];
+		for (int i = 1; i < array.length; i++) {
+			if (array[i] > max) {
+				max = array[i];
+				maxIndex = i;
+			}
+		}
+		return maxIndex;
+	}
+	
+	/**
+	 * Find the index of the maximum value of the array.
+	 * 
+	 * <p>
+	 * If the maximum value is present multiple times the first occurrence will be
+	 * returned.
+	 * 
+	 * @param array the array to check
+	 * @return the index of the maximum value of the array or -1 if the array is
+	 *         empty
+	 * @throws NullPointerException if the array is null
+	 * @since 1.4.0
+	 */
+	public static int maximumIndex(double[] array) {
+
+		if (array.length == 0) {
+			return -1;
+		} else if (array.length == 1) {
+			return 0;
+		}
+
+		int maxIndex = 0;
+		double max = array[0];
+		for (int i = 1; i < array.length; i++) {
+			if (array[i] > max) {
+				max = array[i];
+				maxIndex = i;
+			}
+		}
+		return maxIndex;
+	}
+	
+	/**
+	 * Find the maximum value of the array
+	 * 
+	 * @param array the array to check
+	 * @return the maximum value of the array
+	 * @throws ArrayOutOfBoundsException if the array is empty
+	 * @throws NullPointerException      if the array is null
+	 * @since 1.4.0
+	 */
+	public static byte maximum(byte[] array) {
+		return array[maximumIndex(array)];
+	}
+	
+	/**
+	 * Find the maximum value of the array
+	 * 
+	 * @param array the array to check
+	 * @return the maximum value of the array
+	 * @throws ArrayOutOfBoundsException if the array is empty
+	 * @throws NullPointerException      if the array is null
+	 * @since 1.4.0
+	 */
+	public static char maximum(char[] array) {
+		return array[maximumIndex(array)];
+	}
+	
+	/**
+	 * Find the maximum value of the array
+	 * 
+	 * @param array the array to check
+	 * @return the maximum value of the array
+	 * @throws ArrayOutOfBoundsException if the array is empty
+	 * @throws NullPointerException      if the array is null
+	 * @since 1.4.0
+	 */
+	public static short maximum(short[] array) {
+		return array[maximumIndex(array)];
+	}
+	
+	/**
+	 * Find the maximum value of the array
+	 * 
+	 * @param array the array to check
+	 * @return the maximum value of the array
+	 * @throws ArrayOutOfBoundsException if the array is empty
+	 * @throws NullPointerException      if the array is null
+	 * @since 1.4.0
+	 */
+	public static int maximum(int[] array) {
+		return array[maximumIndex(array)];
+	}
+	
+	/**
+	 * Find the maximum value of the array
+	 * 
+	 * @param array the array to check
+	 * @return the maximum value of the array
+	 * @throws ArrayOutOfBoundsException if the array is empty
+	 * @throws NullPointerException      if the array is null
+	 * @since 1.4.0
+	 */
+	public static long maximum(long[] array) {
+		return array[maximumIndex(array)];
+	}
+	
+	/**
+	 * Find the maximum value of the array
+	 * 
+	 * @param array the array to check
+	 * @return the maximum value of the array
+	 * @throws ArrayOutOfBoundsException if the array is empty
+	 * @throws NullPointerException      if the array is null
+	 * @since 1.4.0
+	 */
+	public static float maximum(float[] array) {
+		return array[maximumIndex(array)];
+	}
+	
+	/**
+	 * Find the maximum value of the array
+	 * 
+	 * @param array the array to check
+	 * @return the maximum value of the array
+	 * @throws ArrayOutOfBoundsException if the array is empty
+	 * @throws NullPointerException      if the array is null
+	 * @since 1.4.0
+	 */
+	public static double maximum(double[] array) {
+		return array[maximumIndex(array)];
+	}
+	
+	
+	/**
+	 * Add the supplied argument to every field in the array
+	 * @param arr the array holding the first summand
+	 * @param summand the value to add to each field
+	 * @since 1.4.0
+	 */
+	public static void add(byte[] arr, byte summand) {
+		for(int i = 0; i < arr.length; i++) {
+			arr[i] += summand;
+		}
+	}
+	
+	/**
+	 * Add the supplied argument to every field in the array
+	 * @param arr the array holding the first summand
+	 * @param summand the value to add to each field
+	 * @since 1.4.0
+	 */
+	public static void add(char[] arr, char summand) {
+		for(int i = 0; i < arr.length; i++) {
+			arr[i] += summand;
+		}
+	}
+	
+	/**
+	 * Add the supplied argument to every field in the array
+	 * @param arr the array holding the first summand
+	 * @param summand the value to add to each field
+	 * @since 1.4.0
+	 */
+	public static void add(short[] arr, short summand) {
+		for(int i = 0; i < arr.length; i++) {
+			arr[i] += summand;
+		}
+	}
+	
+	/**
+	 * Add the supplied argument to every field in the array
+	 * @param arr the array holding the first summand
+	 * @param summand the value to add to each field
+	 * @since 1.4.0
+	 */
+	public static void add(int[] arr, int summand) {
+		for(int i = 0; i < arr.length; i++) {
+			arr[i] += summand;
+		}
+	}
+	
+	/**
+	 * Add the supplied argument to every field in the array
+	 * @param arr the array holding the first summand
+	 * @param summand the value to add to each field
+	 * @since 1.4.0
+	 */
+	public static void add(long[] arr, long summand) {
+		for(int i = 0; i < arr.length; i++) {
+			arr[i] += summand;
+		}
+	}
+	
+	/**
+	 * Add the supplied argument to every field in the array
+	 * @param arr the array holding the first summand
+	 * @param summand the value to add to each field
+	 * @since 1.4.0
+	 */
+	public static void add(float[] arr, float summand) {
+		for(int i = 0; i < arr.length; i++) {
+			arr[i] += summand;
+		}
+	}
+	
+	/**
+	 * Add the supplied argument to every field in the array
+	 * @param arr the array holding the first summand
+	 * @param summand the value to add to each field
+	 * @since 1.4.0
+	 */
+	public static void add(double[] arr, double summand) {
+		for(int i = 0; i < arr.length; i++) {
+			arr[i] += summand;
+		}
+	}
+
+	/**
+	 * Calculate the difference for each field in the array
+	 * @param arrMinuend the array holding the minuend
+	 * @param subtrahend the value to subtracted from each field
+	 * @since 1.4.0
+	 */
+	public static void subtract(byte[] arrMinuend, byte subtrahend) {
+		for(int i = 0; i < arrMinuend.length; i++) {
+			arrMinuend[i] -= subtrahend;
+		}
+	}
+	
+	/**
+	 * Calculate the difference for each field in the array
+	 * @param arrMinuend the array holding the minuend
+	 * @param subtrahend the value to subtracted from each field
+	 * @since 1.4.0
+	 */
+	public static void subtract(char[] arrMinuend, char subtrahend) {
+		for(int i = 0; i < arrMinuend.length; i++) {
+			arrMinuend[i] -= subtrahend;
+		}
+	}
+	
+	/**
+	 * Calculate the difference for each field in the array
+	 * @param arrMinuend the array holding the minuend
+	 * @param subtrahend the value to subtracted from each field
+	 * @since 1.4.0
+	 */
+	public static void subtract(short[] arrMinuend, short subtrahend) {
+		for(int i = 0; i < arrMinuend.length; i++) {
+			arrMinuend[i] -= subtrahend;
+		}
+	}
+	
+	/**
+	 * Calculate the difference for each field in the array
+	 * @param arrMinuend the array holding the minuend
+	 * @param subtrahend the value to subtracted from each field
+	 * @since 1.4.0
+	 */
+	public static void subtract(int[] arrMinuend, int subtrahend) {
+		for(int i = 0; i < arrMinuend.length; i++) {
+			arrMinuend[i] -= subtrahend;
+		}
+	}
+	
+	/**
+	 * Calculate the difference for each field in the array
+	 * @param arrMinuend the array holding the minuend
+	 * @param subtrahend the value to subtracted from each field
+	 * @since 1.4.0
+	 */
+	public static void subtract(long[] arrMinuend, long subtrahend) {
+		for(int i = 0; i < arrMinuend.length; i++) {
+			arrMinuend[i] -= subtrahend;
+		}
+	}
+	
+	/**
+	 * Calculate the difference for each field in the array
+	 * @param arrMinuend the array holding the minuend
+	 * @param subtrahend the value to subtracted from each field
+	 * @since 1.4.0
+	 */
+	public static void subtract(float[] arrMinuend, float subtrahend) {
+		for(int i = 0; i < arrMinuend.length; i++) {
+			arrMinuend[i] -= subtrahend;
+		}
+	}
+	
+	/**
+	 * Calculate the difference for each field in the array
+	 * @param arrMinuend the array holding the minuend
+	 * @param subtrahend the value to subtracted from each field
+	 * @since 1.4.0
+	 */
+	public static void subtract(double[] arrMinuend, double subtrahend) {
+		for(int i = 0; i < arrMinuend.length; i++) {
+			arrMinuend[i] -= subtrahend;
+		}
+	}
+	
+	/**
+	 * Calculate the product for each field in the array
+	 * @param arr the array holding the first factor
+	 * @param factor the value to multiply each field by
+	 * @since 1.4.0
+	 */
+	public static void multiply(byte[] arr, byte factor) {
+		for(int i = 0; i < arr.length; i++) {
+			arr[i] *= factor;
+		}
+	}
+	
+	/**
+	 * Calculate the product for each field in the array
+	 * @param arr the array holding the first factor
+	 * @param factor the value to multiply each field by
+	 * @since 1.4.0
+	 */
+	public static void multiply(char[] arr, char factor) {
+		for(int i = 0; i < arr.length; i++) {
+			arr[i] *= factor;
+		}
+	}
+	
+	/**
+	 * Calculate the product for each field in the array
+	 * @param arr the array holding the first factor
+	 * @param factor the value to multiply each field by
+	 * @since 1.4.0
+	 */
+	public static void multiply(short[] arr, short factor) {
+		for(int i = 0; i < arr.length; i++) {
+			arr[i] *= factor;
+		}
+	}
+	
+	/**
+	 * Calculate the product for each field in the array
+	 * @param arr the array holding the first factor
+	 * @param factor the value to multiply each field by
+	 * @since 1.4.0
+	 */
+	public static void multiply(int[] arr, int factor) {
+		for(int i = 0; i < arr.length; i++) {
+			arr[i] *= factor;
+		}
+	}
+	
+	
+	/**
+	 * Calculate the product for each field in the array
+	 * @param arr the array holding the first factor
+	 * @param factor the value to multiply each field by
+	 * @since 1.4.0
+	 */
+	public static void multiply(long[] arr, long factor) {
+		for(int i = 0; i < arr.length; i++) {
+			arr[i] *= factor;
+		}
+	}
+	
+	/**
+	 * Calculate the product for each field in the array
+	 * @param arr the array holding the first factor
+	 * @param factor the value to multiply each field by
+	 * @since 1.4.0
+	 */
+	public static void multiply(float[] arr, float factor) {
+		for(int i = 0; i < arr.length; i++) {
+			arr[i] *= factor;
+		}
+	}
+	
+	/**
+	 * Calculate the product for each field in the array
+	 * @param arr the array holding the first factor
+	 * @param factor the value to multiply each field by
+	 * @since 1.4.0
+	 */
+	public static void multiply(double[] arr, double factor) {
+		for(int i = 0; i < arr.length; i++) {
+			arr[i] *= factor;
+		}
+	}
+	
+	/**
+	 * Calculate the quotient for each field in the array
+	 * @param arr the array holding the dividend
+	 * @param factor the divisor each field is divided by
+	 * @since 1.4.0
+	 */
+	public static void divide(byte[] arrDividend, byte divisor) {
+		for(int i = 0; i < arrDividend.length; i++) {
+			arrDividend[i] /= divisor;
+		}
+	}
+	
+	/**
+	 * Calculate the quotient for each field in the array
+	 * @param arr the array holding the dividend
+	 * @param factor the divisor each field is divided by
+	 * @since 1.4.0
+	 */
+	public static void divide(char[] arrDividend, char divisor) {
+		for(int i = 0; i < arrDividend.length; i++) {
+			arrDividend[i] /= divisor;
+		}
+	}
+	
+	/**
+	 * Calculate the quotient for each field in the array
+	 * @param arr the array holding the dividend
+	 * @param factor the divisor each field is divided by
+	 * @since 1.4.0
+	 */
+	public static void divide(short[] arrDividend, short divisor) {
+		for(int i = 0; i < arrDividend.length; i++) {
+			arrDividend[i] /= divisor;
+		}
+	}
+	
+	/**
+	 * Calculate the quotient for each field in the array
+	 * @param arr the array holding the dividend
+	 * @param factor the divisor each field is divided by
+	 * @since 1.4.0
+	 */
+	public static void divide(int[] arrDividend, int divisor) {
+		for(int i = 0; i < arrDividend.length; i++) {
+			arrDividend[i] /= divisor;
+		}
+	}
+	
+	/**
+	 * Calculate the quotient for each field in the array
+	 * @param arr the array holding the dividend
+	 * @param factor the divisor each field is divided by
+	 * @since 1.4.0
+	 */
+	public static void divide(long[] arrDividend,long divisor) {
+		for(int i = 0; i < arrDividend.length; i++) {
+			arrDividend[i] /= divisor;
+		}
+	}
+	
+	/**
+	 * Calculate the quotient for each field in the array
+	 * @param arr the array holding the dividend
+	 * @param factor the divisor each field is divided by
+	 * @since 1.4.0
+	 */
+	public static void divide(float[] arrDividend, float divisor) {
+		for(int i = 0; i < arrDividend.length; i++) {
+			arrDividend[i] /= divisor;
+		}
+	}
+	
+	/**
+	 * Calculate the quotient for each field in the array
+	 * @param arr the array holding the dividend
+	 * @param factor the divisor each field is divided by
+	 * @since 1.4.0
+	 */
+	public static void divide(double[] arrDividend, double divisor) {
+		for(int i = 0; i < arrDividend.length; i++) {
+			arrDividend[i] /= divisor;
+		}
+	}
 }

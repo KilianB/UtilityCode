@@ -79,9 +79,25 @@ Distributed via Bintray
 	</tr>
 </table>
 
-## Changelog
+# Changelog
 
-````
+
+
+## v 1.4.0 - 12.11.2018 [unreleased]
+
+### [fixed]
+- javadoc get hue is in range of [0-360]° not [0-255]
+
+### [added]
+- getContrastColor for awt images
+- getLuma for awt and fxImages
+- log(base,value) calculate log of an arbitrary base
+- plain autocloseable (AutoCloseable without throwing an exception)
+- get maximum and minimum as well as maximum and minimum Index for primitive numeric arrays
+- scalar multiplication, addition, subtraction and division for primitive numeric arrays.
+- Clustering. KMeans, KMeans++, DBScan, CURE, DistanceMeasures, Euclidiean Jaccard Manhattan
+- StringUtils fillStringBeginning
+
 
 ## v 1.3.1 - 2.11.2018
 
@@ -106,7 +122,6 @@ Distributed via Bintray
  - Mutable wrappers now extend Number if applicable
  - Mutable now implement increment, decrement setValue for primitive values. 
  - test for mutable
-
 
 ## v 1.1.0 - 19.10.2018
 ### [added]:
