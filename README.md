@@ -86,7 +86,7 @@ Distributed via Bintray
 # Changelog
 
 
-## v 1.4.0 - 14.11.2018 [unreleased]
+## v 1.4.0 - 14.11.2018
 
 ### [fixed]
 - javadoc get hue is in range of [0-360]° not [0-255]
