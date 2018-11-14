@@ -150,7 +150,6 @@ class MathUtilTest {
 		}
 	}
 	
-	
 	@Nested
 	class DoubleEquals{
 		@Test
@@ -267,6 +266,54 @@ class MathUtilTest {
 		void Character() {
 			assertFalse(MathUtil.isNumeric(Character.valueOf('c')));
 		}
+		
+	}
+
+	@Nested
+	class Log{
+		
+		@Test
+		void valid() {
+			assertEquals(2,MathUtil.log(4,2));
+		}
+		
+		@Test
+		void validFractional() {
+			assertEquals(2.321928094887362347870319429489390175864831393024580612054,MathUtil.log(5,2),1e-15);
+		}
+		
+		@Test
+		void logBase10() {
+			assertEquals(1.176091259055681242081289008530622282431938982728587323519,MathUtil.log(15,10),1e-15);
+		}
+		
+		@Test
+		void validBase3() {
+			assertEquals(1.630929753571457437099527114342760854299585640131880427870,MathUtil.log(6,3),1e-15);
+		}
+		@Test
+		void zeroValue() {
+			assertEquals(Double.NEGATIVE_INFINITY,MathUtil.log(0,1));
+		}
+		@Test
+		void negativeValue() {
+			assertEquals(Double.NaN,MathUtil.log(-1,1));
+		}
+		@Test
+		void zeroBase() {
+			assertEquals(Double.NaN,MathUtil.log(10,0));
+		}
+		
+		@Test
+		void nanValue() {
+			assertEquals(Double.NaN,MathUtil.log(Double.NaN,2));
+		}
+		
+		@Test
+		void nanBase() {
+			assertEquals(Double.NaN,MathUtil.log(3,Double.NaN));
+		}
+		
 		
 	}
 }

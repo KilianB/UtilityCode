@@ -413,11 +413,11 @@ public class ImageUtil {
 		// HSV
 
 		/**
-		 * Return the hue component of the HSV color model for the specified pixel
+		 * Return the hue component (angle) of the HSV color model for the specified pixel
 		 * 
 		 * @param x the x coordinate of the image
 		 * @param y the y coordinate of the image
-		 * @return the hue component in range [0-255]. As defined the hue is 0 for
+		 * @return the hue component in range [0-360]. As defined the hue is 0 for
 		 *         undefined colors (e.g. white or black)
 		 * @since 1.3.0
 		 */

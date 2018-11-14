@@ -84,13 +84,27 @@ public class StringUtil {
 	}
 
 	/**
+	 * Append the given char to the start of the string until the string has reached
+	 * the given size
+	 * 
+	 * @param Char          The char or string to append
+	 * @param desiredLength The desired length of the final string
+	 * @param content       the original string
+	 * @return the string with the desired length and concatenated char
+	 * @since 1.4.0
+	 */
+	public static String fillStringBeginning(String Char, int desiredLength, String content) {
+		return multiplyChar(Char, desiredLength - content.length()) + content;
+	}
+	
+	/**
 	 * Append the given char to the end of the string until the string has reached
 	 * the given size
 	 * 
 	 * @param Char          The char or string to append
 	 * @param desiredLength The desired length of the final string
 	 * @param content       the original string
-	 * @return the string with the desired lengtg and concatenated char
+	 * @return the string with the desired length and concatenated char
 	 * @since 1.0.0
 	 */
 	public static String fillString(String Char, int desiredLength, String content) {

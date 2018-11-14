@@ -7,13 +7,13 @@ package com.github.kilianB;
 public class MathUtil {
 
 	/**
-	 * Clamp a number between its lower and upper bound. If x {@literal>} upper bound return
-	 * upper bound. If x {@literal<} lower bound return lower bound
+	 * Clamp a number between its lower and upper bound. If x {@literal>} upper
+	 * bound return upper bound. If x {@literal<} lower bound return lower bound
 	 * 
 	 * @param value      the input value
 	 * @param lowerBound the lower bound
 	 * @param upperBound the upper bound
-	 * @param <T> The type of the input and return value
+	 * @param            <T> The type of the input and return value
 	 * @return the original value if it's between bounds or the bound
 	 * @since 1.0.0
 	 */
@@ -35,8 +35,7 @@ public class MathUtil {
 	 *     to dividend which fullfiles the condition
 	 * </pre>
 	 * 
-	 * If two numbers are exactly the same distance away one of them
-	 * will returned.
+	 * If two numbers are exactly the same distance away one of them will returned.
 	 * 
 	 * @param dividend the dividend
 	 * @param divisor  the divisor
@@ -76,8 +75,8 @@ public class MathUtil {
 	 * Return the fractional part of the number
 	 * 
 	 * @param d a double
-	 * @return the fractional part of the number. If the base number is negative the returned
-	 * fraction will also be negative.
+	 * @return the fractional part of the number. If the base number is negative the
+	 *         returned fraction will also be negative.
 	 * @since 1.0.0
 	 */
 	public static double getFractionalPart(double d) {
@@ -97,12 +96,95 @@ public class MathUtil {
 	}
 
 	/**
+	 * Linearly fit/transform a value from a given to a new range.
+	 * 
+	 * <pre>
+	 * {@code
+	 * [observedMin <= value <= observedMax] 
+	 * 				---> 
+	 * [newMin <= transformed <= newMax]
+	 * }
+	 * </pre>
+	 * 
+	 * @param value       The value to fit
+	 * @param observedMin the minimum value of the current dataset
+	 * @param observedMax the maximum value of the current dataset
+	 * @param newMin      the lower end of the newly fitted range
+	 * @param newMax      the upper end of the newly fitted range
+	 * @return the transformed value
+	 */
+	public static double normalizeValue(double value, double observedMin, double observedMax, double newMin,
+			double newMax) {
+		// return (newMax - newMin) / (observedMax - observedMin)*(value-observedMax) +
+		// newMax;
+		return normalizeValue(value, observedMax - observedMin, observedMax, newMax - newMin, newMax, false);
+	}
+
+	/**
+	 * Linearly fit/transform a value from a given to a new range.
+	 * 
+	 * <pre>
+	 * {@code
+	 * [observedMin <= value <= observedMax] 
+	 * 				---> 
+	 * [newMin <= transformed <= newMax]
+	 * }
+	 * </pre>
+	 * 
+	 * This method uses a the pre computed range instead of the single range bounds
+	 * to minimize repetative calculations in case this method gets called multiple
+	 * times. For more convenient arguments take a look at
+	 * {@link #normalizeValue(double, double, double, double, double)};
+	 * 
+	 * @param value         The value to fit
+	 * @param observedRange the observedMax - observedMin
+	 * @param observedMax   the maximum value of the current dataset
+	 * @param newRange      the newMax - newMin
+	 * @param newMax        the upper end of the newly fitted range
+	 * @param dummy         dummy variables used to prevent ambiguous method
+	 *                      signatures
+	 * @return the transformed value
+	 */
+	public static double normalizeValue(double value, double observedRange, double observedMax, double newRange,
+			double newMax, boolean dummy) {
+		return newRange / observedRange * (value - observedMax) + newMax;
+	}
+
+	/**
 	 * Check if the supplied variable represents a numeric value
+	 * 
 	 * @param var the variable to check
 	 * @return true if the variable is a number, false otherwise
+	 * @since 1.2.0
 	 */
 	public static boolean isNumeric(Object var) {
 		return var instanceof Number;
 	}
-	
+
+	/**
+	 * 
+	 * Returns the logarithm of an arbitrary base of a double value.
+	 * 
+	 * Special cases:
+	 * <ul>
+	 * <li>If the argument is NaN or less than zero, then the result is NaN.
+	 * <li>If the argument is positive infinity, then the result is positive
+	 * infinity.
+	 * <li>If the argument is positive zero or negative zero, then the result is
+	 * negative infinity.
+	 * <li>If the base is zero or NaN the result is NaN</li>
+	 * </ul>
+	 * 
+	 * @param value the value of the logarithm
+	 * @param base  the base of the logarithm
+	 * @return the log_base(value)
+	 * @since 1.3.2
+	 */
+	public static double log(double value, double base) {
+		if (base == 0) {
+			return Double.NaN;
+		}
+		return StrictMath.log(value) / StrictMath.log(base);
+
+	}
 }

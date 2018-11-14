@@ -163,6 +163,28 @@ public class ColorUtil {
 	}
 
 	/**
+	 * Get the  Y (luma component) of the YCrCb color model 
+	 * @param c an javaFX color
+	 * @return the luma component in the tange [0-1]
+	 * @since 1.3.2
+	 */
+	public static double getLuma(Color c) {
+		return LUMA_RED*c.getRed() + LUMA_GREEN*c.getGreen() + LUMA_BLUE*c.getBlue();
+	}
+	
+	/**
+	 * Get the  Y (luma component) of the YCrCb color model 
+	 * @param c an awt color
+	 * @return the luma component in the tange [0-255]
+	 * @since 1.3.2
+	 */
+	public static int getLuma(java.awt.Color c) {
+		int luma = (int) Math.round(LUMA_RED*c.getRed() + LUMA_GREEN*c.getGreen() + LUMA_BLUE*c.getBlue());
+		return luma > 255 ? 255 : luma;
+	}
+	
+	
+	/**
 	 * Return either white or black depending on the supplied color to guarantee
 	 * readability. The contrast color is assumed to be used as text overlay on top
 	 * of the input color.
@@ -174,11 +196,31 @@ public class ColorUtil {
 	 */
 	public static Color getContrastColor(Color input) {
 		// Luminascense
-		double y = 0.299 * input.getRed() + 0.587 * input.getGreen() + 0.114 * input.getBlue();
+		double y = getLuma(input);
 		if (y > 0.55) {
 			return Color.BLACK;
 		} else {
 			return Color.WHITE;
+		}
+	}
+	
+	/**
+	 * Return either white or black depending on the supplied color to guarantee
+	 * readability. The contrast color is assumed to be used as text overlay on top
+	 * of the input color.
+	 * 
+	 * @param input the color of the background
+	 * @return the color (white or black) of the foreground whichever guarantees
+	 *         more readability.
+	 * @since 1.3.2
+	 */
+	public static java.awt.Color getContrastColor(java.awt.Color input) {
+		// Luminascense
+		int y = getLuma(input);
+		if (y > 140.25) {
+			return java.awt.Color.BLACK;
+		} else {
+			return java.awt.Color.WHITE;
 		}
 	}
 
