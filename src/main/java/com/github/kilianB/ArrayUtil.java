@@ -748,7 +748,7 @@ public class ArrayUtil {
 	 * 
 	 * @param array the array to check
 	 * @return the minimum value of the array
-	 * @throws ArrayOutOfBoundsException if the array is empty
+	 * @throws IndexOutOfBoundsException if the array is empty
 	 * @throws NullPointerException      if the array is null
 	 * @since 1.4.0
 	 */
@@ -761,7 +761,7 @@ public class ArrayUtil {
 	 * 
 	 * @param array the array to check
 	 * @return the minimum value of the array
-	 * @throws ArrayOutOfBoundsException if the array is empty
+	 * @throws IndexOutOfBoundsException if the array is empty
 	 * @throws NullPointerException      if the array is null
 	 * @since 1.4.0
 	 */
@@ -774,7 +774,7 @@ public class ArrayUtil {
 	 * 
 	 * @param array the array to check
 	 * @return the minimum value of the array
-	 * @throws ArrayOutOfBoundsException if the array is empty
+	 * @throws IndexOutOfBoundsException if the array is empty
 	 * @throws NullPointerException      if the array is null
 	 * @since 1.4.0
 	 */
@@ -787,7 +787,7 @@ public class ArrayUtil {
 	 * 
 	 * @param array the array to check
 	 * @return the minimum value of the array
-	 * @throws ArrayOutOfBoundsException if the array is empty
+	 * @throws IndexOutOfBoundsException if the array is empty
 	 * @throws NullPointerException      if the array is null
 	 * @since 1.4.0
 	 */
@@ -800,7 +800,7 @@ public class ArrayUtil {
 	 * 
 	 * @param array the array to check
 	 * @return the minimum value of the array
-	 * @throws ArrayOutOfBoundsException if the array is empty
+	 * @throws IndexOutOfBoundsException if the array is empty
 	 * @throws NullPointerException      if the array is null
 	 * @since 1.4.0
 	 */
@@ -813,7 +813,7 @@ public class ArrayUtil {
 	 * 
 	 * @param array the array to check
 	 * @return the minimum value of the array
-	 * @throws ArrayOutOfBoundsException if the array is empty
+	 * @throws IndexOutOfBoundsException if the array is empty
 	 * @throws NullPointerException      if the array is null
 	 * @since 1.4.0
 	 */
@@ -826,7 +826,7 @@ public class ArrayUtil {
 	 * 
 	 * @param array the array to check
 	 * @return the minimum value of the array
-	 * @throws ArrayOutOfBoundsException if the array is empty
+	 * @throws IndexOutOfBoundsException if the array is empty
 	 * @throws NullPointerException      if the array is null
 	 * @since 1.4.0
 	 */
@@ -1063,7 +1063,7 @@ public class ArrayUtil {
 	 * 
 	 * @param array the array to check
 	 * @return the maximum value of the array
-	 * @throws ArrayOutOfBoundsException if the array is empty
+	 * @throws IndexOutOfBoundsException if the array is empty
 	 * @throws NullPointerException      if the array is null
 	 * @since 1.4.0
 	 */
@@ -1076,7 +1076,7 @@ public class ArrayUtil {
 	 * 
 	 * @param array the array to check
 	 * @return the maximum value of the array
-	 * @throws ArrayOutOfBoundsException if the array is empty
+	 * @throws IndexOutOfBoundsException if the array is empty
 	 * @throws NullPointerException      if the array is null
 	 * @since 1.4.0
 	 */
@@ -1089,7 +1089,7 @@ public class ArrayUtil {
 	 * 
 	 * @param array the array to check
 	 * @return the maximum value of the array
-	 * @throws ArrayOutOfBoundsException if the array is empty
+	 * @throws IndexOutOfBoundsException if the array is empty
 	 * @throws NullPointerException      if the array is null
 	 * @since 1.4.0
 	 */
@@ -1102,7 +1102,7 @@ public class ArrayUtil {
 	 * 
 	 * @param array the array to check
 	 * @return the maximum value of the array
-	 * @throws ArrayOutOfBoundsException if the array is empty
+	 * @throws IndexOutOfBoundsException if the array is empty
 	 * @throws NullPointerException      if the array is null
 	 * @since 1.4.0
 	 */
@@ -1115,7 +1115,7 @@ public class ArrayUtil {
 	 * 
 	 * @param array the array to check
 	 * @return the maximum value of the array
-	 * @throws ArrayOutOfBoundsException if the array is empty
+	 * @throws IndexOutOfBoundsException if the array is empty
 	 * @throws NullPointerException      if the array is null
 	 * @since 1.4.0
 	 */
@@ -1128,7 +1128,7 @@ public class ArrayUtil {
 	 * 
 	 * @param array the array to check
 	 * @return the maximum value of the array
-	 * @throws ArrayOutOfBoundsException if the array is empty
+	 * @throws IndexOutOfBoundsException if the array is empty
 	 * @throws NullPointerException      if the array is null
 	 * @since 1.4.0
 	 */
@@ -1141,7 +1141,7 @@ public class ArrayUtil {
 	 * 
 	 * @param array the array to check
 	 * @return the maximum value of the array
-	 * @throws ArrayOutOfBoundsException if the array is empty
+	 * @throws IndexOutOfBoundsException if the array is empty
 	 * @throws NullPointerException      if the array is null
 	 * @since 1.4.0
 	 */
@@ -1405,8 +1405,8 @@ public class ArrayUtil {
 	
 	/**
 	 * Calculate the quotient for each field in the array
-	 * @param arr the array holding the dividend
-	 * @param factor the divisor each field is divided by
+	 * @param arrDividend the array holding the dividend
+	 * @param divisor the divisor each field is divided by
 	 * @since 1.4.0
 	 */
 	public static void divide(byte[] arrDividend, byte divisor) {
@@ -1417,8 +1417,8 @@ public class ArrayUtil {
 	
 	/**
 	 * Calculate the quotient for each field in the array
-	 * @param arr the array holding the dividend
-	 * @param factor the divisor each field is divided by
+	 * @param arrDividend the array holding the dividend
+	 * @param divisor the divisor each field is divided by
 	 * @since 1.4.0
 	 */
 	public static void divide(char[] arrDividend, char divisor) {
@@ -1429,8 +1429,8 @@ public class ArrayUtil {
 	
 	/**
 	 * Calculate the quotient for each field in the array
-	 * @param arr the array holding the dividend
-	 * @param factor the divisor each field is divided by
+	 * @param arrDividend the array holding the dividend
+	 * @param divisor the divisor each field is divided by
 	 * @since 1.4.0
 	 */
 	public static void divide(short[] arrDividend, short divisor) {
@@ -1441,8 +1441,8 @@ public class ArrayUtil {
 	
 	/**
 	 * Calculate the quotient for each field in the array
-	 * @param arr the array holding the dividend
-	 * @param factor the divisor each field is divided by
+	 * @param arrDividend the array holding the dividend
+	 * @param divisor the divisor each field is divided by
 	 * @since 1.4.0
 	 */
 	public static void divide(int[] arrDividend, int divisor) {
@@ -1453,8 +1453,8 @@ public class ArrayUtil {
 	
 	/**
 	 * Calculate the quotient for each field in the array
-	 * @param arr the array holding the dividend
-	 * @param factor the divisor each field is divided by
+	 * @param arrDividend the array holding the dividend
+	 * @param divisor the divisor each field is divided by
 	 * @since 1.4.0
 	 */
 	public static void divide(long[] arrDividend,long divisor) {
@@ -1465,8 +1465,8 @@ public class ArrayUtil {
 	
 	/**
 	 * Calculate the quotient for each field in the array
-	 * @param arr the array holding the dividend
-	 * @param factor the divisor each field is divided by
+	 * @param arrDividend the array holding the dividend
+	 * @param divisor the divisor each field is divided by
 	 * @since 1.4.0
 	 */
 	public static void divide(float[] arrDividend, float divisor) {
@@ -1477,8 +1477,8 @@ public class ArrayUtil {
 	
 	/**
 	 * Calculate the quotient for each field in the array
-	 * @param arr the array holding the dividend
-	 * @param factor the divisor each field is divided by
+	 * @param arrDividend the array holding the dividend
+	 * @param divisor the divisor each field is divided by
 	 * @since 1.4.0
 	 */
 	public static void divide(double[] arrDividend, double divisor) {

@@ -20,22 +20,22 @@ Distributed via Bintray
 		<dependency>
 			<groupId>com.github.kilianB</groupId>
 			<artifactId>UtilityCode</artifactId>
-			<version>1.3.1</version>
+			<version>1.4.0</version>
 		</dependency>
 	</dependencies>
 ```
 
 <details>
 <summary>Gradle</summary>
-<code>compile 'com.github.kilianB:UtilityCode:1.0.0'</code>
+<code>compile 'com.github.kilianB:UtilityCode:1.4.0'</code>
 </details>
 
 ## Content
 
 <table>
 	<tr>
-		<th></th>
-		<th></th>
+		<th>Package</th>
+		<th>Description</th>
 	</tr>
 	<tr>
 		<td>MiscUtil</td>
@@ -55,7 +55,7 @@ Distributed via Bintray
 	</tr>
 	<tr>
 		<td>StringUtil</td>
-		<td>Center text, get length of integers ....</td>
+		<td>Center text, get length of numeric string representation. Multiy strings</td>
 	</tr>
 	<tr>
 		<td>Graphics</td>
@@ -71,7 +71,11 @@ Distributed via Bintray
 	</tr>
 	<tr>
 		<td>MathUtil</td>
-		<td>clamping, fractional part, double compare</td>
+		<td>clamping, fractional part, double compare, scalar operation on arrays</td>
+	</tr>
+	<tr>
+		<td>clustering</td>
+		<td>small selection of cluster algorithms. KMeans KMeans++ DBScan, see cluster branch for more. WIP</td>
 	</tr>
 	<tr>
 		<td>...</td>
@@ -82,8 +86,7 @@ Distributed via Bintray
 # Changelog
 
 
-
-## v 1.4.0 - 12.11.2018 [unreleased]
+## v 1.4.0 - 14.11.2018 [unreleased]
 
 ### [fixed]
 - javadoc get hue is in range of [0-360]° not [0-255]

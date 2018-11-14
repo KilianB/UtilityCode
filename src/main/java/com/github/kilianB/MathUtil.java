@@ -103,21 +103,23 @@ public class MathUtil {
 	 * [observedMin <= value <= observedMax] 
 	 * 				---> 
 	 * [newMin <= transformed <= newMax]
-	 * }</pre>
+	 * }
+	 * </pre>
 	 * 
-	 * @param value The value to fit
+	 * @param value       The value to fit
 	 * @param observedMin the minimum value of the current dataset
 	 * @param observedMax the maximum value of the current dataset
-	 * @param newMin the lower end of the newly fitted range
-	 * @param newMax the upper end of the newly fitted range
+	 * @param newMin      the lower end of the newly fitted range
+	 * @param newMax      the upper end of the newly fitted range
 	 * @return the transformed value
 	 */
 	public static double normalizeValue(double value, double observedMin, double observedMax, double newMin,
 			double newMax) {
-		//		return (newMax - newMin) / (observedMax - observedMin)*(value-observedMax) + newMax;
-		return normalizeValue(value,observedMax-observedMin,observedMax,newMax-newMin,newMax,false);		
+		// return (newMax - newMin) / (observedMax - observedMin)*(value-observedMax) +
+		// newMax;
+		return normalizeValue(value, observedMax - observedMin, observedMax, newMax - newMin, newMax, false);
 	}
-	
+
 	/**
 	 * Linearly fit/transform a value from a given to a new range.
 	 * 
@@ -126,26 +128,31 @@ public class MathUtil {
 	 * [observedMin <= value <= observedMax] 
 	 * 				---> 
 	 * [newMin <= transformed <= newMax]
-	 * }</pre>
+	 * }
+	 * </pre>
 	 * 
-	 * This method uses a the pre computed range instead of the single range bounds to minimize repetative calculations in case this method gets called multiple times.
-	 * For more convenient arguments take a look at {@link #normalizeValue(double, double, double, double, double)}; 
+	 * This method uses a the pre computed range instead of the single range bounds
+	 * to minimize repetative calculations in case this method gets called multiple
+	 * times. For more convenient arguments take a look at
+	 * {@link #normalizeValue(double, double, double, double, double)};
 	 * 
-	 * @param value The value to fit
+	 * @param value         The value to fit
 	 * @param observedRange the observedMax - observedMin
-	 * @param observedMax the maximum value of the current dataset
-	 * @param newRange the newMax - newMin
-	 * @param newMax the upper end of the newly fitted range
-	 * @param dummy dummy variables used to prevent ambiguous method signatures
+	 * @param observedMax   the maximum value of the current dataset
+	 * @param newRange      the newMax - newMin
+	 * @param newMax        the upper end of the newly fitted range
+	 * @param dummy         dummy variables used to prevent ambiguous method
+	 *                      signatures
 	 * @return the transformed value
 	 */
-	public static double normalizeValue(double value, double observedRange, double observedMax, double newRange, double newMax, boolean dummy) {
-		return  newRange / observedRange *(value-observedMax) + newMax;
+	public static double normalizeValue(double value, double observedRange, double observedMax, double newRange,
+			double newMax, boolean dummy) {
+		return newRange / observedRange * (value - observedMax) + newMax;
 	}
 
 	/**
 	 * Check if the supplied variable represents a numeric value
-	 * 		
+	 * 
 	 * @param var the variable to check
 	 * @return true if the variable is a number, false otherwise
 	 * @since 1.2.0
@@ -165,9 +172,8 @@ public class MathUtil {
 	 * infinity.
 	 * <li>If the argument is positive zero or negative zero, then the result is
 	 * negative infinity.
-	 * </ul>
 	 * <li>If the base is zero or NaN the result is NaN</li>
-	 * 
+	 * </ul>
 	 * 
 	 * @param value the value of the logarithm
 	 * @param base  the base of the logarithm
