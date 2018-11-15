@@ -20,14 +20,14 @@ Distributed via Bintray
 		<dependency>
 			<groupId>com.github.kilianB</groupId>
 			<artifactId>UtilityCode</artifactId>
-			<version>1.4.0</version>
+			<version>1.4.1</version>
 		</dependency>
 	</dependencies>
 ```
 
 <details>
 <summary>Gradle</summary>
-<code>compile 'com.github.kilianB:UtilityCode:1.4.0'</code>
+<code>compile 'com.github.kilianB:UtilityCode:1.4.1'</code>
 </details>
 
 ## Content
@@ -63,7 +63,7 @@ Distributed via Bintray
 	</tr>
 	<tr>
 		<td>ArrayUtil</td>
-		<td>Fill, search validation, deep clone</td>
+		<td>Fill, search validation, deep clone, scalar operation on arrays</td>
 	</tr>
 	<tr>
 		<td>CryptoUtil</td>
@@ -71,7 +71,7 @@ Distributed via Bintray
 	</tr>
 	<tr>
 		<td>MathUtil</td>
-		<td>clamping, fractional part, double compare, scalar operation on arrays</td>
+		<td>clamping, fractional part, double compare, log to base x, trangular number </td>
 	</tr>
 	<tr>
 		<td>clustering</td>
@@ -85,6 +85,11 @@ Distributed via Bintray
 
 # Changelog
 
+
+## v.1.4.1 - 15.11.2018
+
+### [added]
+- triangular number 
 
 ## v 1.4.0 - 14.11.2018
 

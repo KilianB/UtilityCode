@@ -316,4 +316,40 @@ class MathUtilTest {
 		
 		
 	}
+
+	@Nested
+	class TriangularNumber{
+		
+		@Test
+		void one() {
+			assertEquals(1,MathUtil.triangularNumber(1));
+		}
+		
+		@Test
+		void two() {
+			assertEquals(3,MathUtil.triangularNumber(2));
+		}
+		
+		@Test
+		void three() {
+			assertEquals(6,MathUtil.triangularNumber(3));
+		}
+		
+		@Test
+		void four() {
+			assertEquals(10,MathUtil.triangularNumber(4));
+		}
+		
+		@Test
+		void five() {
+			assertEquals(15,MathUtil.triangularNumber(5));
+		}
+		
+		@Test
+		void six() {
+			assertEquals(21,MathUtil.triangularNumber(6));
+		}
+		
+		
+	}
 }

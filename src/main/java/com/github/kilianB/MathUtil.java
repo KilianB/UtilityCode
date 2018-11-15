@@ -32,7 +32,7 @@ public class MathUtil {
 	 * <pre>
 	 * if  dividend%divisor == 0 return dividend
 	 * if  dividend%divisor != 0 return the value closest
-	 *     to dividend which fullfiles the condition
+	 *     to dividend which fulfills the condition
 	 * </pre>
 	 * 
 	 * If two numbers are exactly the same distance away one of them will returned.
@@ -185,6 +185,24 @@ public class MathUtil {
 			return Double.NaN;
 		}
 		return StrictMath.log(value) / StrictMath.log(base);
+	}
 
+	/**
+	 * Calculate the triangular number. The triangular sum is the sum of all
+	 * positive natural number up to n. The triangular number (n-1) represents the
+	 * number of distinct 2 element sets that can be constructed given n
+	 * individuals.
+	 * 
+	 * <code> 1 + 2 + 3 + 4 + ... + n</code>
+	 * 
+	 * The method is undefined for n {@literal<} 1
+	 * 
+	 * @param n the number up to which the numbers are summed up
+	 * @return the triangular number
+	 * @since 1.4.1
+	 * @throws ArithmeticException if n is 0
+	 */
+	public static int triangularNumber(int n) {
+		return (n * (n + 1)) / 2;
 	}
 }
