@@ -14,7 +14,7 @@ import java.util.Locale;
  *
  */
 public class MiscUtil {
-
+	
 	/**
 	 * Retrieve the OS type this program is executed on.
 	 * 

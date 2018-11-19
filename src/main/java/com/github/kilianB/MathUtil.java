@@ -115,8 +115,6 @@ public class MathUtil {
 	 */
 	public static double normalizeValue(double value, double observedMin, double observedMax, double newMin,
 			double newMax) {
-		// return (newMax - newMin) / (observedMax - observedMin)*(value-observedMax) +
-		// newMax;
 		return normalizeValue(value, observedMax - observedMin, observedMax, newMax - newMin, newMax, false);
 	}
 
@@ -132,7 +130,7 @@ public class MathUtil {
 	 * </pre>
 	 * 
 	 * This method uses a the pre computed range instead of the single range bounds
-	 * to minimize repetative calculations in case this method gets called multiple
+	 * to minimize repetitive calculations in case this method gets called multiple
 	 * times. For more convenient arguments take a look at
 	 * {@link #normalizeValue(double, double, double, double, double)};
 	 * 

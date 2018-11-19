@@ -515,16 +515,17 @@ public class ImageUtil {
 	 * @param height the new height
 	 * @return the resized image
 	 * @since 1.0.0
+	 * @since 1.4.2 fixed not using awt rescale
 	 */
 	public static BufferedImage getScaledInstance(BufferedImage source, int width, int height) {
 		BufferedImage target = new BufferedImage(width, height, source.getType());
-		java.awt.Image scaled = source.getScaledInstance(width, height, 0x1);
 		Graphics g = target.getGraphics();
-		g.drawImage(scaled, 0, 0, null);
+		g.drawImage(source, 0, 0,width,height, null);
 		g.dispose();
 		return target;
 	}
 
+	
 	/**
 	 * Calculate the interpolated average color of the image
 	 * 

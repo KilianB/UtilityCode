@@ -3,6 +3,12 @@ package com.github.kilianB;
 import java.lang.reflect.Array;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.Map;
+import java.util.function.Function;
 import java.util.function.Supplier;
 
 /**
@@ -366,19 +372,6 @@ public class ArrayUtil {
 	 * @param s     The supplier used
 	 * @since 1.0.0
 	 */
-	public static void fillArray(float[] array, Supplier<Float> s) {
-		for (int i = 0; i < array.length; i++) {
-			array[i] = s.get();
-		}
-	}
-
-	/**
-	 * Fill the entire array with the value returned by the supplier.
-	 * 
-	 * @param array The array to fill
-	 * @param s     The supplier used
-	 * @since 1.0.0
-	 */
 	public static void fillArray(int[] array, Supplier<Integer> s) {
 		for (int i = 0; i < array.length; i++) {
 			array[i] = s.get();
@@ -405,11 +398,137 @@ public class ArrayUtil {
 	 * @param s     The supplier used
 	 * @since 1.0.0
 	 */
+	public static void fillArray(float[] array, Supplier<Float> s) {
+		for (int i = 0; i < array.length; i++) {
+			array[i] = s.get();
+		}
+	}
+
+	/**
+	 * Fill the entire array with the value returned by the supplier.
+	 * 
+	 * @param array The array to fill
+	 * @param s     The supplier used
+	 * @since 1.0.0
+	 */
 	public static void fillArray(double[] array, Supplier<Double> s) {
 		for (int i = 0; i < array.length; i++) {
 			array[i] = s.get();
 		}
 	}
+
+	/**
+	 * Fill the array with values returned by the supplier
+	 * 
+	 * @param array    the array to fill
+	 * @param supplier A function returning a value whose argument takes the index
+	 *                 of the array
+	 * @since 1.4.4
+	 */
+	public static void fillArray(boolean[] array, Function<Integer, Boolean> supplier) {
+		for (int i = 0; i < array.length; i++) {
+			array[i] = supplier.apply(i);
+		}
+	}
+
+	/**
+	 * Fill the array with values returned by the supplier
+	 * 
+	 * @param array    the array to fill
+	 * @param supplier A function returning a value whose argument takes the index
+	 *                 of the array
+	 * @since 1.4.4
+	 */
+	public static void fillArray(char[] array, Function<Integer, Character> supplier) {
+		for (int i = 0; i < array.length; i++) {
+			array[i] = supplier.apply(i);
+		}
+	}
+
+	/**
+	 * Fill the array with values returned by the supplier
+	 * 
+	 * @param array    the array to fill
+	 * @param supplier A function returning a value whose argument takes the index
+	 *                 of the array
+	 * @since 1.4.4
+	 */
+	public static void fillArray(short[] array, Function<Integer, Short> supplier) {
+		for (int i = 0; i < array.length; i++) {
+			array[i] = supplier.apply(i);
+		}
+	}
+
+	/**
+	 * Fill the array with values returned by the supplier
+	 * 
+	 * @param array    the array to fill
+	 * @param supplier A function returning a value whose argument takes the index
+	 *                 of the array
+	 * @since 1.4.4
+	 */
+	public static void fillArray(int[] array, Function<Integer, Integer> supplier) {
+		for (int i = 0; i < array.length; i++) {
+			array[i] = supplier.apply(i);
+		}
+	}
+
+	/**
+	 * Fill the array with values returned by the supplier
+	 * 
+	 * @param array    the array to fill
+	 * @param supplier A function returning a value whose argument takes the index
+	 *                 of the array
+	 * @since 1.4.4
+	 */
+	public static void fillArray(long[] array, Function<Integer, Long> supplier) {
+		for (int i = 0; i < array.length; i++) {
+			array[i] = supplier.apply(i);
+		}
+	}
+
+	/**
+	 * Fill the array with values returned by the supplier
+	 * 
+	 * @param array    the array to fill
+	 * @param supplier A function returning a value whose argument takes the index
+	 *                 of the array
+	 * @since 1.4.4
+	 */
+	public static void fillArray(float[] array, Function<Integer, Float> supplier) {
+		for (int i = 0; i < array.length; i++) {
+			array[i] = supplier.apply(i);
+		}
+	}
+
+	/**
+	 * Fill the array with values returned by the supplier
+	 * 
+	 * @param array    the array to fill
+	 * @param supplier A function returning a value whose argument takes the index
+	 *                 of the array
+	 * @since 1.4.4
+	 */
+	public static void fillArray(double[] array, Function<Integer, Double> supplier) {
+		for (int i = 0; i < array.length; i++) {
+			array[i] = supplier.apply(i);
+		}
+	}
+
+	/**
+	 * Fill the array with values returned by the supplier
+	 * 
+	 * @param array    the array to fill
+	 * @param supplier A function returning a value whose argument takes the index
+	 *                 of the array
+	 * @since 1.4.4
+	 */
+	public static <T> void fillArray(T[] array, Function<Integer, T> supplier) {
+		for (int i = 0; i < array.length; i++) {
+			array[i] = supplier.apply(i);
+		}
+	}
+
 	// Search
 
 	/**
@@ -518,6 +637,271 @@ public class ArrayUtil {
 	public static <T> int frontBackSearch(T[] array, T needle) {
 		return (frontBackSearch(array, needle, 0, array.length));
 	}
+
+	// Sorting
+
+	/**
+	 * Compute the sorted indices for the array. The indices can be used to access
+	 * the content of the array in sorted order. The first index of the returned
+	 * array will either point to the highest or lowest value, the second index to
+	 * the second highest/lowest ... found in the array.
+	 * 
+	 * <p>
+	 * If duplicate values exist in the array no stability guarantee is made.
+	 * 
+	 * <p>
+	 * ImplNote: TODO: check the performance of this method. An additional class can
+	 * be constructed holding index value pairs and sorting this omitting the
+	 * creation of a map. In turn this would mean that a new class must be created
+	 * for every primitive type. If this is considered to slow maybe even using
+	 * optimized collections like Colt's int int hashmap might be suitable.
+	 * 
+	 * 
+	 * @param array      the array to compute the sorted indexes for
+	 * @param descending if true compute descending indices else ascending
+	 * @return an array containing sort indices
+	 * @since 1.4.4
+	 */
+	public static int[] getSortedIndices(boolean[] array, boolean descending) {
+		Map<Integer, Boolean> sorter = new HashMap<>();
+		for (int i = 0; i < array.length; i++) {
+			sorter.put(i, array[i]);
+		}
+		return sorter.entrySet().stream().sorted(
+				descending ? Collections.reverseOrder(Map.Entry.comparingByValue()) : Map.Entry.comparingByValue())
+				.mapToInt(e -> e.getKey()).toArray();
+	}
+
+	/**
+	 * Compute the sorted indices for the array. The indices can be used to access
+	 * the content of the array in sorted order. The first index of the returned
+	 * array will either point to the highest or lowest value, the second index to
+	 * the second highest/lowest ... found in the array.
+	 * 
+	 * <p>
+	 * If duplicate values exist in the array no stability guarantee is made.
+	 * 
+	 * <p>
+	 * ImplNote: TODO: check the performance of this method. An additional class can
+	 * be constructed holding index value pairs and sorting this omitting the
+	 * creation of a map. In turn this would mean that a new class must be created
+	 * for every primitive type. If this is considered to slow maybe even using
+	 * optimized collections like Colt's int int hashmap might be suitable.
+	 * 
+	 * 
+	 * @param array      the array to compute the sorted indexes for
+	 * @param descending if true compute descending indices else ascending
+	 * @return an array containing sort indices
+	 * @since 1.4.4
+	 */
+	public static int[] getSortedIndices(byte[] array, boolean descending) {
+		Map<Integer, Byte> sorter = new HashMap<>();
+		for (int i = 0; i < array.length; i++) {
+			sorter.put(i, array[i]);
+		}
+		return sorter.entrySet().stream().sorted(
+				descending ? Collections.reverseOrder(Map.Entry.comparingByValue()) : Map.Entry.comparingByValue())
+				.mapToInt(e -> e.getKey()).toArray();
+	}
+	
+	/**
+	 * Compute the sorted indices for the array. The indices can be used to access
+	 * the content of the array in sorted order. The first index of the returned
+	 * array will either point to the highest or lowest value, the second index to
+	 * the second highest/lowest ... found in the array.
+	 * 
+	 * <p>
+	 * If duplicate values exist in the array no stability guarantee is made.
+	 * 
+	 * <p>
+	 * ImplNote: TODO: check the performance of this method. An additional class can
+	 * be constructed holding index value pairs and sorting this omitting the
+	 * creation of a map. In turn this would mean that a new class must be created
+	 * for every primitive type. If this is considered to slow maybe even using
+	 * optimized collections like Colt's int int hashmap might be suitable.
+	 * 
+	 * 
+	 * @param array      the array to compute the sorted indexes for
+	 * @param descending if true compute descending indices else ascending
+	 * @return an array containing sort indices
+	 * @since 1.4.4
+	 */
+	public static int[] getSortedIndices(char[] array, boolean descending) {
+		Map<Integer, Character> sorter = new HashMap<>();
+		for (int i = 0; i < array.length; i++) {
+			sorter.put(i, array[i]);
+		}
+		return sorter.entrySet().stream().sorted(
+				descending ? Collections.reverseOrder(Map.Entry.comparingByValue()) : Map.Entry.comparingByValue())
+				.mapToInt(e -> e.getKey()).toArray();
+	}
+	
+	/**
+	 * Compute the sorted indices for the array. The indices can be used to access
+	 * the content of the array in sorted order. The first index of the returned
+	 * array will either point to the highest or lowest value, the second index to
+	 * the second highest/lowest ... found in the array.
+	 * 
+	 * <p>
+	 * If duplicate values exist in the array no stability guarantee is made.
+	 * 
+	 * <p>
+	 * ImplNote: TODO: check the performance of this method. An additional class can
+	 * be constructed holding index value pairs and sorting this omitting the
+	 * creation of a map. In turn this would mean that a new class must be created
+	 * for every primitive type. If this is considered to slow maybe even using
+	 * optimized collections like Colt's int int hashmap might be suitable.
+	 * 
+	 * 
+	 * @param array      the array to compute the sorted indexes for
+	 * @param descending if true compute descending indices else ascending
+	 * @return an array containing sort indices
+	 * @since 1.4.4
+	 */
+	public static int[] getSortedIndices(short[] array, boolean descending) {
+		Map<Integer, Short> sorter = new HashMap<>();
+		for (int i = 0; i < array.length; i++) {
+			sorter.put(i, array[i]);
+		}
+		return sorter.entrySet().stream().sorted(
+				descending ? Collections.reverseOrder(Map.Entry.comparingByValue()) : Map.Entry.comparingByValue())
+				.mapToInt(e -> e.getKey()).toArray();
+	}
+	
+	/**
+	 * Compute the sorted indices for the array. The indices can be used to access
+	 * the content of the array in sorted order. The first index of the returned
+	 * array will either point to the highest or lowest value, the second index to
+	 * the second highest/lowest ... found in the array.
+	 * 
+	 * <p>
+	 * If duplicate values exist in the array no stability guarantee is made.
+	 * 
+	 * <p>
+	 * ImplNote: TODO: check the performance of this method. An additional class can
+	 * be constructed holding index value pairs and sorting this omitting the
+	 * creation of a map. In turn this would mean that a new class must be created
+	 * for every primitive type. If this is considered to slow maybe even using
+	 * optimized collections like Colt's int int hashmap might be suitable.
+	 * 
+	 * 
+	 * @param array      the array to compute the sorted indexes for
+	 * @param descending if true compute descending indices else ascending
+	 * @return an array containing sort indices
+	 * @since 1.4.4
+	 */
+	public static int[] getSortedIndices(int[] array, boolean descending) {
+		// TODO performance. We can also get away with creating a seperate pair
+		Map<Integer, Integer> sorter = new HashMap<>();
+		for (int i = 0; i < array.length; i++) {
+			sorter.put(i, array[i]);
+		}
+		return sorter.entrySet().stream().sorted(
+				descending ? Collections.reverseOrder(Map.Entry.comparingByValue()) : Map.Entry.comparingByValue())
+				.mapToInt(e -> e.getKey()).toArray();
+	}
+	
+	/**
+	 * Compute the sorted indices for the array. The indices can be used to access
+	 * the content of the array in sorted order. The first index of the returned
+	 * array will either point to the highest or lowest value, the second index to
+	 * the second highest/lowest ... found in the array.
+	 * 
+	 * <p>
+	 * If duplicate values exist in the array no stability guarantee is made.
+	 * 
+	 * <p>
+	 * ImplNote: TODO: check the performance of this method. An additional class can
+	 * be constructed holding index value pairs and sorting this omitting the
+	 * creation of a map. In turn this would mean that a new class must be created
+	 * for every primitive type. If this is considered to slow maybe even using
+	 * optimized collections like Colt's int int hashmap might be suitable.
+	 * 
+	 * 
+	 * @param array      the array to compute the sorted indexes for
+	 * @param descending if true compute descending indices else ascending
+	 * @return an array containing sort indices
+	 * @since 1.4.4
+	 */
+	public static int[] getSortedIndices(long[] array, boolean descending) {
+		// TODO performance. We can also get away with creating a seperate pair
+		Map<Integer, Long> sorter = new HashMap<>();
+		for (int i = 0; i < array.length; i++) {
+			sorter.put(i, array[i]);
+		}
+		return sorter.entrySet().stream().sorted(
+				descending ? Collections.reverseOrder(Map.Entry.comparingByValue()) : Map.Entry.comparingByValue())
+				.mapToInt(e -> e.getKey()).toArray();
+	}
+	
+	
+	/**
+	 * Compute the sorted indices for the array. The indices can be used to access
+	 * the content of the array in sorted order. The first index of the returned
+	 * array will either point to the highest or lowest value, the second index to
+	 * the second highest/lowest ... found in the array.
+	 * 
+	 * <p>
+	 * If duplicate values exist in the array no stability guarantee is made.
+	 * 
+	 * <p>
+	 * ImplNote: TODO: check the performance of this method. An additional class can
+	 * be constructed holding index value pairs and sorting this omitting the
+	 * creation of a map. In turn this would mean that a new class must be created
+	 * for every primitive type. If this is considered to slow maybe even using
+	 * optimized collections like Colt's int int hashmap might be suitable.
+	 * 
+	 * 
+	 * @param array      the array to compute the sorted indexes for
+	 * @param descending if true compute descending indices else ascending
+	 * @return an array containing sort indices
+	 * @since 1.4.4
+	 */
+	public static int[] getSortedIndices(float[] array, boolean descending) {
+		Map<Integer, Float> sorter = new HashMap<>();
+		for (int i = 0; i < array.length; i++) {
+			sorter.put(i, array[i]);
+		}
+		return sorter.entrySet().stream().sorted(
+				descending ? Collections.reverseOrder(Map.Entry.comparingByValue()) : Map.Entry.comparingByValue())
+				.mapToInt(e -> e.getKey()).toArray();
+	}
+	
+
+	
+	/**
+	 * Compute the sorted indices for the array. The indices can be used to access
+	 * the content of the array in sorted order. The first index of the returned
+	 * array will either point to the highest or lowest value, the second index to
+	 * the second highest/lowest ... found in the array.
+	 * 
+	 * <p>
+	 * If duplicate values exist in the array no stability guarantee is made.
+	 * 
+	 * <p>
+	 * ImplNote: TODO: check the performance of this method. An additional class can
+	 * be constructed holding index value pairs and sorting this omitting the
+	 * creation of a map. In turn this would mean that a new class must be created
+	 * for every primitive type. If this is considered to slow maybe even using
+	 * optimized collections like Colt's int int hashmap might be suitable.
+	 * 
+	 * 
+	 * @param array      the array to compute the sorted indexes for
+	 * @param descending if true compute descending indices else ascending
+	 * @return an array containing sort indices
+	 * @since 1.4.4
+	 */
+	public static int[] getSortedIndices(double[] array, boolean descending) {
+		// TODO performance. We can also get away with creating a seperate pair
+		Map<Integer, Double> sorter = new HashMap<>();
+		for (int i = 0; i < array.length; i++) {
+			sorter.put(i, array[i]);
+		}
+		return sorter.entrySet().stream().sorted(
+				descending ? Collections.reverseOrder(Map.Entry.comparingByValue()) : Map.Entry.comparingByValue())
+				.mapToInt(e -> e.getKey()).toArray();
+	}
+	
 
 	/**
 	 * Find the index of the minimum value of the array.
@@ -833,7 +1217,7 @@ public class ArrayUtil {
 	public static double minimum(double[] array) {
 		return array[minimumIndex(array)];
 	}
-	
+
 	/**
 	 * Find the index of the maximum value of the array.
 	 * 
@@ -897,7 +1281,7 @@ public class ArrayUtil {
 		}
 		return maxIndex;
 	}
-	
+
 	/**
 	 * Find the index of the maximum value of the array.
 	 * 
@@ -929,7 +1313,7 @@ public class ArrayUtil {
 		}
 		return maxIndex;
 	}
-	
+
 	/**
 	 * Find the index of the maximum value of the array.
 	 * 
@@ -961,7 +1345,7 @@ public class ArrayUtil {
 		}
 		return maxIndex;
 	}
-	
+
 	/**
 	 * Find the index of the maximum value of the array.
 	 * 
@@ -993,7 +1377,7 @@ public class ArrayUtil {
 		}
 		return maxIndex;
 	}
-	
+
 	/**
 	 * Find the index of the maximum value of the array.
 	 * 
@@ -1025,7 +1409,7 @@ public class ArrayUtil {
 		}
 		return maxIndex;
 	}
-	
+
 	/**
 	 * Find the index of the maximum value of the array.
 	 * 
@@ -1057,7 +1441,7 @@ public class ArrayUtil {
 		}
 		return maxIndex;
 	}
-	
+
 	/**
 	 * Find the maximum value of the array
 	 * 
@@ -1070,7 +1454,7 @@ public class ArrayUtil {
 	public static byte maximum(byte[] array) {
 		return array[maximumIndex(array)];
 	}
-	
+
 	/**
 	 * Find the maximum value of the array
 	 * 
@@ -1083,7 +1467,7 @@ public class ArrayUtil {
 	public static char maximum(char[] array) {
 		return array[maximumIndex(array)];
 	}
-	
+
 	/**
 	 * Find the maximum value of the array
 	 * 
@@ -1096,7 +1480,7 @@ public class ArrayUtil {
 	public static short maximum(short[] array) {
 		return array[maximumIndex(array)];
 	}
-	
+
 	/**
 	 * Find the maximum value of the array
 	 * 
@@ -1109,7 +1493,7 @@ public class ArrayUtil {
 	public static int maximum(int[] array) {
 		return array[maximumIndex(array)];
 	}
-	
+
 	/**
 	 * Find the maximum value of the array
 	 * 
@@ -1122,7 +1506,7 @@ public class ArrayUtil {
 	public static long maximum(long[] array) {
 		return array[maximumIndex(array)];
 	}
-	
+
 	/**
 	 * Find the maximum value of the array
 	 * 
@@ -1135,7 +1519,7 @@ public class ArrayUtil {
 	public static float maximum(float[] array) {
 		return array[maximumIndex(array)];
 	}
-	
+
 	/**
 	 * Find the maximum value of the array
 	 * 
@@ -1148,342 +1532,608 @@ public class ArrayUtil {
 	public static double maximum(double[] array) {
 		return array[maximumIndex(array)];
 	}
-	
-	
+
 	/**
 	 * Add the supplied argument to every field in the array
-	 * @param arr the array holding the first summand
+	 * 
+	 * @param arr     the array holding the first summand
 	 * @param summand the value to add to each field
 	 * @since 1.4.0
 	 */
 	public static void add(byte[] arr, byte summand) {
-		for(int i = 0; i < arr.length; i++) {
+		for (int i = 0; i < arr.length; i++) {
 			arr[i] += summand;
 		}
 	}
-	
+
 	/**
 	 * Add the supplied argument to every field in the array
-	 * @param arr the array holding the first summand
+	 * 
+	 * @param arr     the array holding the first summand
 	 * @param summand the value to add to each field
 	 * @since 1.4.0
 	 */
 	public static void add(char[] arr, char summand) {
-		for(int i = 0; i < arr.length; i++) {
+		for (int i = 0; i < arr.length; i++) {
 			arr[i] += summand;
 		}
 	}
-	
+
 	/**
 	 * Add the supplied argument to every field in the array
-	 * @param arr the array holding the first summand
+	 * 
+	 * @param arr     the array holding the first summand
 	 * @param summand the value to add to each field
 	 * @since 1.4.0
 	 */
 	public static void add(short[] arr, short summand) {
-		for(int i = 0; i < arr.length; i++) {
+		for (int i = 0; i < arr.length; i++) {
 			arr[i] += summand;
 		}
 	}
-	
+
 	/**
 	 * Add the supplied argument to every field in the array
-	 * @param arr the array holding the first summand
+	 * 
+	 * @param arr     the array holding the first summand
 	 * @param summand the value to add to each field
 	 * @since 1.4.0
 	 */
 	public static void add(int[] arr, int summand) {
-		for(int i = 0; i < arr.length; i++) {
+		for (int i = 0; i < arr.length; i++) {
 			arr[i] += summand;
 		}
 	}
-	
+
 	/**
 	 * Add the supplied argument to every field in the array
-	 * @param arr the array holding the first summand
+	 * 
+	 * @param arr     the array holding the first summand
 	 * @param summand the value to add to each field
 	 * @since 1.4.0
 	 */
 	public static void add(long[] arr, long summand) {
-		for(int i = 0; i < arr.length; i++) {
+		for (int i = 0; i < arr.length; i++) {
 			arr[i] += summand;
 		}
 	}
-	
+
 	/**
 	 * Add the supplied argument to every field in the array
-	 * @param arr the array holding the first summand
+	 * 
+	 * @param arr     the array holding the first summand
 	 * @param summand the value to add to each field
 	 * @since 1.4.0
 	 */
 	public static void add(float[] arr, float summand) {
-		for(int i = 0; i < arr.length; i++) {
+		for (int i = 0; i < arr.length; i++) {
 			arr[i] += summand;
 		}
 	}
-	
+
 	/**
 	 * Add the supplied argument to every field in the array
-	 * @param arr the array holding the first summand
+	 * 
+	 * @param arr     the array holding the first summand
 	 * @param summand the value to add to each field
 	 * @since 1.4.0
 	 */
 	public static void add(double[] arr, double summand) {
-		for(int i = 0; i < arr.length; i++) {
+		for (int i = 0; i < arr.length; i++) {
 			arr[i] += summand;
 		}
 	}
 
 	/**
 	 * Calculate the difference for each field in the array
+	 * 
 	 * @param arrMinuend the array holding the minuend
 	 * @param subtrahend the value to subtracted from each field
 	 * @since 1.4.0
 	 */
 	public static void subtract(byte[] arrMinuend, byte subtrahend) {
-		for(int i = 0; i < arrMinuend.length; i++) {
+		for (int i = 0; i < arrMinuend.length; i++) {
 			arrMinuend[i] -= subtrahend;
 		}
 	}
-	
+
 	/**
 	 * Calculate the difference for each field in the array
+	 * 
 	 * @param arrMinuend the array holding the minuend
 	 * @param subtrahend the value to subtracted from each field
 	 * @since 1.4.0
 	 */
 	public static void subtract(char[] arrMinuend, char subtrahend) {
-		for(int i = 0; i < arrMinuend.length; i++) {
+		for (int i = 0; i < arrMinuend.length; i++) {
 			arrMinuend[i] -= subtrahend;
 		}
 	}
-	
+
 	/**
 	 * Calculate the difference for each field in the array
+	 * 
 	 * @param arrMinuend the array holding the minuend
 	 * @param subtrahend the value to subtracted from each field
 	 * @since 1.4.0
 	 */
 	public static void subtract(short[] arrMinuend, short subtrahend) {
-		for(int i = 0; i < arrMinuend.length; i++) {
+		for (int i = 0; i < arrMinuend.length; i++) {
 			arrMinuend[i] -= subtrahend;
 		}
 	}
-	
+
 	/**
 	 * Calculate the difference for each field in the array
+	 * 
 	 * @param arrMinuend the array holding the minuend
 	 * @param subtrahend the value to subtracted from each field
 	 * @since 1.4.0
 	 */
 	public static void subtract(int[] arrMinuend, int subtrahend) {
-		for(int i = 0; i < arrMinuend.length; i++) {
+		for (int i = 0; i < arrMinuend.length; i++) {
 			arrMinuend[i] -= subtrahend;
 		}
 	}
-	
+
 	/**
 	 * Calculate the difference for each field in the array
+	 * 
 	 * @param arrMinuend the array holding the minuend
 	 * @param subtrahend the value to subtracted from each field
 	 * @since 1.4.0
 	 */
 	public static void subtract(long[] arrMinuend, long subtrahend) {
-		for(int i = 0; i < arrMinuend.length; i++) {
+		for (int i = 0; i < arrMinuend.length; i++) {
 			arrMinuend[i] -= subtrahend;
 		}
 	}
-	
+
 	/**
 	 * Calculate the difference for each field in the array
+	 * 
 	 * @param arrMinuend the array holding the minuend
 	 * @param subtrahend the value to subtracted from each field
 	 * @since 1.4.0
 	 */
 	public static void subtract(float[] arrMinuend, float subtrahend) {
-		for(int i = 0; i < arrMinuend.length; i++) {
+		for (int i = 0; i < arrMinuend.length; i++) {
 			arrMinuend[i] -= subtrahend;
 		}
 	}
-	
+
 	/**
 	 * Calculate the difference for each field in the array
+	 * 
 	 * @param arrMinuend the array holding the minuend
 	 * @param subtrahend the value to subtracted from each field
 	 * @since 1.4.0
 	 */
 	public static void subtract(double[] arrMinuend, double subtrahend) {
-		for(int i = 0; i < arrMinuend.length; i++) {
+		for (int i = 0; i < arrMinuend.length; i++) {
 			arrMinuend[i] -= subtrahend;
 		}
 	}
-	
+
 	/**
-	 * Calculate the product for each field in the array
-	 * @param arr the array holding the first factor
+	 * Scalar Multiplication. Calculate the product for each field in the array.
+	 * 
+	 * @param arr    the array holding the first factor
 	 * @param factor the value to multiply each field by
 	 * @since 1.4.0
 	 */
 	public static void multiply(byte[] arr, byte factor) {
-		for(int i = 0; i < arr.length; i++) {
+		for (int i = 0; i < arr.length; i++) {
 			arr[i] *= factor;
 		}
 	}
-	
+
 	/**
-	 * Calculate the product for each field in the array
-	 * @param arr the array holding the first factor
+	 * Scalar Multiplication. Calculate the product for each field in the array
+	 * 
+	 * @param arr    the array holding the first factor
 	 * @param factor the value to multiply each field by
 	 * @since 1.4.0
 	 */
 	public static void multiply(char[] arr, char factor) {
-		for(int i = 0; i < arr.length; i++) {
+		for (int i = 0; i < arr.length; i++) {
 			arr[i] *= factor;
 		}
 	}
-	
+
 	/**
-	 * Calculate the product for each field in the array
-	 * @param arr the array holding the first factor
+	 * Scalar Multiplication. Calculate the product for each field in the array
+	 * 
+	 * @param arr    the array holding the first factor
 	 * @param factor the value to multiply each field by
 	 * @since 1.4.0
 	 */
 	public static void multiply(short[] arr, short factor) {
-		for(int i = 0; i < arr.length; i++) {
+		for (int i = 0; i < arr.length; i++) {
 			arr[i] *= factor;
 		}
 	}
-	
+
 	/**
-	 * Calculate the product for each field in the array
-	 * @param arr the array holding the first factor
+	 * Scalar Multiplication. Calculate the product for each field in the array
+	 * 
+	 * @param arr    the array holding the first factor
 	 * @param factor the value to multiply each field by
 	 * @since 1.4.0
 	 */
 	public static void multiply(int[] arr, int factor) {
-		for(int i = 0; i < arr.length; i++) {
+		for (int i = 0; i < arr.length; i++) {
 			arr[i] *= factor;
 		}
 	}
-	
-	
+
 	/**
-	 * Calculate the product for each field in the array
-	 * @param arr the array holding the first factor
+	 * Scalar Multiplication. Calculate the product for each field in the array
+	 * 
+	 * @param arr    the array holding the first factor
 	 * @param factor the value to multiply each field by
 	 * @since 1.4.0
 	 */
 	public static void multiply(long[] arr, long factor) {
-		for(int i = 0; i < arr.length; i++) {
+		for (int i = 0; i < arr.length; i++) {
 			arr[i] *= factor;
 		}
 	}
-	
+
 	/**
-	 * Calculate the product for each field in the array
-	 * @param arr the array holding the first factor
+	 * Scalar Multiplication. Calculate the product for each field in the array
+	 * 
+	 * @param arr    the array holding the first factor
 	 * @param factor the value to multiply each field by
 	 * @since 1.4.0
 	 */
 	public static void multiply(float[] arr, float factor) {
-		for(int i = 0; i < arr.length; i++) {
+		for (int i = 0; i < arr.length; i++) {
 			arr[i] *= factor;
 		}
 	}
-	
+
 	/**
-	 * Calculate the product for each field in the array
-	 * @param arr the array holding the first factor
+	 * Scalar Multiplication. Calculate the product for each field in the array
+	 * 
+	 * @param arr    the array holding the first factor
 	 * @param factor the value to multiply each field by
 	 * @since 1.4.0
 	 */
 	public static void multiply(double[] arr, double factor) {
-		for(int i = 0; i < arr.length; i++) {
+		for (int i = 0; i < arr.length; i++) {
 			arr[i] *= factor;
 		}
 	}
-	
+
 	/**
 	 * Calculate the quotient for each field in the array
+	 * 
 	 * @param arrDividend the array holding the dividend
-	 * @param divisor the divisor each field is divided by
+	 * @param divisor     the divisor each field is divided by
 	 * @since 1.4.0
 	 */
 	public static void divide(byte[] arrDividend, byte divisor) {
-		for(int i = 0; i < arrDividend.length; i++) {
+		for (int i = 0; i < arrDividend.length; i++) {
 			arrDividend[i] /= divisor;
 		}
 	}
-	
+
 	/**
 	 * Calculate the quotient for each field in the array
+	 * 
 	 * @param arrDividend the array holding the dividend
-	 * @param divisor the divisor each field is divided by
+	 * @param divisor     the divisor each field is divided by
 	 * @since 1.4.0
 	 */
 	public static void divide(char[] arrDividend, char divisor) {
-		for(int i = 0; i < arrDividend.length; i++) {
+		for (int i = 0; i < arrDividend.length; i++) {
 			arrDividend[i] /= divisor;
 		}
 	}
-	
+
 	/**
 	 * Calculate the quotient for each field in the array
+	 * 
 	 * @param arrDividend the array holding the dividend
-	 * @param divisor the divisor each field is divided by
+	 * @param divisor     the divisor each field is divided by
 	 * @since 1.4.0
 	 */
 	public static void divide(short[] arrDividend, short divisor) {
-		for(int i = 0; i < arrDividend.length; i++) {
+		for (int i = 0; i < arrDividend.length; i++) {
 			arrDividend[i] /= divisor;
 		}
 	}
-	
+
 	/**
 	 * Calculate the quotient for each field in the array
+	 * 
 	 * @param arrDividend the array holding the dividend
-	 * @param divisor the divisor each field is divided by
+	 * @param divisor     the divisor each field is divided by
 	 * @since 1.4.0
 	 */
 	public static void divide(int[] arrDividend, int divisor) {
-		for(int i = 0; i < arrDividend.length; i++) {
+		for (int i = 0; i < arrDividend.length; i++) {
 			arrDividend[i] /= divisor;
 		}
 	}
-	
+
 	/**
 	 * Calculate the quotient for each field in the array
+	 * 
 	 * @param arrDividend the array holding the dividend
-	 * @param divisor the divisor each field is divided by
+	 * @param divisor     the divisor each field is divided by
 	 * @since 1.4.0
 	 */
-	public static void divide(long[] arrDividend,long divisor) {
-		for(int i = 0; i < arrDividend.length; i++) {
+	public static void divide(long[] arrDividend, long divisor) {
+		for (int i = 0; i < arrDividend.length; i++) {
 			arrDividend[i] /= divisor;
 		}
 	}
-	
+
 	/**
 	 * Calculate the quotient for each field in the array
+	 * 
 	 * @param arrDividend the array holding the dividend
-	 * @param divisor the divisor each field is divided by
+	 * @param divisor     the divisor each field is divided by
 	 * @since 1.4.0
 	 */
 	public static void divide(float[] arrDividend, float divisor) {
-		for(int i = 0; i < arrDividend.length; i++) {
+		for (int i = 0; i < arrDividend.length; i++) {
 			arrDividend[i] /= divisor;
 		}
 	}
-	
+
 	/**
 	 * Calculate the quotient for each field in the array
+	 * 
 	 * @param arrDividend the array holding the dividend
-	 * @param divisor the divisor each field is divided by
+	 * @param divisor     the divisor each field is divided by
 	 * @since 1.4.0
 	 */
 	public static void divide(double[] arrDividend, double divisor) {
-		for(int i = 0; i < arrDividend.length; i++) {
+		for (int i = 0; i < arrDividend.length; i++) {
 			arrDividend[i] /= divisor;
 		}
 	}
+
+	// Pairwise
+	/**
+	 * Pairwise multiply the two vectors.
+	 * 
+	 * <code>res[i] = a[i] * b[i]</code>
+	 * 
+	 * @param arr     the array to be multiplied by the factors
+	 * @param factors of the multiplication.
+	 * @since 1.4.3
+	 * @throws IndexOutOfBoundsException if factors array is shorter than the first
+	 *                                   array
+	 */
+	public static void multiply(byte[] arr, byte[] factors) {
+		for (int i = 0; i < arr.length; i++) {
+			arr[i] *= factors[i];
+		}
+	}
+
+	/**
+	 * Pairwise multiply the two vectors.
+	 * 
+	 * <code>res[i] = a[i] * b[i]</code>
+	 * 
+	 * @param arr     the array to be multiplied by the factors
+	 * @param factors of the multiplication.
+	 * @since 1.4.3
+	 * @throws IndexOutOfBoundsException if factors array is shorter than the first
+	 *                                   array
+	 */
+	public static void multiply(char[] arr, char[] factors) {
+		for (int i = 0; i < arr.length; i++) {
+			arr[i] *= factors[i];
+		}
+	}
+
+	/**
+	 * Pairwise multiply the two vectors.
+	 * 
+	 * <code>res[i] = a[i] * b[i]</code>
+	 * 
+	 * @param arr     the array to be multiplied by the factors
+	 * @param factors of the multiplication.
+	 * @since 1.4.3
+	 * @throws IndexOutOfBoundsException if factors array is shorter than the first
+	 *                                   array
+	 */
+	public static void multiply(short[] arr, short[] factors) {
+		for (int i = 0; i < arr.length; i++) {
+			arr[i] *= factors[i];
+		}
+	}
+
+	/**
+	 * Pairwise multiply the two vectors.
+	 * 
+	 * <code>res[i] = a[i] * b[i]</code>
+	 * 
+	 * @param arr     the array to be multiplied by the factors
+	 * @param factors of the multiplication.
+	 * @since 1.4.3
+	 * @throws IndexOutOfBoundsException if factors array is shorter than the first
+	 *                                   array
+	 */
+	public static void multiply(int[] arr, int[] factors) {
+		for (int i = 0; i < arr.length; i++) {
+			arr[i] *= factors[i];
+		}
+	}
+
+	/**
+	 * Pairwise multiply the two vectors.
+	 * 
+	 * <code>res[i] = a[i] * b[i]</code>
+	 * 
+	 * @param arr     the array to be multiplied by the factors
+	 * @param factors of the multiplication.
+	 * @since 1.4.3
+	 * @throws IndexOutOfBoundsException if factors array is shorter than the first
+	 *                                   array
+	 */
+	public static void multiply(long[] arr, long[] factors) {
+		for (int i = 0; i < arr.length; i++) {
+			arr[i] *= factors[i];
+		}
+	}
+
+	/**
+	 * Pairwise multiply the two vectors.
+	 * 
+	 * <code>res[i] = a[i] * b[i]</code>
+	 * 
+	 * @param arr     the array to be multiplied by the factors
+	 * @param factors of the multiplication.
+	 * @since 1.4.3
+	 * @throws IndexOutOfBoundsException if factors array is shorter than the first
+	 *                                   array
+	 */
+	public static void multiply(float[] arr, float[] factors) {
+		for (int i = 0; i < arr.length; i++) {
+			arr[i] *= factors[i];
+		}
+	}
+
+	/**
+	 * Pairwise multiply the two vectors.
+	 * 
+	 * <code>res[i] = a[i] * b[i]</code>
+	 * 
+	 * @param arr     the array to be multiplied by the factors
+	 * @param factors of the multiplication.
+	 * @since 1.4.3
+	 * @throws IndexOutOfBoundsException if factors array is shorter than the first
+	 *                                   array
+	 */
+	public static void multiply(double[] arr, double[] factors) {
+		for (int i = 0; i < arr.length; i++) {
+			arr[i] *= factors[i];
+		}
+	}
+
+	/**
+	 * Pairwise divide the two vectors.
+	 * 
+	 * <code>res[i] = a[i] / b[i]</code>
+	 * 
+	 * @param arrDivisor the array to be divided by the dividend
+	 * @param dividend   of the division.
+	 * @since 1.4.3
+	 * @throws IndexOutOfBoundsException if dividend array is shorter than the first
+	 *                                   array
+	 */
+	public static void divide(byte[] arrDivisor, byte[] dividend) {
+		for (int i = 0; i < arrDivisor.length; i++) {
+			arrDivisor[i] /= dividend[i];
+		}
+	}
+
+	/**
+	 * Pairwise divide the two vectors.
+	 * 
+	 * <code>res[i] = a[i] / b[i]</code>
+	 * 
+	 * @param arrDivisor the array to be divided by the dividend
+	 * @param dividend   of the division.
+	 * @since 1.4.3
+	 * @throws IndexOutOfBoundsException if dividend array is shorter than the first
+	 *                                   array
+	 */
+	public static void divide(char[] arrDivisor, char[] dividend) {
+		for (int i = 0; i < arrDivisor.length; i++) {
+			arrDivisor[i] /= dividend[i];
+		}
+	}
+
+	/**
+	 * Pairwise divide the two vectors.
+	 * 
+	 * <code>res[i] = a[i] / b[i]</code>
+	 * 
+	 * @param arrDivisor the array to be divided by the dividend
+	 * @param dividend   of the division.
+	 * @since 1.4.3
+	 * @throws IndexOutOfBoundsException if dividend array is shorter than the first
+	 *                                   array
+	 */
+	public static void divide(short[] arrDivisor, short[] dividend) {
+		for (int i = 0; i < arrDivisor.length; i++) {
+			arrDivisor[i] /= dividend[i];
+		}
+	}
+
+	/**
+	 * Pairwise divide the two vectors.
+	 * 
+	 * <code>res[i] = a[i] / b[i]</code>
+	 * 
+	 * @param arrDivisor the array to be divided by the dividend
+	 * @param dividend   of the division.
+	 * @since 1.4.3
+	 * @throws IndexOutOfBoundsException if dividend array is shorter than the first
+	 *                                   array
+	 */
+	public static void divide(int[] arrDivisor, int[] dividend) {
+		for (int i = 0; i < arrDivisor.length; i++) {
+			arrDivisor[i] /= dividend[i];
+		}
+	}
+
+	/**
+	 * Pairwise divide the two vectors.
+	 * 
+	 * <code>res[i] = a[i] / b[i]</code>
+	 * 
+	 * @param arrDivisor the array to be divided by the dividend
+	 * @param dividend   of the division.
+	 * @since 1.4.3
+	 * @throws IndexOutOfBoundsException if dividend array is shorter than the first
+	 *                                   array
+	 */
+	public static void divide(long[] arrDivisor, long[] dividend) {
+		for (int i = 0; i < arrDivisor.length; i++) {
+			arrDivisor[i] /= dividend[i];
+		}
+	}
+
+	/**
+	 * Pairwise divide the two vectors.
+	 * 
+	 * <code>res[i] = a[i] / b[i]</code>
+	 * 
+	 * @param arrDivisor the array to be divided by the dividend
+	 * @param dividend   of the division.
+	 * @since 1.4.3
+	 * @throws IndexOutOfBoundsException if dividend array is shorter than the first
+	 *                                   array
+	 */
+	public static void divide(float[] arrDivisor, float[] dividend) {
+		for (int i = 0; i < arrDivisor.length; i++) {
+			arrDivisor[i] /= dividend[i];
+		}
+	}
+
+	/**
+	 * Pairwise divide the two vectors.
+	 * 
+	 * <code>res[i] = a[i] / b[i]</code>
+	 * 
+	 * @param arrDivisor the array to be divided by the dividend
+	 * @param dividend   of the division.
+	 * @since 1.4.3
+	 * @throws IndexOutOfBoundsException if dividend array is shorter than the first
+	 *                                   array
+	 */
+	public static void divide(double[] arrDivisor, double[] dividend) {
+		for (int i = 0; i < arrDivisor.length; i++) {
+			arrDivisor[i] /= dividend[i];
+		}
+	}
+
 }

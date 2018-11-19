@@ -130,6 +130,11 @@ class MathUtilTest {
 		void clampNumberLower() {
 			assertEquals(0,(int)MathUtil.clampNumber(-1,0,1));
 		}
+		
+		@Test 
+		void clampNumberInBetween() {
+			assertEquals(2,(int) MathUtil.clampNumber(0,2,4));
+		}
 	}
 	
 	@Nested 
@@ -350,6 +355,63 @@ class MathUtilTest {
 			assertEquals(21,MathUtil.triangularNumber(6));
 		}
 		
+		
+	}
+
+	@Nested
+	class FitGaussian {
+		//TODO more test cases
+		void zero() {
+			assertEquals(0,MathUtil.fitGaussian(0,1,0));
+		}
+		
+		void meanMove() {
+			assertEquals(0,MathUtil.fitGaussian(1,1,1));
+		}
+	}
+
+	@Nested
+	class NormalizeValue{
+		
+		@Test
+		void testLowerZeroIncrease() {
+			assertEquals(0,MathUtil.normalizeValue(0,0,1,0,10));
+		}
+		
+		@Test
+		void testLowerZeroDecrease() {
+			assertEquals(0,MathUtil.normalizeValue(0,0,10,0,1));
+		}
+		
+		@Test
+		void testLowerIncrease() {
+			assertEquals(1,MathUtil.normalizeValue(1,1,2,1,10));
+		}
+		
+		@Test
+		void testLowerDecrease() {
+			assertEquals(1,MathUtil.normalizeValue(1,1,10,1,2));
+		}
+		
+		@Test
+		void testHigherIncrease() {
+			assertEquals(10,MathUtil.normalizeValue(1,0,1,0,10));
+		}
+		
+		@Test
+		void testHigherDecrease() {
+			assertEquals(1,MathUtil.normalizeValue(5,0,5,0,1));
+		}
+		
+		@Test
+		void increase() {
+			assertEquals(5,MathUtil.normalizeValue(1,0,2,0,10));
+		}
+		
+		@Test
+		void decrease() {
+			assertEquals(1,MathUtil.normalizeValue(5,0,10,0,2));
+		}
 		
 	}
 }

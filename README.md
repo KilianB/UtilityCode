@@ -20,14 +20,14 @@ Distributed via Bintray
 		<dependency>
 			<groupId>com.github.kilianB</groupId>
 			<artifactId>UtilityCode</artifactId>
-			<version>1.4.1</version>
+			<version>1.4.4</version>
 		</dependency>
 	</dependencies>
 ```
 
 <details>
 <summary>Gradle</summary>
-<code>compile 'com.github.kilianB:UtilityCode:1.4.1'</code>
+<code>compile 'com.github.kilianB:UtilityCode:1.4.4'</code>
 </details>
 
 ## Content
@@ -63,7 +63,7 @@ Distributed via Bintray
 	</tr>
 	<tr>
 		<td>ArrayUtil</td>
-		<td>Fill, search validation, deep clone, scalar operation on arrays</td>
+		<td>Fill, search, compute sorted indices validation, deep clone, scalar operation on arrays</td>
 	</tr>
 	<tr>
 		<td>CryptoUtil</td>
@@ -84,6 +84,21 @@ Distributed via Bintray
 </table>
 
 # Changelog
+
+## v1.4.4 - 19.11.2018 (intermediate versions were internal)
+
+### [added]
+ - pairwise array math (add subtract multiply divide)
+ - fillArray overloaded now available with function parameter passing the index to a supplier method
+ - getSortedIndex. Calculate the sorted indices of an array in ascending or descending order.
+ 
+### [changed]
+ - make constructor of circular hashset private. Class was not ever meant to be initialized
+
+## v.1.4.2
+[fixed] 
+ - getScaledInstance of images not correctly uses drawImage to rescale rather
+ than falling back to the awt getScaledInstance call. 600 fold increase in performance
 
 
 ## v.1.4.1 - 15.11.2018

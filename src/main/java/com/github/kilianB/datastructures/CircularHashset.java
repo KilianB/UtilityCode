@@ -10,6 +10,8 @@ import java.util.Set;
  */
 public class CircularHashset {
 
+	private CircularHashset() {};
+	
 	public static <K> Set<K> create(int capacity){
 		//return  Collections.newSetFromMap(new Base<K,Boolean>(capacity));
 		return Collections.newSetFromMap(new CircularLinkedHashMap<K,Boolean>(capacity));
