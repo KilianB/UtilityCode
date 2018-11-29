@@ -7,6 +7,26 @@ package com.github.kilianB;
 public class MathUtil {
 
 	/**
+	 * Get the right shift offset until the first masked bit
+	 * 
+	 * @param mask bit mask to compute the offset for
+	 * @return the number off bits a number needs to be shifted to be caught by the
+	 *         mask or -1 if the mask == 0
+	 */
+	public static int getLowerShiftBitMask(int mask) {
+		int offset = 0;
+		if (mask != 0) {
+			while ((mask & 0x1) == 0) {
+				mask >>= 1;
+				offset++;
+			}
+		} else {
+			return -1;
+		}
+		return offset;
+	}
+
+	/**
 	 * Clamp a number between its lower and upper bound. If x {@literal>} upper
 	 * bound return upper bound. If x {@literal<} lower bound return lower bound
 	 * 

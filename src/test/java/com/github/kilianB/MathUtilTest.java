@@ -414,4 +414,63 @@ class MathUtilTest {
 		}
 		
 	}
+
+	@Nested
+	class LowerShiftBitMask{
+		
+		@Test 
+		void zeroMask(){
+			assertEquals(-1,MathUtil.getLowerShiftBitMask(0x0));
+		}
+		
+		@Test 
+		void zeroOffset(){
+			assertEquals(0,MathUtil.getLowerShiftBitMask(0x1));
+		}
+		
+		@Test 
+		void zeroOffsetNegative(){
+			assertEquals(0,MathUtil.getLowerShiftBitMask(-1));
+		}
+		
+		@Test 
+		void oneBitOffset(){
+			assertEquals(1,MathUtil.getLowerShiftBitMask(0x2));
+		}
+		
+		@Test 
+		void oneBitOffsetNegative(){
+			assertEquals(1,MathUtil.getLowerShiftBitMask(-2));
+		}
+		
+		@Test 
+		void twoBitOffset(){
+			assertEquals(2,MathUtil.getLowerShiftBitMask(0x4));
+		}
+		
+		//RGB
+		
+		@Test 
+		void eightBitOffset(){
+			assertEquals(8,MathUtil.getLowerShiftBitMask(0x0000ff00));
+		}
+		
+		@Test 
+		void sixteenBitOffset(){
+			assertEquals(16,MathUtil.getLowerShiftBitMask(0x00ff0000));
+		}
+		
+		@Test 
+		void twentyFourBitOffset(){
+			assertEquals(24,MathUtil.getLowerShiftBitMask(0xff000000));
+		}
+		
+		
+		@Test 
+		void mixedBitOffset(){
+			assertEquals(0,MathUtil.getLowerShiftBitMask(0xff0000ff));
+		}
+		
+		
+	}
 }

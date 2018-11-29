@@ -55,8 +55,8 @@ public class ArrayUtil {
 	 * Return the string representation of an array containing floating point
 	 * numbers with fixed decimal places.
 	 * 
-	 * @param boxedFloats
-	 * @param decimalPlaces
+	 * @param boxedFloats   Array of floating point numbers
+	 * @param decimalPlaces the number of decimal places to display
 	 * @return the string representation of the array
 	 * @since 1.0.0
 	 */
@@ -78,6 +78,55 @@ public class ArrayUtil {
 				return b.append(']').toString();
 			b.append(", ");
 		}
+	}
+
+	/**
+	 * Returns a string representation of the "deep contents" of the specified
+	 * array. If the array contains other arrays as elements, the string
+	 * representation contains their contents and so on. This method is designed for
+	 * converting multidimensional arrays to strings.
+	 * 
+	 * <p>
+	 * A linebreak is introduced after every array useful to visualize 2d
+	 * datastructures.
+	 * 
+	 * @param array the array whose string representation to return
+	 * @return a formatted string representation of the array
+	 * @since 1.5.0
+	 */
+	public static String deepToStringFormatted(Object[] array) {
+		String s = Arrays.deepToString(array);
+		s = s.replaceAll("],", "]\n");
+		return s;
+	}
+
+	/**
+	 * Returns a string representation of the "deep contents" of the specified
+	 * array. If the array contains other arrays as elements, the string
+	 * representation contains their contents and so on. This method is designed for
+	 * converting multidimensional arrays to strings.
+	 * 
+	 * 
+	 * @param array the array whose string representation to return
+	 * @return a formatted string representation of the array
+	 * @since 1.5.0
+	 */
+	public static String deepToString(Object[] array) {
+		return Arrays.deepToString(array);
+	}
+
+	/**
+	 * Returns a string representation of the contents of the specified array.If the
+	 * array contains other arrays as elements, they are converted to strings by the
+	 * Object.toString method inherited from Object, which describes their
+	 * identities rather than their contents.
+	 * 
+	 * @param array the array whose string representation to return
+	 * @return a string representation of the array
+	 * @since 1.5.0
+	 */
+	public static String toString(Object[] array) {
+		return Arrays.toString(array);
 	}
 
 	@SuppressWarnings("unused")
@@ -311,6 +360,42 @@ public class ArrayUtil {
 		return array;
 	}
 
+	/**
+	 * Fill a multi dimensional array with the value returned by the supplier
+	 * 
+	 * @param array The array to fill
+	 * @param s     The supplier taking the index of the current array as argument
+	 * @param       <T> the type of the array
+	 * @return the supplied array. The return value is used to allow recursive
+	 *         behavior of the method and can safely be ignored by the user. The
+	 *         original supplied array is identical to the returned reference. If
+	 *         the supplied array is not an array null will be returned.
+	 * 
+	 * @since 1.2.0
+	 */
+	@SuppressWarnings("unchecked")
+	public static <T> T fillArrayMulti(T array, Function<Integer, T> s) {
+		if (array != null && array.getClass().isArray()) {
+			int length = Array.getLength(array);
+			for (int i = 0; i < length; i++) {
+				Array.set(array, i, fillArrayMulti((T) Array.get(array, i), s, i));
+			}
+		}
+		return array;
+	}
+
+	private static <T> T fillArrayMulti(T array, Function<Integer, T> s, int index) {
+		if (array != null && array.getClass().isArray()) {
+			int length = Array.getLength(array);
+			for (int i = 0; i < length; i++) {
+				Array.set(array, i, fillArrayMulti((T) Array.get(array, i), s, i));
+			}
+		} else {
+			return s.apply(index);
+		}
+		return array;
+	}
+
 	// primitive instances can't be auto unboxed
 
 	/**
@@ -519,8 +604,10 @@ public class ArrayUtil {
 	 * Fill the array with values returned by the supplier
 	 * 
 	 * @param array    the array to fill
+	 * 
 	 * @param supplier A function returning a value whose argument takes the index
 	 *                 of the array
+	 * @param          <T> the type of the array
 	 * @since 1.4.4
 	 */
 	public static <T> void fillArray(T[] array, Function<Integer, T> supplier) {
@@ -703,7 +790,7 @@ public class ArrayUtil {
 				descending ? Collections.reverseOrder(Map.Entry.comparingByValue()) : Map.Entry.comparingByValue())
 				.mapToInt(e -> e.getKey()).toArray();
 	}
-	
+
 	/**
 	 * Compute the sorted indices for the array. The indices can be used to access
 	 * the content of the array in sorted order. The first index of the returned
@@ -735,7 +822,7 @@ public class ArrayUtil {
 				descending ? Collections.reverseOrder(Map.Entry.comparingByValue()) : Map.Entry.comparingByValue())
 				.mapToInt(e -> e.getKey()).toArray();
 	}
-	
+
 	/**
 	 * Compute the sorted indices for the array. The indices can be used to access
 	 * the content of the array in sorted order. The first index of the returned
@@ -767,7 +854,7 @@ public class ArrayUtil {
 				descending ? Collections.reverseOrder(Map.Entry.comparingByValue()) : Map.Entry.comparingByValue())
 				.mapToInt(e -> e.getKey()).toArray();
 	}
-	
+
 	/**
 	 * Compute the sorted indices for the array. The indices can be used to access
 	 * the content of the array in sorted order. The first index of the returned
@@ -791,7 +878,7 @@ public class ArrayUtil {
 	 * @since 1.4.4
 	 */
 	public static int[] getSortedIndices(int[] array, boolean descending) {
-		// TODO performance. We can also get away with creating a seperate pair
+		// TODO performance. We can also get away with creating a separate pair class
 		Map<Integer, Integer> sorter = new HashMap<>();
 		for (int i = 0; i < array.length; i++) {
 			sorter.put(i, array[i]);
@@ -800,7 +887,7 @@ public class ArrayUtil {
 				descending ? Collections.reverseOrder(Map.Entry.comparingByValue()) : Map.Entry.comparingByValue())
 				.mapToInt(e -> e.getKey()).toArray();
 	}
-	
+
 	/**
 	 * Compute the sorted indices for the array. The indices can be used to access
 	 * the content of the array in sorted order. The first index of the returned
@@ -824,7 +911,7 @@ public class ArrayUtil {
 	 * @since 1.4.4
 	 */
 	public static int[] getSortedIndices(long[] array, boolean descending) {
-		// TODO performance. We can also get away with creating a seperate pair
+		// TODO performance. We can also get away with creating a separate pair
 		Map<Integer, Long> sorter = new HashMap<>();
 		for (int i = 0; i < array.length; i++) {
 			sorter.put(i, array[i]);
@@ -833,8 +920,7 @@ public class ArrayUtil {
 				descending ? Collections.reverseOrder(Map.Entry.comparingByValue()) : Map.Entry.comparingByValue())
 				.mapToInt(e -> e.getKey()).toArray();
 	}
-	
-	
+
 	/**
 	 * Compute the sorted indices for the array. The indices can be used to access
 	 * the content of the array in sorted order. The first index of the returned
@@ -866,9 +952,7 @@ public class ArrayUtil {
 				descending ? Collections.reverseOrder(Map.Entry.comparingByValue()) : Map.Entry.comparingByValue())
 				.mapToInt(e -> e.getKey()).toArray();
 	}
-	
 
-	
 	/**
 	 * Compute the sorted indices for the array. The indices can be used to access
 	 * the content of the array in sorted order. The first index of the returned
@@ -901,7 +985,6 @@ public class ArrayUtil {
 				descending ? Collections.reverseOrder(Map.Entry.comparingByValue()) : Map.Entry.comparingByValue())
 				.mapToInt(e -> e.getKey()).toArray();
 	}
-	
 
 	/**
 	 * Find the index of the minimum value of the array.
@@ -2134,6 +2217,14 @@ public class ArrayUtil {
 		for (int i = 0; i < arrDivisor.length; i++) {
 			arrDivisor[i] /= dividend[i];
 		}
+	}
+
+	public static <T> T get(Object array, int... index) {
+		Object temp = array;
+		for (int i = 0; i < index.length; i++) {
+			temp = Array.get(temp, index[i]);
+		}
+		return (T) temp;
 	}
 
 }

@@ -182,4 +182,14 @@ public class MiscUtil {
 		//Invoke shutdown hooks
 		System.exit(0);
 	}
+	
+	/**
+	 * Compute a consistent hashcode for enum values
+	 * @param e the enum to compute the hashcode for
+	 * @return the hashcode
+	 */
+	public static int consitentHashCode(Enum e) {
+		return e.name().hashCode() * 31 + e.ordinal() ^ e.getClass().getName().hashCode();
+		
+	}
 }

@@ -20,14 +20,14 @@ Distributed via Bintray
 		<dependency>
 			<groupId>com.github.kilianB</groupId>
 			<artifactId>UtilityCode</artifactId>
-			<version>1.4.4</version>
+			<version>1.5.0</version>
 		</dependency>
 	</dependencies>
 ```
 
 <details>
 <summary>Gradle</summary>
-<code>compile 'com.github.kilianB:UtilityCode:1.4.4'</code>
+<code>compile 'com.github.kilianB:UtilityCode:1.5.0'</code>
 </details>
 
 ## Content
@@ -85,7 +85,33 @@ Distributed via Bintray
 
 # Changelog
 
-## v1.4.4 - 19.11.2018 (intermediate versions were internal)
+## v1.5.0 - 29.11.2018
+
+### [added]
+ - getSetAverageGrayScale
+ - utility toString methods for arrays
+ - getLuma 1D version
+ - getLowerShiftBitMask to MathUtil
+ - getConsistentHashcode for Enums in the misc package
+ 
+### [fixed]
+ - getLuma now correctly accesses red green and blue values based on BGR byte array offsets instead of RGB. 
+ - 
+### [changed]
+ - refactored FastPixel to use base class and support multiple different image types
+ 
+
+
+## v1.4.5 - (intermediate internal version)
+
+### [added]
+ - bulk set operation for FastPixel class
+
+### [fixed]
+ - setRed,setBlue,setGreen on FastPixel now access the correct offset
+
+
+## v1.4.4 - 19.11.2018 (intermediate internal version)
 
 ### [added]
  - pairwise array math (add subtract multiply divide)
@@ -96,7 +122,7 @@ Distributed via Bintray
  - make constructor of circular hashset private. Class was not ever meant to be initialized
 
 ## v.1.4.2
-[fixed] 
+### [fixed] 
  - getScaledInstance of images not correctly uses drawImage to rescale rather
  than falling back to the awt getScaledInstance call. 600 fold increase in performance
 
