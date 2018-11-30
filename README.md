@@ -85,6 +85,11 @@ Distributed via Bintray
 
 # Changelog
 
+## v1.5.1 - 30.11.2018
+
+### [fixed]
+ - perform mcn:clean before deploying to exclude test dependencies from final build.
+
 ## v1.5.0 - 29.11.2018
 
 ### [added]
