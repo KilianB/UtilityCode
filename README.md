@@ -85,6 +85,17 @@ Distributed via Bintray
 
 # Changelog
 
+## v1.5.2 - 23.12.2018
+
+### [added]
+
+- Require oddValue,evenValue, greaterThan, lessThan, negativeValue
+- default getRGB fallback for fastpixel 
+
+### [changed]
+- CountHashCollection now also returns the mapped object in the toString method
+- move some of fastpixels implementation methods to default methods
+
 ## v1.5.1 - 30.11.2018
 
 ### [fixed]
