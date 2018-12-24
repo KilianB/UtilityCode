@@ -97,7 +97,7 @@ public class CountHashCollection<K> implements Collection<K> {
 		this();
 		this.addAll(c);
 	}
-
+	
 	@Override
 	public boolean add(K o) {
 		if (hashMap.containsKey(o)) {
@@ -189,6 +189,11 @@ public class CountHashCollection<K> implements Collection<K> {
 	public K[] toArrayUnique() {
 		Object[] values = hashMap.keySet().toArray();
 		return (K[]) values;
+	}
+	
+	
+	public K[] toArrayUnique(K[] array) {
+		return hashMap.keySet().toArray(array);
 	}
 
 	/**
@@ -338,7 +343,7 @@ public class CountHashCollection<K> implements Collection<K> {
 	@Override
 	public String toString() {
 		final int maxLen = 20;
-		return "CountHashCollection " + (hashMap != null ? toString(hashMap.values(), maxLen) : null);
+		return "CountHashCollection " + (hashMap != null ? toString(hashMap.entrySet(), maxLen) : null);
 	}
 
 	private String toString(Collection<?> collection, int maxLen) {
