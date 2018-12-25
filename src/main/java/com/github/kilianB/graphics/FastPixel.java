@@ -1,6 +1,7 @@
 package com.github.kilianB.graphics;
 
 import java.awt.image.BufferedImage;
+import java.util.logging.Logger;
 
 /**
  * Utility class to access pixel data in a fraction of the time required by the
@@ -13,6 +14,8 @@ import java.awt.image.BufferedImage;
  *
  */
 public interface FastPixel {
+
+	static final Logger LOGGER = Logger.getLogger(FastPixel.class.getSimpleName());
 
 	/**
 	 * Return a fast pixel instance mapped to the buffered image type
@@ -32,6 +35,8 @@ public interface FastPixel {
 		case BufferedImage.TYPE_INT_RGB:
 			return new FastPixelInt(bufferedImage);
 		default:
+			LOGGER.info("No fast implementation available for " + bufferedImage.getType()
+					+ ". Fallback to slow default variant.");
 			return new FastPixelSlowDefault(bufferedImage);
 //			throw new UnsupportedOperationException(
 //					"The image type is currently not supported: " + bufferedImage.getType());
@@ -56,7 +61,7 @@ public interface FastPixel {
 	 * @since 1.3.0
 	 */
 	default int getRGB(int x, int y) {
-		return getRGB(getOffset(x,y));
+		return getRGB(getOffset(x, y));
 	}
 
 	/**
@@ -88,7 +93,7 @@ public interface FastPixel {
 	 * @since 1.3.0
 	 */
 	default int getAlpha(int x, int y) {
-		return getAlpha(getOffset(x,y));
+		return getAlpha(getOffset(x, y));
 	}
 
 	/**
@@ -110,7 +115,7 @@ public interface FastPixel {
 	 * @since 1.3.0
 	 */
 	default void setAlpha(int x, int y, int newAlpha) {
-		setAlpha(getOffset(x,y),newAlpha);
+		setAlpha(getOffset(x, y), newAlpha);
 	}
 
 	/**
@@ -148,7 +153,7 @@ public interface FastPixel {
 	 * @since 1.3.0
 	 */
 	default int getRed(int x, int y) {
-		return getRed(getOffset(x,y));
+		return getRed(getOffset(x, y));
 	}
 
 	/**
@@ -169,7 +174,7 @@ public interface FastPixel {
 	 * @since 1.3.0
 	 */
 	default void setRed(int x, int y, int newRed) {
-		setRed(getOffset(x,y),newRed);
+		setRed(getOffset(x, y), newRed);
 	}
 
 	/**
@@ -207,7 +212,7 @@ public interface FastPixel {
 	 * @since 1.3.0
 	 */
 	default int getGreen(int x, int y) {
-		return getGreen(getOffset(x,y));
+		return getGreen(getOffset(x, y));
 	}
 
 	/**
@@ -219,7 +224,7 @@ public interface FastPixel {
 	 * @since 1.3.0
 	 */
 	default void setGreen(int x, int y, int newGreen) {
-		setGreen(getOffset(x,y),newGreen);
+		setGreen(getOffset(x, y), newGreen);
 	}
 
 	/**
@@ -259,7 +264,7 @@ public interface FastPixel {
 	 * @since 1.3.0
 	 */
 	default int getBlue(int x, int y) {
-		return getBlue(getOffset(x,y));
+		return getBlue(getOffset(x, y));
 	}
 
 	/**
@@ -271,7 +276,7 @@ public interface FastPixel {
 	 * @since 1.3.0
 	 */
 	default void setBlue(int x, int y, int newBlue) {
-		setBlue(getOffset(x,y),newBlue);
+		setBlue(getOffset(x, y), newBlue);
 	}
 
 	void setBlue(int index, int newBlue);
@@ -322,7 +327,7 @@ public interface FastPixel {
 	 * @since 1.5.0
 	 */
 	default int getAverageGrayscale(int x, int y) {
-		return getAverageGrayscale(getOffset(x,y));
+		return getAverageGrayscale(getOffset(x, y));
 	}
 
 	/**
@@ -378,7 +383,7 @@ public interface FastPixel {
 	 * @since 1.5.0
 	 */
 	default void setAverageGrayscale(int x, int y, int newGrayValue) {
-		setAverageGrayscale(getOffset(x,y),newGrayValue);
+		setAverageGrayscale(getOffset(x, y), newGrayValue);
 	}
 
 	/**
@@ -422,7 +427,7 @@ public interface FastPixel {
 	 * @since 1.3.0
 	 */
 	default int getLuma(int x, int y) {
-		return getLuma(getOffset(x,y));
+		return getLuma(getOffset(x, y));
 	}
 
 	/**
@@ -458,7 +463,7 @@ public interface FastPixel {
 	 * @since 1.3.0
 	 */
 	default int getCr(int x, int y) {
-		return getCr(getOffset(x,y));
+		return getCr(getOffset(x, y));
 	}
 
 	/**
@@ -485,7 +490,7 @@ public interface FastPixel {
 	 * @since 1.3.0
 	 */
 	default int getCb(int x, int y) {
-		return getCb(getOffset(x,y));
+		return getCb(getOffset(x, y));
 	}
 
 	/**
@@ -584,7 +589,7 @@ public interface FastPixel {
 	 * @since 1.3.0
 	 */
 	default double getSat(int x, int y) {
-		return getSat(getOffset(x,y));
+		return getSat(getOffset(x, y));
 	}
 
 	/**
@@ -610,7 +615,7 @@ public interface FastPixel {
 	 * @return the value component in range [0-255].
 	 */
 	default int getVal(int x, int y) {
-		return getVal(getOffset(x,y));
+		return getVal(getOffset(x, y));
 	}
 
 	/**
@@ -619,9 +624,10 @@ public interface FastPixel {
 	 * @return true if the image has an alpha channel. false otherwise
 	 */
 	boolean hasAlpha();
-	
+
 	/**
 	 * Map the x and y values to the underlying one dimensional data array
+	 * 
 	 * @param x the x coordinate
 	 * @param y the y coordinate
 	 * @return the corresponding 1d array index
