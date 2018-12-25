@@ -20,14 +20,14 @@ Distributed via Bintray
 		<dependency>
 			<groupId>com.github.kilianB</groupId>
 			<artifactId>UtilityCode</artifactId>
-			<version>1.5.0</version>
+			<version>1.5.2</version>
 		</dependency>
 	</dependencies>
 ```
 
 <details>
 <summary>Gradle</summary>
-<code>compile 'com.github.kilianB:UtilityCode:1.5.0'</code>
+<code>compile 'com.github.kilianB:UtilityCode:1.5.2'</code>
 </details>
 
 ## Content
@@ -85,12 +85,12 @@ Distributed via Bintray
 
 # Changelog
 
-## v1.5.2 - 23.12.2018
+## v1.5.2 - 25.12.2018
 
 ### [added]
 
 - Require oddValue,evenValue, greaterThan, lessThan, negativeValue
-- default getRGB fallback for fastpixel 
+- default fallback for fastpixel if no faster implementation is available
 
 ### [changed]
 - CountHashCollection now also returns the mapped object in the toString method
