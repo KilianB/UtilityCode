@@ -20,14 +20,14 @@ Distributed via Bintray
 		<dependency>
 			<groupId>com.github.kilianB</groupId>
 			<artifactId>UtilityCode</artifactId>
-			<version>1.5.2</version>
+			<version>1.5.3</version>
 		</dependency>
 	</dependencies>
 ```
 
 <details>
 <summary>Gradle</summary>
-<code>compile 'com.github.kilianB:UtilityCode:1.5.2'</code>
+<code>compile 'com.github.kilianB:UtilityCode:1.5.3'</code>
 </details>
 
 ## Content
@@ -84,6 +84,14 @@ Distributed via Bintray
 </table>
 
 # Changelog
+
+## v1.5.3 - 25.12.2018
+
+### [changed]
+
+- use ImageTypeSpecifier to create a compatible buffered image during resizing operation
+in image utils. This allows support for buffered image with type custom.
+- increased named thread factory test case exception timeout to make test more robust
 
 ## v1.5.2 - 25.12.2018
 
