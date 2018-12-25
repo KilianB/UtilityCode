@@ -51,7 +51,7 @@ class NamedThreadFactoryTest {
 		t.start();
 		
 		try {
-			assertTrue(latch.await(50, TimeUnit.MILLISECONDS));
+			assertTrue(latch.await(150, TimeUnit.MILLISECONDS));
 		}catch(InterruptedException e) {
 			fail("Interrupted");
 		}

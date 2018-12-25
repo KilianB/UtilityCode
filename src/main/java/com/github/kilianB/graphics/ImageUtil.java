@@ -9,6 +9,8 @@ import java.awt.image.DirectColorModel;
 import java.awt.image.IndexColorModel;
 import java.util.HashMap;
 
+import javax.imageio.ImageTypeSpecifier;
+
 import javafx.embed.swing.SwingFXUtils;
 import javafx.scene.image.Image;
 import javafx.scene.image.PixelFormat;
@@ -35,9 +37,12 @@ public class ImageUtil {
 	 * @return the resized image
 	 * @since 1.0.0
 	 * @since 1.4.2 fixed not using awt rescale
+	 * @since 1.5.3 fixed using ImageTypeSpecifier to create compatible images for custom type
 	 */
 	public static BufferedImage getScaledInstance(BufferedImage source, int width, int height) {
-		BufferedImage target = new BufferedImage(width, height, source.getType());
+		
+		BufferedImage target = ImageTypeSpecifier.createFromRenderedImage(source).createBufferedImage(width,height);
+		
 		Graphics g = target.getGraphics();
 		g.drawImage(source, 0, 0, width, height, null);
 		g.dispose();
