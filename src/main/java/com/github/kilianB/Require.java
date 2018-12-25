@@ -400,7 +400,7 @@ public class Require {
 	 * value and throws a IllegalArgumentException if it isn't
 	 * 
 	 * @param value      to be checked
-	 * @param upperBound the higher bound to check against
+	 * @param lowerBound the lower bound to check against
 	 * @return The supplied value
 	 * @param <T> the type of the value
 	 * @since 1.5.2
@@ -414,7 +414,7 @@ public class Require {
 	 * value and throws a IllegalArgumentException if it isn't
 	 * 
 	 * @param value      to be checked
-	 * @param upperBound the higher bound to check against
+	 * @param lowerBound the lower bound to check against
 	 * @param message    to be thrown in case of error
 	 * @return The supplied value
 	 * @param <T> the type of the value
