@@ -2,26 +2,14 @@ package com.github.kilianB.graphics;
 
 import java.awt.image.BufferedImage;
 import java.awt.image.DataBufferInt;
-import java.io.IOException;
-
-import javax.imageio.ImageIO;
 
 import com.github.kilianB.MathUtil;
-import com.github.kilianB.graphics.ImageUtil.BImageType;
 
 /**
  * @author Kilian
  *
  */
 public class FastPixelInt implements FastPixel {
-
-	public static void main(String[] args) throws IOException {
-		BufferedImage brownOpacity = ImageIO
-				.read(FastPixelInt.class.getClassLoader().getResourceAsStream("brownOpacity.png"));
-		brownOpacity = ImageUtil.toNewType(brownOpacity, BImageType.TYPE_INT_ARGB);
-		FastPixelInt fp = (FastPixelInt) FastPixel.create(brownOpacity);
-		fp.setAverageGrayscale(0,60);	
-	}
 	
 	/** Full alpha constant */
 	private static final int FULL_ALPHA = 255 << 24;

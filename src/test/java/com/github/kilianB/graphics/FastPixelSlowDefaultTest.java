@@ -8,7 +8,6 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.fail;
 
 import java.awt.image.BufferedImage;
-import java.io.File;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
@@ -39,7 +38,6 @@ class FastPixelSlowDefaultTest {
 
 	private static BufferedImage cat;
 
-	
 	//
 	static BufferedImage bw;
 
@@ -67,10 +65,10 @@ class FastPixelSlowDefaultTest {
 			brownOpacity = ImageIO
 					.read(FastPixelSlowDefaultTest.class.getClassLoader().getResourceAsStream("brownOpacity.png"));
 			brownOpacity = ImageUtil.toNewType(brownOpacity, BImageType.TYPE_INT_ARGB_PRE);
-			
-			//Type custom
+
+			// Type custom
 			cat = ImageIO.read(FastPixelSlowDefaultTest.class.getClassLoader().getResourceAsStream("catMono.png"));
-			
+
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -89,13 +87,13 @@ class FastPixelSlowDefaultTest {
 	}
 
 	@Nested
-	class TypeCustom{
-		
+	class TypeCustom {
+
 		@Test
 		void hasAlphaTrue() {
-			assertTrue(FastPixel.create(cat).hasAlpha());	
+			assertTrue(FastPixel.create(cat).hasAlpha());
 		}
-		
+
 		@Test
 		void getRGB() {
 			FastPixel fp = FastPixel.create(cat);
@@ -116,9 +114,9 @@ class FastPixelSlowDefaultTest {
 				}
 			}
 		}
-		
+
 	}
-	
+
 	@Test
 	void hasAlphaFalse() {
 		assertFalse(FastPixel.create(lena).hasAlpha());
