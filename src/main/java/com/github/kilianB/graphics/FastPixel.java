@@ -32,8 +32,10 @@ public interface FastPixel {
 		case BufferedImage.TYPE_INT_RGB:
 			return new FastPixelInt(bufferedImage);
 		default:
-			throw new UnsupportedOperationException(
-					"The image type is currently not supported: " + bufferedImage.getType());
+			return new FastPixelSlowDefault(bufferedImage);
+//			throw new UnsupportedOperationException(
+//					"The image type is currently not supported: " + bufferedImage.getType());
+//		
 		}
 	}
 
