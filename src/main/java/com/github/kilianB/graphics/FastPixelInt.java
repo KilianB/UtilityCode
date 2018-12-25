@@ -2,26 +2,14 @@ package com.github.kilianB.graphics;
 
 import java.awt.image.BufferedImage;
 import java.awt.image.DataBufferInt;
-import java.io.IOException;
-
-import javax.imageio.ImageIO;
 
 import com.github.kilianB.MathUtil;
-import com.github.kilianB.graphics.ImageUtil.BImageType;
 
 /**
  * @author Kilian
  *
  */
 public class FastPixelInt implements FastPixel {
-
-	public static void main(String[] args) throws IOException {
-		BufferedImage brownOpacity = ImageIO
-				.read(FastPixelInt.class.getClassLoader().getResourceAsStream("brownOpacity.png"));
-		brownOpacity = ImageUtil.toNewType(brownOpacity, BImageType.TYPE_INT_ARGB);
-		FastPixelInt fp = (FastPixelInt) FastPixel.create(brownOpacity);
-		fp.setAverageGrayscale(0,60);	
-	}
 	
 	/** Full alpha constant */
 	private static final int FULL_ALPHA = 255 << 24;
@@ -459,10 +447,6 @@ public class FastPixelInt implements FastPixel {
 	
 	// grayscale
 	
-	@Override
-	public int getAverageGrayscale(int x, int y) {
-		return getAverageGrayscale(getOffset(x,y));
-	}
 
 	@Override
 	public int[][] getAverageGrayscale() {
@@ -480,10 +464,6 @@ public class FastPixelInt implements FastPixel {
 		return gray;
 	}
 
-	@Override
-	public void setAverageGrayscale(int x, int y, int newGrayValue) {
-		setAverageGrayscale(getOffset(x,y),newGrayValue);
-	}
 
 	@Override
 	public void setAverageGrayscale(int[][] newGrayValue) {
@@ -496,20 +476,7 @@ public class FastPixelInt implements FastPixel {
 	
 
 	// YCrCb
-		
-	/**
-	 * Return the Y(Luma) component of the YCbCr color model for the specified
-	 * pixel.
-	 * 
-	 * @param x the x coordinate of the image
-	 * @param y the y coordinate of the image
-	 * @return the luma component in range [0-255]
-	 * @since 1.3.0
-	 */
-	@Override
-	public int getLuma(int x, int y) {
-		return getLuma(getOffset(x,y));
-	}
+
 	
 	/**
 	 * Return the Y(Luma) component of the YCbCr color model fof the entire image
@@ -543,85 +510,8 @@ public class FastPixelInt implements FastPixel {
 		return luma;
 	}
 
-	/**
-	 * Return the Cr(red-difference) component of the YCbCr color model for the
-	 * specified pixel.
-	 * 
-	 * @param x the x coordinate of the image
-	 * @param y the y coordinate of the image
-	 * @return the cr component in range [0-255]
-	 * @since 1.3.0
-	 */
-	@Override
-	public int getCr(int x, int y) {
-		return getCr(getOffset(x,y));
-	}
-	
-	
-	/**
-	 * Return the Cb(blue-difference) component of the YCbCr color model for the
-	 * specified pixel.
-	 * 
-	 * @param x the x coordinate of the image
-	 * @param y the y coordinate of the image
-	 * @return the cb component in range [0-255]
-	 * @since 1.3.0
-	 */
-	@Override
-	public int getCb(int x, int y) {
-		return getCb(getOffset(x,y));
-	}
 
-	// HSV
-
-	/**
-	 * Return the hue component (angle) of the HSV color model for the specified
-	 * pixel
-	 * 
-	 * @param x the x coordinate of the image
-	 * @param y the y coordinate of the image
-	 * @return the hue component in range [0-360]. As defined the hue is 0 for
-	 *         undefined colors (e.g. white or black)
-	 * @since 1.3.0
-	 */
-	@Override
-	public int getHue(int x, int y) {
-		return getHue(getOffset(x, y));
-	}
-
-	/**
-	 * Return the saturation component of the HSV color model for the specified
-	 * pixel
-	 * 
-	 * <p>
-	 * Note: Opposed to all other values for the hsb model saturation is returned as
-	 * double in the range of [0-1] instead of [0-255] to allow for a higher
-	 * accuracy.
-	 * 
-	 * @param x the x coordinate of the image
-	 * @param y the y coordinate of the image
-	 * @return the sat component in range [0-1]. As defined the sat is 0 for
-	 *         undefined colors (i.e. black)
-	 * @since 1.3.0
-	 */
-	@Override
-	public double getSat(int x, int y) {
-		return getSat(getOffset(x,y));
-	}
-
-	/**
-	 * Return the value component of the HSV color model for the specified pixel
-	 * 
-	 * @param x the x coordinate of the image
-	 * @param y the y coordinate of the image
-	 * @return the value component in range [0-255].
-	 */
-	@Override
-	public int getVal(int x, int y) {
-		return getVal(getOffset(x,y));
-	}
-
-	private int getOffset(int x, int y) {
+	public int getOffset(int x, int y) {
 		return (y * width) + x;
 	}
 

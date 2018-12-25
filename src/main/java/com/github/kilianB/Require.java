@@ -55,6 +55,13 @@ public class Require {
 	 * @since 1.0.0
 	 */
 	public static <T extends Number> T inRange(T value, T lowerBound, T higherBound, String message) {
+
+		if (value instanceof Double && ((Double) value).isNaN()
+				|| (lowerBound instanceof Double && ((Double) lowerBound).isNaN())
+				|| (higherBound instanceof Double && ((Double) higherBound).isNaN())) {
+			throw new IllegalArgumentException("Input may not be NaN");
+		}
+
 		if (value.doubleValue() < lowerBound.doubleValue() || value.doubleValue() > higherBound.doubleValue()) {
 			if (message == null) {
 				throw new IllegalArgumentException();
@@ -64,7 +71,7 @@ public class Require {
 		}
 		return value;
 	}
-	
+
 	/**
 	 * Checks if the supplied argument is lays within the given bounds throws a
 	 * IllegalArgumentException if it doesn't
@@ -77,13 +84,13 @@ public class Require {
 	 * @return The supplied value
 	 * @since 1.1.0
 	 */
-	public static <T extends Number> Collection<T> inRange(Collection<T> value, T lowerBound, T higherBound, String message) {
-		for(T t : value) {
-			inRange(t,lowerBound,higherBound,message);
+	public static <T extends Number> Collection<T> inRange(Collection<T> value, T lowerBound, T higherBound,
+			String message) {
+		for (T t : value) {
+			inRange(t, lowerBound, higherBound, message);
 		}
 		return value;
 	}
-	
 
 	/**
 	 * Checks if the supplied argument is lays within the given bounds throws a
@@ -142,8 +149,8 @@ public class Require {
 	 * 
 	 * This method supports nested arrays.
 	 * 
-	 * @param array   to be checked
-	 * @param         <T> the type of the value
+	 * @param array to be checked
+	 * @param       <T> the type of the value
 	 * @return The supplied value
 	 * @since 1.0.0
 	 */
@@ -216,7 +223,7 @@ public class Require {
 	 * IllegalArgumentException if it does.
 	 * 
 	 * @param list to be checked
-	 * @param       <T> the type of the value
+	 * @param      <T> the type of the value
 	 * @return The supplied value
 	 * @since 1.0.0
 	 */
@@ -229,7 +236,7 @@ public class Require {
 	 * Checks if the supplied Collection does not contain null values and throws a
 	 * IllegalArgumentException if it does.
 	 * 
-	 * @param list   to be checked
+	 * @param list    to be checked
 	 * @param message message to be thrown in case of failure
 	 * @param         <T> the type of the value
 	 * @return The supplied value
@@ -240,5 +247,187 @@ public class Require {
 		return list;
 	}
 
-	
+	/**
+	 * Checks if the supplied argument is an odd non null numeric value and throws a
+	 * IllegalArgumentException if it isn't
+	 * 
+	 * @param value to be checked
+	 * @return The supplied value
+	 * @param <T> the type of the value
+	 * @since 1.5.2
+	 */
+	public static <T extends Number> T oddValue(T value) {
+		return oddValue(value, null);
+	}
+
+	/**
+	 * Checks if the supplied argument is an odd non null numeric value and throws a
+	 * IllegalArgumentException if it isn't
+	 * 
+	 * @param value   to be checked
+	 * @param message to be thrown in case of error
+	 * @return The supplied value
+	 * @param <T> the type of the value
+	 * @since 1.5.2
+	 */
+	public static <T extends Number> T oddValue(T value, String message) {
+
+		if (value instanceof Double && ((Double) value).isNaN()) {
+			throw new IllegalArgumentException("NaN is neither even or odd");
+		}
+
+		if (value.longValue() % 2 == 0) {
+			if (message == null) {
+				throw new IllegalArgumentException();
+			} else {
+				throw new IllegalArgumentException(message);
+			}
+		}
+		return value;
+	}
+
+	/**
+	 * Checks if the supplied argument is an even non null numeric value and throws
+	 * a IllegalArgumentException if it isn't
+	 * 
+	 * @param value to be checked
+	 * @return The supplied value
+	 * @param <T> the type of the value
+	 * @since 1.5.2
+	 */
+	public static <T extends Number> T evenValue(T value) {
+		return evenValue(value, null);
+	}
+
+	/**
+	 * Checks if the supplied argument is an even non null numeric value and throws
+	 * a IllegalArgumentException if it isn't
+	 * 
+	 * @param value   to be checked
+	 * @param message to be thrown in case of error
+	 * @return The supplied value
+	 * @param <T> the type of the value
+	 * @since 1.5.2
+	 */
+	public static <T extends Number> T evenValue(T value, String message) {
+
+		if (value instanceof Double && ((Double) value).isNaN()) {
+			throw new IllegalArgumentException("NaN is neither even or odd");
+		}
+
+		if (value.longValue() % 2 != 0) {
+			if (message == null) {
+				throw new IllegalArgumentException();
+			} else {
+				throw new IllegalArgumentException(message);
+			}
+		}
+		return value;
+	}
+
+	/**
+	 * Checks if the supplied argument is a negative non null numeric value and
+	 * throws a IllegalArgumentException if it isn't
+	 * 
+	 * @param value to be checked
+	 * @return The supplied value
+	 * @param <T> the type of the value
+	 * @since 1.5.2
+	 */
+	public static <T extends Number> T negativeValue(T value) {
+		return negativeValue(value, null);
+	}
+
+	/**
+	 * Checks if the supplied argument is a negative non null numeric value and
+	 * throws a IllegalArgumentException if it isn't
+	 * 
+	 * @param value   to be checked
+	 * @param message to be thrown in case of error
+	 * @return The supplied value
+	 * @param <T> the type of the value
+	 * @since 1.5.2
+	 */
+	public static <T extends Number> T negativeValue(T value, String message) {
+		if (value.doubleValue() >= 0) {
+			if (message == null) {
+				throw new IllegalArgumentException();
+			} else {
+				throw new IllegalArgumentException(message);
+			}
+		}
+		return value;
+	}
+
+	/**
+	 * Checks if the supplied argument is strictly less than the upper bound value
+	 * and throws a IllegalArgumentException if it isn't
+	 * 
+	 * @param value      to be checked
+	 * @param upperBound the higher bound to check against
+	 * @return The supplied value
+	 * @param <T> the type of the value
+	 * @since 1.5.2
+	 */
+	public static <T extends Number> T lessThan(T value, T upperBound) {
+		return lessThan(value, upperBound, null);
+	}
+
+	/**
+	 * Checks if the supplied argument is strictly less than the upper bound value
+	 * and throws a IllegalArgumentException if it isn't
+	 * 
+	 * @param value      to be checked
+	 * @param upperBound the higher bound to check against
+	 * @param message    to be thrown in case of error
+	 * @return The supplied value
+	 * @param <T> the type of the value
+	 * @since 1.5.2
+	 */
+	public static <T extends Number> T lessThan(T value, T upperBound, String message) {
+		if (value.doubleValue() >= upperBound.doubleValue()) {
+			if (message == null) {
+				throw new IllegalArgumentException();
+			} else {
+				throw new IllegalArgumentException(message);
+			}
+		}
+		return value;
+	}
+
+	/**
+	 * Checks if the supplied argument is strictly greater than the lower bound
+	 * value and throws a IllegalArgumentException if it isn't
+	 * 
+	 * @param value      to be checked
+	 * @param lowerBound the lower bound to check against
+	 * @return The supplied value
+	 * @param <T> the type of the value
+	 * @since 1.5.2
+	 */
+	public static <T extends Number> T greaterThan(T value, T lowerBound) {
+		return greaterThan(value, lowerBound, null);
+	}
+
+	/**
+	 * Checks if the supplied argument is strictly greater than the lower bound
+	 * value and throws a IllegalArgumentException if it isn't
+	 * 
+	 * @param value      to be checked
+	 * @param lowerBound the lower bound to check against
+	 * @param message    to be thrown in case of error
+	 * @return The supplied value
+	 * @param <T> the type of the value
+	 * @since 1.5.2
+	 */
+	public static <T extends Number> T greaterThan(T value, T lowerBound, String message) {
+		if (value.doubleValue() <= lowerBound.doubleValue()) {
+			if (message == null) {
+				throw new IllegalArgumentException();
+			} else {
+				throw new IllegalArgumentException(message);
+			}
+		}
+		return value;
+	}
 }

@@ -1,6 +1,7 @@
 package com.github.kilianB.graphics;
 
 import java.awt.image.BufferedImage;
+import java.util.logging.Logger;
 
 /**
  * Utility class to access pixel data in a fraction of the time required by the
@@ -14,7 +15,7 @@ import java.awt.image.BufferedImage;
  */
 public interface FastPixel {
 
-	// TODO documentation
+	static final Logger LOGGER = Logger.getLogger(FastPixel.class.getSimpleName());
 
 	/**
 	 * Return a fast pixel instance mapped to the buffered image type
@@ -34,8 +35,12 @@ public interface FastPixel {
 		case BufferedImage.TYPE_INT_RGB:
 			return new FastPixelInt(bufferedImage);
 		default:
-			throw new UnsupportedOperationException(
-					"The image type is currently not supported: " + bufferedImage.getType());
+			LOGGER.info("No fast implementation available for " + bufferedImage.getType()
+					+ ". Fallback to slow default variant.");
+			return new FastPixelSlowDefault(bufferedImage);
+//			throw new UnsupportedOperationException(
+//					"The image type is currently not supported: " + bufferedImage.getType());
+//		
 		}
 	}
 
@@ -55,7 +60,9 @@ public interface FastPixel {
 	 *         colorspace.
 	 * @since 1.3.0
 	 */
-	int getRGB(int x, int y);
+	default int getRGB(int x, int y) {
+		return getRGB(getOffset(x, y));
+	}
 
 	/**
 	 * Returns the rgb values of the entire image in an 2 d array in the default RGB
@@ -85,7 +92,9 @@ public interface FastPixel {
 	 * @return the alpha value in range [0-255] or -1 if alpha is not supported
 	 * @since 1.3.0
 	 */
-	int getAlpha(int x, int y);
+	default int getAlpha(int x, int y) {
+		return getAlpha(getOffset(x, y));
+	}
 
 	/**
 	 * Get the alpha component of the entire image mapped to a 2d array representing
@@ -105,7 +114,9 @@ public interface FastPixel {
 	 * @param newAlpha the new alpha value in range [0-255]
 	 * @since 1.3.0
 	 */
-	void setAlpha(int x, int y, int newAlpha);
+	default void setAlpha(int x, int y, int newAlpha) {
+		setAlpha(getOffset(x, y), newAlpha);
+	}
 
 	/**
 	 * Set the alpha value. This method is a NOP if alpha is not supported.
@@ -141,7 +152,9 @@ public interface FastPixel {
 	 * @return the red value in range [0-255]
 	 * @since 1.3.0
 	 */
-	int getRed(int x, int y);
+	default int getRed(int x, int y) {
+		return getRed(getOffset(x, y));
+	}
 
 	/**
 	 * Get the red component of the entire image mapped to a 2d array representing
@@ -160,7 +173,9 @@ public interface FastPixel {
 	 * @param newRed the new red value in range [0-255]
 	 * @since 1.3.0
 	 */
-	void setRed(int x, int y, int newRed);
+	default void setRed(int x, int y, int newRed) {
+		setRed(getOffset(x, y), newRed);
+	}
 
 	/**
 	 * Set the red value at the specified offset
@@ -196,7 +211,9 @@ public interface FastPixel {
 	 * @return the green value in range [0-255]
 	 * @since 1.3.0
 	 */
-	int getGreen(int x, int y);
+	default int getGreen(int x, int y) {
+		return getGreen(getOffset(x, y));
+	}
 
 	/**
 	 * Set the green value of the specified pixel
@@ -206,7 +223,9 @@ public interface FastPixel {
 	 * @param newGreen the new green value in range [0-255]
 	 * @since 1.3.0
 	 */
-	void setGreen(int x, int y, int newGreen);
+	default void setGreen(int x, int y, int newGreen) {
+		setGreen(getOffset(x, y), newGreen);
+	}
 
 	/**
 	 * Set the green value at the specified offset
@@ -244,7 +263,9 @@ public interface FastPixel {
 	 * @return the blue value in range [0-255]
 	 * @since 1.3.0
 	 */
-	int getBlue(int x, int y);
+	default int getBlue(int x, int y) {
+		return getBlue(getOffset(x, y));
+	}
 
 	/**
 	 * Set the blue value of the specified pixel
@@ -254,7 +275,9 @@ public interface FastPixel {
 	 * @param newBlue the new blue value in range [0-255]
 	 * @since 1.3.0
 	 */
-	void setBlue(int x, int y, int newBlue);
+	default void setBlue(int x, int y, int newBlue) {
+		setBlue(getOffset(x, y), newBlue);
+	}
 
 	void setBlue(int index, int newBlue);
 
@@ -303,7 +326,9 @@ public interface FastPixel {
 	 * @return the grayscale values in range [0-255]
 	 * @since 1.5.0
 	 */
-	int getAverageGrayscale(int x, int y);
+	default int getAverageGrayscale(int x, int y) {
+		return getAverageGrayscale(getOffset(x, y));
+	}
 
 	/**
 	 * Get the average grayscale of the entire image mapped to a 2d array
@@ -357,7 +382,9 @@ public interface FastPixel {
 	 * @param newGrayValue to set the pixels to range [0 - 255]
 	 * @since 1.5.0
 	 */
-	void setAverageGrayscale(int x, int y, int newGrayValue);
+	default void setAverageGrayscale(int x, int y, int newGrayValue) {
+		setAverageGrayscale(getOffset(x, y), newGrayValue);
+	}
 
 	/**
 	 * Set the gray values of the entire image.
@@ -399,7 +426,9 @@ public interface FastPixel {
 	 * @return the luma component in range [0-255]
 	 * @since 1.3.0
 	 */
-	int getLuma(int x, int y);
+	default int getLuma(int x, int y) {
+		return getLuma(getOffset(x, y));
+	}
 
 	/**
 	 * Return the Y(Luma) component of the YCbCr color model for the entire image
@@ -433,7 +462,9 @@ public interface FastPixel {
 	 * @return the cr component in range [0-255]
 	 * @since 1.3.0
 	 */
-	int getCr(int x, int y);
+	default int getCr(int x, int y) {
+		return getCr(getOffset(x, y));
+	}
 
 	/**
 	 * Return the Cb(blue-difference) component of the YCbCr color model for the
@@ -458,7 +489,9 @@ public interface FastPixel {
 	 * @return the cb component in range [0-255]
 	 * @since 1.3.0
 	 */
-	int getCb(int x, int y);
+	default int getCb(int x, int y) {
+		return getCb(getOffset(x, y));
+	}
 
 	/**
 	 * Return the hue component (angle) of the HSV color model for the specified
@@ -510,7 +543,9 @@ public interface FastPixel {
 	 *         undefined colors (e.g. white or black)
 	 * @since 1.3.0
 	 */
-	int getHue(int x, int y);
+	default int getHue(int x, int y) {
+		return getHue(getOffset(x, y));
+	}
 
 	/**
 	 * Return the saturation component of the HSV color model for the specified
@@ -553,7 +588,9 @@ public interface FastPixel {
 	 *         undefined colors (i.e. black)
 	 * @since 1.3.0
 	 */
-	double getSat(int x, int y);
+	default double getSat(int x, int y) {
+		return getSat(getOffset(x, y));
+	}
 
 	/**
 	 * Return the value component of the HSV color model for the specified offset
@@ -577,7 +614,9 @@ public interface FastPixel {
 	 * @param y the y coordinate of the image
 	 * @return the value component in range [0-255].
 	 */
-	int getVal(int x, int y);
+	default int getVal(int x, int y) {
+		return getVal(getOffset(x, y));
+	}
 
 	/**
 	 * Check if an image supports alpha values
@@ -585,5 +624,14 @@ public interface FastPixel {
 	 * @return true if the image has an alpha channel. false otherwise
 	 */
 	boolean hasAlpha();
+
+	/**
+	 * Map the x and y values to the underlying one dimensional data array
+	 * 
+	 * @param x the x coordinate
+	 * @param y the y coordinate
+	 * @return the corresponding 1d array index
+	 */
+	int getOffset(int x, int y);
 
 }
