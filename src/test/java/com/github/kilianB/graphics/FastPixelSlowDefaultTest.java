@@ -39,7 +39,7 @@ class FastPixelSlowDefaultTest {
 	private static BufferedImage cat;
 
 	//
-	static BufferedImage bw;
+	private static BufferedImage bw;
 
 	@BeforeAll
 	static void loadImage() {

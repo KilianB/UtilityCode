@@ -4,8 +4,8 @@ import java.util.Collection;
 import java.util.ConcurrentModificationException;
 import java.util.HashMap;
 import java.util.Iterator;
-import java.util.NoSuchElementException;
 import java.util.Map.Entry;
+import java.util.NoSuchElementException;
 
 /**
  * A hash collection offering a O(1) performance on {@link #contains},

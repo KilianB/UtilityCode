@@ -37,7 +37,7 @@ class FastPixelIntTest {
 	private static BufferedImage brownOpacity;
 
 	//
-	static BufferedImage bw;
+	private static BufferedImage bw;
 
 	@BeforeAll
 	static void loadImage() {

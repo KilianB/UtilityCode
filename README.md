@@ -1,7 +1,8 @@
 # UtilityCode
 
 [![Build Status](https://travis-ci.org/KilianB/UtilityCode.svg?branch=master)](https://travis-ci.org/KilianB/UtilityCode)
-[ ![Download](https://api.bintray.com/packages/kilianb/maven/UtilityCode/images/download.svg) ](https://bintray.com/kilianb/maven/UtilityCode/_latestVersion)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/39c6aaf496e34cd9ac796d347e2c4dde)](https://www.codacy.com/app/KilianB/UtilityCode?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=KilianB/UtilityCode&amp;utm_campaign=Badge_Grade)
+[![Download](https://api.bintray.com/packages/kilianb/maven/UtilityCode/images/download.svg) ](https://bintray.com/kilianb/maven/UtilityCode/_latestVersion)
 
 Selection of java utility methods used in almost all projects.
 
@@ -20,7 +21,7 @@ Distributed via Bintray
 		<dependency>
 			<groupId>com.github.kilianB</groupId>
 			<artifactId>UtilityCode</artifactId>
-			<version>1.5.3</version>
+			<version>1.5.4</version>
 		</dependency>
 	</dependencies>
 ```
@@ -83,124 +84,130 @@ Distributed via Bintray
 	</tr>
 </table>
 
-# Changelog
+## Changelog
+
+## v 1.5.4 - 26.12.2018
+
+### [added]
+-   Pair data structure
+-   codacy badge
+
+### [changed]
+- removed unused imports. A tiny bit cleanup
+- bump javadoc version to html 5
 
 ## v1.5.3 - 25.12.2018
 
 ### [changed]
 
-- use ImageTypeSpecifier to create a compatible buffered image during resizing operation
+-   use ImageTypeSpecifier to create a compatible buffered image during resizing operation
 in image utils. This allows support for buffered image with type custom.
-- increased named thread factory test case exception timeout to make test more robust
+-   increased named thread factory test case exception timeout to make test more robust
 
 ## v1.5.2 - 25.12.2018
 
 ### [added]
 
-- Require oddValue,evenValue, greaterThan, lessThan, negativeValue
-- default fallback for fastpixel if no faster implementation is available
+-   Require oddValue,evenValue, greaterThan, lessThan, negativeValue
+-   default fallback for fastpixel if no faster implementation is available
 
 ### [changed]
-- CountHashCollection now also returns the mapped object in the toString method
-- move some of fastpixels implementation methods to default methods
+-   CountHashCollection now also returns the mapped object in the toString method
+-   move some of fastpixels implementation methods to default methods
 
-## v1.5.1 - 30.11.2018
+##   v1.5.1 - 30.11.2018
 
 ### [fixed]
- - perform mcn:clean before deploying to exclude test dependencies from final build.
+ -   perform mcn:clean before deploying to exclude test dependencies from final build.
 
 ## v1.5.0 - 29.11.2018
 
 ### [added]
- - getSetAverageGrayScale
- - utility toString methods for arrays
- - getLuma 1D version
- - getLowerShiftBitMask to MathUtil
- - getConsistentHashcode for Enums in the misc package
+ -   getSetAverageGrayScale
+ -   utility toString methods for arrays
+ -   getLuma 1D version
+ -   getLowerShiftBitMask to MathUtil
+ -   getConsistentHashcode for Enums in the misc package
  
 ### [fixed]
- - getLuma now correctly accesses red green and blue values based on BGR byte array offsets instead of RGB. 
- - 
+ -   getLuma now correctly accesses red green and blue values based on BGR byte array offsets instead of RGB. 
+
 ### [changed]
- - refactored FastPixel to use base class and support multiple different image types
+ -   refactored FastPixel to use base class and support multiple different image types
  
-
-
 ## v1.4.5 - (intermediate internal version)
 
 ### [added]
- - bulk set operation for FastPixel class
+ -   bulk set operation for FastPixel class
 
 ### [fixed]
- - setRed,setBlue,setGreen on FastPixel now access the correct offset
-
+ -   setRed,setBlue,setGreen on FastPixel now access the correct offset
 
 ## v1.4.4 - 19.11.2018 (intermediate internal version)
 
 ### [added]
- - pairwise array math (add subtract multiply divide)
- - fillArray overloaded now available with function parameter passing the index to a supplier method
- - getSortedIndex. Calculate the sorted indices of an array in ascending or descending order.
+ -   pairwise array math (add subtract multiply divide)
+ -   fillArray overloaded now available with function parameter passing the index to a supplier method
+ -   getSortedIndex. Calculate the sorted indices of an array in ascending or descending order.
  
 ### [changed]
- - make constructor of circular hashset private. Class was not ever meant to be initialized
+ -   make constructor of circular hashset private. Class was not ever meant to be initialized
 
 ## v.1.4.2
 ### [fixed] 
- - getScaledInstance of images not correctly uses drawImage to rescale rather
+ -   getScaledInstance of images not correctly uses drawImage to rescale rather
  than falling back to the awt getScaledInstance call. 600 fold increase in performance
 
 
 ## v.1.4.1 - 15.11.2018
 
 ### [added]
-- triangular number 
+-   triangular number 
 
 ## v 1.4.0 - 14.11.2018
 
 ### [fixed]
-- javadoc get hue is in range of [0-360]° not [0-255]
+-   javadoc get hue is in range of [0-360]° not [0-255]
 
 ### [added]
-- getContrastColor for awt images
-- getLuma for awt and fxImages
-- log(base,value) calculate log of an arbitrary base
-- plain autocloseable (AutoCloseable without throwing an exception)
-- get maximum and minimum as well as maximum and minimum Index for primitive numeric arrays
-- scalar multiplication, addition, subtraction and division for primitive numeric arrays.
-- Clustering. KMeans, KMeans++, DBScan, CURE, DistanceMeasures, Euclidiean Jaccard Manhattan
-- StringUtils fillStringBeginning
-
+-   getContrastColor for awt images
+-   getLuma for awt and fxImages
+-   log(base,value) calculate log of an arbitrary base
+-   plain autocloseable (AutoCloseable without throwing an exception)
+-   get maximum and minimum as well as maximum and minimum Index for primitive numeric arrays
+-   scalar multiplication, addition, subtraction and division for primitive numeric arrays.
+-   Clustering. KMeans, KMeans++, DBScan, CURE, DistanceMeasures, Euclidiean Jaccard Manhattan
+-   StringUtils fillStringBeginning
 
 ## v 1.3.1 - 2.11.2018
 
 ### [added]
-- getLuma() array method
+-   getLuma() array method
 
 ## v 1.3.0 - 2.11.2018
 
 ### [added]
-- FastPixel utility to read rgb/hsv/YCrCb data from an image + tests
-- MathUtil.isNumeric() + tests
+-   FastPixel utility to read rgb/hsv/YCrCb data from an image + tests
+-   MathUtil.isNumeric() + tests
 
 ### [fixed] 
-- added @Nested tag to isDoubleEquals class in MathUtil test
+-   added @Nested tag to isDoubleEquals class in MathUtil test
 
 ## v 1.2.0 - 23.10.2018
 ### [added]:
 
- - fillArrayMulti in ArrayUtils allows multi dimensional arrays to be recursively filled with a value
- - test for ArrayUtil
+ -   fillArrayMulti in ArrayUtils allows multi dimensional arrays to be recursively filled with a value
+ -   test for ArrayUtil
 
- - Mutable wrappers now extend Number if applicable
- - Mutable now implement increment, decrement setValue for primitive values. 
- - test for mutable
+ -   Mutable wrappers now extend Number if applicable
+ -   Mutable now implement increment, decrement setValue for primitive values. 
+ -   test for mutable
 
 ## v 1.1.0 - 19.10.2018
 ### [added]:
- - CountHashCollection + test A hash collection with O(1) specialized on keeping track how many times equal object were added and removed
- - Circular Hashset
- - Circular Queue
- - Require.inRange for collections
+ -   CountHashCollection + test A hash collection with O(1) specialized on keeping track how many times equal object were added and removed
+ -   Circular Hashset
+ -   Circular Queue
+ -   Require.inRange for collections
  ### [changed]:
- - replace DaemonThreadFactory by NamedThreadFactory since no external repo is currently depending on this source only bump minor version
+ -   replace DaemonThreadFactory by NamedThreadFactory since no external repo is currently depending on this source only bump minor version

@@ -16,15 +16,15 @@ import com.github.kilianB.Require;
  * A linked hashmap only keeping the newest n entries. Useful for caching.
  * 
  * <p>
- * Hash table and linked list implementation of the <tt>Map</tt> interface, with
+ * Hash table and linked list implementation of the <code>Map</code> interface, with
  * predictable iteration order. This implementation differs from
- * <tt>HashMap</tt> in that it maintains a doubly-linked list running through
+ * <code>HashMap</code> in that it maintains a doubly-linked list running through
  * all of its entries. This linked list defines the iteration ordering, which is
  * normally the order in which keys were inserted into the map
  * (<i>insertion-order</i>). Note that insertion order is not affected if a key
- * is <i>re-inserted</i> into the map. (A key <tt>k</tt> is reinserted into a
- * map <tt>m</tt> if <tt>m.put(k, v)</tt> is invoked when
- * <tt>m.containsKey(k)</tt> would return <tt>true</tt> immediately prior to the
+ * is <i>re-inserted</i> into the map. (A key <code>k</code> is reinserted into a
+ * map <code>m</code> if <code>m.put(k, v)</code> is invoked when
+ * <code>m.containsKey(k)</code> would return <code>true</code> immediately prior to the
  * invocation.)
  *
  * <p>
@@ -47,23 +47,23 @@ import com.github.kilianB.Require;
  * they were presented.)
  *
  * <p>
- * This class provides all of the optional <tt>Map</tt> operations, and permits
- * null elements. Like <tt>HashMap</tt>, it provides constant-time performance
- * for the basic operations (<tt>add</tt>, <tt>contains</tt> and
- * <tt>remove</tt>), assuming the hash function disperses elements properly
+ * This class provides all of the optional <code>Map</code> operations, and permits
+ * null elements. Like <code>HashMap</code>, it provides constant-time performance
+ * for the basic operations (<code>add</code>, <code>contains</code> and
+ * <code>remove</code>), assuming the hash function disperses elements properly
  * among the buckets. Performance is likely to be just slightly below that of
- * <tt>HashMap</tt>, due to the added expense of maintaining the linked list,
+ * <code>HashMap</code>, due to the added expense of maintaining the linked list,
  * with one exception: Iteration over the collection-views of a
- * <tt>LinkedHashMap</tt> requires time proportional to the <i>size</i> of the
- * map, regardless of its capacity. Iteration over a <tt>HashMap</tt> is likely
+ * <code>LinkedHashMap</code> requires time proportional to the <i>size</i> of the
+ * map, regardless of its capacity. Iteration over a <code>HashMap</code> is likely
  * to be more expensive, requiring time proportional to its <i>capacity</i>.
  *
  * <p>
  * A linked hash map has two parameters that affect its performance: <i>initial
  * capacity</i> and <i>load factor</i>. They are defined precisely as for
- * <tt>HashMap</tt>. Note, however, that the penalty for choosing an excessively
+ * <code>HashMap</code>. Note, however, that the penalty for choosing an excessively
  * high value for initial capacity is less severe for this class than for
- * <tt>HashMap</tt>, as iteration times for this class are unaffected by
+ * <code>HashMap</code>, as iteration times for this class are unaffected by
  * capacity.
  *
  * <p>
@@ -87,14 +87,14 @@ import com.github.kilianB.Require;
  * iteration order. In insertion-ordered linked hash maps, merely changing the
  * value associated with a key that is already contained in the map is not a
  * structural modification. <strong>In access-ordered linked hash maps, merely
- * querying the map with <tt>get</tt> is a structural modification. </strong>)
+ * querying the map with <code>get</code> is a structural modification. </strong>)
  *
  * <p>
- * The iterators returned by the <tt>iterator</tt> method of the collections
+ * The iterators returned by the <code>iterator</code> method of the collections
  * returned by all of this class's collection view methods are
  * <em>fail-fast</em>: if the map is structurally modified at any time after the
  * iterator is created, in any way except through the iterator's own
- * <tt>remove</tt> method, the iterator will throw a
+ * <code>remove</code> method, the iterator will throw a
  * {@link ConcurrentModificationException}. Thus, in the face of concurrent
  * modification, the iterator fails quickly and cleanly, rather than risking
  * arbitrary, non-deterministic behavior at an undetermined time in the future.
@@ -103,7 +103,7 @@ import com.github.kilianB.Require;
  * Note that the fail-fast behavior of an iterator cannot be guaranteed as it
  * is, generally speaking, impossible to make any hard guarantees in the
  * presence of unsynchronized concurrent modification. Fail-fast iterators throw
- * <tt>ConcurrentModificationException</tt> on a best-effort basis. Therefore,
+ * <code>ConcurrentModificationException</code> on a best-effort basis. Therefore,
  * it would be wrong to write a program that depended on this exception for its
  * correctness: <i>the fail-fast behavior of iterators should be used only to
  * detect bugs.</i>
@@ -133,7 +133,7 @@ public class CircularLinkedHashMap<K, V> extends LinkedHashMap<K, V> {
 	private int bufferSize = 1 << 4; // HashMap.DEFAULT_INITIAL_CAPACITY;
 
 	/**
-	 * Constructs an empty insertion-ordered <tt>CircularLinkedHashMap</tt>
+	 * Constructs an empty insertion-ordered <code>CircularLinkedHashMap</code>
 	 *
 	 * @param bufferSize the initial capacity. When exceeding the capacity the
 	 *                   oldest element will be removed
@@ -145,12 +145,12 @@ public class CircularLinkedHashMap<K, V> extends LinkedHashMap<K, V> {
 	}
 
 	/**
-	 * Constructs an empty <tt>CircularLinkedHashMap</tt> instance
+	 * Constructs an empty <code>CircularLinkedHashMap</code> instance
 	 *
 	 * @param bufferSize  the initial capacity. When exceeding the capacity the
 	 *                    oldest element will be removed
-	 * @param accessOrder the ordering mode - <tt>true</tt> for access-order,
-	 *                    <tt>false</tt> for insertion-order
+	 * @param accessOrder the ordering mode - <code>true</code> for access-order,
+	 *                    <code>false</code> for insertion-order
 	 * @throws IllegalArgumentException if the bufferSize is non positive
 	 */
 	public CircularLinkedHashMap(int bufferSize, boolean accessOrder) {
@@ -160,11 +160,13 @@ public class CircularLinkedHashMap<K, V> extends LinkedHashMap<K, V> {
 	}
 
 	/**
-	 * <p>Constructs an insertion-ordered <tt>CircularLinkedHashMap</tt> instance with
-	 * the same mappings as the specified map. The <tt>CircularLinkedHashMap</tt>
+	 * <p>
+	 * Constructs an insertion-ordered <code>CircularLinkedHashMap</code> instance with
+	 * the same mappings as the specified map. The <code>CircularLinkedHashMap</code>
 	 * instance is created with a default buffer size of 12.
 	 * 
-	 * <p> If a different buffer size is required use another constructor and invoke the
+	 * <p>
+	 * If a different buffer size is required use another constructor and invoke the
 	 * putAll() method to batch insert all elements. Be aware that this method is
 	 * only deterministic for maps with a specified order. Else random elements may
 	 * be present in this hashmap after the insertion is finished depending on the
@@ -183,7 +185,7 @@ public class CircularLinkedHashMap<K, V> extends LinkedHashMap<K, V> {
 	protected boolean removeEldestEntry(Map.Entry<K, V> eldest) {
 		return size() > bufferSize;
 	}
-	
+
 	private void validatePreCondition() {
 		Require.positiveValue(this.bufferSize, "Buffer size has to be positive");
 	}

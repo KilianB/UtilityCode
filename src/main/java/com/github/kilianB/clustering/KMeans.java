@@ -1,10 +1,5 @@
 package com.github.kilianB.clustering;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
 import java.util.DoubleSummaryStatistics;
 import java.util.Random;
 

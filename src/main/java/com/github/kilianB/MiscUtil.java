@@ -84,8 +84,8 @@ public class MiscUtil {
 	 * <p>Restart the java application by registering a shutdown hook at the very end of the 
 	 * life cycle. Tested under JRE 8 Windows 10. 
 	 * 
-	 * <p><b> <font style="color:red;">This method should be used with caution and testing is needed to be done before relying on 
-	 * it's functionality!. JVM specific security managers, and overall behaviour might impact this method</font></b></p>
+	 * <p style="color:red;"><b>This method should be used with caution and testing is needed to be done before relying on 
+	 * it's functionality!. JVM specific security managers, and overall behaviour might impact this method</b></p>
 	 * 
 	 * 
 	 * <p>This method "injects" it's own runnable at the very end of the lifetime of the program after all shutdown hooks have
