@@ -460,6 +460,7 @@ class ArrayUtilTest {
 			}
 		}
 
+		@Nested
 		class Subtract {
 			@Test
 			void byteSub() {
@@ -952,14 +953,15 @@ class ArrayUtilTest {
 			assertArrayEquals(sorted, sortedIndices);
 		}
 
+		@Test
 		void negativeAscending() {
-
 			int[] i = { -2, -5, 0, -3, 2 };
 			int[] sorted = { 1, 3, 0, 2, 4 };
 			int[] sortedIndices = ArrayUtil.getSortedIndices(i, false);
 			assertArrayEquals(sorted, sortedIndices);
 		}
 
+		@Test
 		void negativeDecending() {
 
 			int[] i = { -2, -5, 0, -3, 2 };
@@ -967,7 +969,241 @@ class ArrayUtilTest {
 			int[] sortedIndices = ArrayUtil.getSortedIndices(i, true);
 			assertArrayEquals(sorted, sortedIndices);
 		}
+	}
 
+	@Nested
+	class Median {
+
+		@Nested
+		class Byte {
+			@Test
+			void singleByte() {
+				byte[] array = { 2 };
+				assertEquals(2, ArrayUtil.median(array));
+			}
+
+			@Test
+			void byteOdd() {
+				byte[] array = { 3, 5, 7 };
+				assertEquals(5, ArrayUtil.median(array));
+			}
+
+			@Test
+			void byteEven() {
+				byte[] array = { 1, 2 };
+				assertEquals(1.5, ArrayUtil.median(array));
+			}
+
+			@Test
+			void same() {
+				byte[] array = { 0, 0, 1 };
+				assertEquals(0, ArrayUtil.median(array));
+			}
+
+			@Test
+			void same2() {
+				byte[] array = { 1, 0, 1 };
+				assertEquals(1, ArrayUtil.median(array));
+			}
+		}
+
+		@Nested
+		class Char {
+			@Test
+			void singleByte() {
+				char[] array = { 2 };
+				assertEquals(2, ArrayUtil.median(array));
+			}
+
+			@Test
+			void byteOdd() {
+				char[] array = { 3, 5, 7 };
+				assertEquals(5, ArrayUtil.median(array));
+			}
+
+			@Test
+			void byteEven() {
+				char[] array = { 1, 2 };
+				assertEquals(1.5, ArrayUtil.median(array));
+			}
+
+			@Test
+			void same() {
+				char[] array = { 0, 0, 1 };
+				assertEquals(0, ArrayUtil.median(array));
+			}
+
+			@Test
+			void same2() {
+				char[] array = { 1, 0, 1 };
+				assertEquals(1, ArrayUtil.median(array));
+			}
+		}
+
+		@Nested
+		class Short {
+			@Test
+			void singleByte() {
+				short[] array = { 2 };
+				assertEquals(2, ArrayUtil.median(array));
+			}
+
+			@Test
+			void byteOdd() {
+				short[] array = { 3, 5, 7 };
+				assertEquals(5, ArrayUtil.median(array));
+			}
+
+			@Test
+			void byteEven() {
+				short[] array = { 1, 2 };
+				assertEquals(1.5, ArrayUtil.median(array));
+			}
+
+			@Test
+			void same() {
+				short[] array = { 0, 0, 1 };
+				assertEquals(0, ArrayUtil.median(array));
+			}
+
+			@Test
+			void same2() {
+				short[] array = { 1, 0, 1 };
+				assertEquals(1, ArrayUtil.median(array));
+			}
+		}
+
+		@Nested
+		class Int {
+			@Test
+			void singleByte() {
+				int[] array = { 2 };
+				assertEquals(2, ArrayUtil.median(array));
+			}
+
+			@Test
+			void byteOdd() {
+				int[] array = { 3, 5, 7 };
+				assertEquals(5, ArrayUtil.median(array));
+			}
+
+			@Test
+			void byteEven() {
+				int[] array = { 1, 2 };
+				assertEquals(1.5, ArrayUtil.median(array));
+			}
+
+			@Test
+			void same() {
+				int[] array = { 0, 0, 1 };
+				assertEquals(0, ArrayUtil.median(array));
+			}
+
+			@Test
+			void same2() {
+				int[] array = { 1, 0, 1 };
+				assertEquals(1, ArrayUtil.median(array));
+			}
+		}
+
+		@Nested
+		class Long {
+			@Test
+			void singleByte() {
+				long[] array = { 2 };
+				assertEquals(2, ArrayUtil.median(array));
+			}
+
+			@Test
+			void byteOdd() {
+				long[] array = { 3, 5, 7 };
+				assertEquals(5, ArrayUtil.median(array));
+			}
+
+			@Test
+			void byteEven() {
+				long[] array = { 1, 2 };
+				assertEquals(1.5, ArrayUtil.median(array));
+			}
+
+			@Test
+			void same() {
+				long[] array = { 0, 0, 1 };
+				assertEquals(0, ArrayUtil.median(array));
+			}
+
+			@Test
+			void same2() {
+				long[] array = { 1, 0, 1 };
+				assertEquals(1, ArrayUtil.median(array));
+			}
+		}
+
+		@Nested
+		class Float {
+			@Test
+			void singleByte() {
+				float[] array = { 2 };
+				assertEquals(2, ArrayUtil.median(array));
+			}
+
+			@Test
+			void byteOdd() {
+				float[] array = { 3, 5, 7 };
+				assertEquals(5, ArrayUtil.median(array));
+			}
+
+			@Test
+			void byteEven() {
+				float[] array = { 1, 2 };
+				assertEquals(1.5, ArrayUtil.median(array));
+			}
+
+			@Test
+			void same() {
+				float[] array = { 0, 0, 1 };
+				assertEquals(0, ArrayUtil.median(array));
+			}
+
+			@Test
+			void same2() {
+				float[] array = { 1, 0, 1 };
+				assertEquals(1, ArrayUtil.median(array));
+			}
+		}
+
+		@Nested
+		class Double {
+			@Test
+			void singleByte() {
+				double[] array = { 2 };
+				assertEquals(2, ArrayUtil.median(array));
+			}
+
+			@Test
+			void byteOdd() {
+				double[] array = { 3, 5, 7 };
+				assertEquals(5, ArrayUtil.median(array));
+			}
+
+			@Test
+			void byteEven() {
+				double[] array = { 1, 2 };
+				assertEquals(1.5, ArrayUtil.median(array));
+			}
+
+			@Test
+			void same() {
+				double[] array = { 0, 0, 1 };
+				assertEquals(0, ArrayUtil.median(array));
+			}
+
+			@Test
+			void same2() {
+				double[] array = { 1, 0, 1 };
+				assertEquals(1, ArrayUtil.median(array));
+			}
+		}
 	}
 
 }

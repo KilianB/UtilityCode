@@ -80,8 +80,6 @@ public class MutableBoolean implements Mutable<Boolean>, Comparable<MutableBoole
 		if (getClass() != obj.getClass())
 			return false;
 		MutableBoolean other = (MutableBoolean) obj;
-		if (field != other.field)
-			return false;
-		return true;
+		return field == other.field;
 	}
 }

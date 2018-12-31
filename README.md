@@ -21,14 +21,14 @@ Distributed via Bintray
 		<dependency>
 			<groupId>com.github.kilianB</groupId>
 			<artifactId>UtilityCode</artifactId>
-			<version>1.5.4</version>
+			<version>1.5.5</version>
 		</dependency>
 	</dependencies>
 ```
 
 <details>
 <summary>Gradle</summary>
-<code>compile 'com.github.kilianB:UtilityCode:1.5.3'</code>
+<code>compile 'com.github.kilianB:UtilityCode:1.5.5'</code>
 </details>
 
 ## Content
@@ -85,6 +85,15 @@ Distributed via Bintray
 </table>
 
 ## Changelog
+
+## v 1.5.5 - 31.12.2018
+
+### [added]
+- median and average methods for array
+
+### [fixed]
+- include some array util tests which preciously got ignored due to missing annotation
+- some bad code patterns.
 
 ## v 1.5.4 - 26.12.2018
 

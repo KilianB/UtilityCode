@@ -361,11 +361,11 @@ public class CountHashCollection<K> implements Collection<K> {
 
 	class Iter implements Iterator<K> {
 
-		int elementsPresent = 0;
-		int pointer = 0;
-		int mod = modCount;
-		int arrayPointer = -1;
-		Object[] entryArray = hashMap.entrySet().toArray(new Object[0]);
+		private int elementsPresent = 0;
+		private int pointer = 0;
+		private int mod = modCount;
+		private int arrayPointer = -1;
+		private Object[] entryArray = hashMap.entrySet().toArray(new Object[0]);
 
 		// We can't use an iterator due to fail fast.
 		// Iterator<Entry<K, Integer>> internalIter = hashMap.entrySet().iterator();
