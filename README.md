@@ -21,14 +21,14 @@ Distributed via Bintray
 		<dependency>
 			<groupId>com.github.kilianB</groupId>
 			<artifactId>UtilityCode</artifactId>
-			<version>1.5.4</version>
+			<version>1.5.5</version>
 		</dependency>
 	</dependencies>
 ```
 
 <details>
 <summary>Gradle</summary>
-<code>compile 'com.github.kilianB:UtilityCode:1.5.3'</code>
+<code>compile 'com.github.kilianB:UtilityCode:1.5.5'</code>
 </details>
 
 ## Content
