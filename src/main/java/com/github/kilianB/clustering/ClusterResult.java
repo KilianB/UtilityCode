@@ -28,7 +28,7 @@ import javafx.scene.paint.Color;
  */
 public class ClusterResult {
 
-	int numberOfClusters;
+	protected int numberOfClusters;
 
 	/** Keep track to which cluster a certain points belongs */
 	protected int clusterIndex[];
