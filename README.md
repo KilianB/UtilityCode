@@ -86,6 +86,15 @@ Distributed via Bintray
 
 ## Changelog
 
+## v 1.5.5 - 31.12.2018
+
+### [added]
+- median and average methods for array
+
+### [fixed]
+- include some array util tests which preciously got ignored due to missing annotation
+- some bad code patterns.
+
 ## v 1.5.4 - 26.12.2018
 
 ### [added]
