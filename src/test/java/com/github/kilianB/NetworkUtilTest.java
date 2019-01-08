@@ -22,8 +22,8 @@ import org.junit.jupiter.api.Test;
  */
 class NetworkUtilTest {
 
-	Socket inSocket;
-	Socket outSocket;
+	private Socket inSocket;
+	private Socket outSocket;
 
 	@BeforeEach
 	void setupSocket() {
@@ -118,4 +118,10 @@ class NetworkUtilTest {
 		}
 	}
 
+	public static void main(String[] args) {
+		
+		
+		
+	}
+	
 }

@@ -3,33 +3,36 @@ package com.github.kilianB.datastructures;
 import java.io.Serializable;
 
 /**
- * A convenience data structure encapsulating 2 values. This class can be used
- * to return two values from a method call and create compound keys/values in
- * other collections.
+ * A convenience data structure encapsulating 3 values. This class can be used
+ * to return multiple values from a method call and create compound keys/values
+ * in other collections.
  * 
  * @author Kilian
  *
  * @param <S> type of the first value
  * @param <U> type of the second value
- * @since 1.5.4
- * @since 1.5.6 implements serializable
+ * @param <V> type of the third value
+ * @since 1.5.6
  */
-public class Pair<S, U> implements Serializable {
+public class Triple<S, U, V> implements Serializable {
 
-	private static final long serialVersionUID = 8525518254221383644L;
+	private static final long serialVersionUID = -6739318752459774954L;
 
 	private final S first;
 
 	private final U second;
 
+	private final V third;
+
 	/**
 	 * @param first  element of the pair
 	 * @param second element of the pair
+	 * @param third  tlement of the pair
 	 */
-	public Pair(S first, U second) {
-		super();
+	public Triple(S first, U second, V third) {
 		this.first = first;
 		this.second = second;
+		this.third = third;
 	}
 
 	/**
@@ -40,28 +43,36 @@ public class Pair<S, U> implements Serializable {
 	 * 
 	 * @param original the original pair to take the entries from.
 	 */
-	public Pair(Pair<? extends S, ? extends U> original) {
+	public Triple(Triple<? extends S, ? extends U, ? extends V> original) {
 		this.first = original.first;
 		this.second = original.second;
+		this.third = original.third;
 	}
 
 	/**
-	 * @return the first object stored in this pair
+	 * @return the first object stored in this triplet
 	 */
 	public S getFirst() {
 		return first;
 	}
 
 	/**
-	 * @return the second object stored in this pair
+	 * @return the second object stored in this triplet
 	 */
 	public U getSecond() {
 		return second;
 	}
 
+	/**
+	 * @return the second object stored in this triplet
+	 */
+	public V getThird() {
+		return third;
+	}
+
 	@Override
 	public String toString() {
-		return "Pair [first=" + first + ", second=" + second + "]";
+		return "Triple [first=" + first + ", second=" + second + ", third=" + third + "]";
 	}
 
 	@Override
@@ -70,6 +81,7 @@ public class Pair<S, U> implements Serializable {
 		int result = 1;
 		result = prime * result + ((first == null) ? 0 : first.hashCode());
 		result = prime * result + ((second == null) ? 0 : second.hashCode());
+		result = prime * result + ((third == null) ? 0 : third.hashCode());
 		return result;
 	}
 
@@ -82,10 +94,10 @@ public class Pair<S, U> implements Serializable {
 		if (obj == null) {
 			return false;
 		}
-		if (!(obj instanceof Pair)) {
+		if (!(obj instanceof Triple)) {
 			return false;
 		}
-		Pair other = (Pair) obj;
+		Triple other = (Triple) obj;
 		if (first == null) {
 			if (other.first != null) {
 				return false;
@@ -100,6 +112,14 @@ public class Pair<S, U> implements Serializable {
 		} else if (!second.equals(other.second)) {
 			return false;
 		}
+		if (third == null) {
+			if (other.third != null) {
+				return false;
+			}
+		} else if (!third.equals(other.third)) {
+			return false;
+		}
 		return true;
 	}
+
 }
