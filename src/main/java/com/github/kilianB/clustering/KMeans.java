@@ -164,7 +164,7 @@ public class KMeans implements ClusterAlgorithm {
 	}
 
 	/**
-	 * 
+	 * @return the number of iterations used to cluster the data
 	 */
 	public int iterations() {
 		return lastIterationCount;
