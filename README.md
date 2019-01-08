@@ -113,9 +113,6 @@ ArrayUtil.add(values,5);
 ### [added]
 - Triplet utility class
 
-### [added]
-- median and average methods for array
-
 ## v 1.5.5 - 31.12.2018
 
 ### [added]
