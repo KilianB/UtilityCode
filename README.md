@@ -21,7 +21,7 @@ Distributed via Bintray
 		<dependency>
 			<groupId>com.github.kilianB</groupId>
 			<artifactId>UtilityCode</artifactId>
-			<version>1.5.6</version>
+			<version>1.5.7</version>
 		</dependency>
 	</dependencies>
 ```
@@ -107,6 +107,12 @@ ArrayUtil.add(values,5);
 </table>
 
 ## Changelog
+
+## v 1.5.7 - 12.01.2018
+
+### [changed]
+- upgraded pcg random dependency to version 1.0.1
+- explicitly define javafx dependency in pom
 
 ## v 1.5.6 - 08.01.2018
 
