@@ -118,7 +118,6 @@ public class MutableByteTest {
 		MutableByte i = new MutableByte((byte)4);
 		assertEquals(Byte.valueOf((byte)4), i.getAndDecrement());
 		assertEquals(Byte.valueOf((byte)3), i.getValue());
-		Byte b;
 	}
 
 	/**

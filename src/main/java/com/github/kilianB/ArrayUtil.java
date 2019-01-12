@@ -196,6 +196,7 @@ public class ArrayUtil {
 	 * @throws Exception if an exception occurs during cloning of individual objects
 	 * @since 1.0.0
 	 */
+	@SuppressWarnings("unchecked")
 	@Deprecated
 	public static <T> T[] deepArrayCopyClone(T[] array) throws Exception {
 		if (0 >= array.length)
@@ -383,6 +384,7 @@ public class ArrayUtil {
 		return array;
 	}
 
+	@SuppressWarnings("unchecked")
 	private static <T> T fillArrayMulti(T array, Function<Integer, T> s, int index) {
 		if (array != null && array.getClass().isArray()) {
 			int length = Array.getLength(array);

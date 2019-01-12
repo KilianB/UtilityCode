@@ -24,6 +24,8 @@ public class KMeans implements ClusterAlgorithm {
 	 */
 	protected DistanceFunction distanceFunction;
 
+	protected int lastIterationCount;
+
 	/**
 	 * Create a KMeans clusterer with k clusters and EuclideanDistance.
 	 * 
@@ -32,8 +34,6 @@ public class KMeans implements ClusterAlgorithm {
 	public KMeans(int clusters) {
 		this(clusters, new EuclideanDistance());
 	}
-	
-	protected int lastIterationCount;
 
 	/**
 	 * Create a KMeans clusterer
@@ -67,7 +67,7 @@ public class KMeans implements ClusterAlgorithm {
 
 		// 0 = choose random start clusters
 		DoubleSummaryStatistics[][] clusterMeans = computeStartingClusters(data, k, dataDimension);
-		
+
 		// Iteratively improve clusters
 		computeKMeans(clusterMeans, data, cluster, dataDimension);
 
