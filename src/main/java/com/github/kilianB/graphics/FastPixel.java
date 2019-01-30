@@ -134,7 +134,8 @@ public interface FastPixel {
 	 * @since 1.4.5
 	 */
 	void setAlpha(int[][] newAlpha);
-
+	
+	
 	/**
 	 * Get the red value at the specified offset
 	 * 
@@ -165,6 +166,14 @@ public interface FastPixel {
 	 */
 	int[][] getRed();
 
+	/**
+	 * Get the red component of the entire image mapped to a 1d array 
+	 * 
+	 * @return the red values
+	 * @since 1.5.5
+	 */
+	int[] getRed1D();
+	
 	/**
 	 * Set the red value of the specified pixel
 	 * 
@@ -253,6 +262,21 @@ public interface FastPixel {
 	 */
 	int[][] getGreen();
 
+	/**
+	 * Get the green component of the entire image mapped to a 1d array 
+	 * 
+	 * @return the green values
+	 * @since 1.5.5
+	 */
+	int[] getGreen1D();
+	
+	/**
+	 * Get the blue value of the specified offset
+	 * 
+	 * @param index the offset of the underlying array
+	 * @return the green value in range [0-255]
+	 * @since 1.5.0
+	 */
 	int getBlue(int index);
 
 	/**
@@ -290,6 +314,14 @@ public interface FastPixel {
 	 */
 	int[][] getBlue();
 
+	/**
+	 * Get the blue component of the entire image mapped to a 1d array 
+	 * 
+	 * @return the red values
+	 * @since 1.5.5
+	 */
+	int[] getBlue1D();
+	
 	/**
 	 * Set new blue values for the entire picture
 	 * 

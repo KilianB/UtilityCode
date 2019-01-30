@@ -86,6 +86,11 @@ Distributed via Bintray
 
 ## Changelog
 
+## v 1.5.8 - SNAPSHOT
+
+### added
+- support for 1d blue red and green retrieval
+
 ## v 1.5.4 - 26.12.2018
 
 ### [added]

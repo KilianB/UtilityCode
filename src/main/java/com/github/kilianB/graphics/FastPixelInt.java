@@ -9,19 +9,13 @@ import com.github.kilianB.MathUtil;
  * @author Kilian
  *
  */
-public class FastPixelInt implements FastPixel {
+public class FastPixelInt extends FastPixelImpl {
 	
 	/** Full alpha constant */
 	private static final int FULL_ALPHA = 255 << 24;
 
 	/** True if the underlying image has an alpha component */
 	private boolean alpha;
-
-	/** Width of the image */
-	private int width;
-
-	/** Height of the image */
-	private int height;
 
 	/** Raw data */
 	private int[] imageData;
@@ -49,6 +43,8 @@ public class FastPixelInt implements FastPixel {
 	 */
 	public FastPixelInt(BufferedImage bImage) {
 
+		super(bImage.getWidth(),bImage.getHeight());
+		
 		imageData = ((DataBufferInt) bImage.getRaster().getDataBuffer()).getData();
 
 		switch (bImage.getType()) {
@@ -78,9 +74,7 @@ public class FastPixelInt implements FastPixel {
 		greenOffset = MathUtil.getLowerShiftBitMask(greenMask);
 		blueOffset = MathUtil.getLowerShiftBitMask(blueMask);
 		alphaOffset = MathUtil.getLowerShiftBitMask(alphaMask);
-		
-		width = bImage.getWidth();
-		height = bImage.getHeight();
+
 	}
 	
 	@Override

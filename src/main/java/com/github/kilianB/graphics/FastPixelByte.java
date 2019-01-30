@@ -3,6 +3,8 @@ package com.github.kilianB.graphics;
 import java.awt.image.BufferedImage;
 import java.awt.image.DataBufferByte;
 
+import com.github.kilianB.ArrayUtil;
+
 /**
  * High performant access of RGB/YCrCb/HSV Data.
  * 
@@ -16,7 +18,7 @@ import java.awt.image.DataBufferByte;
  * @author Kilian
  * @since 1.3.0
  */
-public class FastPixelByte implements FastPixel {
+public class FastPixelByte implements FastPixel{
 
 	/** Full alpha constant */
 	private static final int ALPHA_MASK = 255 << 24;
@@ -29,11 +31,10 @@ public class FastPixelByte implements FastPixel {
 	private final int bytesPerColor;
 
 	/** Width of the image */
-	private final int width;
-
+	protected final int width;
 	/** Height of the image */
-	private final int height;
-
+	protected final int height;
+	
 	/** Raw data */
 	private final byte[] imageData;
 
@@ -49,7 +50,6 @@ public class FastPixelByte implements FastPixel {
 	 * @since 1.3.0
 	 */
 	public FastPixelByte(BufferedImage bImage) {
-
 		imageData = ((DataBufferByte) bImage.getRaster().getDataBuffer()).getData();
 
 		if (bImage.getColorModel().hasAlpha()) {
@@ -61,8 +61,9 @@ public class FastPixelByte implements FastPixel {
 			alpha = false;
 			bytesPerColor = 3;
 		}
-		width = bImage.getWidth();
-		height = bImage.getHeight();
+		
+		this.width = bImage.getWidth();
+		this.height = bImage.getHeight();
 	}
 
 	@Override
@@ -160,29 +161,7 @@ public class FastPixelByte implements FastPixel {
 	public int getRed(int index) {
 		return imageData[index + alphaOffset + 2] & 0xFF;
 	}
-
-	/**
-	 * Get the red component of the entire image mapped to a 2d array representing
-	 * the x and y coordinates of the pixel.
-	 * 
-	 * @return the red values
-	 * @since 1.3.0
-	 */
-	@Override
-	public int[][] getRed() {
-		int[][] red = new int[width][height];
-		int x = 0;
-		int y = 0;
-		for (int i = 0; i < imageData.length; i += bytesPerColor) {
-			red[x][y] = getRed(i);
-			x++;
-			if (x >= width) {
-				x = 0;
-				y++;
-			}
-		}
-		return red;
-	}
+	
 
 	@Override
 	public void setRed(int index, int newRed) {
@@ -371,6 +350,52 @@ public class FastPixelByte implements FastPixel {
 	@Override
 	public boolean hasAlpha() {
 		return alpha;
+	}
+
+	@Override
+	public int[][] getRed() {
+		int[][] red = new int[width][height];
+		int x = 0;
+		int y = 0;
+		for (int i = 0; i < imageData.length; i += bytesPerColor) {
+			red[x][y] = getRed(i);
+			x++;
+			if (x >= width) {
+				x = 0;
+				y++;
+			}
+		}
+		return red;
+	}
+
+	@Override
+	public int[] getRed1D() {
+		int[] red = new int[width * height];
+		int j = 0;
+		for (int i = 0; i < imageData.length; i += bytesPerColor,j++) {
+			red[j] = getRed(i);
+		}
+		return red;
+	}
+
+	@Override
+	public int[] getGreen1D() {
+		int[] green = new int[width * height];
+		int j = 0;
+		for (int i = 0; i < imageData.length; i += bytesPerColor,j++) {
+			green[j] = getGreen(i);
+		}
+		return green;
+	}
+
+	@Override
+	public int[] getBlue1D() {
+		int[] blue = new int[width * height];
+		int j = 0;
+		for (int i = 0; i < imageData.length; i += bytesPerColor,j++) {
+			blue[j] = getBlue(i);
+		}
+		return blue;
 	}
 
 }

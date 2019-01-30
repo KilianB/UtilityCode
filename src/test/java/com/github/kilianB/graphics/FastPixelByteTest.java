@@ -9,6 +9,7 @@ import static org.junit.jupiter.api.Assertions.fail;
 
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+import java.util.Arrays;
 
 import javax.imageio.ImageIO;
 
@@ -47,7 +48,8 @@ class FastPixelByteTest {
 			green = ImageIO.read(FastPixelByteTest.class.getClassLoader().getResourceAsStream("green.png"));
 			blue = ImageIO.read(FastPixelByteTest.class.getClassLoader().getResourceAsStream("blue.png"));
 			brown = ImageIO.read(FastPixelByteTest.class.getClassLoader().getResourceAsStream("brown.png"));
-			brownOpacity = ImageIO.read(FastPixelByteTest.class.getClassLoader().getResourceAsStream("brownOpacity.png"));
+			brownOpacity = ImageIO
+					.read(FastPixelByteTest.class.getClassLoader().getResourceAsStream("brownOpacity.png"));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -63,7 +65,6 @@ class FastPixelByteTest {
 		assertEquals(FastPixelByte.class, FastPixel.create(brown).getClass());
 		assertEquals(FastPixelByte.class, FastPixel.create(brownOpacity).getClass());
 	}
-	
 
 	@Test
 	void hasAlphaFalse() {
@@ -231,6 +232,20 @@ class FastPixelByteTest {
 	}
 
 	@Test
+	void blueArray1D() {
+		FastPixel fp = FastPixel.create(lena);
+		int[] blue = fp.getBlue1D();
+		int[][] blue2D = fp.getBlue();
+		int i = 0;
+
+		for (int y = 0; y < lena.getHeight(); y++) {
+			for (int x = 0; x < lena.getWidth(); x++) {
+				assertEquals(blue[i++], blue2D[x][y]);
+			}
+		}
+	}
+
+	@Test
 	void setBlue() {
 		BufferedImage bi = new BufferedImage(10, 10, BufferedImage.TYPE_3BYTE_BGR);
 		FastPixel fp = FastPixel.create(bi);
@@ -351,8 +366,7 @@ class FastPixelByteTest {
 
 	@Test
 	void rgbArray() {
-		int arg[] = lena.getRGB(0, 0, lena.getWidth(), lena.getHeight(), null,
-				0, lena.getWidth());
+		int arg[] = lena.getRGB(0, 0, lena.getWidth(), lena.getHeight(), null, 0, lena.getWidth());
 		FastPixel fp = FastPixel.create(lena);
 		int[][] argFp = fp.getRGB();
 		for (int x = 0; x < lena.getWidth(); x++) {

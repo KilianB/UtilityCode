@@ -11,7 +11,7 @@ import java.awt.image.BufferedImage;
  * @author Kilian
  * @since 1.5.2
  */
-public class FastPixelSlowDefault implements FastPixel {
+public class FastPixelSlowDefault extends FastPixelImpl {
 
 	/** Full alpha constant */
 
@@ -28,12 +28,6 @@ public class FastPixelSlowDefault implements FastPixel {
 
 	/** True if the underlying image has an alpha component */
 	private final boolean alpha;
-
-	/** Width of the image */
-	private final int width;
-
-	/** Height of the image */
-	private final int height;
 
 	/** Raw data */
 	private final int[] rgbImageData;
@@ -53,10 +47,8 @@ public class FastPixelSlowDefault implements FastPixel {
 	 */
 	public FastPixelSlowDefault(BufferedImage bImage) {
 
+		super(bImage.getWidth(),bImage.getHeight());
 		alpha = bImage.getColorModel().hasAlpha();
-
-		width = bImage.getWidth();
-		height = bImage.getHeight();
 
 		rgbImageData = bImage.getRGB(0, 0, width, height, null, 0, width);
 

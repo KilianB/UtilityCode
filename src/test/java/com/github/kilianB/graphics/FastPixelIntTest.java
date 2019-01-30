@@ -9,6 +9,7 @@ import static org.junit.jupiter.api.Assertions.fail;
 
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+import java.util.Arrays;
 
 import javax.imageio.ImageIO;
 
@@ -184,6 +185,20 @@ class FastPixelIntTest {
 		for (int x = 0; x < lena.getWidth(); x++) {
 			for (int y = 0; y < lena.getHeight(); y++) {
 				assertEquals(fp.getGreen(x, y), green[x][y]);
+			}
+		}
+	}
+
+	@Test
+	void blueArray1D() {
+		FastPixel fp = FastPixel.create(lena);
+		int[] green = fp.getBlue1D();
+		int[][] green2D = fp.getBlue();
+		int i = 0;
+		
+		for (int y = 0; y < lena.getHeight(); y++) {
+			for (int x = 0; x < lena.getWidth(); x++) {
+				assertEquals(green[i++], green2D[x][y]);
 			}
 		}
 	}
