@@ -18,17 +18,17 @@ public class DBScan implements ClusterAlgorithm {
 	 * number of neighboors a points has to have in order to be considered a core
 	 * point
 	 */
-	int minPoints;
+	private int minPoints;
 
 	/** max distance to look for neightboors */
-	double eps;
+	private double eps;
 
-	DistanceFunction dist;
+	private DistanceFunction dist;
 
 	public DBScan(int minPoints, double eps) {
-		this(minPoints,eps,new EuclideanDistance());
+		this(minPoints, eps, new EuclideanDistance());
 	}
-	
+
 	public DBScan(int minPoints, double eps, DistanceFunction dist) {
 
 		this.minPoints = minPoints;
@@ -78,10 +78,8 @@ public class DBScan implements ClusterAlgorithm {
 			List<Integer> neighboor = new ArrayList<>();
 
 			for (int j = 0; j < data.length; j++) {
-				if (i != j) {
-					if (dist.distance(data[i], data[j]) <= eps) {
-						neighboor.add(j);
-					}
+				if (i != j && dist.distance(data[i], data[j]) <= eps) {
+					neighboor.add(j);
 				}
 			}
 
@@ -90,7 +88,7 @@ public class DBScan implements ClusterAlgorithm {
 				cluster[i] = -1;
 				continue;
 			}
-			
+
 			clusters++;
 			// Cluster
 			cluster[i] = clusters;

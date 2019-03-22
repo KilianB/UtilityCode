@@ -15,14 +15,14 @@ import org.junit.jupiter.api.Test;
 class CryptoUtilTest {
 
 	@Test
-	void deriveKeyIdentity() {
+	protected void deriveKeyIdentity() {
 		SecretKey key = CryptoUtil.deriveKey(new char[] { 5, 1, 5, 1, 2, 3 });
 		SecretKey key1 = CryptoUtil.deriveKey(new char[] { 5, 1, 5, 1, 2, 3 });
 		assertTrue(key.equals(key1));
 	}
 
 	@Test
-	void encryptDecrypt() {
+	protected void encryptDecrypt() {
 		String original = "MySecret";
 		SecretKey key = CryptoUtil.deriveKey(new char[] { 5, 1, 5, 1, 2, 3 });
 

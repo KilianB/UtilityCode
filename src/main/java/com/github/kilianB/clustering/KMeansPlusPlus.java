@@ -67,7 +67,7 @@ public class KMeansPlusPlus extends KMeans {
 
 				// find the minimum distance to all already existing clusters
 				for (int j = 0; j < cluster; j++) {
-					double distTemp = distanceFunction.distanceSquared(clusterMeans[0], data[i]);
+					double distTemp = distanceFunction.distanceSquared(clusterMeans[j], data[i]);
 					if (distTemp < distance[i]) {
 						distance[i] = distTemp;
 					}
@@ -86,32 +86,9 @@ public class KMeansPlusPlus extends KMeans {
 			}
 
 			for (int i = 0; i < dataDimension; i++) {
-				clusterMeans[cluster][i].accept(data[cluster][i]);
+				clusterMeans[cluster][i].accept(data[i][i]);
 			}
 		}
 		return clusterMeans;
 	}
-
-	public static void main(String[] args) {
-
-//		double[][] data = { { 1d, 2d, 3d, 4d }, { 1d, 6d, 8d, 8d }, { 1d, 2d, 3d, 3d }, { 2d, 4d, 5d, 5d },
-//				{ 4d, 7d, 8d, 7d }, { 7d, 6d, 8d, 9d }, { 4d, 4d, 3d, 3d }, { 2d, 2d, 5d, 5d }, { 7d, 5d, 5d, 5d },
-//				{ 5d, 6d, 8d, 9d } };
-
-		int vars = 5;
-		double[][] data = new double[2000][vars];
-
-		Random rng = new PcgRSFast();
-		for (int i = 0; i < 2000; i++) {
-			for (int j = 0; j < vars; j++) {
-				data[i][j] = rng.nextInt(20);
-			}
-		}
-
-		for(int i = 0; i < 10; i++) {
-			new KMeansPlusPlus(4).cluster(data).printInformation();;
-			new KMeans(4).cluster(data).printInformation();;
-		}
-	}
-
 }

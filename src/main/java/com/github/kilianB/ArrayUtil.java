@@ -196,6 +196,7 @@ public class ArrayUtil {
 	 * @throws Exception if an exception occurs during cloning of individual objects
 	 * @since 1.0.0
 	 */
+	@SuppressWarnings("unchecked")
 	@Deprecated
 	public static <T> T[] deepArrayCopyClone(T[] array) throws Exception {
 		if (0 >= array.length)
@@ -383,6 +384,7 @@ public class ArrayUtil {
 		return array;
 	}
 
+	@SuppressWarnings("unchecked")
 	private static <T> T fillArrayMulti(T array, Function<Integer, T> s, int index) {
 		if (array != null && array.getClass().isArray()) {
 			int length = Array.getLength(array);
@@ -2216,6 +2218,370 @@ public class ArrayUtil {
 		for (int i = 0; i < arrDivisor.length; i++) {
 			arrDivisor[i] /= dividend[i];
 		}
+	}
+
+	/**
+	 * Calculates the average value of the array.
+	 * 
+	 * @param array the array to compute the average value for
+	 * @return the average value of the array or 0 if the array has a length of 0
+	 * @since 1.5.5
+	 */
+	public static double average(byte[] array) {
+		double avg = 0;
+		double numElem = array.length;
+		for (byte b : array) {
+			avg += b / numElem;
+		}
+		return avg;
+	}
+
+	/**
+	 * Calculates the average value of the array.
+	 * 
+	 * @param array the array to compute the average value for
+	 * @return the average value of the array or 0 if the array has a length of 0
+	 * @since 1.5.5
+	 */
+	public static double average(char[] array) {
+		double avg = 0;
+		double numElem = array.length;
+		for (char c : array) {
+			avg += c / numElem;
+		}
+		return avg;
+	}
+
+	/**
+	 * Calculates the average value of the array.
+	 * 
+	 * @param array the array to compute the average value for
+	 * @return the average value of the array or 0 if the array has a length of 0
+	 * @since 1.5.5
+	 */
+	public static double average(short[] array) {
+		double avg = 0;
+		double numElem = array.length;
+		for (short s : array) {
+			avg += s / numElem;
+		}
+		return avg;
+	}
+
+	/**
+	 * Calculates the average value of the array.
+	 * 
+	 * @param array the array to compute the average value for
+	 * @return the average value of the array or 0 if the array has a length of 0
+	 * @since 1.5.5
+	 */
+	public static double average(int[] array) {
+		double avg = 0;
+		double numElem = array.length;
+		for (int i : array) {
+			avg += i / numElem;
+		}
+		return avg;
+	}
+
+	/**
+	 * Calculates the average value of the array.
+	 * 
+	 * @param array the array to compute the average value for
+	 * @return the average value of the array or 0 if the array has a length of 0
+	 * @since 1.5.5
+	 */
+	public static double average(long[] array) {
+		double avg = 0;
+		double numElem = array.length;
+		for (long l : array) {
+			avg += l / numElem;
+		}
+		return avg;
+	}
+
+	/**
+	 * Calculates the average value of the array.
+	 * 
+	 * @param array the array to compute the average value for
+	 * @return the average value of the array or 0 if the array has a length of 0
+	 * @since 1.5.5
+	 */
+	public static double average(float[] array) {
+		double avg = 0;
+		double numElem = array.length;
+		for (float f : array) {
+			avg += f / numElem;
+		}
+		return avg;
+	}
+
+	/**
+	 * Calculates the average value of the array.
+	 * 
+	 * @param array the array to compute the average value for
+	 * @return the average value of the array or 0 if the array has a length of 0
+	 * @since 1.5.5
+	 */
+	public static double average(double[] array) {
+		double avg = 0;
+		double numElem = array.length;
+		for (double d : array) {
+			avg += d / numElem;
+		}
+		return avg;
+	}
+
+	/**
+	 * Calculates the average value of the 2d array.
+	 * 
+	 * @param array the array to compute the average value for
+	 * @return the average value of the array or 0 if the array has a length of 0
+	 * @since 1.5.5
+	 */
+	public static double average(byte[][] array) {
+		double avg = 0;
+		int w = array.length;
+		for (int i = 0; i < w; i++) {
+			avg += average(array[i]) / w;
+		}
+		return avg;
+	}
+
+	/**
+	 * Calculates the average value of the 2d array.
+	 * 
+	 * @param array the array to compute the average value for
+	 * @return the average value of the array or 0 if the array has a length of 0
+	 * @since 1.5.5
+	 */
+	public static double average(char[][] array) {
+		double avg = 0;
+		int w = array.length;
+		for (int i = 0; i < w; i++) {
+			avg += average(array[i]) / w;
+		}
+		return avg;
+	}
+
+	/**
+	 * Calculates the average value of the 2d array.
+	 * 
+	 * @param array the array to compute the average value for
+	 * @return the average value of the array or 0 if the array has a length of 0
+	 * @since 1.5.5
+	 */
+	public static double average(short[][] array) {
+		double avg = 0;
+		int w = array.length;
+		for (int i = 0; i < w; i++) {
+			avg += average(array[i]) / w;
+		}
+		return avg;
+	}
+
+	/**
+	 * Calculates the average value of the 2d array.
+	 * 
+	 * @param array the array to compute the average value for
+	 * @return the average value of the array or 0 if the array has a length of 0
+	 * @since 1.5.5
+	 */
+	public static double average(int[][] array) {
+		double avg = 0;
+		int w = array.length;
+		for (int i = 0; i < w; i++) {
+			avg += average(array[i]) / w;
+		}
+		return avg;
+	}
+
+	/**
+	 * Calculates the average value of the 2d array.
+	 * 
+	 * @param array the array to compute the average value for
+	 * @return the average value of the array or 0 if the array has a length of 0
+	 * @since 1.5.5
+	 */
+	public static double average(long[][] array) {
+		double avg = 0;
+		int w = array.length;
+		for (int i = 0; i < w; i++) {
+			avg += average(array[i]) / w;
+		}
+		return avg;
+	}
+
+	/**
+	 * Calculates the average value of the 2d array.
+	 * 
+	 * @param array the array to compute the average value for
+	 * @return the average value of the array or 0 if the array has a length of 0
+	 * @since 1.5.5
+	 */
+	public static double average(float[][] array) {
+		double avg = 0;
+		int w = array.length;
+		for (int i = 0; i < w; i++) {
+			avg += average(array[i]) / w;
+		}
+		return avg;
+	}
+
+	/**
+	 * Calculates the average value of the 2d array.
+	 * 
+	 * @param array the array to compute the average value for
+	 * @return the average value of the array or 0 if the array has a length of 0
+	 * @since 1.5.5
+	 */
+	public static double average(double[][] array) {
+		double avg = 0;
+		int w = array.length;
+		for (int i = 0; i < w; i++) {
+			avg += average(array[i]) / w;
+		}
+		return avg;
+	}
+
+	/**
+	 * Calculate the median value of the array
+	 * 
+	 * @param array the array to calculate the median value for.
+	 * @return the median value of the array
+	 * @throws ArrayIndexOutOfBoundsException if the array has a length of 0
+	 * @since 1.5.5
+	 */
+	public static double median(byte[] array) {
+		double medianValue;
+		int[] sortedIndices = ArrayUtil.getSortedIndices(array, true);
+		int midPoint = sortedIndices.length / 2;
+		if (sortedIndices.length % 2 == 0) {
+			medianValue = (array[sortedIndices[midPoint]] + array[sortedIndices[midPoint - 1]]) / 2d;
+		} else {
+			medianValue = array[sortedIndices[midPoint]];
+		}
+		return medianValue;
+	}
+
+	/**
+	 * Calculate the median value of the array
+	 * 
+	 * @param array the array to calculate the median value for.
+	 * @return the median value of the array
+	 * @throws ArrayIndexOutOfBoundsException if the array has a length of 0
+	 * @since 1.5.5
+	 */
+	public static double median(char[] array) {
+		double medianValue;
+		int[] sortedIndices = ArrayUtil.getSortedIndices(array, true);
+		int midPoint = sortedIndices.length / 2;
+		if (sortedIndices.length % 2 == 0) {
+			medianValue = (array[sortedIndices[midPoint]] + array[sortedIndices[midPoint - 1]]) / 2d;
+		} else {
+			medianValue = array[sortedIndices[midPoint]];
+		}
+		return medianValue;
+	}
+
+	/**
+	 * Calculate the median value of the array
+	 * 
+	 * @param array the array to calculate the median value for.
+	 * @return the median value of the array
+	 * @throws ArrayIndexOutOfBoundsException if the array has a length of 0
+	 * @since 1.5.5
+	 */
+	public static double median(short[] array) {
+		double medianValue;
+		int[] sortedIndices = ArrayUtil.getSortedIndices(array, true);
+		int midPoint = sortedIndices.length / 2;
+		if (sortedIndices.length % 2 == 0) {
+			medianValue = (array[sortedIndices[midPoint]] + array[sortedIndices[midPoint - 1]]) / 2d;
+		} else {
+			medianValue = array[sortedIndices[midPoint]];
+		}
+		return medianValue;
+	}
+
+	/**
+	 * Calculate the median value of the array
+	 * 
+	 * @param array the array to calculate the median value for.
+	 * @return the median value of the array
+	 * @throws ArrayIndexOutOfBoundsException if the array has a length of 0
+	 * @since 1.5.5
+	 */
+	public static double median(int[] array) {
+		double medianValue;
+		int[] sortedIndices = ArrayUtil.getSortedIndices(array, true);
+		int midPoint = sortedIndices.length / 2;
+		if (sortedIndices.length % 2 == 0) {
+			medianValue = (array[sortedIndices[midPoint]] + array[sortedIndices[midPoint - 1]]) / 2d;
+		} else {
+			medianValue = array[sortedIndices[midPoint]];
+		}
+		return medianValue;
+	}
+
+	/**
+	 * Calculate the median value of the array
+	 * 
+	 * @param array the array to calculate the median value for.
+	 * @return the median value of the array
+	 * @throws ArrayIndexOutOfBoundsException if the array has a length of 0
+	 * @since 1.5.5
+	 */
+	public static double median(long[] array) {
+		double medianValue;
+		int[] sortedIndices = ArrayUtil.getSortedIndices(array, true);
+		int midPoint = sortedIndices.length / 2;
+		if (sortedIndices.length % 2 == 0) {
+			medianValue = (array[sortedIndices[midPoint]] + array[sortedIndices[midPoint - 1]]) / 2d;
+		} else {
+			medianValue = array[sortedIndices[midPoint]];
+		}
+		return medianValue;
+	}
+
+	/**
+	 * Calculate the median value of the array
+	 * 
+	 * @param array the array to calculate the median value for.
+	 * @return the median value of the array
+	 * @throws ArrayIndexOutOfBoundsException if the array has a length of 0
+	 * @since 1.5.5
+	 */
+	public static double median(float[] array) {
+		double medianValue;
+		int[] sortedIndices = ArrayUtil.getSortedIndices(array, true);
+		int midPoint = sortedIndices.length / 2;
+		if (sortedIndices.length % 2 == 0) {
+			medianValue = (array[sortedIndices[midPoint]] + array[sortedIndices[midPoint - 1]]) / 2d;
+		} else {
+			medianValue = array[sortedIndices[midPoint]];
+		}
+		return medianValue;
+	}
+	
+	/**
+	 * Calculate the median value of the array
+	 * 
+	 * @param array the array to calculate the median value for.
+	 * @return the median value of the array
+	 * @throws ArrayIndexOutOfBoundsException if the array has a length of 0
+	 * @since 1.5.5
+	 */
+	public static double median(double[] array) {
+		double medianValue;
+		int[] sortedIndices = ArrayUtil.getSortedIndices(array, true);
+		int midPoint = sortedIndices.length / 2;
+		if (sortedIndices.length % 2 == 0) {
+			medianValue = (array[sortedIndices[midPoint]] + array[sortedIndices[midPoint - 1]]) / 2d;
+		} else {
+			medianValue = array[sortedIndices[midPoint]];
+		}
+		return medianValue;
 	}
 
 	public static <T> T get(Object array, int... index) {

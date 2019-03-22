@@ -21,15 +21,37 @@ Distributed via Bintray
 		<dependency>
 			<groupId>com.github.kilianB</groupId>
 			<artifactId>UtilityCode</artifactId>
-			<version>1.5.4</version>
+			<version>1.5.7</version>
 		</dependency>
 	</dependencies>
 ```
 
 <details>
 <summary>Gradle</summary>
-<code>compile 'com.github.kilianB:UtilityCode:1.5.3'</code>
+<code>compile 'com.github.kilianB:UtilityCode:1.5.7'</code>
 </details>
+
+
+## Examples
+
+
+````Java
+
+//Restart JVM
+MiscUtil.restartApp();
+
+//Enum hashcode
+int enumHashcode = MiscUtil.consistentHashCode(Weekday.Monday);
+
+//Array methods
+int[] values = {1,2,1,4,5,7,3,4,3,2};
+		
+ArrayUtil.median(values);
+ArrayUtil.average(values);
+ArrayUtil.add(values,5);
+
+...
+````
 
 ## Content
 

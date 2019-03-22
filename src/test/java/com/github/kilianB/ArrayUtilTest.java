@@ -22,7 +22,7 @@ import com.github.kilianB.mutable.MutableInteger;
 class ArrayUtilTest {
 
 	@Test
-	void fillArray() {
+	public void fillArray() {
 		Integer fill = Integer.MIN_VALUE;
 		Integer[] intArr = new Integer[10];
 		ArrayUtil.fillArray(intArr, () -> {
@@ -34,7 +34,7 @@ class ArrayUtilTest {
 	}
 
 	@Test
-	void fillArrayBool() {
+	public void fillArrayBool() {
 		boolean value = true;
 		boolean[] array = new boolean[10];
 		ArrayUtil.fillArray(array, () -> {
@@ -46,7 +46,7 @@ class ArrayUtilTest {
 	}
 
 	@Test
-	void fillArrayByte() {
+	public void fillArrayByte() {
 		byte value = 1;
 		byte[] array = new byte[10];
 		ArrayUtil.fillArray(array, () -> {
@@ -58,7 +58,7 @@ class ArrayUtilTest {
 	}
 
 	@Test
-	void fillArrayChar() {
+	public void fillArrayChar() {
 		char value = 'c';
 		char[] array = new char[10];
 		ArrayUtil.fillArray(array, () -> {
@@ -70,7 +70,7 @@ class ArrayUtilTest {
 	}
 
 	@Test
-	void fillArrayShort() {
+	public void fillArrayShort() {
 		short value = 1;
 		short[] array = new short[10];
 		ArrayUtil.fillArray(array, () -> {
@@ -82,7 +82,7 @@ class ArrayUtilTest {
 	}
 
 	@Test
-	void fillArrayFloat() {
+	public void fillArrayFloat() {
 		float value = 1f;
 		float[] array = new float[10];
 		ArrayUtil.fillArray(array, () -> {
@@ -94,7 +94,7 @@ class ArrayUtilTest {
 	}
 
 	@Test
-	void fillArrayDouble() {
+	public void fillArrayDouble() {
 		double value = 1d;
 		double[] array = new double[10];
 		ArrayUtil.fillArray(array, () -> {
@@ -106,7 +106,7 @@ class ArrayUtilTest {
 	}
 
 	@Test
-	void fillArrayInt() {
+	public void fillArrayInt() {
 		int value = 1;
 		int[] array = new int[10];
 		ArrayUtil.fillArray(array, () -> {
@@ -118,7 +118,7 @@ class ArrayUtilTest {
 	}
 
 	@Test
-	void fillArrayLong() {
+	public void fillArrayLong() {
 		long value = 1l;
 		long[] array = new long[10];
 		ArrayUtil.fillArray(array, () -> {
@@ -130,7 +130,7 @@ class ArrayUtilTest {
 	}
 
 	@Test
-	void fillArrayMulti() {
+	public void fillArrayMulti() {
 		Integer value = Integer.MIN_VALUE;
 		Integer[][] intArr = new Integer[10][10];
 		ArrayUtil.fillArrayMulti(intArr, () -> {
@@ -144,7 +144,7 @@ class ArrayUtilTest {
 	}
 
 	@Test
-	void fillArrayMultiOneElement() {
+	public void fillArrayMultiOneElement() {
 		Integer value = Integer.MIN_VALUE;
 		Integer intArr = null;
 		ArrayUtil.fillArrayMulti(intArr, () -> {
@@ -154,7 +154,7 @@ class ArrayUtilTest {
 	}
 
 	@Test
-	void fillArrayMultiThreeDims() {
+	public void fillArrayMultiThreeDims() {
 		Integer value = Integer.MIN_VALUE;
 		Integer[][][] intArr = new Integer[9][7][8];
 		ArrayUtil.fillArrayMulti(intArr, () -> {
@@ -170,7 +170,7 @@ class ArrayUtilTest {
 	}
 
 	@Test
-	void deepArrayCopyShallowOuter() {
+	public void deepArrayCopyShallowOuter() {
 		Integer[] intArr = new Integer[10];
 		for (int i = 0; i < 10; i++) {
 			intArr[i] = Integer.valueOf(i);
@@ -180,7 +180,7 @@ class ArrayUtilTest {
 	}
 
 	@Test
-	void deepArrayCopyElements() {
+	public void deepArrayCopyElements() {
 		Integer[] intArr = new Integer[10];
 		for (int i = 0; i < 10; i++) {
 			intArr[i] = Integer.valueOf(i);
@@ -192,7 +192,7 @@ class ArrayUtilTest {
 	// Now get to the nested part
 
 	@Test
-	void deepArrayCopyElementsMultiDim() {
+	public void deepArrayCopyElementsMultiDim() {
 		Integer[][] intArr = new Integer[10][];
 		for (int i = 0; i < 10; i++) {
 			intArr[i] = new Integer[4];
@@ -205,7 +205,7 @@ class ArrayUtilTest {
 	}
 
 	@Test
-	void deepArrayCopyElementsMultiDimNullValues() {
+	public void deepArrayCopyElementsMultiDimNullValues() {
 		Integer[][] intArr = new Integer[10][];
 		for (int i = 0; i < 10; i++) {
 			intArr[i] = new Integer[4];
@@ -215,7 +215,7 @@ class ArrayUtilTest {
 	}
 
 	@Test
-	void deepArrayCopyElementsMultiDeepReference() {
+	public void deepArrayCopyElementsMultiDeepReference() {
 		Point2D[][] intArr = new Point2D[10][];
 		for (int i = 0; i < 10; i++) {
 			intArr[i] = new Point2D[4];
@@ -232,7 +232,7 @@ class ArrayUtilTest {
 
 	@Test
 	@Disabled
-	void deepArrayCopyElementNested() {
+	public void deepArrayCopyElementNested() {
 		Object[] array = new Object[10];
 		for (int i = 0; i < 10; i++) {
 			if (i % 2 == 0) {
@@ -251,7 +251,7 @@ class ArrayUtilTest {
 
 	// Search
 	@Test
-	void linearSearch() {
+	public void linearSearch() {
 		Integer[] arr = new Integer[10];
 		MutableInteger i = new MutableInteger(0);
 		ArrayUtil.fillArray(arr, () -> {
@@ -261,7 +261,7 @@ class ArrayUtilTest {
 	}
 
 	@Test
-	void linearSearchNotInArray() {
+	public void linearSearchNotInArray() {
 		Integer[] arr = new Integer[10];
 		MutableInteger i = new MutableInteger(0);
 		ArrayUtil.fillArray(arr, () -> {
@@ -271,7 +271,7 @@ class ArrayUtilTest {
 	}
 
 	@Test
-	void linearSearchRange() {
+	public void linearSearchRange() {
 		Integer[] arr = new Integer[10];
 		MutableInteger i = new MutableInteger(0);
 		ArrayUtil.fillArray(arr, () -> {
@@ -281,7 +281,7 @@ class ArrayUtilTest {
 	}
 
 	@Test
-	void linearSearchRangeNotInArray() {
+	public void linearSearchRangeNotInArray() {
 		Integer[] arr = new Integer[10];
 		MutableInteger i = new MutableInteger(0);
 		ArrayUtil.fillArray(arr, () -> {
@@ -291,7 +291,7 @@ class ArrayUtilTest {
 	}
 
 	@Test
-	void linearSearchResultInLower() {
+	public void linearSearchResultInLower() {
 		Integer[] arr = new Integer[10];
 		MutableInteger i = new MutableInteger(0);
 		ArrayUtil.fillArray(arr, () -> {
@@ -301,7 +301,7 @@ class ArrayUtilTest {
 	}
 
 	@Test
-	void linearSearchRangeInUpper() {
+	public void linearSearchRangeInUpper() {
 		Integer[] arr = new Integer[10];
 		MutableInteger i = new MutableInteger(0);
 		ArrayUtil.fillArray(arr, () -> {
@@ -311,7 +311,7 @@ class ArrayUtilTest {
 	}
 
 	@Test
-	void frontBackSearch() {
+	public void frontBackSearch() {
 		Integer[] arr = new Integer[10];
 		MutableInteger i = new MutableInteger(0);
 		ArrayUtil.fillArray(arr, () -> {
@@ -321,7 +321,7 @@ class ArrayUtilTest {
 	}
 
 	@Test
-	void frontBackSearchNotInArray() {
+	public void frontBackSearchNotInArray() {
 		Integer[] arr = new Integer[10];
 		MutableInteger i = new MutableInteger(0);
 		ArrayUtil.fillArray(arr, () -> {
@@ -331,7 +331,7 @@ class ArrayUtilTest {
 	}
 
 	@Test
-	void frontBackSearchRange() {
+	public void frontBackSearchRange() {
 		Integer[] arr = new Integer[10];
 		MutableInteger i = new MutableInteger(0);
 		ArrayUtil.fillArray(arr, () -> {
@@ -341,7 +341,7 @@ class ArrayUtilTest {
 	}
 
 	@Test
-	void frontBackSearchRangeNotInArray() {
+	public void frontBackSearchRangeNotInArray() {
 		Integer[] arr = new Integer[10];
 		MutableInteger i = new MutableInteger(0);
 		ArrayUtil.fillArray(arr, () -> {
@@ -351,7 +351,7 @@ class ArrayUtilTest {
 	}
 
 	@Test
-	void frontBackSearchResultInLower() {
+	public void frontBackSearchResultInLower() {
 		Integer[] arr = new Integer[10];
 		MutableInteger i = new MutableInteger(0);
 		ArrayUtil.fillArray(arr, () -> {
@@ -361,7 +361,7 @@ class ArrayUtilTest {
 	}
 
 	@Test
-	void frontBackSearchRangeInUpper() {
+	public void frontBackSearchRangeInUpper() {
 		Integer[] arr = new Integer[10];
 		MutableInteger i = new MutableInteger(0);
 		ArrayUtil.fillArray(arr, () -> {
@@ -376,7 +376,7 @@ class ArrayUtilTest {
 		@Nested
 		class Add {
 			@Test
-			void byteAdd() {
+			public void byteAdd() {
 				byte[] arr = new byte[10];
 				byte[] test = new byte[10];
 
@@ -388,7 +388,7 @@ class ArrayUtilTest {
 			}
 
 			@Test
-			void charAdd() {
+			public void charAdd() {
 				char[] arr = new char[10];
 				char[] test = new char[10];
 
@@ -400,7 +400,7 @@ class ArrayUtilTest {
 			}
 
 			@Test
-			void shortAdd() {
+			public void shortAdd() {
 				short[] arr = new short[10];
 				short[] test = new short[10];
 
@@ -412,7 +412,7 @@ class ArrayUtilTest {
 			}
 
 			@Test
-			void intAdd() {
+			public void intAdd() {
 				int[] arr = new int[10];
 				int[] test = new int[10];
 
@@ -424,7 +424,7 @@ class ArrayUtilTest {
 			}
 
 			@Test
-			void longAdd() {
+			public void longAdd() {
 				long[] arr = new long[10];
 				long[] test = new long[10];
 
@@ -436,7 +436,7 @@ class ArrayUtilTest {
 			}
 
 			@Test
-			void floatAdd() {
+			public void floatAdd() {
 				float[] arr = new float[10];
 				float[] test = new float[10];
 
@@ -448,7 +448,7 @@ class ArrayUtilTest {
 			}
 
 			@Test
-			void doubleAdd() {
+			public void doubleAdd() {
 				double[] arr = new double[10];
 				double[] test = new double[10];
 
@@ -460,9 +460,10 @@ class ArrayUtilTest {
 			}
 		}
 
+		@Nested
 		class Subtract {
 			@Test
-			void byteSub() {
+			public void byteSub() {
 				byte[] arr = new byte[10];
 				byte[] test = new byte[10];
 
@@ -477,7 +478,7 @@ class ArrayUtilTest {
 			}
 
 			@Test
-			void charSub() {
+			public void charSub() {
 				char[] arr = new char[10];
 				char[] test = new char[10];
 
@@ -492,7 +493,7 @@ class ArrayUtilTest {
 			}
 
 			@Test
-			void shortSub() {
+			public void shortSub() {
 				short[] arr = new short[10];
 				short[] test = new short[10];
 
@@ -507,7 +508,7 @@ class ArrayUtilTest {
 			}
 
 			@Test
-			void intSub() {
+			public void intSub() {
 				int[] arr = new int[10];
 				int[] test = new int[10];
 
@@ -522,7 +523,7 @@ class ArrayUtilTest {
 			}
 
 			@Test
-			void longSub() {
+			public void longSub() {
 				long[] arr = new long[10];
 				long[] test = new long[10];
 
@@ -537,7 +538,7 @@ class ArrayUtilTest {
 			}
 
 			@Test
-			void floatSub() {
+			public void floatSub() {
 				float[] arr = new float[10];
 				float[] test = new float[10];
 
@@ -552,7 +553,7 @@ class ArrayUtilTest {
 			}
 
 			@Test
-			void doubleSub() {
+			public void doubleSub() {
 				double[] arr = new double[10];
 				double[] test = new double[10];
 
@@ -570,7 +571,7 @@ class ArrayUtilTest {
 		@Nested
 		class Multiply {
 			@Test
-			void byteMult() {
+			public void byteMult() {
 				byte[] arr = new byte[10];
 				byte[] test = new byte[10];
 
@@ -585,7 +586,7 @@ class ArrayUtilTest {
 			}
 
 			@Test
-			void charMult() {
+			public void charMult() {
 				char[] arr = new char[10];
 				char[] test = new char[10];
 
@@ -600,7 +601,7 @@ class ArrayUtilTest {
 			}
 
 			@Test
-			void shortMult() {
+			public void shortMult() {
 				short[] arr = new short[10];
 				short[] test = new short[10];
 
@@ -615,7 +616,7 @@ class ArrayUtilTest {
 			}
 
 			@Test
-			void intMult() {
+			public void intMult() {
 				int[] arr = new int[10];
 				int[] test = new int[10];
 
@@ -630,7 +631,7 @@ class ArrayUtilTest {
 			}
 
 			@Test
-			void longMult() {
+			public void longMult() {
 				long[] arr = new long[10];
 				long[] test = new long[10];
 
@@ -645,7 +646,7 @@ class ArrayUtilTest {
 			}
 
 			@Test
-			void floatMult() {
+			public void floatMult() {
 				float[] arr = new float[10];
 				float[] test = new float[10];
 
@@ -660,7 +661,7 @@ class ArrayUtilTest {
 			}
 
 			@Test
-			void doubleMult() {
+			public void doubleMult() {
 				double[] arr = new double[10];
 				double[] test = new double[10];
 
@@ -678,7 +679,7 @@ class ArrayUtilTest {
 		@Nested
 		class Divide {
 			@Test
-			void byteDiv() {
+			public void byteDiv() {
 				byte[] arr = new byte[10];
 				byte[] test = new byte[10];
 
@@ -693,7 +694,7 @@ class ArrayUtilTest {
 			}
 
 			@Test
-			void charDiv() {
+			public void charDiv() {
 				char[] arr = new char[10];
 				char[] test = new char[10];
 
@@ -708,7 +709,7 @@ class ArrayUtilTest {
 			}
 
 			@Test
-			void shortDiv() {
+			public void shortDiv() {
 				short[] arr = new short[10];
 				short[] test = new short[10];
 
@@ -723,7 +724,7 @@ class ArrayUtilTest {
 			}
 
 			@Test
-			void intDiv() {
+			public void intDiv() {
 				int[] arr = new int[10];
 				int[] test = new int[10];
 
@@ -738,7 +739,7 @@ class ArrayUtilTest {
 			}
 
 			@Test
-			void longDiv() {
+			public void longDiv() {
 				long[] arr = new long[10];
 				long[] test = new long[10];
 
@@ -753,7 +754,7 @@ class ArrayUtilTest {
 			}
 
 			@Test
-			void floatDiv() {
+			public void floatDiv() {
 				float[] arr = new float[10];
 				float[] test = new float[10];
 
@@ -768,7 +769,7 @@ class ArrayUtilTest {
 			}
 
 			@Test
-			void doubleDiv() {
+			public void doubleDiv() {
 				double[] arr = new double[10];
 				double[] test = new double[10];
 
@@ -789,7 +790,7 @@ class ArrayUtilTest {
 	class ComputeSortIndex {
 
 		@Test
-		void ascendingBool() {
+		public void ascendingBool() {
 
 			boolean[] b = { true, false, true };
 			int sortedIndices[] = ArrayUtil.getSortedIndices(b, false);
@@ -803,7 +804,7 @@ class ArrayUtilTest {
 		}
 
 		@Test
-		void descendingBool() {
+		public void descendingBool() {
 
 			boolean[] b = { true, false, true };
 			int sortedIndices[] = ArrayUtil.getSortedIndices(b, true);
@@ -817,7 +818,7 @@ class ArrayUtilTest {
 		}
 
 		@Test
-		void descendingByte() {
+		public void descendingByte() {
 
 			byte[] b = { 2, 1, 0, 4 };
 			int[] sorted = { 3, 0, 1, 2 };
@@ -828,7 +829,7 @@ class ArrayUtilTest {
 		}
 
 		@Test
-		void ascendingByte() {
+		public void ascendingByte() {
 
 			byte[] b = { 2, 1, 0, 4 };
 			int[] sorted = { 2, 1, 0, 3 };
@@ -837,7 +838,7 @@ class ArrayUtilTest {
 		}
 
 		@Test
-		void descendingChar() {
+		public void descendingChar() {
 
 			char[] b = { 2, 1, 0, 4 };
 			int[] sorted = { 3, 0, 1, 2 };
@@ -848,7 +849,7 @@ class ArrayUtilTest {
 		}
 
 		@Test
-		void ascendingChar() {
+		public void ascendingChar() {
 
 			char[] b = { 2, 1, 0, 4 };
 			int[] sorted = { 2, 1, 0, 3 };
@@ -857,7 +858,7 @@ class ArrayUtilTest {
 		}
 
 		@Test
-		void descendingShort() {
+		public void descendingShort() {
 
 			short[] b = { 2, 1, 0, 4 };
 			int[] sorted = { 3, 0, 1, 2 };
@@ -868,7 +869,7 @@ class ArrayUtilTest {
 		}
 
 		@Test
-		void ascendingShort() {
+		public void ascendingShort() {
 
 			short[] b = { 2, 1, 0, 4 };
 			int[] sorted = { 2, 1, 0, 3 };
@@ -877,7 +878,7 @@ class ArrayUtilTest {
 		}
 
 		@Test
-		void descendingInt() {
+		public void descendingInt() {
 
 			int[] b = { 2, 1, 0, 4 };
 			int[] sorted = { 3, 0, 1, 2 };
@@ -888,7 +889,7 @@ class ArrayUtilTest {
 		}
 
 		@Test
-		void ascendingInt() {
+		public void ascendingInt() {
 			int[] b = { 2, 1, 0, 4 };
 			int[] sorted = { 2, 1, 0, 3 };
 			int[] sortedIndices = ArrayUtil.getSortedIndices(b, false);
@@ -896,7 +897,7 @@ class ArrayUtilTest {
 		}
 
 		@Test
-		void descendingLong() {
+		public void descendingLong() {
 
 			long[] b = { 2, 1, 0, 4 };
 			int[] sorted = { 3, 0, 1, 2 };
@@ -907,7 +908,7 @@ class ArrayUtilTest {
 		}
 
 		@Test
-		void ascendingLong() {
+		public void ascendingLong() {
 			long[] b = { 2, 1, 0, 4 };
 			int[] sorted = { 2, 1, 0, 3 };
 			int[] sortedIndices = ArrayUtil.getSortedIndices(b, false);
@@ -915,7 +916,7 @@ class ArrayUtilTest {
 		}
 
 		@Test
-		void descendingFloat() {
+		public void descendingFloat() {
 
 			float[] b = { 2, 1, 0, 4 };
 			int[] sorted = { 3, 0, 1, 2 };
@@ -926,7 +927,7 @@ class ArrayUtilTest {
 		}
 
 		@Test
-		void ascendingFloat() {
+		public void ascendingFloat() {
 			float[] b = { 2, 1, 0, 4 };
 			int[] sorted = { 2, 1, 0, 3 };
 			int[] sortedIndices = ArrayUtil.getSortedIndices(b, false);
@@ -934,7 +935,7 @@ class ArrayUtilTest {
 		}
 
 		@Test
-		void descendingDouble() {
+		public void descendingDouble() {
 
 			double[] b = { 2, 1, 0, 4 };
 			int[] sorted = { 3, 0, 1, 2 };
@@ -945,36 +946,271 @@ class ArrayUtilTest {
 		}
 
 		@Test
-		void ascendingDouble() {
+		public void ascendingDouble() {
 			double[] b = { 2, 1, 0, 4 };
 			int[] sorted = { 2, 1, 0, 3 };
 			int[] sortedIndices = ArrayUtil.getSortedIndices(b, false);
 			assertArrayEquals(sorted, sortedIndices);
 		}
 
-		void negativeAscending() {
-
+		@Test
+		public void negativeAscending() {
 			int[] i = { -2, -5, 0, -3, 2 };
 			int[] sorted = { 1, 3, 0, 2, 4 };
 			int[] sortedIndices = ArrayUtil.getSortedIndices(i, false);
 			assertArrayEquals(sorted, sortedIndices);
 		}
 
-		void negativeDecending() {
+		@Test
+		public void negativeDecending() {
 
 			int[] i = { -2, -5, 0, -3, 2 };
 			int[] sorted = { 4, 2, 0, 3, 1 };
 			int[] sortedIndices = ArrayUtil.getSortedIndices(i, true);
 			assertArrayEquals(sorted, sortedIndices);
 		}
+	}
 
+	@Nested
+	class Median {
+
+		@Nested
+		class Byte {
+			@Test
+			public void singleByte() {
+				byte[] array = { 2 };
+				assertEquals(2, ArrayUtil.median(array));
+			}
+
+			@Test
+			public void byteOdd() {
+				byte[] array = { 3, 5, 7 };
+				assertEquals(5, ArrayUtil.median(array));
+			}
+
+			@Test
+			public void byteEven() {
+				byte[] array = { 1, 2 };
+				assertEquals(1.5, ArrayUtil.median(array));
+			}
+
+			@Test
+			public void same() {
+				byte[] array = { 0, 0, 1 };
+				assertEquals(0, ArrayUtil.median(array));
+			}
+
+			@Test
+			public void same2() {
+				byte[] array = { 1, 0, 1 };
+				assertEquals(1, ArrayUtil.median(array));
+			}
+		}
+
+		@Nested
+		class Char {
+			@Test
+			public void singleByte() {
+				char[] array = { 2 };
+				assertEquals(2, ArrayUtil.median(array));
+			}
+
+			@Test
+			public void byteOdd() {
+				char[] array = { 3, 5, 7 };
+				assertEquals(5, ArrayUtil.median(array));
+			}
+
+			@Test
+			public void byteEven() {
+				char[] array = { 1, 2 };
+				assertEquals(1.5, ArrayUtil.median(array));
+			}
+
+			@Test
+			public void same() {
+				char[] array = { 0, 0, 1 };
+				assertEquals(0, ArrayUtil.median(array));
+			}
+
+			@Test
+			public void same2() {
+				char[] array = { 1, 0, 1 };
+				assertEquals(1, ArrayUtil.median(array));
+			}
+		}
+
+		@Nested
+		class Short {
+			@Test
+			public void singleByte() {
+				short[] array = { 2 };
+				assertEquals(2, ArrayUtil.median(array));
+			}
+
+			@Test
+			public void byteOdd() {
+				short[] array = { 3, 5, 7 };
+				assertEquals(5, ArrayUtil.median(array));
+			}
+
+			@Test
+			public void byteEven() {
+				short[] array = { 1, 2 };
+				assertEquals(1.5, ArrayUtil.median(array));
+			}
+
+			@Test
+			public void same() {
+				short[] array = { 0, 0, 1 };
+				assertEquals(0, ArrayUtil.median(array));
+			}
+
+			@Test
+			public void same2() {
+				short[] array = { 1, 0, 1 };
+				assertEquals(1, ArrayUtil.median(array));
+			}
+		}
+
+		@Nested
+		class Int {
+			@Test
+			public void singleByte() {
+				int[] array = { 2 };
+				assertEquals(2, ArrayUtil.median(array));
+			}
+
+			@Test
+			public void byteOdd() {
+				int[] array = { 3, 5, 7 };
+				assertEquals(5, ArrayUtil.median(array));
+			}
+
+			@Test
+			public void byteEven() {
+				int[] array = { 1, 2 };
+				assertEquals(1.5, ArrayUtil.median(array));
+			}
+
+			@Test
+			public void same() {
+				int[] array = { 0, 0, 1 };
+				assertEquals(0, ArrayUtil.median(array));
+			}
+
+			@Test
+			public void same2() {
+				int[] array = { 1, 0, 1 };
+				assertEquals(1, ArrayUtil.median(array));
+			}
+		}
+
+		@Nested
+		class Long {
+			@Test
+			public void singleByte() {
+				long[] array = { 2 };
+				assertEquals(2, ArrayUtil.median(array));
+			}
+
+			@Test
+			public void byteOdd() {
+				long[] array = { 3, 5, 7 };
+				assertEquals(5, ArrayUtil.median(array));
+			}
+
+			@Test
+			public void byteEven() {
+				long[] array = { 1, 2 };
+				assertEquals(1.5, ArrayUtil.median(array));
+			}
+
+			@Test
+			public void same() {
+				long[] array = { 0, 0, 1 };
+				assertEquals(0, ArrayUtil.median(array));
+			}
+
+			@Test
+			public void same2() {
+				long[] array = { 1, 0, 1 };
+				assertEquals(1, ArrayUtil.median(array));
+			}
+		}
+
+		@Nested
+		class Float {
+			@Test
+			public void singleByte() {
+				float[] array = { 2 };
+				assertEquals(2, ArrayUtil.median(array));
+			}
+
+			@Test
+			public void byteOdd() {
+				float[] array = { 3, 5, 7 };
+				assertEquals(5, ArrayUtil.median(array));
+			}
+
+			@Test
+			public void byteEven() {
+				float[] array = { 1, 2 };
+				assertEquals(1.5, ArrayUtil.median(array));
+			}
+
+			@Test
+			public void same() {
+				float[] array = { 0, 0, 1 };
+				assertEquals(0, ArrayUtil.median(array));
+			}
+
+			@Test
+			public void same2() {
+				float[] array = { 1, 0, 1 };
+				assertEquals(1, ArrayUtil.median(array));
+			}
+		}
+
+		@Nested
+		class Double {
+			@Test
+			public void singleByte() {
+				double[] array = { 2 };
+				assertEquals(2, ArrayUtil.median(array));
+			}
+
+			@Test
+			public void byteOdd() {
+				double[] array = { 3, 5, 7 };
+				assertEquals(5, ArrayUtil.median(array));
+			}
+
+			@Test
+			public void byteEven() {
+				double[] array = { 1, 2 };
+				assertEquals(1.5, ArrayUtil.median(array));
+			}
+
+			@Test
+			public void same() {
+				double[] array = { 0, 0, 1 };
+				assertEquals(0, ArrayUtil.median(array));
+			}
+
+			@Test
+			public void same2() {
+				double[] array = { 1, 0, 1 };
+				assertEquals(1, ArrayUtil.median(array));
+			}
+		}
 	}
 
 }
 
 //		
 //		@Test 
-//		void deepArrayCopyEquivalent(){
+//		public void deepArrayCopyEquivalent(){
 //			Integer[] intArr = new Integer[10];
 //			for(int i = 0; i < 10; i++) {
 //				intArr[i] = Integer.valueOf(i);
