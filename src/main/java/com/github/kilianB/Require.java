@@ -9,6 +9,51 @@ import java.util.Collection;
 public class Require {
 
 	/**
+	 * Checks if the supplied argument is the exact numeric value as the supplied
+	 * argument and throws a IllegalArgumentException if it isn't
+	 * 
+	 * @param valueToCheck to be checked
+	 * @param target       the value to check against
+	 * @return The supplied value
+	 * @param <T> the type of the value
+	 * @since 1.5.8
+	 */
+	public static <T extends Number> T exact(T valueToCheck, T target) {
+		return exact(valueToCheck, target, null);
+	}
+
+	/**
+	 * Checks if the supplied argument is the exact numeric value as the supplied
+	 * argument and throws a IllegalArgumentException if it isn't
+	 * 
+	 * @param valueToCheck to be checked
+	 * @param target       the value to check against
+	 * @param message      to be thrown in case of error
+	 * @return The supplied value
+	 * @param <T> the type of the value
+	 * @since 1.5.8
+	 */
+	public static <T extends Number> T exact(T valueToCheck, T target, String message) {
+
+		if (valueToCheck instanceof Double || valueToCheck instanceof Float) {
+			if (valueToCheck.doubleValue() == target.doubleValue()) {
+				return valueToCheck;
+			}
+		} else {
+			if (valueToCheck.longValue() == target.longValue()) {
+				return valueToCheck;
+			}
+		}
+
+		if (message == null) {
+			throw new IllegalArgumentException();
+		} else {
+			throw new IllegalArgumentException(message);
+		}
+
+	}
+
+	/**
 	 * Checks if the supplied argument is a positive non null numeric value and
 	 * throws a IllegalArgumentException if it isn't
 	 * 

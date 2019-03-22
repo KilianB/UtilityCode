@@ -19,6 +19,78 @@ class RequireTest {
 	// TODO for long tests actually use numbers > than int max
 
 	@Nested
+	class RequireExact {
+
+		@Nested
+		class Integer {
+
+			@Test
+			void testZero() {
+				assertEquals(0,(int)Require.exact(0,0));
+			}
+
+			@Test
+			void testMinimal() {
+				assertEquals(java.lang.Integer.MIN_VALUE,(int)Require.exact(java.lang.Integer.MIN_VALUE,java.lang.Integer.MIN_VALUE));
+			}
+
+			@Test
+			void testMaximal() {
+				assertEquals(java.lang.Integer.MAX_VALUE,(int)Require.exact(java.lang.Integer.MAX_VALUE,java.lang.Integer.MAX_VALUE));
+			}
+
+			@Test
+			void testInvalid() {
+				assertThrows(IllegalArgumentException.class, () -> {
+					Require.exact(2,1);
+				});
+			}
+			
+			@Test
+			void testInvalidNegative() {
+				assertThrows(IllegalArgumentException.class, () -> {
+					Require.exact(-1,1);
+				});
+			}
+		}
+		
+		@Nested
+		class Double {
+
+			@Test
+			void testZero() {
+				assertEquals(0d,(double)Require.exact(0d,0d));
+			}
+
+			@Test
+			void testMinimal() {
+				assertEquals(-java.lang.Double.MAX_VALUE,(double)Require.exact(-java.lang.Double.MAX_VALUE,-java.lang.Double.MAX_VALUE));
+			}
+
+			@Test
+			void testMax() {
+				assertEquals(java.lang.Double.MAX_VALUE,(double)Require.exact(java.lang.Double.MAX_VALUE,java.lang.Double.MAX_VALUE));
+			}
+
+
+			@Test
+			void testInvalid() {
+				assertThrows(IllegalArgumentException.class, () -> {
+					Require.exact(2d,1d);
+				});
+			}
+			
+			@Test
+			void testInvalidNegative() {
+				assertThrows(IllegalArgumentException.class, () -> {
+					Require.exact(-1d,1d);
+				});
+			}
+		}
+
+	}
+	
+	@Nested
 	class RequirePositiveValue {
 
 		@Nested
