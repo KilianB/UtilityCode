@@ -21,14 +21,14 @@ Distributed via Bintray
 		<dependency>
 			<groupId>com.github.kilianB</groupId>
 			<artifactId>UtilityCode</artifactId>
-			<version>1.5.7</version>
+			<version>1.5.8</version>
 		</dependency>
 	</dependencies>
 ```
 
 <details>
 <summary>Gradle</summary>
-<code>compile 'com.github.kilianB:UtilityCode:1.5.7'</code>
+<code>compile 'com.github.kilianB:UtilityCode:1.5.8'</code>
 </details>
 
 
@@ -108,10 +108,11 @@ ArrayUtil.add(values,5);
 
 ## Changelog
 
-## v 1.5.8 - SNAPSHOT
+## v 1.5.8 - 22.03.2019
 
 ### added
 - support for 1d blue red and green retrieval
+- Require exact value
 
 ## v 1.5.4 - 26.12.2018
 
