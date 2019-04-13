@@ -108,7 +108,12 @@ ArrayUtil.add(values,5);
 
 ## Changelog
 
-## v 1.5.8 - 13.04.2019
+## v 1.5.10 - SNAPSHOT
+
+### changed
+- small coding style fixed to please codacay
+
+## v 1.5.9 - 13.04.2019
 
 ### added
 - retrieval of public facing ip address
