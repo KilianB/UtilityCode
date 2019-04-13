@@ -52,8 +52,8 @@ class NetworkUtilTest {
 		} catch (IOException | InterruptedException io) {
 			io.printStackTrace();
 		}
-
 	}
+	
 
 	@Test
 	void collectSocket() {
@@ -117,4 +117,11 @@ class NetworkUtilTest {
 			e.printStackTrace();
 		}
 	}
+
+	@Test
+	void publicIpAddress() throws IOException {
+		NetworkUtil.resolvePublicAddress();
+	}
+	
+
 }
