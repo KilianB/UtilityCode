@@ -26,7 +26,7 @@ class NetworkUtilTest {
 	private Socket outSocket;
 
 	@BeforeEach
-	void setupSocket() {
+	public void setupSocket() {
 		try {
 			ServerSocket ss = new ServerSocket(0);
 
@@ -56,7 +56,7 @@ class NetworkUtilTest {
 	
 
 	@Test
-	void collectSocket() {
+	public void collectSocket() {
 		// pipied output stream
 		try {
 			String testMessage = "HelloWorld1234";
@@ -72,7 +72,7 @@ class NetworkUtilTest {
 	}
 
 	@Test
-	void collectSocketTimeout() {
+	public void collectSocketTimeout() {
 		// pipied output stream
 		try {
 			String testMessage = "HelloWorld1234";
@@ -91,7 +91,7 @@ class NetworkUtilTest {
 	}
 
 	@Test
-	void collectSocketAndClose() {
+	public void collectSocketAndClose() {
 		// pipied output stream
 		try {
 			String testMessage = "HelloWorld1234";
@@ -109,7 +109,7 @@ class NetworkUtilTest {
 	}
 
 	@AfterEach
-	void closeSockets() {
+	public void closeSockets() {
 		try {
 			inSocket.close();
 			outSocket.close();
@@ -119,8 +119,13 @@ class NetworkUtilTest {
 	}
 
 	@Test
-	void publicIpAddress() throws IOException {
-		NetworkUtil.resolvePublicAddress();
+	public void publicIpAddress(){
+		try {
+			NetworkUtil.resolvePublicAddress();
+		}catch(IOException io) {
+			fail(io);
+		}
+		
 	}
 	
 
