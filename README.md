@@ -21,14 +21,14 @@ Distributed via Bintray
 		<dependency>
 			<groupId>com.github.kilianB</groupId>
 			<artifactId>UtilityCode</artifactId>
-			<version>1.5.8</version>
+			<version>1.5.9</version>
 		</dependency>
 	</dependencies>
 ```
 
 <details>
 <summary>Gradle</summary>
-<code>compile 'com.github.kilianB:UtilityCode:1.5.8'</code>
+<code>compile 'com.github.kilianB:UtilityCode:1.5.9'</code>
 </details>
 
 
@@ -107,6 +107,11 @@ ArrayUtil.add(values,5);
 </table>
 
 ## Changelog
+
+## v 1.5.8 - 13.04.2019
+
+### added
+- retrieval of public facing ip address
 
 ## v 1.5.8 - 22.03.2019
 
