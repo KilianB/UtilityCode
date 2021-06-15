@@ -6,6 +6,8 @@
 
 Selection of java utility methods used in almost all projects.
 
+Legacy code published to bintray. See master branch for new version
+
 ## Maven, Gradle, Ivy
 
 Distributed via Bintray 
