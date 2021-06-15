@@ -1,15 +1,9 @@
 package com.github.kilianB.graphics;
 
-import static org.junit.jupiter.api.Assertions.assertAll;
-import static org.junit.jupiter.api.Assertions.assertArrayEquals;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.junit.jupiter.api.Assertions.fail;
+import static org.junit.jupiter.api.Assertions.*;
 
 import java.awt.image.BufferedImage;
 import java.io.IOException;
-import java.util.Arrays;
 
 import javax.imageio.ImageIO;
 
@@ -577,6 +571,138 @@ class FastPixelByteTest {
 		for (int x = 0; x < brown.getWidth(); x++) {
 			for (int y = 0; y < brown.getHeight(); y++) {
 				assertEquals(92, fp.getVal(x, y));
+			}
+		}
+	}
+
+	// Correct new impl
+
+	@Test
+	void lumSameArray() {
+		FastPixel fp = new FastPixelByte(lena);
+		FastPixel fp1 = new FastPixelByte(lena);
+		int[][] lumArr = fp.getGreen();
+		int[][] lumArr1 = fp1.getGreen();
+		assertArrayEquals(lumArr, lumArr1);
+	}
+
+	@Test
+	void replaceOpacityBrownRed() {
+		FastPixel fp = FastPixel.create(brownOpacity);
+		fp.setReplaceOpaqueColors(300, 10, 11, 12, 255);
+		assertTrue(fp.isReplaceOpaqueColors());
+		for (int x = 0; x < brown.getWidth(); x++) {
+			for (int y = 0; y < brown.getHeight(); y++) {
+				assertEquals(10, fp.getRed(x, y));
+			}
+		}
+	}
+
+	@Test
+	void replaceOpacityBrownGreen() {
+		FastPixel fp = FastPixel.create(brownOpacity);
+		fp.setReplaceOpaqueColors(300, 10, 11, 12, 255);
+		assertTrue(fp.isReplaceOpaqueColors());
+		for (int x = 0; x < brown.getWidth(); x++) {
+			for (int y = 0; y < brown.getHeight(); y++) {
+				assertEquals(11, fp.getGreen(x, y));
+			}
+		}
+	}
+
+	@Test
+	void replaceOpacityBrownBlue() {
+		FastPixel fp = FastPixel.create(brownOpacity);
+		fp.setReplaceOpaqueColors(300, 10, 11, 12, 255);
+		assertTrue(fp.isReplaceOpaqueColors());
+		for (int x = 0; x < brown.getWidth(); x++) {
+			for (int y = 0; y < brown.getHeight(); y++) {
+				assertEquals(12, fp.getBlue(x, y));
+			}
+		}
+	}
+
+	@Test
+	void replaceOpacityBrownAlpha() {
+		FastPixel fp = FastPixel.create(brownOpacity);
+		fp.setReplaceOpaqueColors(300, 10, 11, 11, 255);
+		assertTrue(fp.isReplaceOpaqueColors());
+		for (int x = 0; x < brown.getWidth(); x++) {
+			for (int y = 0; y < brown.getHeight(); y++) {
+				assertEquals(255, fp.getAlpha(x, y));
+			}
+		}
+	}
+
+	@Test
+	void replaceOpacityBrownAlphaDeactivated() {
+		FastPixel fp = FastPixel.create(brownOpacity);
+		fp.setReplaceOpaqueColors(255, 10, 11, 11, 255);
+		fp.setReplaceOpaqueColors(-1, 10, 11, 11, 255);
+		assertFalse(fp.isReplaceOpaqueColors());
+		for (int x = 0; x < brown.getWidth(); x++) {
+			for (int y = 0; y < brown.getHeight(); y++) {
+				int[] comp = ColorUtil.argbToComponents(brownOpacity.getRGB(x, y));
+				assertEquals(comp[0], fp.getAlpha(x, y));
+			}
+		}
+	}
+
+	@Test
+	void replaceRedBrownAlphaDeactivated() {
+		FastPixel fp = FastPixel.create(brownOpacity);
+		fp.setReplaceOpaqueColors(255, 10, 11, 11, 255);
+		fp.setReplaceOpaqueColors(-1, 10, 11, 11, 255);
+		assertFalse(fp.isReplaceOpaqueColors());
+		for (int x = 0; x < brown.getWidth(); x++) {
+			for (int y = 0; y < brown.getHeight(); y++) {
+				int[] comp = ColorUtil.argbToComponents(brownOpacity.getRGB(x, y));
+				assertEquals(comp[1], fp.getRed(x, y));
+			}
+		}
+	}
+
+	@Test
+	void replaceGreenBrownAlphaDeactivated() {
+		FastPixel fp = FastPixel.create(brownOpacity);
+		fp.setReplaceOpaqueColors(255, 10, 11, 11, 255);
+		fp.setReplaceOpaqueColors(-1, 10, 11, 11, 255);
+		assertFalse(fp.isReplaceOpaqueColors());
+		for (int x = 0; x < brown.getWidth(); x++) {
+			for (int y = 0; y < brown.getHeight(); y++) {
+				int[] comp = ColorUtil.argbToComponents(brownOpacity.getRGB(x, y));
+				assertEquals(comp[2], fp.getGreen(x, y));
+			}
+		}
+	}
+
+	@Test
+	void replaceBlueBrownAlphaDeactivated() {
+		FastPixel fp = FastPixel.create(brownOpacity);
+		fp.setReplaceOpaqueColors(255, 10, 11, 11, 255);
+		fp.setReplaceOpaqueColors(-1, 10, 11, 11, 255);
+		assertFalse(fp.isReplaceOpaqueColors());
+		for (int x = 0; x < brown.getWidth(); x++) {
+			for (int y = 0; y < brown.getHeight(); y++) {
+				int[] comp = ColorUtil.argbToComponents(brownOpacity.getRGB(x, y));
+				assertEquals(comp[3], fp.getBlue(x, y));
+			}
+		}
+	}
+
+	@Test
+	void replaceBlueBrownReplacePartial() {
+		FastPixel fp = FastPixel.create(brownOpacity);
+		fp.setReplaceOpaqueColors(120, 10, 11, 11, 255);
+		for (int x = 0; x < brown.getWidth(); x++) {
+			for (int y = 0; y < brown.getHeight(); y++) {
+				int[] comp = ColorUtil.argbToComponents(brownOpacity.getRGB(x, y));
+				if (comp[0] <= 120) {
+					assertEquals(10, fp.getRed(x, y));
+				} else {
+					assertEquals(comp[1], fp.getRed(x, y));
+				}
+
 			}
 		}
 	}

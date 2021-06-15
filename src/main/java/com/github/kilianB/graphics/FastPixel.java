@@ -3,6 +3,8 @@ package com.github.kilianB.graphics;
 import java.awt.image.BufferedImage;
 import java.util.logging.Logger;
 
+import javafx.scene.paint.Color;
+
 /**
  * Utility class to access pixel data in a fraction of the time required by the
  * native JDK methods.
@@ -42,6 +44,48 @@ public interface FastPixel {
 			// "The image type is currently not supported: " + bufferedImage.getType());
 			//
 		}
+	}
+
+	/**
+	 * Check if the pixel loader replaces opaque colors with a non opaque version.
+	 * Opaque values are replaced only on get operations. To activate this option
+	 * call {@link #setReplaceOpaqueColors(int, int, int, int)} and set a color
+	 * which will be returned in case that the pixel has an alpha value smaller than
+	 * the specified threshold
+	 * 
+	 * 
+	 * @return true if opaque colors are replaced by a user defined color
+	 */
+	boolean isReplaceOpaqueColors();
+
+	/**
+	 * Replace all pixels values in the image which have an alpha < than the
+	 * specified threshold. The pixel value is replaced for all get operations,
+	 * including luminosity calculation. Set operations are not touched by this
+	 * setting.
+	 * 
+	 * @param alphaThreshold replace each pixel which has an alpha value smaller or
+	 *                       equal to the threshold in the range of [0-255]. A value
+	 *                       of will disabled color replacement
+	 * @param r              the red value which will be returned in case of an
+	 *                       opaque pixel [0-255]
+	 * @param g              the green value which will be returned in case of an
+	 *                       opaque pixel [0-255]
+	 * @param b              the blue value which will be returned in case of an
+	 *                       opaque pixel [0-255]
+	 * @param a              the alpha value which will be returned in case of an
+	 *                       opaque pixel [0-255]
+	 * @since 1.0.0
+	 */
+	void setReplaceOpaqueColors(int alphaThreshold, int r, int g, int b, int a);
+
+	default void setReplaceOpaqueColors(int alphaThreshold, java.awt.Color replacementColor) {
+		setReplaceOpaqueColors(alphaThreshold, replacementColor.getRed(), replacementColor.getGreen(),
+				replacementColor.getBlue(), replacementColor.getAlpha());s
+	}
+
+	default void setReplaceOpaqueColors(int alphaThreshold, Color replacementColor) {
+		setReplaceOpaqueColors(alphaThreshold, ColorUtil.fxToAwtColor(replacementColor));
 	}
 
 	int getRGB(int index);

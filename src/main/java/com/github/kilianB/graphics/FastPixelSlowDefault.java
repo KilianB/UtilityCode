@@ -9,7 +9,7 @@ import java.awt.image.BufferedImage;
  * implementations should be replaced by faster alternatives in the future.
  * 
  * @author Kilian
- * @since 1.5.2
+ * @since 1.5.2 com.github.kilianB
  */
 public class FastPixelSlowDefault extends FastPixelImpl {
 
@@ -26,9 +26,7 @@ public class FastPixelSlowDefault extends FastPixelImpl {
 	private static final int BLUE_MASK = 255 << 0;
 	private static final int BLUE_MASK_INVERSE = FULL ^ (BLUE_MASK);
 
-	/** True if the underlying image has an alpha component */
-	private final boolean alpha;
-
+	
 	/** Raw data */
 	private final int[] rgbImageData;
 
@@ -43,7 +41,7 @@ public class FastPixelSlowDefault extends FastPixelImpl {
 	 * (such as caching an associated image in video memory).
 	 * 
 	 * @param bImage The buffered image to extract data from
-	 * @since 1.3.0
+	 * @since 1.3.0 com.github.kilianB
 	 */
 	public FastPixelSlowDefault(BufferedImage bImage) {
 
@@ -76,30 +74,12 @@ public class FastPixelSlowDefault extends FastPixelImpl {
 	}
 
 	@Override
-	public int getAlpha(int index) {
+	public int getAlphaInternal(int index) {
 		if (!alpha) {
 			return -1;
 		} else {
 			return (rgbImageData[index] & ALPHA_MASK) >>> 24;
 		}
-	}
-
-	@Override
-	public int[][] getAlpha() {
-		if (!alpha)
-			return null;
-		int[][] alpha = new int[width][height];
-		int x = 0;
-		int y = 0;
-		for (int i = 0; i < rgbImageData.length; i++) {
-			alpha[x][y] = getAlpha(i);
-			x++;
-			if (x >= width) {
-				x = 0;
-				y++;
-			}
-		}
-		return alpha;
 	}
 
 	@Override
@@ -124,24 +104,8 @@ public class FastPixelSlowDefault extends FastPixelImpl {
 	}
 
 	@Override
-	public int getRed(int index) {
+	public int getRedInternal(int index) {
 		return (rgbImageData[index] & RED_MASK) >>> 16;
-	}
-
-	@Override
-	public int[][] getRed() {
-		int[][] red = new int[width][height];
-		int x = 0;
-		int y = 0;
-		for (int i = 0; i < rgbImageData.length; i++) {
-			red[x][y] = getRed(i);
-			x++;
-			if (x >= width) {
-				x = 0;
-				y++;
-			}
-		}
-		return red;
 	}
 
 	@Override
@@ -155,7 +119,6 @@ public class FastPixelSlowDefault extends FastPixelImpl {
 	public void setRed(int[][] newRed) {
 		for (int x = 0; x < newRed.length; x++) {
 			for (int y = 0; y < newRed[x].length; y++) {
-				// setRed(getOffset(x,y),newRed[x][y]);
 				int index = getOffset(x, y);
 				int newRGB = getRGB(index) & RED_MASK_INVERSE | (newRed[x][y] << 16);
 				rgbImageData[index] = newRGB;
@@ -165,7 +128,7 @@ public class FastPixelSlowDefault extends FastPixelImpl {
 	}
 
 	@Override
-	public int getGreen(int index) {
+	public int getGreenInternal(int index) {
 		return (rgbImageData[index] & GREEN_MASK) >>> 8;
 	}
 
@@ -190,23 +153,7 @@ public class FastPixelSlowDefault extends FastPixelImpl {
 	}
 
 	@Override
-	public int[][] getGreen() {
-		int[][] green = new int[width][height];
-		int x = 0;
-		int y = 0;
-		for (int i = 0; i < rgbImageData.length; i++) {
-			green[x][y] = getGreen(i);
-			x++;
-			if (x >= width) {
-				x = 0;
-				y++;
-			}
-		}
-		return green;
-	}
-
-	@Override
-	public int getBlue(int index) {
+	public int getBlueInternal(int index) {
 		return rgbImageData[index] & BLUE_MASK;
 	}
 
@@ -215,22 +162,6 @@ public class FastPixelSlowDefault extends FastPixelImpl {
 		int newRGB = getRGB(index) & BLUE_MASK_INVERSE | (newBlue);
 		rgbImageData[index] = newRGB;
 		bImage.setRGB(getX(index), getY(index), newRGB);
-	}
-
-	@Override
-	public int[][] getBlue() {
-		int[][] blue = new int[width][height];
-		int x = 0;
-		int y = 0;
-		for (int i = 0; i < rgbImageData.length; i++) {
-			blue[x][y] = getBlue(i);
-			x++;
-			if (x >= width) {
-				x = 0;
-				y++;
-			}
-		}
-		return blue;
 	}
 
 	@Override
@@ -246,59 +177,9 @@ public class FastPixelSlowDefault extends FastPixelImpl {
 	}
 
 	@Override
-	public int[][] getAverageGrayscale() {
-		int[][] gray = new int[width][height];
-		int x = 0;
-		int y = 0;
-		for (int i = 0; i < rgbImageData.length; i++) {
-			gray[x][y] = getAverageGrayscale(i);
-			x++;
-			if (x >= width) {
-				x = 0;
-				y++;
-			}
-		}
-		return gray;
-	}
-
-	@Override
 	public void setAverageGrayscale(int[][] newGrayValue) {
-		for (int x = 0; x < newGrayValue.length; x++) {
-			for (int y = 0; y < newGrayValue[x].length; y++) {
-				this.setAverageGrayscale(x, y, newGrayValue[x][y]);
-			}
-		}
+		super.setAverageGrayscale(newGrayValue);
 		bImage.setRGB(0, 0, width, height, rgbImageData, 0, width);
-	}
-
-	@Override
-	public int[][] getLuma() {
-		int[][] luma = new int[width][height];
-		int x = 0;
-		int y = 0;
-		for (int i = 0; i < rgbImageData.length; i++) {
-			luma[x][y] = getLuma(i);
-			x++;
-			if (x >= width) {
-				x = 0;
-				y++;
-			}
-		}
-		return luma;
-	}
-
-	@Override
-	public int[] getLuma1D() {
-		int[] luma = new int[width*height];
-		for (int i = 0; i < rgbImageData.length; i++) {
-			luma[i] = getLuma(i);
-		}
-		return luma;
-	}
-
-	@Override
-	public boolean hasAlpha() {
-		return alpha;
 	}
 
 	@Override
