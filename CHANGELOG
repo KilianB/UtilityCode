@@ -1,0 +1,18 @@
+
+
+
+# 2.0.0  - 15.06.2021
+
+## Changed
+- rename packages from com.github.kilianB to dev.brachtendorf
+
+
+# 1.0.0 Major update. rename group id and deploy on maven central - 15.06.2021
+
+## Added 
+- FastPixel now support replacement of opaque pixels
+
+## Changed
+- Updated javafx dependency version to point to stable v11 release
+- update build dependencies and pom in preparation for maven central deployment
+- build target java 11
