@@ -27,7 +27,7 @@ public class ArrayUtil {
 	 * @param array         The array content to convert to a string
 	 * @param decimalPlaces the number of fractional numbers shown for each entry
 	 * @return a string representation of the double array
-	 * @since 1.0.0
+	 * @since 1.0.0 com.github.kilianB
 	 */
 	public static String toString(double[] array, int decimalPlaces) {
 		return toString((Object) array, decimalPlaces);
@@ -44,7 +44,7 @@ public class ArrayUtil {
 	 * @param array         The array content to convert to a string
 	 * @param decimalPlaces the number of fractional numbers shown for each entry
 	 * @return a string representation of the float array
-	 * @since 1.0.0
+	 * @since 1.0.0 com.github.kilianB
 	 */
 	public static String toString(float[] array, int decimalPlaces) {
 		return toString((Object) array, decimalPlaces);
@@ -57,7 +57,7 @@ public class ArrayUtil {
 	 * @param boxedFloats   Array of floating point numbers
 	 * @param decimalPlaces the number of decimal places to display
 	 * @return the string representation of the array
-	 * @since 1.0.0
+	 * @since 1.0.0 com.github.kilianB
 	 */
 	private static String toString(Object boxedFloats, int decimalPlaces) {
 		String format = "%." + decimalPlaces + "f";
@@ -91,7 +91,7 @@ public class ArrayUtil {
 	 * 
 	 * @param array the array whose string representation to return
 	 * @return a formatted string representation of the array
-	 * @since 1.5.0
+	 * @since 1.5.0 com.github.kilianB
 	 */
 	public static String deepToStringFormatted(Object[] array) {
 		String s = Arrays.deepToString(array);
@@ -108,7 +108,7 @@ public class ArrayUtil {
 	 * 
 	 * @param array the array whose string representation to return
 	 * @return a formatted string representation of the array
-	 * @since 1.5.0
+	 * @since 1.5.0 com.github.kilianB
 	 */
 	public static String deepToString(Object[] array) {
 		return Arrays.deepToString(array);
@@ -122,7 +122,7 @@ public class ArrayUtil {
 	 * 
 	 * @param array the array whose string representation to return
 	 * @return a string representation of the array
-	 * @since 1.5.0
+	 * @since 1.5.0 com.github.kilianB
 	 */
 	public static String toString(Object[] array) {
 		return Arrays.toString(array);
@@ -170,7 +170,7 @@ public class ArrayUtil {
 	 * @param array The array to clone
 	 * @param       <T> the type of the array
 	 * @return an new array with all nested arrays being replaced by copies.
-	 * @since 1.0.0
+	 * @since 1.0.0 com.github.kilianB
 	 */
 	@SuppressWarnings("unchecked")
 	public static <T> T[] deepArrayCopy(T[] array) {
@@ -194,7 +194,7 @@ public class ArrayUtil {
 	 * @param       <T> the type of the array
 	 * @return a truly deep cloned array
 	 * @throws Exception if an exception occurs during cloning of individual objects
-	 * @since 1.0.0
+	 * @since 1.0.0 com.github.kilianB
 	 */
 	@SuppressWarnings("unchecked")
 	@Deprecated
@@ -262,7 +262,7 @@ public class ArrayUtil {
 	 * 
 	 * @param array to check
 	 * @return true if all elements in the array are not null
-	 * @since 1.0.0
+	 * @since 1.0.0 com.github.kilianB
 	 */
 	public static boolean deepAllNotNull(Object[] array) {
 		for (Object o : array) {
@@ -281,7 +281,7 @@ public class ArrayUtil {
 	 * @param array to check
 	 * @param       <T> the type of the array
 	 * @return true if all elements in the array are not null
-	 * @since 1.0.0
+	 * @since 1.0.0 com.github.kilianB
 	 */
 	public static <T> boolean allNotNull(T[] array) {
 		for (T t : array) {
@@ -297,7 +297,7 @@ public class ArrayUtil {
 	 * @param array to check
 	 * @param       <T> the type of the array
 	 * @return true if all elements in the array are null
-	 * @since 1.0.0
+	 * @since 1.0.0 com.github.kilianB
 	 */
 	public static <T> boolean allNull(T[] array) {
 		for (T t : array) {
@@ -314,7 +314,7 @@ public class ArrayUtil {
 	 * @param y     The second coordinate
 	 * @param width the width of the 2 dim array
 	 * @return a mapped integer.
-	 * @since 1.0.0
+	 * @since 1.0.0 com.github.kilianB
 	 */
 	public static int twoDimtoOneDim(int x, int y, int width) {
 		return x * width + y;
@@ -326,7 +326,7 @@ public class ArrayUtil {
 	 * @param array The array to fill
 	 * @param s     The supplier used
 	 * @param       <T> The type of the array
-	 * @since 1.0.0
+	 * @since 1.0.0 com.github.kilianB
 	 */
 	public static <T> void fillArray(T[] array, Supplier<T> s) {
 		for (int i = 0; i < array.length; i++) {
@@ -345,7 +345,7 @@ public class ArrayUtil {
 	 *         original supplied array is identical to the returned reference. If
 	 *         the supplied array is not an array null will be returned.
 	 * 
-	 * @since 1.2.0
+	 * @since 1.2.0 com.github.kilianB
 	 */
 	@SuppressWarnings("unchecked")
 	public static <T> T fillArrayMulti(T array, Supplier<T> s) {
@@ -371,7 +371,7 @@ public class ArrayUtil {
 	 *         original supplied array is identical to the returned reference. If
 	 *         the supplied array is not an array null will be returned.
 	 * 
-	 * @since 1.2.0
+	 * @since 1.2.0 com.github.kilianB
 	 */
 	@SuppressWarnings("unchecked")
 	public static <T> T fillArrayMulti(T array, Function<Integer, T> s) {
@@ -404,7 +404,7 @@ public class ArrayUtil {
 	 * 
 	 * @param array The array to fill
 	 * @param s     The supplier used
-	 * @since 1.0.0
+	 * @since 1.0.0 com.github.kilianB
 	 */
 	public static void fillArray(boolean[] array, Supplier<Boolean> s) {
 		for (int i = 0; i < array.length; i++) {
@@ -417,7 +417,7 @@ public class ArrayUtil {
 	 * 
 	 * @param array The array to fill
 	 * @param s     The supplier used
-	 * @since 1.0.0
+	 * @since 1.0.0 com.github.kilianB
 	 */
 	public static void fillArray(byte[] array, Supplier<Byte> s) {
 		for (int i = 0; i < array.length; i++) {
@@ -430,7 +430,7 @@ public class ArrayUtil {
 	 * 
 	 * @param array The array to fill
 	 * @param s     The supplier used
-	 * @since 1.0.0
+	 * @since 1.0.0 com.github.kilianB
 	 */
 	public static void fillArray(char[] array, Supplier<Character> s) {
 		for (int i = 0; i < array.length; i++) {
@@ -443,7 +443,7 @@ public class ArrayUtil {
 	 * 
 	 * @param array The array to fill
 	 * @param s     The supplier used
-	 * @since 1.0.0
+	 * @since 1.0.0 com.github.kilianB
 	 */
 	public static void fillArray(short[] array, Supplier<Short> s) {
 		for (int i = 0; i < array.length; i++) {
@@ -456,7 +456,7 @@ public class ArrayUtil {
 	 * 
 	 * @param array The array to fill
 	 * @param s     The supplier used
-	 * @since 1.0.0
+	 * @since 1.0.0 com.github.kilianB
 	 */
 	public static void fillArray(int[] array, Supplier<Integer> s) {
 		for (int i = 0; i < array.length; i++) {
@@ -469,7 +469,7 @@ public class ArrayUtil {
 	 * 
 	 * @param array The array to fill
 	 * @param s     The supplier used
-	 * @since 1.0.0
+	 * @since 1.0.0 com.github.kilianB
 	 */
 	public static void fillArray(long[] array, Supplier<Long> s) {
 		for (int i = 0; i < array.length; i++) {
@@ -482,7 +482,7 @@ public class ArrayUtil {
 	 * 
 	 * @param array The array to fill
 	 * @param s     The supplier used
-	 * @since 1.0.0
+	 * @since 1.0.0 com.github.kilianB
 	 */
 	public static void fillArray(float[] array, Supplier<Float> s) {
 		for (int i = 0; i < array.length; i++) {
@@ -495,7 +495,7 @@ public class ArrayUtil {
 	 * 
 	 * @param array The array to fill
 	 * @param s     The supplier used
-	 * @since 1.0.0
+	 * @since 1.0.0 com.github.kilianB
 	 */
 	public static void fillArray(double[] array, Supplier<Double> s) {
 		for (int i = 0; i < array.length; i++) {
@@ -509,7 +509,7 @@ public class ArrayUtil {
 	 * @param array    the array to fill
 	 * @param supplier A function returning a value whose argument takes the index
 	 *                 of the array
-	 * @since 1.4.4
+	 * @since 1.4.4 com.github.kilianB
 	 */
 	public static void fillArray(boolean[] array, Function<Integer, Boolean> supplier) {
 		for (int i = 0; i < array.length; i++) {
@@ -523,7 +523,7 @@ public class ArrayUtil {
 	 * @param array    the array to fill
 	 * @param supplier A function returning a value whose argument takes the index
 	 *                 of the array
-	 * @since 1.4.4
+	 * @since 1.4.4 com.github.kilianB
 	 */
 	public static void fillArray(char[] array, Function<Integer, Character> supplier) {
 		for (int i = 0; i < array.length; i++) {
@@ -537,7 +537,7 @@ public class ArrayUtil {
 	 * @param array    the array to fill
 	 * @param supplier A function returning a value whose argument takes the index
 	 *                 of the array
-	 * @since 1.4.4
+	 * @since 1.4.4 com.github.kilianB
 	 */
 	public static void fillArray(short[] array, Function<Integer, Short> supplier) {
 		for (int i = 0; i < array.length; i++) {
@@ -551,7 +551,7 @@ public class ArrayUtil {
 	 * @param array    the array to fill
 	 * @param supplier A function returning a value whose argument takes the index
 	 *                 of the array
-	 * @since 1.4.4
+	 * @since 1.4.4 com.github.kilianB
 	 */
 	public static void fillArray(int[] array, Function<Integer, Integer> supplier) {
 		for (int i = 0; i < array.length; i++) {
@@ -565,7 +565,7 @@ public class ArrayUtil {
 	 * @param array    the array to fill
 	 * @param supplier A function returning a value whose argument takes the index
 	 *                 of the array
-	 * @since 1.4.4
+	 * @since 1.4.4 com.github.kilianB
 	 */
 	public static void fillArray(long[] array, Function<Integer, Long> supplier) {
 		for (int i = 0; i < array.length; i++) {
@@ -579,7 +579,7 @@ public class ArrayUtil {
 	 * @param array    the array to fill
 	 * @param supplier A function returning a value whose argument takes the index
 	 *                 of the array
-	 * @since 1.4.4
+	 * @since 1.4.4 com.github.kilianB
 	 */
 	public static void fillArray(float[] array, Function<Integer, Float> supplier) {
 		for (int i = 0; i < array.length; i++) {
@@ -593,7 +593,7 @@ public class ArrayUtil {
 	 * @param array    the array to fill
 	 * @param supplier A function returning a value whose argument takes the index
 	 *                 of the array
-	 * @since 1.4.4
+	 * @since 1.4.4 com.github.kilianB
 	 */
 	public static void fillArray(double[] array, Function<Integer, Double> supplier) {
 		for (int i = 0; i < array.length; i++) {
@@ -609,7 +609,7 @@ public class ArrayUtil {
 	 * @param supplier A function returning a value whose argument takes the index
 	 *                 of the array
 	 * @param          <T> the type of the array
-	 * @since 1.4.4
+	 * @since 1.4.4 com.github.kilianB
 	 */
 	public static <T> void fillArray(T[] array, Function<Integer, T> supplier) {
 		for (int i = 0; i < array.length; i++) {
@@ -634,7 +634,7 @@ public class ArrayUtil {
 	 * @param stop   the last index position to stop search at
 	 * @param        <T> the type of the array
 	 * @return the index position of the value if found or -1 if not present
-	 * @since 1.0.0
+	 * @since 1.0.0 com.github.kilianB
 	 */
 	public static <T> int linearSearch(T[] array, T needle, int start, int stop) {
 		int maxIndex = Math.min(array.length, stop);
@@ -663,7 +663,7 @@ public class ArrayUtil {
 	 * @param needle the value to search for
 	 * @param        <T> the type of the array
 	 * @return the index position of the value if found or -1 if not present
-	 * @since 1.0.0
+	 * @since 1.0.0 com.github.kilianB
 	 */
 	public static <T> int linearSearch(T[] array, T needle) {
 		return linearSearch(array, needle, 0, array.length);
@@ -688,7 +688,7 @@ public class ArrayUtil {
 	 * @return the index position of the value if found or -1 if not present
 	 * @throws ArrayIndexOutOfBoundsException if from or two are outside of the
 	 *                                        array
-	 * @since 1.0.0
+	 * @since 1.0.0 com.github.kilianB
 	 */
 	public static <T> int frontBackSearch(T[] array, T needle, int from, int to) {
 		to--;
@@ -720,7 +720,7 @@ public class ArrayUtil {
 	 * @param needle the value to search for
 	 * @param        <T> the type of the array
 	 * @return the index position of the value if found or -1 if not present
-	 * @since 1.0.0
+	 * @since 1.0.0 com.github.kilianB
 	 */
 	public static <T> int frontBackSearch(T[] array, T needle) {
 		return (frontBackSearch(array, needle, 0, array.length));
@@ -748,7 +748,7 @@ public class ArrayUtil {
 	 * @param array      the array to compute the sorted indexes for
 	 * @param descending if true compute descending indices else ascending
 	 * @return an array containing sort indices
-	 * @since 1.4.4
+	 * @since 1.4.4 com.github.kilianB
 	 */
 	public static int[] getSortedIndices(boolean[] array, boolean descending) {
 		Map<Integer, Boolean> sorter = new HashMap<>();
@@ -780,7 +780,7 @@ public class ArrayUtil {
 	 * @param array      the array to compute the sorted indexes for
 	 * @param descending if true compute descending indices else ascending
 	 * @return an array containing sort indices
-	 * @since 1.4.4
+	 * @since 1.4.4 com.github.kilianB
 	 */
 	public static int[] getSortedIndices(byte[] array, boolean descending) {
 		Map<Integer, Byte> sorter = new HashMap<>();
@@ -812,7 +812,7 @@ public class ArrayUtil {
 	 * @param array      the array to compute the sorted indexes for
 	 * @param descending if true compute descending indices else ascending
 	 * @return an array containing sort indices
-	 * @since 1.4.4
+	 * @since 1.4.4 com.github.kilianB
 	 */
 	public static int[] getSortedIndices(char[] array, boolean descending) {
 		Map<Integer, Character> sorter = new HashMap<>();
@@ -844,7 +844,7 @@ public class ArrayUtil {
 	 * @param array      the array to compute the sorted indexes for
 	 * @param descending if true compute descending indices else ascending
 	 * @return an array containing sort indices
-	 * @since 1.4.4
+	 * @since 1.4.4 com.github.kilianB
 	 */
 	public static int[] getSortedIndices(short[] array, boolean descending) {
 		Map<Integer, Short> sorter = new HashMap<>();
@@ -876,7 +876,7 @@ public class ArrayUtil {
 	 * @param array      the array to compute the sorted indexes for
 	 * @param descending if true compute descending indices else ascending
 	 * @return an array containing sort indices
-	 * @since 1.4.4
+	 * @since 1.4.4 com.github.kilianB
 	 */
 	public static int[] getSortedIndices(int[] array, boolean descending) {
 		// TODO performance. We can also get away with creating a separate pair class
@@ -909,7 +909,7 @@ public class ArrayUtil {
 	 * @param array      the array to compute the sorted indexes for
 	 * @param descending if true compute descending indices else ascending
 	 * @return an array containing sort indices
-	 * @since 1.4.4
+	 * @since 1.4.4 com.github.kilianB
 	 */
 	public static int[] getSortedIndices(long[] array, boolean descending) {
 		// TODO performance. We can also get away with creating a separate pair
@@ -942,7 +942,7 @@ public class ArrayUtil {
 	 * @param array      the array to compute the sorted indexes for
 	 * @param descending if true compute descending indices else ascending
 	 * @return an array containing sort indices
-	 * @since 1.4.4
+	 * @since 1.4.4 com.github.kilianB
 	 */
 	public static int[] getSortedIndices(float[] array, boolean descending) {
 		Map<Integer, Float> sorter = new HashMap<>();
@@ -974,7 +974,7 @@ public class ArrayUtil {
 	 * @param array      the array to compute the sorted indexes for
 	 * @param descending if true compute descending indices else ascending
 	 * @return an array containing sort indices
-	 * @since 1.4.4
+	 * @since 1.4.4 com.github.kilianB
 	 */
 	public static int[] getSortedIndices(double[] array, boolean descending) {
 		// TODO performance. We can also get away with creating a seperate pair
@@ -998,7 +998,7 @@ public class ArrayUtil {
 	 * @return the index of the minimum value of the array or -1 if the array is
 	 *         empty
 	 * @throws NullPointerException if the array is null
-	 * @since 1.4.0
+	 * @since 1.4.0 com.github.kilianB
 	 */
 	public static int minimumIndex(byte[] array) {
 
@@ -1030,7 +1030,7 @@ public class ArrayUtil {
 	 * @return the index of the minimum value of the array or -1 if the array is
 	 *         empty
 	 * @throws NullPointerException if the array is null
-	 * @since 1.4.0
+	 * @since 1.4.0 com.github.kilianB
 	 */
 	public static int minimumIndex(char[] array) {
 
@@ -1062,7 +1062,7 @@ public class ArrayUtil {
 	 * @return the index of the minimum value of the array or -1 if the array is
 	 *         empty
 	 * @throws NullPointerException if the array is null
-	 * @since 1.4.0
+	 * @since 1.4.0 com.github.kilianB
 	 */
 	public static int minimumIndex(short[] array) {
 
@@ -1094,7 +1094,7 @@ public class ArrayUtil {
 	 * @return the index of the minimum value of the array or -1 if the array is
 	 *         empty
 	 * @throws NullPointerException if the array is null
-	 * @since 1.4.0
+	 * @since 1.4.0 com.github.kilianB
 	 */
 	public static int minimumIndex(int[] array) {
 
@@ -1126,7 +1126,7 @@ public class ArrayUtil {
 	 * @return the index of the minimum value of the array or -1 if the array is
 	 *         empty
 	 * @throws NullPointerException if the array is null
-	 * @since 1.4.0
+	 * @since 1.4.0 com.github.kilianB
 	 */
 	public static int minimumIndex(long[] array) {
 
@@ -1158,7 +1158,7 @@ public class ArrayUtil {
 	 * @return the index of the minimum value of the array or -1 if the array is
 	 *         empty
 	 * @throws NullPointerException if the array is null
-	 * @since 1.4.0
+	 * @since 1.4.0 com.github.kilianB
 	 */
 	public static int minimumIndex(float[] array) {
 
@@ -1190,7 +1190,7 @@ public class ArrayUtil {
 	 * @return the index of the minimum value of the array or -1 if the array is
 	 *         empty
 	 * @throws NullPointerException if the array is null
-	 * @since 1.4.0
+	 * @since 1.4.0 com.github.kilianB
 	 */
 	public static int minimumIndex(double[] array) {
 
@@ -1218,7 +1218,7 @@ public class ArrayUtil {
 	 * @return the minimum value of the array
 	 * @throws IndexOutOfBoundsException if the array is empty
 	 * @throws NullPointerException      if the array is null
-	 * @since 1.4.0
+	 * @since 1.4.0 com.github.kilianB
 	 */
 	public static byte minimum(byte[] array) {
 		return array[minimumIndex(array)];
@@ -1231,7 +1231,7 @@ public class ArrayUtil {
 	 * @return the minimum value of the array
 	 * @throws IndexOutOfBoundsException if the array is empty
 	 * @throws NullPointerException      if the array is null
-	 * @since 1.4.0
+	 * @since 1.4.0 com.github.kilianB
 	 */
 	public static char minimum(char[] array) {
 		return array[minimumIndex(array)];
@@ -1244,7 +1244,7 @@ public class ArrayUtil {
 	 * @return the minimum value of the array
 	 * @throws IndexOutOfBoundsException if the array is empty
 	 * @throws NullPointerException      if the array is null
-	 * @since 1.4.0
+	 * @since 1.4.0 com.github.kilianB
 	 */
 	public static short minimum(short[] array) {
 		return array[minimumIndex(array)];
@@ -1257,7 +1257,7 @@ public class ArrayUtil {
 	 * @return the minimum value of the array
 	 * @throws IndexOutOfBoundsException if the array is empty
 	 * @throws NullPointerException      if the array is null
-	 * @since 1.4.0
+	 * @since 1.4.0 com.github.kilianB
 	 */
 	public static int minimum(int[] array) {
 		return array[minimumIndex(array)];
@@ -1270,7 +1270,7 @@ public class ArrayUtil {
 	 * @return the minimum value of the array
 	 * @throws IndexOutOfBoundsException if the array is empty
 	 * @throws NullPointerException      if the array is null
-	 * @since 1.4.0
+	 * @since 1.4.0 com.github.kilianB
 	 */
 	public static long minimum(long[] array) {
 		return array[minimumIndex(array)];
@@ -1283,7 +1283,7 @@ public class ArrayUtil {
 	 * @return the minimum value of the array
 	 * @throws IndexOutOfBoundsException if the array is empty
 	 * @throws NullPointerException      if the array is null
-	 * @since 1.4.0
+	 * @since 1.4.0 com.github.kilianB
 	 */
 	public static float minimum(float[] array) {
 		return array[minimumIndex(array)];
@@ -1296,7 +1296,7 @@ public class ArrayUtil {
 	 * @return the minimum value of the array
 	 * @throws IndexOutOfBoundsException if the array is empty
 	 * @throws NullPointerException      if the array is null
-	 * @since 1.4.0
+	 * @since 1.4.0 com.github.kilianB
 	 */
 	public static double minimum(double[] array) {
 		return array[minimumIndex(array)];
@@ -1313,7 +1313,7 @@ public class ArrayUtil {
 	 * @return the index of the maximum value of the array or -1 if the array is
 	 *         empty
 	 * @throws NullPointerException if the array is null
-	 * @since 1.4.0
+	 * @since 1.4.0 com.github.kilianB
 	 */
 	public static int maximumIndex(byte[] array) {
 
@@ -1345,7 +1345,7 @@ public class ArrayUtil {
 	 * @return the index of the maximum value of the array or -1 if the array is
 	 *         empty
 	 * @throws NullPointerException if the array is null
-	 * @since 1.4.0
+	 * @since 1.4.0 com.github.kilianB
 	 */
 	public static int maximumIndex(char[] array) {
 
@@ -1377,7 +1377,7 @@ public class ArrayUtil {
 	 * @return the index of the maximum value of the array or -1 if the array is
 	 *         empty
 	 * @throws NullPointerException if the array is null
-	 * @since 1.4.0
+	 * @since 1.4.0 com.github.kilianB
 	 */
 	public static int maximumIndex(short[] array) {
 
@@ -1409,7 +1409,7 @@ public class ArrayUtil {
 	 * @return the index of the maximum value of the array or -1 if the array is
 	 *         empty
 	 * @throws NullPointerException if the array is null
-	 * @since 1.4.0
+	 * @since 1.4.0 com.github.kilianB
 	 */
 	public static int maximumIndex(int[] array) {
 
@@ -1441,7 +1441,7 @@ public class ArrayUtil {
 	 * @return the index of the maximum value of the array or -1 if the array is
 	 *         empty
 	 * @throws NullPointerException if the array is null
-	 * @since 1.4.0
+	 * @since 1.4.0 com.github.kilianB
 	 */
 	public static int maximumIndex(long[] array) {
 
@@ -1473,7 +1473,7 @@ public class ArrayUtil {
 	 * @return the index of the maximum value of the array or -1 if the array is
 	 *         empty
 	 * @throws NullPointerException if the array is null
-	 * @since 1.4.0
+	 * @since 1.4.0 com.github.kilianB
 	 */
 	public static int maximumIndex(float[] array) {
 
@@ -1505,7 +1505,7 @@ public class ArrayUtil {
 	 * @return the index of the maximum value of the array or -1 if the array is
 	 *         empty
 	 * @throws NullPointerException if the array is null
-	 * @since 1.4.0
+	 * @since 1.4.0 com.github.kilianB
 	 */
 	public static int maximumIndex(double[] array) {
 
@@ -1533,7 +1533,7 @@ public class ArrayUtil {
 	 * @return the maximum value of the array
 	 * @throws IndexOutOfBoundsException if the array is empty
 	 * @throws NullPointerException      if the array is null
-	 * @since 1.4.0
+	 * @since 1.4.0 com.github.kilianB
 	 */
 	public static byte maximum(byte[] array) {
 		return array[maximumIndex(array)];
@@ -1546,7 +1546,7 @@ public class ArrayUtil {
 	 * @return the maximum value of the array
 	 * @throws IndexOutOfBoundsException if the array is empty
 	 * @throws NullPointerException      if the array is null
-	 * @since 1.4.0
+	 * @since 1.4.0 com.github.kilianB
 	 */
 	public static char maximum(char[] array) {
 		return array[maximumIndex(array)];
@@ -1559,7 +1559,7 @@ public class ArrayUtil {
 	 * @return the maximum value of the array
 	 * @throws IndexOutOfBoundsException if the array is empty
 	 * @throws NullPointerException      if the array is null
-	 * @since 1.4.0
+	 * @since 1.4.0 com.github.kilianB
 	 */
 	public static short maximum(short[] array) {
 		return array[maximumIndex(array)];
@@ -1572,7 +1572,7 @@ public class ArrayUtil {
 	 * @return the maximum value of the array
 	 * @throws IndexOutOfBoundsException if the array is empty
 	 * @throws NullPointerException      if the array is null
-	 * @since 1.4.0
+	 * @since 1.4.0 com.github.kilianB
 	 */
 	public static int maximum(int[] array) {
 		return array[maximumIndex(array)];
@@ -1585,7 +1585,7 @@ public class ArrayUtil {
 	 * @return the maximum value of the array
 	 * @throws IndexOutOfBoundsException if the array is empty
 	 * @throws NullPointerException      if the array is null
-	 * @since 1.4.0
+	 * @since 1.4.0 com.github.kilianB
 	 */
 	public static long maximum(long[] array) {
 		return array[maximumIndex(array)];
@@ -1598,7 +1598,7 @@ public class ArrayUtil {
 	 * @return the maximum value of the array
 	 * @throws IndexOutOfBoundsException if the array is empty
 	 * @throws NullPointerException      if the array is null
-	 * @since 1.4.0
+	 * @since 1.4.0 com.github.kilianB
 	 */
 	public static float maximum(float[] array) {
 		return array[maximumIndex(array)];
@@ -1611,7 +1611,7 @@ public class ArrayUtil {
 	 * @return the maximum value of the array
 	 * @throws IndexOutOfBoundsException if the array is empty
 	 * @throws NullPointerException      if the array is null
-	 * @since 1.4.0
+	 * @since 1.4.0 com.github.kilianB
 	 */
 	public static double maximum(double[] array) {
 		return array[maximumIndex(array)];
@@ -1622,7 +1622,7 @@ public class ArrayUtil {
 	 * 
 	 * @param arr     the array holding the first summand
 	 * @param summand the value to add to each field
-	 * @since 1.4.0
+	 * @since 1.4.0 com.github.kilianB
 	 */
 	public static void add(byte[] arr, byte summand) {
 		for (int i = 0; i < arr.length; i++) {
@@ -1635,7 +1635,7 @@ public class ArrayUtil {
 	 * 
 	 * @param arr     the array holding the first summand
 	 * @param summand the value to add to each field
-	 * @since 1.4.0
+	 * @since 1.4.0 com.github.kilianB
 	 */
 	public static void add(char[] arr, char summand) {
 		for (int i = 0; i < arr.length; i++) {
@@ -1648,7 +1648,7 @@ public class ArrayUtil {
 	 * 
 	 * @param arr     the array holding the first summand
 	 * @param summand the value to add to each field
-	 * @since 1.4.0
+	 * @since 1.4.0 com.github.kilianB
 	 */
 	public static void add(short[] arr, short summand) {
 		for (int i = 0; i < arr.length; i++) {
@@ -1661,7 +1661,7 @@ public class ArrayUtil {
 	 * 
 	 * @param arr     the array holding the first summand
 	 * @param summand the value to add to each field
-	 * @since 1.4.0
+	 * @since 1.4.0 com.github.kilianB
 	 */
 	public static void add(int[] arr, int summand) {
 		for (int i = 0; i < arr.length; i++) {
@@ -1674,7 +1674,7 @@ public class ArrayUtil {
 	 * 
 	 * @param arr     the array holding the first summand
 	 * @param summand the value to add to each field
-	 * @since 1.4.0
+	 * @since 1.4.0 com.github.kilianB
 	 */
 	public static void add(long[] arr, long summand) {
 		for (int i = 0; i < arr.length; i++) {
@@ -1687,7 +1687,7 @@ public class ArrayUtil {
 	 * 
 	 * @param arr     the array holding the first summand
 	 * @param summand the value to add to each field
-	 * @since 1.4.0
+	 * @since 1.4.0 com.github.kilianB
 	 */
 	public static void add(float[] arr, float summand) {
 		for (int i = 0; i < arr.length; i++) {
@@ -1700,7 +1700,7 @@ public class ArrayUtil {
 	 * 
 	 * @param arr     the array holding the first summand
 	 * @param summand the value to add to each field
-	 * @since 1.4.0
+	 * @since 1.4.0 com.github.kilianB
 	 */
 	public static void add(double[] arr, double summand) {
 		for (int i = 0; i < arr.length; i++) {
@@ -1713,7 +1713,7 @@ public class ArrayUtil {
 	 * 
 	 * @param arrMinuend the array holding the minuend
 	 * @param subtrahend the value to subtracted from each field
-	 * @since 1.4.0
+	 * @since 1.4.0 com.github.kilianB
 	 */
 	public static void subtract(byte[] arrMinuend, byte subtrahend) {
 		for (int i = 0; i < arrMinuend.length; i++) {
@@ -1726,7 +1726,7 @@ public class ArrayUtil {
 	 * 
 	 * @param arrMinuend the array holding the minuend
 	 * @param subtrahend the value to subtracted from each field
-	 * @since 1.4.0
+	 * @since 1.4.0 com.github.kilianB
 	 */
 	public static void subtract(char[] arrMinuend, char subtrahend) {
 		for (int i = 0; i < arrMinuend.length; i++) {
@@ -1739,7 +1739,7 @@ public class ArrayUtil {
 	 * 
 	 * @param arrMinuend the array holding the minuend
 	 * @param subtrahend the value to subtracted from each field
-	 * @since 1.4.0
+	 * @since 1.4.0 com.github.kilianB
 	 */
 	public static void subtract(short[] arrMinuend, short subtrahend) {
 		for (int i = 0; i < arrMinuend.length; i++) {
@@ -1752,7 +1752,7 @@ public class ArrayUtil {
 	 * 
 	 * @param arrMinuend the array holding the minuend
 	 * @param subtrahend the value to subtracted from each field
-	 * @since 1.4.0
+	 * @since 1.4.0 com.github.kilianB
 	 */
 	public static void subtract(int[] arrMinuend, int subtrahend) {
 		for (int i = 0; i < arrMinuend.length; i++) {
@@ -1765,7 +1765,7 @@ public class ArrayUtil {
 	 * 
 	 * @param arrMinuend the array holding the minuend
 	 * @param subtrahend the value to subtracted from each field
-	 * @since 1.4.0
+	 * @since 1.4.0 com.github.kilianB
 	 */
 	public static void subtract(long[] arrMinuend, long subtrahend) {
 		for (int i = 0; i < arrMinuend.length; i++) {
@@ -1778,7 +1778,7 @@ public class ArrayUtil {
 	 * 
 	 * @param arrMinuend the array holding the minuend
 	 * @param subtrahend the value to subtracted from each field
-	 * @since 1.4.0
+	 * @since 1.4.0 com.github.kilianB
 	 */
 	public static void subtract(float[] arrMinuend, float subtrahend) {
 		for (int i = 0; i < arrMinuend.length; i++) {
@@ -1791,7 +1791,7 @@ public class ArrayUtil {
 	 * 
 	 * @param arrMinuend the array holding the minuend
 	 * @param subtrahend the value to subtracted from each field
-	 * @since 1.4.0
+	 * @since 1.4.0 com.github.kilianB
 	 */
 	public static void subtract(double[] arrMinuend, double subtrahend) {
 		for (int i = 0; i < arrMinuend.length; i++) {
@@ -1804,7 +1804,7 @@ public class ArrayUtil {
 	 * 
 	 * @param arr    the array holding the first factor
 	 * @param factor the value to multiply each field by
-	 * @since 1.4.0
+	 * @since 1.4.0 com.github.kilianB
 	 */
 	public static void multiply(byte[] arr, byte factor) {
 		for (int i = 0; i < arr.length; i++) {
@@ -1817,7 +1817,7 @@ public class ArrayUtil {
 	 * 
 	 * @param arr    the array holding the first factor
 	 * @param factor the value to multiply each field by
-	 * @since 1.4.0
+	 * @since 1.4.0 com.github.kilianB
 	 */
 	public static void multiply(char[] arr, char factor) {
 		for (int i = 0; i < arr.length; i++) {
@@ -1830,7 +1830,7 @@ public class ArrayUtil {
 	 * 
 	 * @param arr    the array holding the first factor
 	 * @param factor the value to multiply each field by
-	 * @since 1.4.0
+	 * @since 1.4.0 com.github.kilianB
 	 */
 	public static void multiply(short[] arr, short factor) {
 		for (int i = 0; i < arr.length; i++) {
@@ -1843,7 +1843,7 @@ public class ArrayUtil {
 	 * 
 	 * @param arr    the array holding the first factor
 	 * @param factor the value to multiply each field by
-	 * @since 1.4.0
+	 * @since 1.4.0 com.github.kilianB
 	 */
 	public static void multiply(int[] arr, int factor) {
 		for (int i = 0; i < arr.length; i++) {
@@ -1856,7 +1856,7 @@ public class ArrayUtil {
 	 * 
 	 * @param arr    the array holding the first factor
 	 * @param factor the value to multiply each field by
-	 * @since 1.4.0
+	 * @since 1.4.0 com.github.kilianB
 	 */
 	public static void multiply(long[] arr, long factor) {
 		for (int i = 0; i < arr.length; i++) {
@@ -1869,7 +1869,7 @@ public class ArrayUtil {
 	 * 
 	 * @param arr    the array holding the first factor
 	 * @param factor the value to multiply each field by
-	 * @since 1.4.0
+	 * @since 1.4.0 com.github.kilianB
 	 */
 	public static void multiply(float[] arr, float factor) {
 		for (int i = 0; i < arr.length; i++) {
@@ -1882,7 +1882,7 @@ public class ArrayUtil {
 	 * 
 	 * @param arr    the array holding the first factor
 	 * @param factor the value to multiply each field by
-	 * @since 1.4.0
+	 * @since 1.4.0 com.github.kilianB
 	 */
 	public static void multiply(double[] arr, double factor) {
 		for (int i = 0; i < arr.length; i++) {
@@ -1895,7 +1895,7 @@ public class ArrayUtil {
 	 * 
 	 * @param arrDividend the array holding the dividend
 	 * @param divisor     the divisor each field is divided by
-	 * @since 1.4.0
+	 * @since 1.4.0 com.github.kilianB
 	 */
 	public static void divide(byte[] arrDividend, byte divisor) {
 		for (int i = 0; i < arrDividend.length; i++) {
@@ -1908,7 +1908,7 @@ public class ArrayUtil {
 	 * 
 	 * @param arrDividend the array holding the dividend
 	 * @param divisor     the divisor each field is divided by
-	 * @since 1.4.0
+	 * @since 1.4.0 com.github.kilianB
 	 */
 	public static void divide(char[] arrDividend, char divisor) {
 		for (int i = 0; i < arrDividend.length; i++) {
@@ -1921,7 +1921,7 @@ public class ArrayUtil {
 	 * 
 	 * @param arrDividend the array holding the dividend
 	 * @param divisor     the divisor each field is divided by
-	 * @since 1.4.0
+	 * @since 1.4.0 com.github.kilianB
 	 */
 	public static void divide(short[] arrDividend, short divisor) {
 		for (int i = 0; i < arrDividend.length; i++) {
@@ -1934,7 +1934,7 @@ public class ArrayUtil {
 	 * 
 	 * @param arrDividend the array holding the dividend
 	 * @param divisor     the divisor each field is divided by
-	 * @since 1.4.0
+	 * @since 1.4.0 com.github.kilianB
 	 */
 	public static void divide(int[] arrDividend, int divisor) {
 		for (int i = 0; i < arrDividend.length; i++) {
@@ -1947,7 +1947,7 @@ public class ArrayUtil {
 	 * 
 	 * @param arrDividend the array holding the dividend
 	 * @param divisor     the divisor each field is divided by
-	 * @since 1.4.0
+	 * @since 1.4.0 com.github.kilianB
 	 */
 	public static void divide(long[] arrDividend, long divisor) {
 		for (int i = 0; i < arrDividend.length; i++) {
@@ -1960,7 +1960,7 @@ public class ArrayUtil {
 	 * 
 	 * @param arrDividend the array holding the dividend
 	 * @param divisor     the divisor each field is divided by
-	 * @since 1.4.0
+	 * @since 1.4.0 com.github.kilianB
 	 */
 	public static void divide(float[] arrDividend, float divisor) {
 		for (int i = 0; i < arrDividend.length; i++) {
@@ -1973,7 +1973,7 @@ public class ArrayUtil {
 	 * 
 	 * @param arrDividend the array holding the dividend
 	 * @param divisor     the divisor each field is divided by
-	 * @since 1.4.0
+	 * @since 1.4.0 com.github.kilianB
 	 */
 	public static void divide(double[] arrDividend, double divisor) {
 		for (int i = 0; i < arrDividend.length; i++) {
@@ -1989,7 +1989,7 @@ public class ArrayUtil {
 	 * 
 	 * @param arr     the array to be multiplied by the factors
 	 * @param factors of the multiplication.
-	 * @since 1.4.3
+	 * @since 1.4.3 com.github.kilianB
 	 * @throws IndexOutOfBoundsException if factors array is shorter than the first
 	 *                                   array
 	 */
@@ -2006,7 +2006,7 @@ public class ArrayUtil {
 	 * 
 	 * @param arr     the array to be multiplied by the factors
 	 * @param factors of the multiplication.
-	 * @since 1.4.3
+	 * @since 1.4.3 com.github.kilianB
 	 * @throws IndexOutOfBoundsException if factors array is shorter than the first
 	 *                                   array
 	 */
@@ -2023,7 +2023,7 @@ public class ArrayUtil {
 	 * 
 	 * @param arr     the array to be multiplied by the factors
 	 * @param factors of the multiplication.
-	 * @since 1.4.3
+	 * @since 1.4.3 com.github.kilianB
 	 * @throws IndexOutOfBoundsException if factors array is shorter than the first
 	 *                                   array
 	 */
@@ -2040,7 +2040,7 @@ public class ArrayUtil {
 	 * 
 	 * @param arr     the array to be multiplied by the factors
 	 * @param factors of the multiplication.
-	 * @since 1.4.3
+	 * @since 1.4.3 com.github.kilianB
 	 * @throws IndexOutOfBoundsException if factors array is shorter than the first
 	 *                                   array
 	 */
@@ -2057,7 +2057,7 @@ public class ArrayUtil {
 	 * 
 	 * @param arr     the array to be multiplied by the factors
 	 * @param factors of the multiplication.
-	 * @since 1.4.3
+	 * @since 1.4.3 com.github.kilianB
 	 * @throws IndexOutOfBoundsException if factors array is shorter than the first
 	 *                                   array
 	 */
@@ -2074,7 +2074,7 @@ public class ArrayUtil {
 	 * 
 	 * @param arr     the array to be multiplied by the factors
 	 * @param factors of the multiplication.
-	 * @since 1.4.3
+	 * @since 1.4.3 com.github.kilianB
 	 * @throws IndexOutOfBoundsException if factors array is shorter than the first
 	 *                                   array
 	 */
@@ -2091,7 +2091,7 @@ public class ArrayUtil {
 	 * 
 	 * @param arr     the array to be multiplied by the factors
 	 * @param factors of the multiplication.
-	 * @since 1.4.3
+	 * @since 1.4.3 com.github.kilianB
 	 * @throws IndexOutOfBoundsException if factors array is shorter than the first
 	 *                                   array
 	 */
@@ -2108,7 +2108,7 @@ public class ArrayUtil {
 	 * 
 	 * @param arrDivisor the array to be divided by the dividend
 	 * @param dividend   of the division.
-	 * @since 1.4.3
+	 * @since 1.4.3 com.github.kilianB
 	 * @throws IndexOutOfBoundsException if dividend array is shorter than the first
 	 *                                   array
 	 */
@@ -2125,7 +2125,7 @@ public class ArrayUtil {
 	 * 
 	 * @param arrDivisor the array to be divided by the dividend
 	 * @param dividend   of the division.
-	 * @since 1.4.3
+	 * @since 1.4.3 com.github.kilianB
 	 * @throws IndexOutOfBoundsException if dividend array is shorter than the first
 	 *                                   array
 	 */
@@ -2142,7 +2142,7 @@ public class ArrayUtil {
 	 * 
 	 * @param arrDivisor the array to be divided by the dividend
 	 * @param dividend   of the division.
-	 * @since 1.4.3
+	 * @since 1.4.3 com.github.kilianB
 	 * @throws IndexOutOfBoundsException if dividend array is shorter than the first
 	 *                                   array
 	 */
@@ -2159,7 +2159,7 @@ public class ArrayUtil {
 	 * 
 	 * @param arrDivisor the array to be divided by the dividend
 	 * @param dividend   of the division.
-	 * @since 1.4.3
+	 * @since 1.4.3 com.github.kilianB
 	 * @throws IndexOutOfBoundsException if dividend array is shorter than the first
 	 *                                   array
 	 */
@@ -2176,7 +2176,7 @@ public class ArrayUtil {
 	 * 
 	 * @param arrDivisor the array to be divided by the dividend
 	 * @param dividend   of the division.
-	 * @since 1.4.3
+	 * @since 1.4.3 com.github.kilianB
 	 * @throws IndexOutOfBoundsException if dividend array is shorter than the first
 	 *                                   array
 	 */
@@ -2193,7 +2193,7 @@ public class ArrayUtil {
 	 * 
 	 * @param arrDivisor the array to be divided by the dividend
 	 * @param dividend   of the division.
-	 * @since 1.4.3
+	 * @since 1.4.3 com.github.kilianB
 	 * @throws IndexOutOfBoundsException if dividend array is shorter than the first
 	 *                                   array
 	 */
@@ -2210,7 +2210,7 @@ public class ArrayUtil {
 	 * 
 	 * @param arrDivisor the array to be divided by the dividend
 	 * @param dividend   of the division.
-	 * @since 1.4.3
+	 * @since 1.4.3 com.github.kilianB
 	 * @throws IndexOutOfBoundsException if dividend array is shorter than the first
 	 *                                   array
 	 */
@@ -2225,7 +2225,7 @@ public class ArrayUtil {
 	 * 
 	 * @param array the array to compute the average value for
 	 * @return the average value of the array or 0 if the array has a length of 0
-	 * @since 1.5.5
+	 * @since 1.5.5 com.github.kilianB
 	 */
 	public static double average(byte[] array) {
 		double avg = 0;
@@ -2241,7 +2241,7 @@ public class ArrayUtil {
 	 * 
 	 * @param array the array to compute the average value for
 	 * @return the average value of the array or 0 if the array has a length of 0
-	 * @since 1.5.5
+	 * @since 1.5.5 com.github.kilianB
 	 */
 	public static double average(char[] array) {
 		double avg = 0;
@@ -2257,7 +2257,7 @@ public class ArrayUtil {
 	 * 
 	 * @param array the array to compute the average value for
 	 * @return the average value of the array or 0 if the array has a length of 0
-	 * @since 1.5.5
+	 * @since 1.5.5 com.github.kilianB
 	 */
 	public static double average(short[] array) {
 		double avg = 0;
@@ -2273,7 +2273,7 @@ public class ArrayUtil {
 	 * 
 	 * @param array the array to compute the average value for
 	 * @return the average value of the array or 0 if the array has a length of 0
-	 * @since 1.5.5
+	 * @since 1.5.5 com.github.kilianB
 	 */
 	public static double average(int[] array) {
 		double avg = 0;
@@ -2289,7 +2289,7 @@ public class ArrayUtil {
 	 * 
 	 * @param array the array to compute the average value for
 	 * @return the average value of the array or 0 if the array has a length of 0
-	 * @since 1.5.5
+	 * @since 1.5.5 com.github.kilianB
 	 */
 	public static double average(long[] array) {
 		double avg = 0;
@@ -2305,7 +2305,7 @@ public class ArrayUtil {
 	 * 
 	 * @param array the array to compute the average value for
 	 * @return the average value of the array or 0 if the array has a length of 0
-	 * @since 1.5.5
+	 * @since 1.5.5 com.github.kilianB
 	 */
 	public static double average(float[] array) {
 		double avg = 0;
@@ -2321,7 +2321,7 @@ public class ArrayUtil {
 	 * 
 	 * @param array the array to compute the average value for
 	 * @return the average value of the array or 0 if the array has a length of 0
-	 * @since 1.5.5
+	 * @since 1.5.5 com.github.kilianB
 	 */
 	public static double average(double[] array) {
 		double avg = 0;
@@ -2337,7 +2337,7 @@ public class ArrayUtil {
 	 * 
 	 * @param array the array to compute the average value for
 	 * @return the average value of the array or 0 if the array has a length of 0
-	 * @since 1.5.5
+	 * @since 1.5.5 com.github.kilianB
 	 */
 	public static double average(byte[][] array) {
 		double avg = 0;
@@ -2353,7 +2353,7 @@ public class ArrayUtil {
 	 * 
 	 * @param array the array to compute the average value for
 	 * @return the average value of the array or 0 if the array has a length of 0
-	 * @since 1.5.5
+	 * @since 1.5.5 com.github.kilianB
 	 */
 	public static double average(char[][] array) {
 		double avg = 0;
@@ -2369,7 +2369,7 @@ public class ArrayUtil {
 	 * 
 	 * @param array the array to compute the average value for
 	 * @return the average value of the array or 0 if the array has a length of 0
-	 * @since 1.5.5
+	 * @since 1.5.5 com.github.kilianB
 	 */
 	public static double average(short[][] array) {
 		double avg = 0;
@@ -2385,7 +2385,7 @@ public class ArrayUtil {
 	 * 
 	 * @param array the array to compute the average value for
 	 * @return the average value of the array or 0 if the array has a length of 0
-	 * @since 1.5.5
+	 * @since 1.5.5 com.github.kilianB
 	 */
 	public static double average(int[][] array) {
 		double avg = 0;
@@ -2401,7 +2401,7 @@ public class ArrayUtil {
 	 * 
 	 * @param array the array to compute the average value for
 	 * @return the average value of the array or 0 if the array has a length of 0
-	 * @since 1.5.5
+	 * @since 1.5.5 com.github.kilianB
 	 */
 	public static double average(long[][] array) {
 		double avg = 0;
@@ -2417,7 +2417,7 @@ public class ArrayUtil {
 	 * 
 	 * @param array the array to compute the average value for
 	 * @return the average value of the array or 0 if the array has a length of 0
-	 * @since 1.5.5
+	 * @since 1.5.5 com.github.kilianB
 	 */
 	public static double average(float[][] array) {
 		double avg = 0;
@@ -2433,7 +2433,7 @@ public class ArrayUtil {
 	 * 
 	 * @param array the array to compute the average value for
 	 * @return the average value of the array or 0 if the array has a length of 0
-	 * @since 1.5.5
+	 * @since 1.5.5 com.github.kilianB
 	 */
 	public static double average(double[][] array) {
 		double avg = 0;
@@ -2450,7 +2450,7 @@ public class ArrayUtil {
 	 * @param array the array to calculate the median value for.
 	 * @return the median value of the array
 	 * @throws ArrayIndexOutOfBoundsException if the array has a length of 0
-	 * @since 1.5.5
+	 * @since 1.5.5 com.github.kilianB
 	 */
 	public static double median(byte[] array) {
 		double medianValue;
@@ -2470,7 +2470,7 @@ public class ArrayUtil {
 	 * @param array the array to calculate the median value for.
 	 * @return the median value of the array
 	 * @throws ArrayIndexOutOfBoundsException if the array has a length of 0
-	 * @since 1.5.5
+	 * @since 1.5.5 com.github.kilianB
 	 */
 	public static double median(char[] array) {
 		double medianValue;
@@ -2490,7 +2490,7 @@ public class ArrayUtil {
 	 * @param array the array to calculate the median value for.
 	 * @return the median value of the array
 	 * @throws ArrayIndexOutOfBoundsException if the array has a length of 0
-	 * @since 1.5.5
+	 * @since 1.5.5 com.github.kilianB
 	 */
 	public static double median(short[] array) {
 		double medianValue;
@@ -2510,7 +2510,7 @@ public class ArrayUtil {
 	 * @param array the array to calculate the median value for.
 	 * @return the median value of the array
 	 * @throws ArrayIndexOutOfBoundsException if the array has a length of 0
-	 * @since 1.5.5
+	 * @since 1.5.5 com.github.kilianB
 	 */
 	public static double median(int[] array) {
 		double medianValue;
@@ -2530,7 +2530,7 @@ public class ArrayUtil {
 	 * @param array the array to calculate the median value for.
 	 * @return the median value of the array
 	 * @throws ArrayIndexOutOfBoundsException if the array has a length of 0
-	 * @since 1.5.5
+	 * @since 1.5.5 com.github.kilianB
 	 */
 	public static double median(long[] array) {
 		double medianValue;
@@ -2550,7 +2550,7 @@ public class ArrayUtil {
 	 * @param array the array to calculate the median value for.
 	 * @return the median value of the array
 	 * @throws ArrayIndexOutOfBoundsException if the array has a length of 0
-	 * @since 1.5.5
+	 * @since 1.5.5 com.github.kilianB
 	 */
 	public static double median(float[] array) {
 		double medianValue;
@@ -2570,7 +2570,7 @@ public class ArrayUtil {
 	 * @param array the array to calculate the median value for.
 	 * @return the median value of the array
 	 * @throws ArrayIndexOutOfBoundsException if the array has a length of 0
-	 * @since 1.5.5
+	 * @since 1.5.5 com.github.kilianB
 	 */
 	public static double median(double[] array) {
 		double medianValue;

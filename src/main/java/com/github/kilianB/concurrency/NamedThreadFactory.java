@@ -12,7 +12,7 @@ import java.util.logging.Logger;
  * inherited.
  * 
  * @author Kilian
- * @since 1.1.0
+ * @since 1.1.0 com.github.kilianB
  */
 public class NamedThreadFactory implements ThreadFactory {
 

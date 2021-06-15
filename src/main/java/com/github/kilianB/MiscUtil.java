@@ -27,7 +27,7 @@ public class MiscUtil {
 	 * </dl>
 	 * 
 	 * @author Kilian
-	 * @since 1.0.0
+	 * @since 1.0.0 com.github.kilianB
 	 */
 	public enum OS {
 		// lower case identifier
@@ -100,7 +100,7 @@ public class MiscUtil {
 	 * 
 	 * Guard yourself against constant restarting due to uninitialized conditions.
 	 * 
-	 * @since 1.0.0
+	 * @since 1.0.0 com.github.kilianB
 	 */
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public static void restartApp() {

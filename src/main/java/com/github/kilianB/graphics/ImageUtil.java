@@ -35,9 +35,9 @@ public class ImageUtil {
 	 * @param width  the new width
 	 * @param height the new height
 	 * @return the resized image
-	 * @since 1.0.0
-	 * @since 1.4.2 fixed not using awt rescale
-	 * @since 1.5.3 fixed using ImageTypeSpecifier to create compatible images for custom type
+	 * @since 1.0.0 com.github.kilianB
+	 * @since 1.4.2 fixed not using awt rescale com.github.kilianB
+	 * @since 1.5.3 fixed using ImageTypeSpecifier to create compatible images for custom type com.github.kilianB
 	 */
 	public static BufferedImage getScaledInstance(BufferedImage source, int width, int height) {
 		
@@ -177,7 +177,7 @@ public class ImageUtil {
 	 * 
 	 * @param image the source image
 	 * @return the average color of the image
-	 * @since 1.0.0
+	 * @since 1.0.0 com.github.kilianB
 	 */
 	public static Color interpolateColor(Image image) {
 		BufferedImage bImage = SwingFXUtils.fromFXImage(image, null);
@@ -194,7 +194,7 @@ public class ImageUtil {
 	 * 
 	 * @param image The source image
 	 * @return the dominant color of this image
-	 * @since 1.0.0
+	 * @since 1.0.0 com.github.kilianB
 	 */
 	public static Color dominantColor(Image image) {
 
@@ -226,7 +226,7 @@ public class ImageUtil {
 	 * 
 	 * @param image The source image
 	 * @return The average mean color of this image
-	 * @since 1.0.0
+	 * @since 1.0.0 com.github.kilianB
 	 */
 	public static Color meanColor(Image image) {
 

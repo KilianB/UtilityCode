@@ -42,7 +42,7 @@ public class CryptoUtil {
 	 * @return A secret key used for encryption and decryption operations
 	 * @throws InvalidKeySpecException if the given key specificationis
 	 *                                 inappropriate for this secret-key
-	 * @since 1.0.0
+	 * @since 1.0.0 com.github.kilianB
 	 */
 	public static SecretKey deriveKey(char[] password, byte[] salt, int keyLength) throws InvalidKeySpecException {
 		SecretKeyFactory factory;
@@ -70,7 +70,7 @@ public class CryptoUtil {
 	 * 
 	 * @param password The password used to create the key
 	 * @return A secret key used for encryption and decryption operations
-	 * @since 1.0.0
+	 * @since 1.0.0 com.github.kilianB
 	 */
 	public static SecretKey deriveKey(char[] password) {
 		try {
@@ -100,7 +100,7 @@ public class CryptoUtil {
 	 *      Partially based on:
 	 *      https://stackoverflow.com/questions/15554296/simple-java-aes-encrypt-decrypt-example
 	 *      </a>
-	 * @since 1.0.0
+	 * @since 1.0.0 com.github.kilianB
 	 */
 	public static String encryptAES(SecretKey key, String text) throws Exception {
 
@@ -131,7 +131,7 @@ public class CryptoUtil {
 	 *                  by {@link #encryptAES(SecretKey, String)}
 	 * @return the decrypted text
 	 * @throws Exception if an Exception occurs
-	 * @since 1.0.0
+	 * @since 1.0.0 com.github.kilianB
 	 */
 	public static String decrypt(SecretKey key, String encrypted) throws Exception {
 

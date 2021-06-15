@@ -18,7 +18,7 @@ public class StringUtil {
 	 * 
 	 * @param n A number
 	 * @return the character count of the integer part of the number
-	 * @since 1.0.0
+	 * @since 1.0.0 com.github.kilianB
 	 */
 	public static int charsNeeded(Number n) {
 		double numberAsDouble = n.doubleValue();
@@ -39,7 +39,7 @@ public class StringUtil {
 	 *                character long)
 	 * @param length  the final length of the entire string
 	 * @return the centered text as string.
-	 * @since 1.0.0
+	 * @since 1.0.0 com.github.kilianB
 	 */
 	public static String centerText(String text, String padding, int length) {
 		int textLength = text.length();
@@ -71,7 +71,7 @@ public class StringUtil {
 	 * @param Char  the char of the final string
 	 * @param count the number of the chars appended after one another.
 	 * @return The concat string.
-	 * @since 1.0.0
+	 * @since 1.0.0 com.github.kilianB
 	 */
 	public static String multiplyChar(String Char, int count) {
 		if(Char == null || Char.isEmpty())
@@ -91,7 +91,7 @@ public class StringUtil {
 	 * @param desiredLength The desired length of the final string
 	 * @param content       the original string
 	 * @return the string with the desired length and concatenated char
-	 * @since 1.4.0
+	 * @since 1.4.0 com.github.kilianB
 	 */
 	public static String fillStringBeginning(String Char, int desiredLength, String content) {
 		return multiplyChar(Char, desiredLength - content.length()) + content;
@@ -105,7 +105,7 @@ public class StringUtil {
 	 * @param desiredLength The desired length of the final string
 	 * @param content       the original string
 	 * @return the string with the desired length and concatenated char
-	 * @since 1.0.0
+	 * @since 1.0.0 com.github.kilianB
 	 */
 	public static String fillString(String Char, int desiredLength, String content) {
 		return content + multiplyChar(Char, desiredLength - content.length());

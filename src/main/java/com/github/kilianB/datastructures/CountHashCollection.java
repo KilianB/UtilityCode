@@ -74,7 +74,7 @@ import java.util.NoSuchElementException;
  * 
  * @author Kilian
  * @param <K> the type of elements in this collection
- * @since 1.1.0
+ * @since 1.1.0 com.github.kilianB
  */
 public class CountHashCollection<K> implements Collection<K> {
 

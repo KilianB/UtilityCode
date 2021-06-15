@@ -16,7 +16,7 @@ public class Require {
 	 * @param target       the value to check against
 	 * @return The supplied value
 	 * @param <T> the type of the value
-	 * @since 1.5.8
+	 * @since 1.5.8 com.github.kilianB
 	 */
 	public static <T extends Number> T exact(T valueToCheck, T target) {
 		return exact(valueToCheck, target, null);
@@ -31,7 +31,7 @@ public class Require {
 	 * @param message      to be thrown in case of error
 	 * @return The supplied value
 	 * @param <T> the type of the value
-	 * @since 1.5.8
+	 * @since 1.5.8 com.github.kilianB
 	 */
 	public static <T extends Number> T exact(T valueToCheck, T target, String message) {
 
@@ -60,7 +60,7 @@ public class Require {
 	 * @param value to be checked
 	 * @return The supplied value
 	 * @param <T> the type of the value
-	 * @since 1.0.0
+	 * @since 1.0.0 com.github.kilianB
 	 */
 	public static <T extends Number> T positiveValue(T value) {
 		return positiveValue(value, null);
@@ -74,7 +74,7 @@ public class Require {
 	 * @param message to be thrown in case of error
 	 * @return The supplied value
 	 * @param <T> the type of the value
-	 * @since 1.0.0
+	 * @since 1.0.0 com.github.kilianB
 	 */
 	public static <T extends Number> T positiveValue(T value, String message) {
 		if (value.doubleValue() <= 0) {
@@ -97,7 +97,7 @@ public class Require {
 	 * @param message     to be thrown in case of error
 	 * @param             <T> the type of the value
 	 * @return The supplied value
-	 * @since 1.0.0
+	 * @since 1.0.0 com.github.kilianB
 	 */
 	public static <T extends Number> T inRange(T value, T lowerBound, T higherBound, String message) {
 
@@ -127,7 +127,7 @@ public class Require {
 	 * @param message     to be thrown in case of error
 	 * @param             <T> the type of the value
 	 * @return The supplied value
-	 * @since 1.1.0
+	 * @since 1.1.0 com.github.kilianB
 	 */
 	public static <T extends Number> Collection<T> inRange(Collection<T> value, T lowerBound, T higherBound,
 			String message) {
@@ -146,7 +146,7 @@ public class Require {
 	 * @param higherBound inclusively
 	 * @param             <T> the type of the value
 	 * @return The supplied value
-	 * @since 1.0.0
+	 * @since 1.0.0 com.github.kilianB
 	 */
 	public static <T extends Number> T inRange(T value, T lowerBound, T higherBound) {
 		return inRange(value, lowerBound, higherBound, null);
@@ -159,7 +159,7 @@ public class Require {
 	 * @param array to be checked
 	 * @param       <T> the type of the value
 	 * @return The supplied value
-	 * @since 1.0.0
+	 * @since 1.0.0 com.github.kilianB
 	 */
 	public static <T> T[] nonNull(T[] array) {
 		return nonNull(array, null);
@@ -173,7 +173,7 @@ public class Require {
 	 * @param message message to be thrown in case of failure
 	 * @param         <T> the type of the value
 	 * @return The supplied value
-	 * @since 1.0.0
+	 * @since 1.0.0 com.github.kilianB
 	 */
 	public static <T> T[] nonNull(T[] array, String message) {
 		if (ArrayUtil.allNotNull(array)) {
@@ -197,7 +197,7 @@ public class Require {
 	 * @param array to be checked
 	 * @param       <T> the type of the value
 	 * @return The supplied value
-	 * @since 1.0.0
+	 * @since 1.0.0 com.github.kilianB
 	 */
 	public static <T> T[] deepNonNull(T[] array) {
 		return deepNonNull(array, null);
@@ -214,7 +214,7 @@ public class Require {
 	 * @param message message to be thrown in case of failure
 	 * @param         <T> the type of the value
 	 * @return The supplied value
-	 * @since 1.0.0
+	 * @since 1.0.0 com.github.kilianB
 	 */
 	public static <T> T[] deepNonNull(T[] array, String message) {
 		if (ArrayUtil.deepAllNotNull(array)) {
@@ -235,7 +235,7 @@ public class Require {
 	 * @param array to be checked
 	 * @param       <T> the type of the value
 	 * @return The supplied value
-	 * @since 1.0.0
+	 * @since 1.0.0 com.github.kilianB
 	 */
 	public static <T> T[] allNull(T[] array) {
 		return allNull(array, null);
@@ -249,7 +249,7 @@ public class Require {
 	 * @param message message to be thrown in case of failure
 	 * @param         <T> the type of the value
 	 * @return The supplied value
-	 * @since 1.0.0
+	 * @since 1.0.0 com.github.kilianB
 	 */
 	public static <T> T[] allNull(T[] array, String message) {
 		if (ArrayUtil.allNull(array)) {
@@ -270,7 +270,7 @@ public class Require {
 	 * @param list to be checked
 	 * @param      <T> the type of the value
 	 * @return The supplied value
-	 * @since 1.0.0
+	 * @since 1.0.0 com.github.kilianB
 	 */
 	public static <T> Collection<T> nonNull(Collection<T> list) {
 		nonNull(list.toArray(), null);
@@ -285,7 +285,7 @@ public class Require {
 	 * @param message message to be thrown in case of failure
 	 * @param         <T> the type of the value
 	 * @return The supplied value
-	 * @since 1.0.0
+	 * @since 1.0.0 com.github.kilianB
 	 */
 	public static <T> Collection<T> nonNull(Collection<T> list, String message) {
 		nonNull(list.toArray(), message);
@@ -299,7 +299,7 @@ public class Require {
 	 * @param value to be checked
 	 * @return The supplied value
 	 * @param <T> the type of the value
-	 * @since 1.5.2
+	 * @since 1.5.2 com.github.kilianB
 	 */
 	public static <T extends Number> T oddValue(T value) {
 		return oddValue(value, null);
@@ -313,7 +313,7 @@ public class Require {
 	 * @param message to be thrown in case of error
 	 * @return The supplied value
 	 * @param <T> the type of the value
-	 * @since 1.5.2
+	 * @since 1.5.2 com.github.kilianB
 	 */
 	public static <T extends Number> T oddValue(T value, String message) {
 
@@ -338,7 +338,7 @@ public class Require {
 	 * @param value to be checked
 	 * @return The supplied value
 	 * @param <T> the type of the value
-	 * @since 1.5.2
+	 * @since 1.5.2 com.github.kilianB
 	 */
 	public static <T extends Number> T evenValue(T value) {
 		return evenValue(value, null);
@@ -352,7 +352,7 @@ public class Require {
 	 * @param message to be thrown in case of error
 	 * @return The supplied value
 	 * @param <T> the type of the value
-	 * @since 1.5.2
+	 * @since 1.5.2 com.github.kilianB
 	 */
 	public static <T extends Number> T evenValue(T value, String message) {
 
@@ -377,7 +377,7 @@ public class Require {
 	 * @param value to be checked
 	 * @return The supplied value
 	 * @param <T> the type of the value
-	 * @since 1.5.2
+	 * @since 1.5.2 com.github.kilianB
 	 */
 	public static <T extends Number> T negativeValue(T value) {
 		return negativeValue(value, null);
@@ -391,7 +391,7 @@ public class Require {
 	 * @param message to be thrown in case of error
 	 * @return The supplied value
 	 * @param <T> the type of the value
-	 * @since 1.5.2
+	 * @since 1.5.2 com.github.kilianB
 	 */
 	public static <T extends Number> T negativeValue(T value, String message) {
 		if (value.doubleValue() >= 0) {
@@ -412,7 +412,7 @@ public class Require {
 	 * @param upperBound the higher bound to check against
 	 * @return The supplied value
 	 * @param <T> the type of the value
-	 * @since 1.5.2
+	 * @since 1.5.2 com.github.kilianB
 	 */
 	public static <T extends Number> T lessThan(T value, T upperBound) {
 		return lessThan(value, upperBound, null);
@@ -427,7 +427,7 @@ public class Require {
 	 * @param message    to be thrown in case of error
 	 * @return The supplied value
 	 * @param <T> the type of the value
-	 * @since 1.5.2
+	 * @since 1.5.2 com.github.kilianB
 	 */
 	public static <T extends Number> T lessThan(T value, T upperBound, String message) {
 		if (value.doubleValue() >= upperBound.doubleValue()) {
@@ -448,7 +448,7 @@ public class Require {
 	 * @param lowerBound the lower bound to check against
 	 * @return The supplied value
 	 * @param <T> the type of the value
-	 * @since 1.5.2
+	 * @since 1.5.2 com.github.kilianB
 	 */
 	public static <T extends Number> T greaterThan(T value, T lowerBound) {
 		return greaterThan(value, lowerBound, null);
@@ -463,7 +463,7 @@ public class Require {
 	 * @param message    to be thrown in case of error
 	 * @return The supplied value
 	 * @param <T> the type of the value
-	 * @since 1.5.2
+	 * @since 1.5.2 com.github.kilianB
 	 */
 	public static <T extends Number> T greaterThan(T value, T lowerBound, String message) {
 		if (value.doubleValue() <= lowerBound.doubleValue()) {

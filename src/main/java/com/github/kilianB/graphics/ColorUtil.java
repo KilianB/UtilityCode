@@ -34,7 +34,7 @@ public class ColorUtil {
 	 * Convert a JavaFX color to it's awt sibling
 	 * @param fxColor The fx color to convert
 	 * @return The awt color
-	 * @since 1.0.0
+	 * @since 1.0.0 com.github.kilianB
 	 */
 	public static java.awt.Color fxToAwtColor(Color fxColor){
 		return new java.awt.Color((float)fxColor.getRed(),
@@ -49,7 +49,7 @@ public class ColorUtil {
 	 * Convert a Java AWT color to it's JavaFX sibling
 	 * @param awtColor The awt color to convert
 	 * @return The fx color
-	 * @since 1.0.0
+	 * @since 1.0.0 com.github.kilianB
 	 */
 	public static Color awtToFxColor(java.awt.Color awtColor) {
 		return new Color(awtColor.getRed()/255d,
@@ -64,7 +64,7 @@ public class ColorUtil {
 	 * 
 	 * @param argb values as int
 	 * @return [0] Alpha, [1] Red, [2] Green, [3] Blue
-	 * @since 1.0.0
+	 * @since 1.0.0 com.github.kilianB
 	 * 
 	 */
 	public static int[] argbToComponents(int argb) {
@@ -80,7 +80,7 @@ public class ColorUtil {
 	 * @param green in range of 0 - 255
 	 * @param blue  in range of 0 - 255
 	 * @return a single int representing the argb value
-	 * @since 1.0.0
+	 * @since 1.0.0 com.github.kilianB
 	 */
 	public static int componentsToARGB(int alpha, int red, int green, int blue) {
 		return (alpha << 24) | (red << 16) | (green << 8) | blue;
@@ -92,7 +92,7 @@ public class ColorUtil {
 	 * 
 	 * @param argb the argb color as an int
 	 * @return The JavaFX Color
-	 * @since 1.0.0
+	 * @since 1.0.0 com.github.kilianB
 	 */
 	public static javafx.scene.paint.Color argbToFXColor(int argb) {
 		int[] components = argbToComponents(argb);
@@ -105,7 +105,7 @@ public class ColorUtil {
 	 * 
 	 * @param color the color to convert
 	 * @return a hex representation of the color
-	 * @since 1.0.0
+	 * @since 1.0.0 com.github.kilianB
 	 */
 	public static String fxToHex(Color color) {
 		return String.format("#%02X%02X%02X", (int) (color.getRed() * 255), (int) (color.getGreen() * 255),
@@ -124,7 +124,7 @@ public class ColorUtil {
 	 * @param c1 The first color
 	 * @param c2 The second color
 	 * @return a double value indicating the distance of two colors
-	 * @since 1.0.0
+	 * @since 1.0.0 com.github.kilianB
 	 */
 	public static double distance(Color c1, Color c2) {
 		double rmean = (c1.getRed() * 255 + c2.getRed() * 255) / 2;
@@ -149,7 +149,7 @@ public class ColorUtil {
 	 * @param c1 The first color
 	 * @param c2 The second color
 	 * @return a double value indicating the distance of two colors
-	 * @since 1.0.0
+	 * @since 1.0.0 com.github.kilianB
 	 */
 	public static double distance(java.awt.Color c1, java.awt.Color c2) {
 		double rmean = (c1.getRed() + c2.getRed()) / 2;
@@ -163,27 +163,28 @@ public class ColorUtil {
 	}
 
 	/**
-	 * Get the  Y (luma component) of the YCrCb color model 
+	 * Get the Y (luma component) of the YCrCb color model
+	 * 
 	 * @param c an javaFX color
 	 * @return the luma component in the tange [0-1]
-	 * @since 1.3.2
+	 * @since 1.3.2 com.github.kilianB
 	 */
 	public static double getLuma(Color c) {
-		return LUMA_RED*c.getRed() + LUMA_GREEN*c.getGreen() + LUMA_BLUE*c.getBlue();
+		return LUMA_RED * c.getRed() + LUMA_GREEN * c.getGreen() + LUMA_BLUE * c.getBlue();
 	}
-	
+
 	/**
-	 * Get the  Y (luma component) of the YCrCb color model 
+	 * Get the Y (luma component) of the YCrCb color model
+	 * 
 	 * @param c an awt color
 	 * @return the luma component in the tange [0-255]
-	 * @since 1.3.2
+	 * @since 1.3.2 com.github.kilianB
 	 */
 	public static int getLuma(java.awt.Color c) {
-		int luma = (int) Math.round(LUMA_RED*c.getRed() + LUMA_GREEN*c.getGreen() + LUMA_BLUE*c.getBlue());
+		int luma = (int) Math.round(LUMA_RED * c.getRed() + LUMA_GREEN * c.getGreen() + LUMA_BLUE * c.getBlue());
 		return luma > 255 ? 255 : luma;
 	}
-	
-	
+
 	/**
 	 * Return either white or black depending on the supplied color to guarantee
 	 * readability. The contrast color is assumed to be used as text overlay on top
@@ -192,7 +193,7 @@ public class ColorUtil {
 	 * @param input the color of the background
 	 * @return the color (white or black) of the foreground whichever guarantees
 	 *         more readability.
-	 * @since 1.0.0
+	 * @since 1.0.0 com.github.kilianB
 	 */
 	public static Color getContrastColor(Color input) {
 		// Luminascense
@@ -203,7 +204,7 @@ public class ColorUtil {
 			return Color.WHITE;
 		}
 	}
-	
+
 	/**
 	 * Return either white or black depending on the supplied color to guarantee
 	 * readability. The contrast color is assumed to be used as text overlay on top
@@ -212,7 +213,7 @@ public class ColorUtil {
 	 * @param input the color of the background
 	 * @return the color (white or black) of the foreground whichever guarantees
 	 *         more readability.
-	 * @since 1.3.2
+	 * @since 1.3.2 com.github.kilianB
 	 */
 	public static java.awt.Color getContrastColor(java.awt.Color input) {
 		// Luminascense
@@ -231,7 +232,7 @@ public class ColorUtil {
 		 * 
 		 * @param numColors the number of colors present in the returned array
 		 * @return A color array with
-		 * @since 1.0.0
+		 * @since 1.0.0 com.github.kilianB
 		 */
 		public static Color[] getPalette(int numColors) {
 			return getPalette(numColors, Color.web("#003f5c"), Color.web("#ffa600"));
@@ -244,7 +245,7 @@ public class ColorUtil {
 		 * @param startColor The color of the first index
 		 * @param endColor   The color of the last index
 		 * @return An array containing the interpolated colors
-		 * @since 1.0.0
+		 * @since 1.0.0 com.github.kilianB
 		 */
 		public static Color[] getPalette(int numColors, Color startColor, Color endColor) {
 
@@ -262,7 +263,7 @@ public class ColorUtil {
 		 * 
 		 * @param numColors The number of colors present in the returned array
 		 * @return An array containing the interpolated colors
-		 * @since 1.0.0
+		 * @since 1.0.0 com.github.kilianB
 		 */
 		public static Color[] getPaletteHue(int numColors) {
 			return getPaletteHue(numColors, Color.web("#003f5c"), Color.web("#ffa600"));
@@ -276,7 +277,7 @@ public class ColorUtil {
 		 * @param startColor The color of the first index
 		 * @param endColor   The color of the last index
 		 * @return An array containing the interpolated colors
-		 * @since 1.0.0
+		 * @since 1.0.0 com.github.kilianB
 		 */
 		public static Color[] getPaletteHue(int numColors, Color startColor, Color endColor) {
 

@@ -27,20 +27,20 @@ public interface FastPixel {
 
 		switch (bufferedImage.getType()) {
 
-		case BufferedImage.TYPE_3BYTE_BGR:
-		case BufferedImage.TYPE_4BYTE_ABGR:
-			return new FastPixelByte(bufferedImage);
-		case BufferedImage.TYPE_INT_BGR:
-		case BufferedImage.TYPE_INT_ARGB:
-		case BufferedImage.TYPE_INT_RGB:
-			return new FastPixelInt(bufferedImage);
-		default:
-			LOGGER.info("No fast implementation available for " + bufferedImage.getType()
-					+ ". Fallback to slow default variant.");
-			return new FastPixelSlowDefault(bufferedImage);
-//			throw new UnsupportedOperationException(
-//					"The image type is currently not supported: " + bufferedImage.getType());
-//		
+			case BufferedImage.TYPE_3BYTE_BGR:
+			case BufferedImage.TYPE_4BYTE_ABGR:
+				return new FastPixelByte(bufferedImage);
+			case BufferedImage.TYPE_INT_BGR:
+			case BufferedImage.TYPE_INT_ARGB:
+			case BufferedImage.TYPE_INT_RGB:
+				return new FastPixelInt(bufferedImage);
+			default:
+				LOGGER.info("No fast implementation available for " + bufferedImage.getType()
+						+ ". Fallback to slow default variant.");
+				return new FastPixelSlowDefault(bufferedImage);
+			// throw new UnsupportedOperationException(
+			// "The image type is currently not supported: " + bufferedImage.getType());
+			//
 		}
 	}
 
@@ -58,7 +58,7 @@ public interface FastPixel {
 	 *          default RGB color model
 	 * @return an integer pixel in the default RGB color model and default sRGB
 	 *         colorspace.
-	 * @since 1.3.0
+	 * @since 1.3.0 com.github.kilianB
 	 */
 	default int getRGB(int x, int y) {
 		return getRGB(getOffset(x, y));
@@ -71,7 +71,7 @@ public interface FastPixel {
 	 * ArrayOutOfBoundsException may be thrown if the coordinates are not in bounds.
 	 * 
 	 * @return a 2d integer array containing the argb values of the image
-	 * @since 1.3.0
+	 * @since 1.3.0 com.github.kilianB
 	 */
 	int[][] getRGB();
 
@@ -80,7 +80,7 @@ public interface FastPixel {
 	 * 
 	 * @param index the offset in the underlying array
 	 * @return the alpha value in range [0-255] or -1 if alpha is not supported
-	 * @since 1.5.0
+	 * @since 1.5.0 com.github.kilianB
 	 */
 	int getAlpha(int index);
 
@@ -90,7 +90,7 @@ public interface FastPixel {
 	 * @param x The x coordinate of the images' pixel
 	 * @param y The y coordinate of the images' pixel
 	 * @return the alpha value in range [0-255] or -1 if alpha is not supported
-	 * @since 1.3.0
+	 * @since 1.3.0 com.github.kilianB
 	 */
 	default int getAlpha(int x, int y) {
 		return getAlpha(getOffset(x, y));
@@ -101,7 +101,7 @@ public interface FastPixel {
 	 * the x and y coordinates of the pixel.
 	 * 
 	 * @return the alpha values or null if alpha is not supported
-	 * @since 1.3.0
+	 * @since 1.3.0 com.github.kilianB
 	 */
 	int[][] getAlpha();
 
@@ -112,7 +112,7 @@ public interface FastPixel {
 	 * @param x        The x coordinate of the images' pixel
 	 * @param y        The y coordinate of the images' pixel
 	 * @param newAlpha the new alpha value in range [0-255]
-	 * @since 1.3.0
+	 * @since 1.3.0 com.github.kilianB
 	 */
 	default void setAlpha(int x, int y, int newAlpha) {
 		setAlpha(getOffset(x, y), newAlpha);
@@ -123,7 +123,7 @@ public interface FastPixel {
 	 * 
 	 * @param index    the offset of the underlying array
 	 * @param newAlpha the new alpha value in range [0-255]
-	 * @since 1.5.0
+	 * @since 1.5.0 com.github.kilianB
 	 */
 	void setAlpha(int index, int newAlpha);
 
@@ -131,17 +131,16 @@ public interface FastPixel {
 	 * Set new alpha values for the entire picture
 	 * 
 	 * @param newAlpha red values in range [0-255]
-	 * @since 1.4.5
+	 * @since 1.4.5 com.github.kilianB
 	 */
 	void setAlpha(int[][] newAlpha);
-	
-	
+
 	/**
 	 * Get the red value at the specified offset
 	 * 
 	 * @param index offset of ther underlying array
 	 * @return the red value in range [0-255]
-	 * @since 1.5.0
+	 * @since 1.5.0 com.github.kilianB
 	 */
 	int getRed(int index);
 
@@ -151,7 +150,7 @@ public interface FastPixel {
 	 * @param x The x coordinate of the images' pixel
 	 * @param y The y coordinate of the images' pixel
 	 * @return the red value in range [0-255]
-	 * @since 1.3.0
+	 * @since 1.3.0 com.github.kilianB
 	 */
 	default int getRed(int x, int y) {
 		return getRed(getOffset(x, y));
@@ -161,26 +160,26 @@ public interface FastPixel {
 	 * Get the red component of the entire image mapped to a 2d array representing
 	 * the x and y coordinates of the pixel.
 	 * 
-	 * @return the red values
-	 * @since 1.3.0
+	 * @return the red values in range [0-255]
+	 * @since 1.3.0 com.github.kilianB
 	 */
 	int[][] getRed();
 
 	/**
-	 * Get the red component of the entire image mapped to a 1d array 
+	 * Get the red component of the entire image mapped to a 1d array
 	 * 
-	 * @return the red values
-	 * @since 1.5.5
+	 * @return the red values in range [0-255]
+	 * @since 1.5.5 com.github.kilianB
 	 */
 	int[] getRed1D();
-	
+
 	/**
 	 * Set the red value of the specified pixel
 	 * 
 	 * @param x      The x coordinate of the images' pixel
 	 * @param y      The y coordinate of the images' pixel
 	 * @param newRed the new red value in range [0-255]
-	 * @since 1.3.0
+	 * @since 1.3.0 com.github.kilianB
 	 */
 	default void setRed(int x, int y, int newRed) {
 		setRed(getOffset(x, y), newRed);
@@ -191,7 +190,7 @@ public interface FastPixel {
 	 * 
 	 * @param index  the offset of the underlying array
 	 * @param newRed the new red value in range [0-255]
-	 * @since 1.5.0
+	 * @since 1.5.0 com.github.kilianB
 	 */
 	void setRed(int index, int newRed);
 
@@ -199,7 +198,7 @@ public interface FastPixel {
 	 * Set new red values for the entire picture
 	 * 
 	 * @param newRed red values in range [0-255]
-	 * @since 1.4.5
+	 * @since 1.4.5 com.github.kilianB
 	 */
 	void setRed(int[][] newRed);
 
@@ -208,7 +207,7 @@ public interface FastPixel {
 	 * 
 	 * @param index the offset of the underlying array
 	 * @return the green value in range [0-255]
-	 * @since 1.5.0
+	 * @since 1.5.0 com.github.kilianB
 	 */
 	int getGreen(int index);
 
@@ -218,7 +217,7 @@ public interface FastPixel {
 	 * @param x The x coordinate of the images' pixel
 	 * @param y The y coordinate of the images' pixel
 	 * @return the green value in range [0-255]
-	 * @since 1.3.0
+	 * @since 1.3.0 com.github.kilianB
 	 */
 	default int getGreen(int x, int y) {
 		return getGreen(getOffset(x, y));
@@ -230,7 +229,7 @@ public interface FastPixel {
 	 * @param x        The x coordinate of the images' pixel
 	 * @param y        The y coordinate of the images' pixel
 	 * @param newGreen the new green value in range [0-255]
-	 * @since 1.3.0
+	 * @since 1.3.0 com.github.kilianB
 	 */
 	default void setGreen(int x, int y, int newGreen) {
 		setGreen(getOffset(x, y), newGreen);
@@ -241,7 +240,7 @@ public interface FastPixel {
 	 * 
 	 * @param index    the offset of the underlying array
 	 * @param newGreen the new green value in range [0-255]
-	 * @since 1.5.0
+	 * @since 1.5.0 com.github.kilianB
 	 */
 	void setGreen(int index, int newGreen);
 
@@ -249,7 +248,7 @@ public interface FastPixel {
 	 * Set new green values for the entire picture
 	 * 
 	 * @param newGreen red values in range [0-255]
-	 * @since 1.4.5
+	 * @since 1.4.5 com.github.kilianB
 	 */
 	void setGreen(int[][] newGreen);
 
@@ -257,25 +256,25 @@ public interface FastPixel {
 	 * Get the green component of the entire image mapped to a 2d array representing
 	 * the x and y coordinates of the pixel.
 	 * 
-	 * @return the green values
-	 * @since 1.3.0
+	 * @return the green values in range [0-255]
+	 * @since 1.3.0 com.github.kilianB
 	 */
 	int[][] getGreen();
 
 	/**
-	 * Get the green component of the entire image mapped to a 1d array 
+	 * Get the green component of the entire image mapped to a 1d array
 	 * 
-	 * @return the green values
-	 * @since 1.5.5
+	 * @return the green values in range [0-255]
+	 * @since 1.5.5 com.github.kilianB
 	 */
 	int[] getGreen1D();
-	
+
 	/**
 	 * Get the blue value of the specified offset
 	 * 
 	 * @param index the offset of the underlying array
 	 * @return the green value in range [0-255]
-	 * @since 1.5.0
+	 * @since 1.5.0 com.github.kilianB
 	 */
 	int getBlue(int index);
 
@@ -285,7 +284,7 @@ public interface FastPixel {
 	 * @param x The x coordinate of the images' pixel
 	 * @param y The y coordinate of the images' pixel
 	 * @return the blue value in range [0-255]
-	 * @since 1.3.0
+	 * @since 1.3.0 com.github.kilianB
 	 */
 	default int getBlue(int x, int y) {
 		return getBlue(getOffset(x, y));
@@ -297,7 +296,7 @@ public interface FastPixel {
 	 * @param x       The x coordinate of the images' pixel
 	 * @param y       The y coordinate of the images' pixel
 	 * @param newBlue the new blue value in range [0-255]
-	 * @since 1.3.0
+	 * @since 1.3.0 com.github.kilianB
 	 */
 	default void setBlue(int x, int y, int newBlue) {
 		setBlue(getOffset(x, y), newBlue);
@@ -309,24 +308,24 @@ public interface FastPixel {
 	 * Get the blue component of the entire image mapped to a 2d array representing
 	 * the x and y coordinates of the image.
 	 * 
-	 * @return the blue values
-	 * @since 1.3.0
+	 * @return the blue values in range [0-255]
+	 * @since 1.3.0 com.github.kilianB
 	 */
 	int[][] getBlue();
 
 	/**
-	 * Get the blue component of the entire image mapped to a 1d array 
+	 * Get the blue component of the entire image mapped to a 1d array
 	 * 
-	 * @return the red values
-	 * @since 1.5.5
+	 * @return the red values in range [0-255]
+	 * @since 1.5.5 com.github.kilianB
 	 */
 	int[] getBlue1D();
-	
+
 	/**
 	 * Set new blue values for the entire picture
 	 * 
 	 * @param newBlue red values in range [0-255]
-	 * @since 1.4.5
+	 * @since 1.4.5 com.github.kilianB
 	 */
 	void setBlue(int[][] newBlue);
 
@@ -337,15 +336,17 @@ public interface FastPixel {
 	 * 
 	 * <p>
 	 * Average grayscale: (R+G+B)/3
+	 * <p>
+	 * This
 	 * 
 	 * @param index offset of der underlying array
 	 * @return the grayscale values in range [0-255]
-	 * @since 1.5.0
+	 * @since 1.5.0 com.github.kilianB
+	 * @since 1.5.10 will return the default transparency color if
+	 *        com.github.kilianB
 	 */
 
-	default int getAverageGrayscale(int index) {
-		return (getRed(index) + getGreen(index) + getBlue(index)) / 3;
-	}
+	int getAverageGrayscale(int index);
 
 	/**
 	 * Get the average grayscale of the specified pixel
@@ -356,7 +357,7 @@ public interface FastPixel {
 	 * @param x The x coordinate of the images' pixel
 	 * @param y The y coordinate of the images' pixel
 	 * @return the grayscale values in range [0-255]
-	 * @since 1.5.0
+	 * @since 1.5.0 com.github.kilianB
 	 */
 	default int getAverageGrayscale(int x, int y) {
 		return getAverageGrayscale(getOffset(x, y));
@@ -373,7 +374,7 @@ public interface FastPixel {
 	 * Average grayscale: (R+G+B)/3
 	 * 
 	 * @return the grayscale values in range [0 - 255]
-	 * @since 1.5.0
+	 * @since 1.5.0 com.github.kilianB
 	 */
 	int[][] getAverageGrayscale();
 
@@ -390,7 +391,7 @@ public interface FastPixel {
 	 * 
 	 * @param index        offset of der underlaying array
 	 * @param newGrayValue to set the pixels to range [0 - 255]
-	 * @since 1.5.0
+	 * @since 1.5.0 com.github.kilianB
 	 */
 	default void setAverageGrayscale(int index, int newGrayValue) {
 		setGreen(index, newGrayValue);
@@ -412,7 +413,7 @@ public interface FastPixel {
 	 * @param x            The x coordinate of the images' pixel
 	 * @param y            The y coordinate of the images' pixel
 	 * @param newGrayValue to set the pixels to range [0 - 255]
-	 * @since 1.5.0
+	 * @since 1.5.0 com.github.kilianB
 	 */
 	default void setAverageGrayscale(int x, int y, int newGrayValue) {
 		setAverageGrayscale(getOffset(x, y), newGrayValue);
@@ -430,7 +431,7 @@ public interface FastPixel {
 	 * individual channel will be set to the gray value
 	 * 
 	 * @param newGrayValue to set the pixels to range [0 - 255]
-	 * @since 1.5.0
+	 * @since 1.5.0 com.github.kilianB
 	 */
 	void setAverageGrayscale(int[][] newGrayValue);
 
@@ -441,7 +442,7 @@ public interface FastPixel {
 	 * 
 	 * @param index of the underlying array
 	 * @return the luma component in range [0-255]
-	 * @since 1.3.0
+	 * @since 1.3.0 com.github.kilianB
 	 */
 	default int getLuma(int index) {
 		int lum = (int) ((getRed(index)) * ColorUtil.LUMA_RED + (getGreen(index)) * ColorUtil.LUMA_GREEN
@@ -456,7 +457,7 @@ public interface FastPixel {
 	 * @param x the x coordinate of the image
 	 * @param y the y coordinate of the image
 	 * @return the luma component in range [0-255]
-	 * @since 1.3.0
+	 * @since 1.3.0 com.github.kilianB
 	 */
 	default int getLuma(int x, int y) {
 		return getLuma(getOffset(x, y));
@@ -467,7 +468,7 @@ public interface FastPixel {
 	 * mapped to a 2d array representing the x and y coordinates of the pixel.
 	 * 
 	 * @return the luma component in range [0-255]
-	 * @since 1.3.1
+	 * @since 1.3.1 com.github.kilianB
 	 */
 	int[][] getLuma();
 
@@ -492,7 +493,7 @@ public interface FastPixel {
 	 * @param x the x coordinate of the image
 	 * @param y the y coordinate of the image
 	 * @return the cr component in range [0-255]
-	 * @since 1.3.0
+	 * @since 1.3.0 com.github.kilianB
 	 */
 	default int getCr(int x, int y) {
 		return getCr(getOffset(x, y));
@@ -504,7 +505,7 @@ public interface FastPixel {
 	 * 
 	 * @param index offset of the underlying array
 	 * @return the cb component in range [0-255]
-	 * @since 1.5.0
+	 * @since 1.5.0 com.github.kilianB
 	 */
 	default int getCb(int index) {
 		int cb = (int) (getRed(index) * ColorUtil.CB_RED + getGreen(index) * ColorUtil.CB_GREEN
@@ -519,7 +520,7 @@ public interface FastPixel {
 	 * @param x the x coordinate of the image
 	 * @param y the y coordinate of the image
 	 * @return the cb component in range [0-255]
-	 * @since 1.3.0
+	 * @since 1.3.0 com.github.kilianB
 	 */
 	default int getCb(int x, int y) {
 		return getCb(getOffset(x, y));
@@ -532,7 +533,7 @@ public interface FastPixel {
 	 * @param index offset of der underlying array
 	 * @return the hue component in range [0-360]. As defined the hue is 0 for
 	 *         undefined colors (e.g. white or black)
-	 * @since 1.5.0
+	 * @since 1.5.0 com.github.kilianB
 	 */
 	default int getHue(int index) {
 
@@ -573,7 +574,7 @@ public interface FastPixel {
 	 * @param y the y coordinate of the image
 	 * @return the hue component in range [0-360]. As defined the hue is 0 for
 	 *         undefined colors (e.g. white or black)
-	 * @since 1.3.0
+	 * @since 1.3.0 com.github.kilianB
 	 */
 	default int getHue(int x, int y) {
 		return getHue(getOffset(x, y));
@@ -591,7 +592,7 @@ public interface FastPixel {
 	 * @param index the offset of the underlying array
 	 * @return the sat component in range [0-1]. As defined the sat is 0 for
 	 *         undefined colors (i.e. black)
-	 * @since 1.5.0
+	 * @since 1.5.0 com.github.kilianB
 	 */
 	default double getSat(int index) {
 		int blue = getBlue(index);
@@ -618,7 +619,7 @@ public interface FastPixel {
 	 * @param y the y coordinate of the image
 	 * @return the sat component in range [0-1]. As defined the sat is 0 for
 	 *         undefined colors (i.e. black)
-	 * @since 1.3.0
+	 * @since 1.3.0 com.github.kilianB
 	 */
 	default double getSat(int x, int y) {
 		return getSat(getOffset(x, y));
@@ -629,7 +630,7 @@ public interface FastPixel {
 	 * 
 	 * @param index offset of the udnerlying array
 	 * @return the value component in range [0-255].
-	 * @since 1.5.0
+	 * @since 1.5.0 com.github.kilianB
 	 */
 	default int getVal(int index) {
 		int blue = getBlue(index);

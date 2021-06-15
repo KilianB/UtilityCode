@@ -7,8 +7,11 @@ import java.io.Serializable;
  * expressions or anonymous classes which want to alter the content of a
  * variable but are limited to final or effective final variables.
  * 
+ * Be aware that the hashcode changes if the value is updated resulting in the
+ * object not being retrievable in hash collections.
+ * 
  * @author Kilian
- * @since 1.0.0
+ * @since 1.0.0 com.github.kilianB
  */
 public class MutableByte extends Number implements Mutable<Byte>, Comparable<MutableByte>, Serializable {
 
@@ -50,7 +53,7 @@ public class MutableByte extends Number implements Mutable<Byte>, Comparable<Mut
 	 * Set the internal field to the new value
 	 * 
 	 * @param newValue the new value
-	 * @since 1.2.0
+	 * @since 1.2.0 com.github.kilianB
 	 */
 	public void setValue(byte newValue) {
 		this.field = newValue;
@@ -107,7 +110,7 @@ public class MutableByte extends Number implements Mutable<Byte>, Comparable<Mut
 	 * 
 	 * @return the value of the internal field before performing the increment
 	 *         operation.
-	 * @since 1.2.0
+	 * @since 1.2.0 com.github.kilianB
 	 */
 	public Byte getAndIncrement() {
 		return Byte.valueOf(field++);
@@ -117,7 +120,7 @@ public class MutableByte extends Number implements Mutable<Byte>, Comparable<Mut
 	 * Increment the internal value and return the result.
 	 * 
 	 * @return the new value after after performing the increment operation.
-	 * @since 1.2.0
+	 * @since 1.2.0 com.github.kilianB
 	 */
 	public Byte incrementAndGet() {
 		return Byte.valueOf(++field);
@@ -128,7 +131,7 @@ public class MutableByte extends Number implements Mutable<Byte>, Comparable<Mut
 	 * 
 	 * @return the value of the internal field before performing the decrement
 	 *         operation.
-	 * @since 1.2.0
+	 * @since 1.2.0 com.github.kilianB
 	 */
 	public Byte getAndDecrement() {
 		return Byte.valueOf(field--);
@@ -138,7 +141,7 @@ public class MutableByte extends Number implements Mutable<Byte>, Comparable<Mut
 	 * Decrement the internal value and return the result.
 	 * 
 	 * @return the new value after after performing the decrement operation.
-	 * @since 1.2.0
+	 * @since 1.2.0 com.github.kilianB
 	 */
 	public Byte decrementAndGet() {
 		return Byte.valueOf(--field);

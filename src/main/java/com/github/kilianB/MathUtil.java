@@ -35,7 +35,7 @@ public class MathUtil {
 	 * @param upperBound the upper bound
 	 * @param            <T> The type of the input and return value
 	 * @return the original value if it's between bounds or the bound
-	 * @since 1.0.0
+	 * @since 1.0.0 com.github.kilianB
 	 */
 	public static <T extends Number & Comparable<T>> T clampNumber(T value, T lowerBound, T upperBound) {
 		if (value.compareTo(lowerBound) <= 0) {
@@ -62,7 +62,7 @@ public class MathUtil {
 	 * @return the nearest number to dividend which can be divided by divisor
 	 * @throws java.lang.ArithmeticException if divisor is zero
 	 * 
-	 * @since 1.0.0
+	 * @since 1.0.0 com.github.kilianB
 	 */
 	public static long findClosestDivisibleInteger(int dividend, int divisor) {
 		int quot = dividend / divisor;
@@ -84,7 +84,7 @@ public class MathUtil {
 	 * @param target  the target
 	 * @param epsilon the amount the values may differ to still consider a match
 	 * @return true if numbers are considered equal, false otherwise
-	 * @since 1.0.0
+	 * @since 1.0.0 com.github.kilianB
 	 */
 	public static boolean isDoubleEquals(double needle, double target, double epsilon) {
 		// We could use machine precision e.g. Math.ulp(d)
@@ -97,7 +97,7 @@ public class MathUtil {
 	 * @param d a double
 	 * @return the fractional part of the number. If the base number is negative the
 	 *         returned fraction will also be negative.
-	 * @since 1.0.0
+	 * @since 1.0.0 com.github.kilianB
 	 */
 	public static double getFractionalPart(double d) {
 		return d - (int) d;
@@ -109,7 +109,7 @@ public class MathUtil {
 	 * @param newStd   new standard deviation
 	 * @param newMean  new mean
 	 * @return a value fitted to the new mean and std
-	 * @since 1.0.0
+	 * @since 1.0.0 com.github.kilianB
 	 */
 	public static double fitGaussian(double gaussian, double newStd, double newMean) {
 		return gaussian * newStd + newMean;
@@ -173,7 +173,7 @@ public class MathUtil {
 	 * 
 	 * @param var the variable to check
 	 * @return true if the variable is a number, false otherwise
-	 * @since 1.2.0
+	 * @since 1.2.0 com.github.kilianB
 	 */
 	public static boolean isNumeric(Object var) {
 		return var instanceof Number;
@@ -196,7 +196,7 @@ public class MathUtil {
 	 * @param value the value of the logarithm
 	 * @param base  the base of the logarithm
 	 * @return the log_base(value)
-	 * @since 1.3.2
+	 * @since 1.3.2 com.github.kilianB
 	 */
 	public static double log(double value, double base) {
 		if (base == 0) {
@@ -217,7 +217,7 @@ public class MathUtil {
 	 * 
 	 * @param n the number up to which the numbers are summed up
 	 * @return the triangular number
-	 * @since 1.4.1
+	 * @since 1.4.1 com.github.kilianB
 	 * @throws ArithmeticException if n is 0
 	 */
 	public static int triangularNumber(int n) {

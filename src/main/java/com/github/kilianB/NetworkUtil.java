@@ -33,7 +33,7 @@ public class NetworkUtil {
 	 * @return link local address of the machine or InetAddress.getLocalHost() if no
 	 *         address can be found.
 	 * @throws IOException if address can not be resolved
-	 * @since 1.0.0
+	 * @since 1.0.0 com.github.kilianB
 	 */
 	public static InetAddress resolveSiteLocalAddress() throws IOException {
 		Enumeration<NetworkInterface> interfaces = NetworkInterface.getNetworkInterfaces();
@@ -59,7 +59,7 @@ public class NetworkUtil {
 	 * 
 	 * @return the public ip address of this network.
 	 * @throws IOException if the ip can not be resolved
-	 * @since 1.5.9
+	 * @since 1.5.9 com.github.kilianB
 	 */
 	public static InetAddress resolvePublicAddress() throws IOException {
 
@@ -82,9 +82,10 @@ public class NetworkUtil {
 	 * @param url the url to read a line from
 	 * @return the content of the first line as returned by the url
 	 * @throws IOException if an io error occurs
-	 * @since 1.5.9
+	 * @since 1.5.9 com.github.kilianB
+	 * @since 1.5.10 public com.github.kilianB
 	 */
-	private static String readLineFromURL(String url) throws IOException {
+	public static String readLineFromURL(String url) throws IOException {
 		URL urlU = new URL(url);
 		BufferedReader in = new BufferedReader(new InputStreamReader(urlU.openStream()));
 
@@ -99,7 +100,7 @@ public class NetworkUtil {
 	 * @param br Buffered Reader input source
 	 * @return Content of the reader as string
 	 * @throws IOException Exception thrown during read operation.
-	 * @since 1.0.0
+	 * @since 1.0.0 com.github.kilianB
 	 */
 	public static String dumpReader(BufferedReader br) throws IOException {
 		StringBuilder response = new StringBuilder();
@@ -117,7 +118,7 @@ public class NetworkUtil {
 	 * @param s The socket
 	 * @return the content of the sockets input stream as string
 	 * @throws IOException if an IOError occurs
-	 * @since 1.0.0
+	 * @since 1.0.0 com.github.kilianB
 	 */
 	public static String collectSocketAndClose(Socket s) throws IOException {
 		String result = collectSocket(s);
@@ -132,7 +133,7 @@ public class NetworkUtil {
 	 * @param s The socket
 	 * @return the content of the sockets input stream as string
 	 * @throws IOException if an IOError occurs
-	 * @since 1.0.0
+	 * @since 1.0.0 com.github.kilianB
 	 */
 	public static String collectSocket(Socket s) throws IOException {
 
@@ -157,7 +158,7 @@ public class NetworkUtil {
 	 * @param msTimeout the time elapsed after the last character is read.
 	 * @return the content of the sockets input stream as string
 	 * @throws IOException if an IOError occurs
-	 * @since 1.0.0
+	 * @since 1.0.0 com.github.kilianB
 	 */
 	public static String collectSocket(Socket s, int msTimeout) throws IOException {
 

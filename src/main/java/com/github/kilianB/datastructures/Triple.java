@@ -12,7 +12,7 @@ import java.io.Serializable;
  * @param <S> type of the first value
  * @param <U> type of the second value
  * @param <V> type of the third value
- * @since 1.5.6
+ * @since 1.5.6 com.github.kilianB
  */
 public class Triple<S, U, V> implements Serializable {
 

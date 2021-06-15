@@ -26,7 +26,7 @@ import java.util.function.Consumer;
  * @author Kilian
  *
  * @param <T> Type of the task the consumer will execute
- * @since 1.0.0
+ * @since 1.0.0 com.github.kilianB
  */
 public class DelayedConsumerHashMap<T> {
 

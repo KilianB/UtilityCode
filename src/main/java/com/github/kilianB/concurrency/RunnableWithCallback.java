@@ -19,7 +19,7 @@ package com.github.kilianB.concurrency;
  * </pre>
  * 
  * @author Kilian
- * @since 1.0.0
+ * @since 1.0.0 com.github.kilianB
  */
 public class RunnableWithCallback implements Runnable {
 

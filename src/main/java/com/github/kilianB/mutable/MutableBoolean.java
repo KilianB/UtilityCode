@@ -7,8 +7,11 @@ import java.io.Serializable;
  * in lambda expressions or anonymous classes which want to alter the content of
  * a variable but are limited to final or effective final variables.
  * 
+ * Be aware that the hashcode changes if the value is updated resulting in the
+ * object not being retrievable in hash collections.
+ * 
  * @author Kilian
- * @since 1.0.0
+ * @since 1.0.0 com.github.kilianB
  */
 public class MutableBoolean implements Mutable<Boolean>, Comparable<MutableBoolean>, Serializable {
 
@@ -44,7 +47,7 @@ public class MutableBoolean implements Mutable<Boolean>, Comparable<MutableBoole
 	/**
 	 * Set the internal field to the new value
 	 * @param newValue the new value
-	 * @since 1.2.0
+	 * @since 1.2.0 com.github.kilianB
 	 */
 	public void setValue(boolean newValue) {
 		this.field = newValue;

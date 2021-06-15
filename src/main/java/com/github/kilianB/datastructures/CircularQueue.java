@@ -40,7 +40,7 @@ import java.util.Queue;
  *
  * @param <E>
  *            the type of elements in this collection
- * @since 1.1.0
+ * @since 1.1.0 com.github.kilianB
  */
 public class CircularQueue<E> extends AbstractCollection<E>
 		implements Queue<E>, Serializable {
@@ -188,7 +188,7 @@ public class CircularQueue<E> extends AbstractCollection<E>
 	 *
 	 * @return {@code true} if the capacity limit has been reached, {@code false}
 	 *         otherwise
-	 * @since 4.1
+	 * @since 4.1 com.github.kilianB
 	 */
 	public boolean isAtFullCapacity() {
 		return size() == maxElements;

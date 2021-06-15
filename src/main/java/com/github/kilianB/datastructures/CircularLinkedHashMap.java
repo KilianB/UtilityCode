@@ -124,7 +124,7 @@ import com.github.kilianB.Require;
  * 
  * @author Kilian
  * 
- * @since 1.0.0
+ * @since 1.0.0 com.github.kilianB
  */
 public class CircularLinkedHashMap<K, V> extends LinkedHashMap<K, V> {
 

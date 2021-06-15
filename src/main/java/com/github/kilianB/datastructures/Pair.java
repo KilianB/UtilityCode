@@ -11,8 +11,8 @@ import java.io.Serializable;
  *
  * @param <S> type of the first value
  * @param <U> type of the second value
- * @since 1.5.4
- * @since 1.5.6 implements serializable
+ * @since 1.5.4 com.github.kilianB
+ * @since 1.5.6 implements serializable com.github.kilianB
  */
 public class Pair<S, U> implements Serializable {
 
