@@ -53,7 +53,7 @@ public interface FastPixel {
 	 * which will be returned in case that the pixel has an alpha value smaller than
 	 * the specified threshold
 	 * 
-	 * 
+	 * @since 1.0.0
 	 * @return true if opaque colors are replaced by a user defined color
 	 */
 	boolean isReplaceOpaqueColors();
@@ -79,11 +79,34 @@ public interface FastPixel {
 	 */
 	void setReplaceOpaqueColors(int alphaThreshold, int r, int g, int b, int a);
 
+	/**
+	 * Replace all pixels values in the image which have an alpha < than the
+	 * specified threshold. The pixel value is replaced for all get operations,
+	 * including luminosity calculation. Set operations are not touched by this
+	 * setting.
+	 * 
+	 * @param alphaThreshold   replace each pixel which has an alpha value smaller
+	 *                         or equal to the threshold in the range of [0-255]. A
+	 *                         value of will disabled color replacement
+	 * @param replacementColor the color which will be returned in case of an opaque pixel
+	 */
 	default void setReplaceOpaqueColors(int alphaThreshold, java.awt.Color replacementColor) {
 		setReplaceOpaqueColors(alphaThreshold, replacementColor.getRed(), replacementColor.getGreen(),
-				replacementColor.getBlue(), replacementColor.getAlpha());s
+				replacementColor.getBlue(), replacementColor.getAlpha());
 	}
 
+	/**
+	 * Replace all pixels values in the image which have an alpha < than the
+	 * specified threshold. The pixel value is replaced for all get operations,
+	 * including luminosity calculation. Set operations are not touched by this
+	 * setting.
+	 * 
+	 * @param alphaThreshold   replace each pixel which has an alpha value smaller
+	 *                         or equal to the threshold in the range of [0-255]. A
+	 *                         value of will disabled color replacement
+	 * @param replacementColor the color which will be returned in case of an opaque
+	 *                         pixel
+	 */
 	default void setReplaceOpaqueColors(int alphaThreshold, Color replacementColor) {
 		setReplaceOpaqueColors(alphaThreshold, ColorUtil.fxToAwtColor(replacementColor));
 	}
