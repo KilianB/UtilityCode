@@ -37,12 +37,13 @@ public class ImageUtil {
 	 * @return the resized image
 	 * @since 1.0.0 com.github.kilianB
 	 * @since 1.4.2 fixed not using awt rescale com.github.kilianB
-	 * @since 1.5.3 fixed using ImageTypeSpecifier to create compatible images for custom type com.github.kilianB
+	 * @since 1.5.3 fixed using ImageTypeSpecifier to create compatible images for
+	 *        custom type com.github.kilianB
 	 */
 	public static BufferedImage getScaledInstance(BufferedImage source, int width, int height) {
-		
-		BufferedImage target = ImageTypeSpecifier.createFromRenderedImage(source).createBufferedImage(width,height);
-		
+
+		BufferedImage target = ImageTypeSpecifier.createFromRenderedImage(source).createBufferedImage(width, height);
+
 		Graphics g = target.getGraphics();
 		g.drawImage(source, 0, 0, width, height, null);
 		g.dispose();
@@ -181,9 +182,34 @@ public class ImageUtil {
 	 */
 	public static Color interpolateColor(Image image) {
 		BufferedImage bImage = SwingFXUtils.fromFXImage(image, null);
+		return interpolateColor(bImage);
+	}
+
+	/**
+	 * Calculate the interpolated average color of the image
+	 * 
+	 * @param bImage the source image
+	 * @return the average color of the image
+	 * @since 2.0.1
+	 */
+	public static Color interpolateColor(BufferedImage bImage) {
 		bImage = ImageUtil.getScaledInstance(bImage, 1, 1);
 		int argb = bImage.getRGB(0, 0);
 		return ColorUtil.argbToFXColor(argb);
+	}
+
+	/**
+	 * Return the dominant color of this image. The dominant color is the color that
+	 * most often occurred in this image. Be aware that calculating the average
+	 * color using this approach is a rather expensive operation.
+	 * <p>
+	 * 
+	 * @param bImage The source image
+	 * @return the dominant color of this image
+	 * @since 2.0.1
+	 */
+	public static Color dominantColor(BufferedImage bImage) {
+		return dominantColor(SwingFXUtils.toFXImage(bImage, null));
 	}
 
 	/**
@@ -217,6 +243,19 @@ public class ImageUtil {
 				.get().getKey().intValue();
 
 		return ColorUtil.argbToFXColor(argb);
+	}
+
+	/**
+	 * Calculate the average color of this image. The average color is determined by
+	 * summing the squared argb component of each pixel and determining the mean
+	 * value of these.
+	 * 
+	 * @param image The source image
+	 * @return The average mean color of this image
+	 * @since 2.0.1
+	 */
+	public static Color meanColor(BufferedImage image) {
+		return meanColor(SwingFXUtils.toFXImage(image, null));
 	}
 
 	/**

@@ -1,5 +1,10 @@
+# 2.0.1  - 17.06.2021
 
-
+## Added
+- Support a wider range of image objects for ImageUtil methods
+	- InterpolateColor for BufferedImage
+	- dominantColor for BufferedImage
+	- meanColor for BufferedImage
 
 # 2.0.0  - 15.06.2021
 
