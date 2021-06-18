@@ -14,7 +14,7 @@ Selection of java utility methods used in almost all projects.
 		<dependency>
 			<groupId>dev.brachtendorf</groupId>
 			<artifactId>UtilityCode</artifactId>
-			<version>2.0.0</version>
+			<version>2.0.1</version>
 		</dependency>
 	</dependencies>
 ```
@@ -94,19 +94,31 @@ ArrayUtil.add(values,5);
 
 ## Changelog
 
-# 2.0.0 - 15.06.2021
+## 2.0.1  - 17.06.2021
 
-## Changed
+### Added
+- Support a wider range of image objects for ImageUtil methods
+	- InterpolateColor for BufferedImage
+	- dominantColor for BufferedImage
+	- meanColor for BufferedImage
+
+### Changed
+ - getRGB doesn't use inlined code anymore
+ - getRGB now correctly returns opacity replaced colors
+
+## 2.0.0 - 15.06.2021
+
+### Changed
 
 - rename packages from com.github.kilianB to dev.brachtendorf
 
-# 1.0.0 Major update. rename group id and deploy on maven central - 15.06.2021
+## 1.0.0 Major update. rename group id and deploy on maven central - 15.06.2021
 
-## Added
+### Added
 
 - FastPixel now support replacement of opaque pixels
 
-## Changed
+### Changed
 
 - Updated javafx dependency version to point to stable v11 release
 - update build dependencies and pom in preparation for maven central deployment
