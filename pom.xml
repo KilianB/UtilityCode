@@ -5,7 +5,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>dev.brachtendorf</groupId>
 	<artifactId>UtilityCode</artifactId>
-	<version>2.0.0</version>
+	<version>2.0.1</version>
 
 	<name>Utility Code</name>
 	<description>Common functionality</description>

@@ -26,7 +26,6 @@ public class FastPixelSlowDefault extends FastPixelImpl {
 	private static final int BLUE_MASK = 255 << 0;
 	private static final int BLUE_MASK_INVERSE = FULL ^ (BLUE_MASK);
 
-	
 	/** Raw data */
 	private final int[] rgbImageData;
 
@@ -45,7 +44,7 @@ public class FastPixelSlowDefault extends FastPixelImpl {
 	 */
 	public FastPixelSlowDefault(BufferedImage bImage) {
 
-		super(bImage.getWidth(),bImage.getHeight());
+		super(bImage.getWidth(), bImage.getHeight());
 		alpha = bImage.getColorModel().hasAlpha();
 
 		rgbImageData = bImage.getRGB(0, 0, width, height, null, 0, width);
@@ -54,6 +53,9 @@ public class FastPixelSlowDefault extends FastPixelImpl {
 
 	@Override
 	public int getRGB(int index) {
+		if (alpha && isReplaceOpaqueColors() && getAlphaInternal(index) <= alphaReplacementThreshold) {
+			return (replacementA << 24) | (replacementR << 16) | (replacementG << 8) | (replacementB);
+		}
 		return rgbImageData[index];
 	}
 

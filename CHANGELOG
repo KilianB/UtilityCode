@@ -6,6 +6,10 @@
 	- dominantColor for BufferedImage
 	- meanColor for BufferedImage
 
+## Changed
+ - getRGB doesn't use inlined code anymore
+ - getRGB now correctly returns opacity replaced colors
+
 # 2.0.0  - 15.06.2021
 
 ## Changed

@@ -16,7 +16,7 @@ import java.awt.image.DataBufferByte;
  * @author Kilian
  * @since 1.3.0 com.github.kilianB
  */
-public class FastPixelByte extends FastPixelImpl{
+public class FastPixelByte extends FastPixelImpl {
 
 	/** Full alpha constant */
 	private static final int ALPHA_MASK = 255 << 24;
@@ -41,7 +41,7 @@ public class FastPixelByte extends FastPixelImpl{
 	 * @since 1.3.0 com.github.kilianB
 	 */
 	public FastPixelByte(BufferedImage bImage) {
-		super(bImage.getWidth(),bImage.getHeight());
+		super(bImage.getWidth(), bImage.getHeight());
 		imageData = ((DataBufferByte) bImage.getRaster().getDataBuffer()).getData();
 
 		if (bImage.getColorModel().hasAlpha()) {
@@ -57,8 +57,8 @@ public class FastPixelByte extends FastPixelImpl{
 
 	@Override
 	public int getRGB(int index) {
-		return (alpha ? (imageData[index++] & 0xFF) << 24 : ALPHA_MASK) | ((imageData[index++] & 0xFF))
-				| ((imageData[index++] & 0xFF) << 8) | ((imageData[index++] & 0xFF) << 16);
+		return (alpha ? getAlpha(index) << 24 : ALPHA_MASK) | getRed(index) << 16 | (getGreen(index) << 8)
+				| (getBlue(index));
 	}
 
 	/**
@@ -75,13 +75,8 @@ public class FastPixelByte extends FastPixelImpl{
 		int[][] rgb = new int[width][height];
 		int x = 0;
 		int y = 0;
-		for (int i = 0; i < imageData.length; i++) {
-			// We could use the getRGB(x,y) method. but lets inline some calls
-			int argb;
-			argb = alpha ? (imageData[i++] & 0xFF) << 24 : ALPHA_MASK;
-			// Red
-			argb |= (imageData[i++] & 0xFF) | (imageData[i++] & 0xFF) << 8 | (imageData[i] & 0xFF) << 16;
-
+		for (int i = 0; i < imageData.length; i = i + bytesPerColor) {
+			int argb = getRGB(i);
 			rgb[x][y] = argb;
 			x++;
 			if (x >= width) {
@@ -107,7 +102,7 @@ public class FastPixelByte extends FastPixelImpl{
 		int x = 0;
 		int y = 0;
 		for (int i = 0; i < imageData.length; i += bytesPerColor) {
-			alpha[x][y] = (imageData[i] & 0xFF);
+			alpha[x][y] = getAlpha(i);// (imageData[i] & 0xFF);
 			x++;
 			if (x >= width) {
 				x = 0;
@@ -135,13 +130,11 @@ public class FastPixelByte extends FastPixelImpl{
 	public int getRedInternal(int index) {
 		return imageData[index + alphaOffset + 2] & 0xFF;
 	}
-	
 
 	@Override
 	public void setRed(int index, int newRed) {
 		imageData[index + alphaOffset + 2] = (byte) (newRed);
 	}
-
 
 	@Override
 	public int getGreenInternal(int index) {
@@ -163,7 +156,6 @@ public class FastPixelByte extends FastPixelImpl{
 		imageData[index + alphaOffset] = (byte) (newBlue);
 	}
 
-	
 	// YCrCb
 
 	public int getOffset(int x, int y) {
@@ -178,12 +170,12 @@ public class FastPixelByte extends FastPixelImpl{
 		}
 		return luma;
 	}
-	
+
 	@Override
 	public int[] getRed1D() {
 		int[] red = new int[width * height];
 		int j = 0;
-		for (int i = 0; i < imageData.length; i += bytesPerColor,j++) {
+		for (int i = 0; i < imageData.length; i += bytesPerColor, j++) {
 			red[j] = getRed(i);
 		}
 		return red;
@@ -193,7 +185,7 @@ public class FastPixelByte extends FastPixelImpl{
 	public int[] getGreen1D() {
 		int[] green = new int[width * height];
 		int j = 0;
-		for (int i = 0; i < imageData.length; i += bytesPerColor,j++) {
+		for (int i = 0; i < imageData.length; i += bytesPerColor, j++) {
 			green[j] = getGreen(i);
 		}
 		return green;
@@ -203,7 +195,7 @@ public class FastPixelByte extends FastPixelImpl{
 	public int[] getBlue1D() {
 		int[] blue = new int[width * height];
 		int j = 0;
-		for (int i = 0; i < imageData.length; i += bytesPerColor,j++) {
+		for (int i = 0; i < imageData.length; i += bytesPerColor, j++) {
 			blue[j] = getBlue(i);
 		}
 		return blue;

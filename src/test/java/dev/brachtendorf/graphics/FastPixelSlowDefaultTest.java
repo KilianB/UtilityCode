@@ -9,6 +9,7 @@ import static org.junit.jupiter.api.Assertions.fail;
 
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+import java.util.Arrays;
 
 import javax.imageio.ImageIO;
 
@@ -38,6 +39,8 @@ class FastPixelSlowDefaultTest {
 
 	private static BufferedImage cat;
 
+	private static BufferedImage transparentPixel;
+
 	//
 	private static BufferedImage bw;
 
@@ -62,6 +65,10 @@ class FastPixelSlowDefaultTest {
 			brown = ImageIO.read(FastPixelSlowDefaultTest.class.getClassLoader().getResourceAsStream("brown.png"));
 			brown = ImageUtil.toNewType(brown, BImageType.TYPE_4BYTE_ABGR_PRE);
 
+			transparentPixel = ImageIO
+					.read(FastPixelSlowDefaultTest.class.getClassLoader().getResourceAsStream("TransparentPixel.png"));
+			transparentPixel = ImageUtil.toNewType(brown, BImageType.TYPE_BYTE_INDEXED);
+
 			brownOpacity = ImageIO
 					.read(FastPixelSlowDefaultTest.class.getClassLoader().getResourceAsStream("brownOpacity.png"));
 			brownOpacity = ImageUtil.toNewType(brownOpacity, BImageType.TYPE_INT_ARGB_PRE);
@@ -84,6 +91,7 @@ class FastPixelSlowDefaultTest {
 		assertEquals(FastPixelSlowDefault.class, FastPixel.create(brown).getClass());
 		assertEquals(FastPixelSlowDefault.class, FastPixel.create(brownOpacity).getClass());
 		assertEquals(FastPixelSlowDefault.class, FastPixel.create(cat).getClass());
+		assertEquals(FastPixelSlowDefault.class, FastPixel.create(transparentPixel).getClass());
 	}
 
 	@Nested
@@ -737,6 +745,16 @@ class FastPixelSlowDefaultTest {
 
 			}
 		}
+	}
+
+	@Test
+	void replaceTransparentRGB() {
+		//No alpha channel available on this image type
+		FastPixel fp = FastPixel.create(transparentPixel);
+		int def = transparentPixel.getRGB(0, 0);
+		int fastP = fp.getRGB(0, 0);
+		assertEquals(def, fastP,
+				Arrays.toString(ColorUtil.argbToComponents(def)) + Arrays.toString(ColorUtil.argbToComponents(fastP)));
 	}
 
 }

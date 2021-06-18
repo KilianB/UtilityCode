@@ -37,7 +37,7 @@ public interface FastPixel {
 			case BufferedImage.TYPE_INT_RGB:
 				return new FastPixelInt(bufferedImage);
 			default:
-				LOGGER.info("No fast implementation available for " + bufferedImage.getType()
+				LOGGER.finest("No fast implementation available for " + bufferedImage.getType()
 						+ ". Fallback to slow default variant.");
 				return new FastPixelSlowDefault(bufferedImage);
 			// throw new UnsupportedOperationException(

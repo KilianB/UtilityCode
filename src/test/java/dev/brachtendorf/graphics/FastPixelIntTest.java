@@ -36,32 +36,38 @@ class FastPixelIntTest {
 	// R(92)G(46)B(23) ~ H(20)S(75)V(36) //Luminosity
 	private static BufferedImage brownOpacity;
 
+	private static BufferedImage transparentPixel;
+
 	//
 	private static BufferedImage bw;
 
 	@BeforeAll
 	static void loadImage() {
 		try {
-			lena = ImageIO.read(FastPixelByteTest.class.getClassLoader().getResourceAsStream("Lena.png"));
+			lena = ImageIO.read(FastPixelIntTest.class.getClassLoader().getResourceAsStream("Lena.png"));
 			lena = ImageUtil.toNewType(lena, BImageType.TYPE_INT_BGR);
 
-			bw = ImageIO.read(FastPixelByteTest.class.getClassLoader().getResourceAsStream("BlackWhite.png"));
+			bw = ImageIO.read(FastPixelIntTest.class.getClassLoader().getResourceAsStream("BlackWhite.png"));
 			bw = ImageUtil.toNewType(bw, BImageType.TYPE_INT_BGR);
 
-			red = ImageIO.read(FastPixelByteTest.class.getClassLoader().getResourceAsStream("red.png"));
+			red = ImageIO.read(FastPixelIntTest.class.getClassLoader().getResourceAsStream("red.png"));
 			red = ImageUtil.toNewType(red, BImageType.TYPE_INT_BGR);
 
-			green = ImageIO.read(FastPixelByteTest.class.getClassLoader().getResourceAsStream("green.png"));
+			green = ImageIO.read(FastPixelIntTest.class.getClassLoader().getResourceAsStream("green.png"));
 			green = ImageUtil.toNewType(green, BImageType.TYPE_INT_BGR);
 
-			blue = ImageIO.read(FastPixelByteTest.class.getClassLoader().getResourceAsStream("blue.png"));
+			blue = ImageIO.read(FastPixelIntTest.class.getClassLoader().getResourceAsStream("blue.png"));
 			blue = ImageUtil.toNewType(blue, BImageType.TYPE_INT_BGR);
 
-			brown = ImageIO.read(FastPixelByteTest.class.getClassLoader().getResourceAsStream("brown.png"));
+			brown = ImageIO.read(FastPixelIntTest.class.getClassLoader().getResourceAsStream("brown.png"));
 			brown = ImageUtil.toNewType(brown, BImageType.TYPE_INT_BGR);
 
+			transparentPixel = ImageIO
+					.read(FastPixelIntTest.class.getClassLoader().getResourceAsStream("TransparentPixel.png"));
+			transparentPixel = ImageUtil.toNewType(transparentPixel, BImageType.TYPE_INT_ARGB);
+
 			brownOpacity = ImageIO
-					.read(FastPixelByteTest.class.getClassLoader().getResourceAsStream("brownOpacity.png"));
+					.read(FastPixelIntTest.class.getClassLoader().getResourceAsStream("brownOpacity.png"));
 			brownOpacity = ImageUtil.toNewType(brownOpacity, BImageType.TYPE_INT_ARGB);
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -77,6 +83,7 @@ class FastPixelIntTest {
 		assertEquals(FastPixelInt.class, FastPixel.create(blue).getClass());
 		assertEquals(FastPixelInt.class, FastPixel.create(brown).getClass());
 		assertEquals(FastPixelInt.class, FastPixel.create(brownOpacity).getClass());
+		assertEquals(FastPixelInt.class, FastPixel.create(transparentPixel).getClass());
 	}
 
 	@Test
@@ -713,6 +720,14 @@ class FastPixelIntTest {
 
 			}
 		}
+	}
+
+	@Test
+	void replaceTransparentRGB() {
+		FastPixel fp = FastPixel.create(transparentPixel);
+		assertEquals(0, fp.getRGB(0));
+		fp.setReplaceOpaqueColors(120, 10, 11, 11, 255);
+		assertEquals(-16119029, fp.getRGB(0));
 	}
 
 }

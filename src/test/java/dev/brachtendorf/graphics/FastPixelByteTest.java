@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+import java.util.Arrays;
 
 import javax.imageio.ImageIO;
 
@@ -30,6 +31,8 @@ class FastPixelByteTest {
 	// R(92)G(46)B(23) ~ H(20)S(75)V(36) //Luminosity
 	private static BufferedImage brownOpacity;
 
+	private static BufferedImage transparentPixel;
+
 	//
 	static BufferedImage bw;
 
@@ -42,6 +45,8 @@ class FastPixelByteTest {
 			green = ImageIO.read(FastPixelByteTest.class.getClassLoader().getResourceAsStream("green.png"));
 			blue = ImageIO.read(FastPixelByteTest.class.getClassLoader().getResourceAsStream("blue.png"));
 			brown = ImageIO.read(FastPixelByteTest.class.getClassLoader().getResourceAsStream("brown.png"));
+			transparentPixel = ImageIO
+					.read(FastPixelByteTest.class.getClassLoader().getResourceAsStream("TransparentPixel.png"));
 			brownOpacity = ImageIO
 					.read(FastPixelByteTest.class.getClassLoader().getResourceAsStream("brownOpacity.png"));
 		} catch (IOException e) {
@@ -58,6 +63,7 @@ class FastPixelByteTest {
 		assertEquals(FastPixelByte.class, FastPixel.create(blue).getClass());
 		assertEquals(FastPixelByte.class, FastPixel.create(brown).getClass());
 		assertEquals(FastPixelByte.class, FastPixel.create(brownOpacity).getClass());
+		assertEquals(FastPixelByte.class, FastPixel.create(transparentPixel).getClass());
 	}
 
 	@Test
@@ -75,7 +81,9 @@ class FastPixelByteTest {
 		FastPixel fp = FastPixel.create(lena);
 		for (int x = 0; x < lena.getWidth(); x++) {
 			for (int y = 0; y < lena.getHeight(); y++) {
-				assertEquals(lena.getRGB(x, y), fp.getRGB(x, y));
+				assertEquals(lena.getRGB(x, y), fp.getRGB(x, y),
+						"x:" + x + "|y:" + y + " " + Arrays.toString(ColorUtil.argbToComponents(lena.getRGB(x, y)))
+								+ " " + Arrays.toString(ColorUtil.argbToComponents(fp.getRGB(x, y))));
 			}
 		}
 	}
@@ -705,6 +713,14 @@ class FastPixelByteTest {
 
 			}
 		}
+	}
+
+	@Test
+	void replaceTransparentRGB() {
+		FastPixel fp = FastPixel.create(transparentPixel);
+		assertEquals(0, fp.getRGB(0));
+		fp.setReplaceOpaqueColors(120, 10, 11, 11, 255);
+		assertEquals(-16119029, fp.getRGB(0));
 	}
 
 }
